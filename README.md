@@ -10,10 +10,10 @@
 
 ### Файлы:
 
-1. Примеры диалогов-цепочек: ./examples_of_dialogues.json
-2. Файл с примерами реплик и нод для различных типов: ./types_of_dialogues.json
-3. Сэмплированные диалоги с помощью gpt-4o: ./sampled_dialogues.json
-4. Восстановленные пути с помощью gpt-4o: ./remade_dialogue_routes.json
+1. [Примеры диалогов-цепочек](./examples_of_dialogues.json)
+2. [Файл с примерами реплик и нод для различных типов](./types_of_dialogues.json)
+3. [Сэмплированные диалоги с помощью gpt-4o](./sampled_dialogues.json)
+4. [Восстановленные пути с помощью gpt-4o](./remade_dialogue_routes.json)
 
 
 ### Подсчет метрик:
