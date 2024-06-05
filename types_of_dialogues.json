@@ -264,15 +264,40 @@
             {
                 "source": 6,
                 "target": 7,
-                "request": "I would like to change delivery  from pickup to home delivery"
+                "request": "I would like to change delivery from pickup to home delivery"
             },
             {
                 "source": 6,
                 "target": 7,
-                "request": "I would like to change delivery  from house delivery to pickup"
+                "request": "I would like to change delivery from house delivery to pickup"
             },
             {
                 "source": 7,
+                "target": 10,
+                "request": "Good, thanks"
+            },
+            {
+                "source": 6,
+                "target": 8,
+                "request": "I would like to change payment method from cash to card"
+            },
+            {
+                "source": 6,
+                "target": 8,
+                "request": "I would like to change payment method from credit card to cash"
+            },
+            {
+                "source": 8,
+                "target": 10,
+                "request": "Good, thanks"
+            },
+            {
+                "source": 7,
+                "target": 6,
+                "request": "I also would like to change something else about my order"
+            },
+            {
+                "source": 8,
                 "target": 6,
                 "request": "I also would like to change something else about my order"
             },
@@ -352,6 +377,112 @@
                 "label": "confirm",
                 "is_start": false,
                 "response": "Done!"
+            }
+        ]
+    },
+    "5":{
+        "links": [
+            {
+                "source": 1,
+                "target": 2,
+                "request": "I need to make an order"
+            },
+            {
+                "source": 1,
+                "target": 2,
+                "request": "I want to order from you"
+            },
+            {
+                "source": 2,
+                "target": 3,
+                "request": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please"
+            },
+            {
+                "source": 2,
+                "target": 3,
+                "request": "One War and Piece in hard cover and one Pride and Prejudice"
+            },
+            {
+                "source": 3,
+                "target": 4,
+                "request": "I will pickup my order"
+            },
+            {
+                "source": 3,
+                "target": 4,
+                "request": "Delivery to the address: Pine Driveway, 45"
+            },
+            {
+                "source": 4,
+                "target": 5,
+                "request": "Cash"
+            },
+            {
+                "source": 4,
+                "target": 1,
+                "request": "I've changed my mind, can we start again"
+            },
+            {
+                "source": 4,
+                "target": 1,
+                "request": "Start again"
+            },
+            {
+                "source": 4,
+                "target": 1,
+                "request": "Please cancel my order"
+            },
+            {
+                "source": 4,
+                "target": 5,
+                "request": "With credit card, please"
+            },
+            {
+                "source": 5,
+                "target": 1,
+                "request": "Thanks"
+            },
+            {
+                "source": 5,
+                "target": 1,
+                "request": "Goodbye"
+            },
+            {
+                "source": 5,
+                "target": 1,
+                "request": "Excellent"
+            }
+        ],
+        "nodes": [
+            {
+                "id": 1,
+                "label": "start",
+                "is_start": true,
+                "response": "Is there anything can I help with?"
+            },
+            {
+                "id": 2,
+                "label": "ask_item",
+                "is_start": false,
+                "response": "Which books would you like to order?"
+            },
+            {
+                "id": 3,
+                "label": "ask_delivery",
+                "is_start": false,
+                "response": "Which delivery method would you like to use? We currently offer pickup or home delivery."
+            },
+            {
+                "id": 4,
+                "label": "ask_payment_method",
+                "is_start": false,
+                "response": "Please, enter the payment method you would like to use: cash or credit card."
+            },
+            {
+                "id": 5,
+                "label": "success",
+                "is_start": false,
+                "response": "Success"
             }
         ]
     }
