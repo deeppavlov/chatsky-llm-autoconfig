@@ -27,7 +27,7 @@
 3. Chatbot system can move only along transitions listed in 2.  If a transition from node A to node B is not listed we cannot move along it.
 4. If a dialog doesn't contradcit with the rules listed in 2 print YES otherwise if such dialog could'nt happen because it contradicts the rules print NO. Dialogue: {dialogue}. Set of rules: {rules}
 
-### Пример добавления ноды:
+## Пример добавления ноды:
 Sure, let's expand the set of rules to accommodate the new dialogue. We need to create new nodes and links to handle the request to change the payment method. Here is the updated set of rules:
 
 ### Nodes
