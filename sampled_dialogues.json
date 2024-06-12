@@ -1,5 +1,5 @@
 {  
-    "1": {
+    "1_semi": {
     "examples": [
         {
             "dialog_with_known_nodes": [
@@ -22,7 +22,7 @@
             ]
         }
     ]},
-    "2": {
+    "2_semi": {
         "examples": [
         {
             "dialog_with_known_nodes":[
@@ -52,7 +52,7 @@
                 {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
                 {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user", "source": 2, "target": 3},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
-                {"text": "I will pickup my order", "participant": "user", "source": 3, "target": 4},
+                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user", "source": 3, "target": 4},
                 {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant", "source": 4, "target": 5},
                 {"text": "Cash", "participant": "user", "source": 4, "target": 5},
                 {"text": "Success", "participant": "assistant", "source": 5, "target": 5}
@@ -62,14 +62,36 @@
                 {"text": "Which books would you like to order?", "participant": "assistant"},
                 {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user"},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
-                {"text": "I will pickup my order", "participant": "user"},
+                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user"},
                 {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
                 {"text": "Cash.", "participant": "user"},
                 {"text": "Success", "participant": "assistant"}
             ]
+        },
+        {
+            "dialog_with_known_nodes":[
+                {"text": "I need to make an order", "participant": "user", "source": 1, "target": 2},
+                {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
+                {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user", "source": 2, "target": 3},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
+                {"text": "I will pickup my order", "participant": "user", "source": 3, "target": 4},
+                {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant", "source": 4, "target": 5},
+                {"text": "Cash", "participant": "user", "source": 4, "target": 5},
+                {"text": "Success", "participant": "assistant", "source": 5, "target": 5}
+            ],
+            "dialog":[
+                {"text": "I need to make an order", "participant": "user"},
+                {"text": "Which books would you like to order?", "participant": "assistant"},
+                {"text": "One War and Piece in hard cover and one Pride and Prejudice', please", "participant": "user"},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
+                {"text": "I will pickup my order", "participant": "user"},
+                {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
+                {"text": "Cash", "participant": "user"},
+                {"text": "Success", "participant": "assistant"}
+            ]
         }
     ]},
-    "3": {
+    "3_semi": {
         "examples": [
             {
                 "dialog_with_known_nodes":[
@@ -101,9 +123,9 @@
                 {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
                 {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user", "source": 2, "target": 3},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
-                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user", "source": 3, "target": 4},
+                {"text": "I will pickup my order", "participant": "user", "source": 3, "target": 4},
                 {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant", "source": 4, "target": 5},
-                {"text": "Cash", "participant": "user", "source": 4, "target": 5},
+                {"text": "With credit card, please.", "participant": "user", "source": 4, "target": 5},
                 {"text": "Success", "participant": "assistant", "source": 5, "target": 1},
                 {"text": "Goodbye", "participant": "user", "source": 5, "target": 1}
             ],
@@ -112,15 +134,39 @@
                 {"text": "Which books would you like to order?", "participant": "assistant"},
                 {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user"},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
-                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user"},
+                {"text": "I will pickup my order", "participant": "user"},
                 {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
-                {"text": "Cash", "participant": "user"},
+                {"text": "With credit card, please.", "participant": "user"},
                 {"text": "Success", "participant": "assistant"},
                 {"text": "Goodbye", "participant": "user"}
             ]  
+        },
+        {
+            "dialog_with_known_nodes":[
+                {"text": "I want to order from you", "participant": "user", "source": 1, "target": 2},
+                {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
+                {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user", "source": 2, "target": 3},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
+                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user", "source": 3, "target": 4},
+                {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant", "source": 4, "target": 5},
+                {"text": "Cash.", "participant": "user", "source": 4, "target": 5},
+                {"text": "Success", "participant": "assistant", "source": 5, "target": 1},
+                {"text": "Good, thanks", "participant": "user", "source": 5, "target": 1}
+            ],
+            "dialog":[
+                {"text": "I want to order from you", "participant": "user"},
+                {"text": "Which books would you like to order?", "participant": "assistant"},
+                {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user"},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
+                {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user"},
+                {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
+                {"text": "Cash.", "participant": "user"},
+                {"text": "Success", "participant": "assistant"},
+                {"text": "Good, thanks", "participant": "user"}
+            ]  
         }
     ]},
-    "4": {
+    "4_semi": {
         "examples": [
             {
                 "dialog_with_known_nodes": [
@@ -129,7 +175,7 @@
                         {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
                         {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user", "source": 2, "target": 3},
                         {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
-                        {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user", "source": 3, "target": 4},
+                        {"text": "I will pickup my order", "participant": "user", "source": 3, "target": 4},
                         {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant", "source": 4, "target": 5},
                         {"text": "With credit card, please.", "participant": "user", "source": 4, "target": 5},
                         {"text": "Success", "participant": "assistant", "source": 5, "target": 1},
@@ -151,7 +197,7 @@
                     {"text": "Which books would you like to order?", "participant": "assistant"},
                     {"text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please", "participant": "user"},
                     {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
-                    {"text": "Delivery to the address: Pine Driveway, 45", "participant": "user"},
+                    {"text": "I will pickup my order", "participant": "user"},
                     {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
                     {"text": "With credit card, please.", "participant": "user"},
                     {"text": "Success", "participant": "assistant"},
@@ -206,7 +252,7 @@
         ]
         }
     ]},
-    "5": {
+    "5_semi": {
         "examples": [
         {
             "dialog_with_known_nodes":[
@@ -232,7 +278,7 @@
         },
         {
             "dialog_with_known_nodes":[
-                {"text": "I want to order from you", "participant": "user", "source": 1, "target": 2},
+                {"text": "I need to make an order", "participant": "user", "source": 1, "target": 2},
                 {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
                 {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user", "source": 2, "target": 3},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
@@ -242,12 +288,30 @@
                 {"text": "Is there anything can I help with?", "participant": "assistant", "source": 1, "target": 1}
             ],
             "dialog":[
-                {"text": "I want to order from you", "participant": "user"},
+                {"text": "I need to make an order", "participant": "user"},
                 {"text": "Which books would you like to order?", "participant": "assistant"},
                 {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user"},
                 {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
                 {"text": "I will pickup my order", "participant": "user"},
                 {"text": "Please, enter the payment method you would like to use: cash or credit card.", "participant": "assistant"},
+                {"text": "Start again", "participant": "user"},
+                {"text": "Is there anything can I help with?", "participant": "assistant"}
+            ]
+        },
+        {
+            "dialog_with_known_nodes":[
+                {"text": "I want to order from you", "participant": "user", "source": 1, "target": 2},
+                {"text": "Which books would you like to order?", "participant": "assistant", "source": 2, "target": 3},
+                {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user", "source": 2, "target": 3},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant", "source": 3, "target": 4},
+                {"text": "Start again", "participant": "user", "source": 4, "target": 1},
+                {"text": "Is there anything can I help with?", "participant": "assistant", "source": 1, "target": 1}
+            ],
+            "dialog":[
+                {"text": "I want to order from you", "participant": "user"},
+                {"text": "Which books would you like to order?", "participant": "assistant"},
+                {"text": "One War and Piece in hard cover and one Pride and Prejudice", "participant": "user"},
+                {"text": "Which delivery method would you like to use? We currently offer pickup or home delivery.", "participant": "assistant"},
                 {"text": "Start again", "participant": "user"},
                 {"text": "Is there anything can I help with?", "participant": "assistant"}
             ]
