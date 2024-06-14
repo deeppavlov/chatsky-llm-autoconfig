@@ -13,7 +13,6 @@
 1. [Примеры диалогов-цепочек](./examples_of_dialogues.json)
 2. [Файл с примерами реплик и нод для различных типов](./types_of_dialogues.json)
 3. [Сэмплированные диалоги с помощью gpt-4o](./sampled_dialogues.json)
-4. [Восстановленные пути с помощью gpt-4o](./remade_dialogue_routes.json)
 
 
 ### Подсчет метрик:
@@ -27,10 +26,3 @@
 3. Chatbot system can move only along transitions listed in 2.  If a transition from node A to node B is not listed we cannot move along it.
 4. If a dialog doesn't contradcit with the rules listed in 2 print YES otherwise if such dialog could'nt happen because it contradicts the rules print NO. Dialogue: {dialogue}. Set of rules: {rules}
 
-### Датасет:
-
-1. Графы с полным совпадением реплик (только одна версия графа): графы 2_mono, 3_mono, 4_mono_ 5_mono
-
-2. Графы с частичным совпадением реплик: графы 2_semi, 3_sem, 4_semi, 5_semi
-
-3. 
