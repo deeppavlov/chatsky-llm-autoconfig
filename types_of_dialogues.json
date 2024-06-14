@@ -27,7 +27,7 @@
             }
         ]
     },
-    "2_semi": {
+    "2": {
         "links": [
             {
                 "source": 1,
@@ -103,7 +103,7 @@
             }
         ]
     },
-    "3_semi": {
+    "3": {
         "links": [
             {
                 "source": 1,
@@ -194,7 +194,7 @@
             }
         ]
     },
-    "4_semi": {
+    "4": {
         "links": [
             {
                 "source": 1,
@@ -204,7 +204,7 @@
             {
                 "source": 1,
                 "target": 2,
-                "request": "I want to order from you"
+                "request": "I want to order"
             },
             {
                 "source": 2,
@@ -380,7 +380,7 @@
             }
         ]
     },
-    "5_semi":{
+    "5":{
         "links": [
             {
                 "source": 1,
@@ -390,7 +390,7 @@
             {
                 "source": 1,
                 "target": 2,
-                "request": "I want to order from you"
+                "request": "I want to order"
             },
             {
                 "source": 2,
