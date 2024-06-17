@@ -1,9 +1,9 @@
 from enum import Enum
+import networkx as nx
 
 class TYPES_OF_GRAPH(Enum):
-    FULL = 1
-    SEMI = 2
-    DIFFERENT = 3
+    DI = 1
+    MULTI = 2
 
 class Node:
     def __init__(self, id, is_start, label, response) -> None:
@@ -50,3 +50,27 @@ class Link:
         if isinstance(other, Link):
             return self.source == other.source and self.target == other.target 
         return False
+    
+    class Graph:
+        def __init__(self, graph: dict, type: TYPES_OF_GRAPH) -> None:
+            if type == TYPES_OF_GRAPH.MULTI:
+                self.nx_graph = nx.MultiDiGraph()
+            else:
+                self.nx_graph = nx.DiGraph()
+            node_count = len(graph['nodes'])
+            self.type = type
+            self.nodes = []
+            self.transitions = [[None for _ in range(node_count + 1)] for _ in range(node_count + 1)]
+            self.graph_degrees = []
+            for node in graph['nodes']:
+                self.nodes.append(Node(node['id'], node['is_start'], node['label'], node['response']))
+                self.nx_graph.add_node(node['id'], request=node['response'])
+            for link in graph['links']:
+                first = link['source']
+                second = link['target']
+                link_obj = Link(first, second)
+                link_obj.add_response(link['request'])
+                self.transitions[first][second] = link_obj
+                self.nx_graph.add_edges_from([(first, second, {"requests": link['request']})])
+            for i in range(1, node_count + 1):
+                self.graph_degrees.append(sum(1 for x in self.transitions[i] if x is not None))
