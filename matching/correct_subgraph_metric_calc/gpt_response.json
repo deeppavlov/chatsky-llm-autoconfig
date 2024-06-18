@@ -33,12 +33,12 @@
         {
             "source": 5,
             "target": 2,
-            "request": "I need a book Cathing in the Rye"
+            "request": "I need a book Catching in the Rye"
         },
         {
             "source": 4,
             "target": 2,
-            "request": "Yes, I also need a book Cathing in the Rye"
+            "request": "Yes, I also need a book Catching in the Rye"
         },
         {
             "source": 5,
@@ -59,6 +59,21 @@
             "source": 6,
             "target": 7,
             "request": "Goodbye"
+        },
+        {
+            "source": 2,
+            "target": 8,
+            "request": "I need Crime and Punishment"
+        },
+        {
+            "source": 8,
+            "target": 2,
+            "request": "Yes, I also need a book Catching in the Rye"
+        },
+        {
+            "source": 8,
+            "target": 6,
+            "request": "No, that's all"
         }
     ],
     "nodes": [
@@ -109,6 +124,12 @@
             "label": "goodbye",
             "is_start": false,
             "response": "Goodbye"
+        },
+        {
+            "id": 8,
+            "label": "add_anna_karenina",
+            "is_start": false,
+            "response": "Added it to your cart. Anything else?"
         }
     ]
 }

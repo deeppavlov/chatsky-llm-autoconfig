@@ -64,8 +64,8 @@ class Graph:
         self.graph_degrees = []
         for node in graph['nodes']:
             self.nodes.append(Node(node['id'], node['is_start'], node['label'], node['response']))
-            self.nx_graph.add_node(node['id'], request=node['response'])
-        for link in graph['links']:
+            self.nx_graph.add_node(node['id'], responses=node['response'])
+        for link in graph['edges']:
             first = link['source']
             second = link['target']
             link_obj = Link(first, second)
