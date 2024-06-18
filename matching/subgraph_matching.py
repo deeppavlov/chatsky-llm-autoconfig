@@ -44,3 +44,4 @@ def match(g1, g2):
                     continue
                 else:
                     mapping[edges1[i]] = edges2[j]
+    return mapping
