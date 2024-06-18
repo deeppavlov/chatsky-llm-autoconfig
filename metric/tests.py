@@ -83,9 +83,43 @@ def test_split_node():
     # print(values)
     # print(indices)
 
+def test_complex_graph():
+    true_graph, generated_graph = load_graphs('test_split_node')
+    values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
+                                            return_matrix=True)
+    assert np.array_equal(values, np.array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]))
+    # assert np.array_equal(indices, [0, 0])
+    m = np.array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
+       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+       [0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
+       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+       [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+       [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.]])
+    assert np.array_equal(matrix, m)
 
+    values, indices, matrix = jaccard_nodes(true_graph.nodes(data=True), generated_graph.nodes(data=True),
+                                            return_matrix=True)
+    assert np.array_equal(values, np.array([1., 1., 1., 1., 1., 1., 1., 1.]))
+    
+    
+    m = np.array([[1., 0., 0., 0., 0., 0., 0., 0.],
+                    [0., 1., 0., 0., 0., 0., 0., 0.],
+                    [0., 0., 0., 0., 0., 0., 0., 1.],
+                    [0., 0., 1., 0., 0., 0., 0., 0.],
+                    [0., 0., 0., 1., 0., 0., 0., 0.],
+                    [0., 0., 0., 0., 1., 0., 0., 0.],
+                    [0., 0., 0., 0., 0., 1., 0., 0.],
+                    [0., 0., 0., 0., 0., 0., 1., 0.]])
+    assert np.array_equal(matrix, m)
 
 test_single_nodes()
 test_chain_with_equal_number_of_nodes()
 test_cycle_with_missing_edge()
 test_split_node()
+test_complex_graph()
