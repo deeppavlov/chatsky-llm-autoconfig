@@ -84,7 +84,7 @@ def test_split_node():
     # print(indices)
 
 def test_complex_graph():
-    true_graph, generated_graph = load_graphs('test_split_node')
+    true_graph, generated_graph = load_graphs('test_complex_graph')
     values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
                                             return_matrix=True)
     assert np.array_equal(values, np.array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]))
