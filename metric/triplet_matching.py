@@ -63,6 +63,6 @@ def match(g1, g2):
                     node2_trg_nx = g2.nodes[node2_trg + 1]
                     if node1_trg_nx == node2_trg_nx:
                         node_mapping[node1_trg + 1] = node2_trg + 1
-                    print(f'The nodes of edges {edges1[i]} and {edges2[i]} has something in common, but not complete match: Sources: {node1_src_nx["responses"]}, {node2_src_nx["responses"]}')
-                    print(f'The nodes of edges {edges1[i]} and {edges2[i]} has something in common, but not complete match: Targets: {node1_trg_nx["responses"]}, {node2_trg_nx["responses"]}')
+                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {node1_src_nx["responses"]}, {node2_src_nx["responses"]}')
+                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {node1_trg_nx["responses"]}, {node2_trg_nx["responses"]}')
     return node_mapping, edge_mapping
