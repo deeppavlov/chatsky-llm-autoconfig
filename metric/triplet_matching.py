@@ -1,14 +1,17 @@
 import networkx as nx
-from  collections import defaultdict
-from metric.metric_calc import jaccard_edges, jaccard_nodes, collapse_multiedges
+from metric.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
+
+
 def edge_match_for_muligraph(x, y):
     set1 = set([elem['requests'] for elem in list(x.values())])
     set2 = set([elem['requests'] for elem in list(y.values())])
     return set1.intersection(set2) is not None 
 
+
 def parse_edge(edge):
     src, trg = edge.split('->')
     return int(src) - 1, int(trg) - 1
+
 
 def triplet_match(g1, g2):
     node_mapping = {}

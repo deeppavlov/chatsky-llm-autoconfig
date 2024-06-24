@@ -3,72 +3,72 @@
         {
             "source": 1,
             "target": 2,
-            "request": "I need to make an order"
+            "utterances": "I need to make an order"
         },
         {
             "source": 1,
             "target": 2,
-            "request": "I want to order"
+            "utterances": "I want to order"
         },
         {
             "source": 2,
             "target": 3,
-            "request": "Do you have War and Piece?"
+            "utterances": "Do you have War and Piece?"
         },
         {
             "source": 2,
             "target": 3,
-            "request": "Do you have Tolstoy's diaries?"
+            "utterances": "Do you have Tolstoy's diaries?"
         },
         {
             "source": 3,
             "target": 4,
-            "request": "Yes"
+            "utterances": "Yes"
         },
         {
             "source": 3,
             "target": 5,
-            "request": "No"
+            "utterances": "No"
         },
         {
             "source": 5,
             "target": 2,
-            "request": "I need a book about classical music"
+            "utterances": "I need a book about classical music"
         },
         {
             "source": 4,
             "target": 2,
-            "request": "Yes, I also need a book Airplane"
+            "utterances": "Yes, I also need a book Airplane"
         },
         {
             "source": 5,
             "target": 6,
-            "request": "No, that's all"
+            "utterances": "No, that's all"
         },
         {
             "source": 4,
             "target": 6,
-            "request": "No, nothing else"
+            "utterances": "No, nothing else"
         },
         {
             "source": 6,
             "target": 7,
-            "request": "Thanks"
+            "utterances": "Thanks"
         },
         {
             "source": 6,
             "target": 7,
-            "request": "Goodbye"
+            "utterances": "Goodbye"
         },
         {
             "source": 2,
             "target": 8,
-            "request": "I need Crime and Punishment"
+            "utterances": "I need Crime and Punishment"
         },
         {
             "source": 8,
             "target": 6,
-            "request": "Yes, I also need a book Catching in the Rye"
+            "utterances": "Yes, I also need a book Catching in the Rye"
         }
     ],
     "nodes": [
@@ -76,7 +76,7 @@
             "id": 1,
             "label": "start",
             "is_start": true,
-            "response": [
+            "utterances": [
                 "Is there anything can I help with?",
                 "How can I help?"
             ]
@@ -85,7 +85,7 @@
             "id": 2,
             "label": "ask_item",
             "is_start": false,
-            "response": [
+            "utterances": [
                 "Which books would you like to order?",
                 "What would you like to buy?"
             ]
@@ -94,37 +94,37 @@
             "id": 3,
             "label": "confirm_availability_and_ask_to_add",
             "is_start": false,
-            "response": "Yes, we have it. Add it to your cart?"
+            "utterances": "Yes, we have it. Add it to your cart?"
         },
         {
             "id": 4,
             "label": "reply_to_yes",
             "is_start": false,
-            "response": "Done. Anything else?"
+            "utterances": "Done. Anything else?"
         },
         {
             "id": 5,
             "label": "reply_to_no",
             "is_start": false,
-            "response": "Okay. Anything else?"
+            "utterances": "Okay. Anything else?"
         },
         {
             "id": 6,
             "label": "finish_filling_cart",
             "is_start": false,
-            "response": "Okay, everything is done, you can go to cart and finish the order."
+            "utterances": "Okay, everything is done, you can go to cart and finish the order."
         },
         {
             "id": 7,
             "label": "goodbye",
             "is_start": false,
-            "response": "Goodbye"
+            "utterances": "Goodbye"
         },
         {
             "id": 8,
             "label": "add_anna_karenina",
             "is_start": false,
-            "response": "Added it to your cart. Anything else?"
+            "utterances": "Added it to your cart. Anything else?"
         }
     ]
 }

@@ -1,4 +1,4 @@
-from metric_calc import jaccard_nodes, jaccard_edges
+from jaccard import jaccard_nodes, jaccard_edges
 from graph_src.graph import Graph, TYPES_OF_GRAPH
 import json
 import numpy as np
@@ -43,7 +43,6 @@ def test_chain_with_equal_number_of_nodes():
     assert np.array_equal(indices, np.array([0, 1, 2, 3, 4]))
 
 
-
 def test_cycle_with_missing_edge():
     true_graph, generated_graph = load_graphs('test_cycle_with_missing_edge')
     values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
@@ -63,6 +62,7 @@ def test_cycle_with_missing_edge():
     assert np.array_equal(values, np.array([1., 1., 1., 1.]))
     assert np.array_equal(indices, [0, 1, 2, 3])
 
+
 def test_split_node():
     true_graph, generated_graph = load_graphs('test_split_node')
     values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
@@ -70,11 +70,11 @@ def test_split_node():
     assert np.array_equal(values, np.array([0.5, 0.5]))
     assert np.array_equal(indices, [0, 0])
     m = np.array([[0.5, 0],
-                 [0.5, 0]])
+                  [0.5, 0]])
     assert np.array_equal(matrix, m)
     values, indices, matrix = jaccard_nodes(true_graph.nodes(data=True), generated_graph.nodes(data=True),
                                             return_matrix=True)
-    m = np.zeros((3,3))
+    m = np.zeros((3, 3))
     m[0][0] = 1.0
     assert np.array_equal(matrix, m)
     assert np.array_equal(values, np.array([1, 0, 0]))
@@ -83,40 +83,40 @@ def test_split_node():
     # print(values)
     # print(indices)
 
+
 def test_complex_graph():
     true_graph, generated_graph = load_graphs('test_complex_graph')
     values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
                                             return_matrix=True)
     assert np.array_equal(values, np.array([1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]))
-    # assert np.array_equal(indices, [0, 0])
     m = np.array([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-       [0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
-       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
-       [0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
-       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
-       [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
-       [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
-       [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.]])
+                  [0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+                  [0., 1., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
+                  [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+                  [0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 1., 0., 0., 0., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
+                  [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+                  [0., 0., 0., 0., 0., 0., 0., 1., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 0., 0., 1., 0., 1., 0., 0., 1.],
+                  [0., 0., 0., 0., 0., 0., 0., 0., 0., 1., 0., 0.]])
     assert np.array_equal(matrix, m)
 
     values, indices, matrix = jaccard_nodes(true_graph.nodes(data=True), generated_graph.nodes(data=True),
                                             return_matrix=True)
     assert np.array_equal(values, np.array([1., 1., 1., 1., 1., 1., 1., 1.]))
-    
-    
+
     m = np.array([[1., 0., 0., 0., 0., 0., 0., 0.],
-                    [0., 1., 0., 0., 0., 0., 0., 0.],
-                    [0., 0., 0., 0., 0., 0., 0., 1.],
-                    [0., 0., 1., 0., 0., 0., 0., 0.],
-                    [0., 0., 0., 1., 0., 0., 0., 0.],
-                    [0., 0., 0., 0., 1., 0., 0., 0.],
-                    [0., 0., 0., 0., 0., 1., 0., 0.],
-                    [0., 0., 0., 0., 0., 0., 1., 0.]])
+                  [0., 1., 0., 0., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 0., 0., 0., 1.],
+                  [0., 0., 1., 0., 0., 0., 0., 0.],
+                  [0., 0., 0., 1., 0., 0., 0., 0.],
+                  [0., 0., 0., 0., 1., 0., 0., 0.],
+                  [0., 0., 0., 0., 0., 1., 0., 0.],
+                  [0., 0., 0., 0., 0., 0., 1., 0.]])
     assert np.array_equal(matrix, m)
+
 
 test_single_nodes()
 test_chain_with_equal_number_of_nodes()

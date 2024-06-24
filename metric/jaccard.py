@@ -14,7 +14,7 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     true_graph_edges:Graph.edges - ребра истинного графа
     generated_graph_edges: nx.Graph.edges - ребра сгенерированного графу
     формат ребер:
-    (1, 2, {"requests": ...})
+    (1, 2, {"utterances": ...})
     verbose: bool - печать отладочной информации
     '''
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
@@ -41,10 +41,10 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
         return max_jaccard_values, max_jaccard_indices, jaccard_values
     return max_jaccard_values, max_jaccard_indices
 
-def get_list_of_node_responses(node):
-    if type(node[1]['responses']) is str:
-        return [node[1]['responses']]
-    return node[1]['responses']
+def get_list_of_node_utterances(node):
+    if type(node[1]['utterances']) is str:
+        return [node[1]['utterances']]
+    return node[1]['utterances']
 
 
 def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return_matrix=False):
@@ -52,7 +52,7 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
     true_graph_nodes: Graph.nodes - вершины истинного графа
     generated_graph_nodes: nx.Graph.nodes - вершины сгенерированного графу
     формат вершин:
-    (1, {"responses": ...})
+    (1, {"utterances": ...})
     verbose: bool - печать отладочной информации
     '''
     jaccard_values = np.zeros((len(true_graph_nodes) + 1, len(generated_graph_nodes) + 1))
@@ -61,17 +61,17 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
             node1_id = node1[0]
             node2_id = node2[0]
 
-            node1_responses = set(get_list_of_node_responses(node1))
-            node2_responses = set(get_list_of_node_responses(node2))
+            node1_utterances = set(get_list_of_node_utterances(node1))
+            node2_utterances = set(get_list_of_node_utterances(node2))
 
-            jaccard_nominator = node1_responses.intersection(node2_responses)
-            jaccard_denominator = node1_responses.union(node2_responses)
+            jaccard_nominator = node1_utterances.intersection(node2_utterances)
+            jaccard_denominator = node1_utterances.union(node2_utterances)
             
             jaccard_values[node1_id][node2_id] = len(jaccard_nominator) / len(jaccard_denominator)
 
             if verbose:
-                print(node1[1]['responses'])
-                print(node2[1]['responses'])
+                print(node1[1]['utterances'])
+                print(node2[1]['utterances'])
                 print(jaccard_nominator, jaccard_denominator)
                 print("_____")
     if verbose:
