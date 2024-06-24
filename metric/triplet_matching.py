@@ -3,8 +3,8 @@ from metric.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
 
 
 def edge_match_for_muligraph(x, y):
-    set1 = set([elem['requests'] for elem in list(x.values())])
-    set2 = set([elem['requests'] for elem in list(y.values())])
+    set1 = set([elem['utterances'] for elem in list(x.values())])
+    set2 = set([elem['utterances'] for elem in list(y.values())])
     return set1.intersection(set2) is not None 
 
 
@@ -20,7 +20,7 @@ def triplet_match(g1, g2):
     for node in g2.nodes:
         node_mapping[node] = None
     if type(g1) is nx.DiGraph():
-        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x['requests']).intersection(set(y['requests'])) is not None)
+        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x['utterances']).intersection(set(y['utterances'])) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
         GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_muligraph)
@@ -67,6 +67,6 @@ def triplet_match(g1, g2):
                     node2_trg_nx = g2.nodes[node2_trg + 1]
                     if node1_trg_nx == node2_trg_nx:
                         node_mapping[node1_trg + 1] = node2_trg + 1
-                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {node1_src_nx["responses"]}, {node2_src_nx["responses"]}')
-                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {node1_trg_nx["responses"]}, {node2_trg_nx["responses"]}')
+                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {node1_src_nx["utterances"]}, {node2_src_nx["utterances"]}')
+                    print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {node1_trg_nx["utterances"]}, {node2_trg_nx["utterances"]}')
     return node_mapping, edge_mapping
