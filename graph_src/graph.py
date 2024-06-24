@@ -17,9 +17,9 @@ class Graph:
         self.graph_degrees = []
         for node in graph['nodes']:
             if type(node['utterances']) is list:
-                self.nx_graph.add_node(node['id'], utterances=node['utterance'])
+                self.nx_graph.add_node(node['id'], utterances=node['utterances'])
             else:
-                self.nx_graph.add_node(node['id'], utterances=[node['utterance']])
+                self.nx_graph.add_node(node['id'], utterances=[node['utterances']])
         for link in graph['edges']:
             first = link['source']
             second = link['target']
