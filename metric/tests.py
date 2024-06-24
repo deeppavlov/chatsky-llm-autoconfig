@@ -5,7 +5,7 @@ import numpy as np
 
 
 def load_graphs(test_name):
-    with open(f'./{test_name}.json', 'r') as f:
+    with open(f'./test_cases/{test_name}.json', 'r') as f:
         content = json.load(f)
 
     G1 = Graph(content['true'], TYPES_OF_GRAPH.MULTI).nx_graph
