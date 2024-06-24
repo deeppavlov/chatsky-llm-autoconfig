@@ -1,0 +1,18 @@
+{
+    "edges": [
+      { "source": 1, "target": 2, "request": "I need to make an order" },
+      { "source": 1, "target": 2, "request": "I want to order from you" },
+      { "source": 2, "target": 3, "request": "One War and Piece in hard cover and one Pride and Prejudice" },
+      { "source": 3, "target": 4, "request": "With credit card, please" },
+      { "source": 3, "target": 4, "request": "Cash" },
+      { "source": 4, "target": 3, "request": "I will enter new payment method" },
+      { "source": 4, "target": 3, "request": "Start new order" }
+    ],
+    "nodes": [
+      { "id": 1, "label": "start", "is_start": true, "response": ["How can I help?", "Hello"] },
+      { "id": 2, "label": "order_inquiry", "response": ["Which books would you like to order?"] },
+      { "id": 3, "label": "order_details", "response": ["Please, enter the payment method you would like to use: cash or credit card."] },
+      { "id": 4, "label": "payment_method_issue", "response": ["Something is wrong, can you please use other payment method or start order again"] }
+    ]
+  }
+  

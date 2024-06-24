@@ -1,0 +1,19 @@
+{
+  "edges": [
+      {
+          "source": 1,
+          "target": 1,
+          "request": "I don't know what to do"
+      }
+  ],
+  "nodes": [
+      {
+          "id": 1,
+          "label": "start",
+          "is_start": true,
+          "response": [
+              "How can I help?"
+          ]
+      }
+  ]
+}

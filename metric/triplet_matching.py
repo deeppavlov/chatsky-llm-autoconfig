@@ -15,6 +15,8 @@ def match(g1, g2):
     node_mapping = {}
     for node in g1.nodes:
         node_mapping[node] = None
+    for node in g2.nodes:
+        node_mapping[node] = None
     if type(g1) is nx.DiGraph():
         GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x['requests']).intersection(set(y['requests'])) is not None)
         are_isomorphic = GM.is_isomorphic()
