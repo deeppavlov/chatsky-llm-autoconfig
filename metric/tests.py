@@ -1,5 +1,5 @@
 from metric_calc import jaccard_nodes, jaccard_edges
-from matching.graph import Graph, TYPES_OF_GRAPH
+from graph_src.graph import Graph, TYPES_OF_GRAPH
 import json
 import numpy as np
 
