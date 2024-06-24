@@ -5,12 +5,12 @@
                 {
                     "source": 1,
                     "target": 1,
-                    "request": "Can you help?"
+                    "utterances": "Can you help?"
                 },
                 {
                     "source": 1,
                     "target": 1,
-                    "request": "Hello"
+                    "utterances": "Hello"
                 }
             ],
             "nodes": [
@@ -18,7 +18,7 @@
                     "id": 1,
                     "label": "start",
                     "is_start": true,
-                    "response": [
+                    "utterances": [
                         "How can I help?",
                         "Hello, what can I do for you?"
                     ]
@@ -31,12 +31,12 @@
                 {
                     "source": 1,
                     "target": 1,
-                    "request": "Can you help?"
+                    "utterances": "Can you help?"
                 },
                 {
                     "source": 1,
                     "target": 1,
-                    "request": "Hello"
+                    "utterances": "Hello"
                 }
             ],
             "nodes": [
@@ -44,7 +44,7 @@
                     "id": 1,
                     "label": "start",
                     "is_start": true,
-                    "response": [
+                    "utterances": [
                         "Hello, what can I do for you?",
                         "How can I help?"
                     ]
