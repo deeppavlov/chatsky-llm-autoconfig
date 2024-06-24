@@ -10,8 +10,7 @@ def parse_edge(edge):
     src, trg = edge.split('->')
     return int(src) - 1, int(trg) - 1
 
-
-def match(g1, g2):
+def triplet_match(g1, g2):
     node_mapping = {}
     for node in g1.nodes:
         node_mapping[node] = None
