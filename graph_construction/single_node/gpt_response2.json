@@ -1,0 +1,25 @@
+{
+    "edges": [
+        {
+            "source": 1,
+            "target": 1,
+            "request": "I don't know what to do"
+        },
+        {
+            "source": 1,
+            "target": 1,
+            "request": "Hello, I have a booking problem"
+        }
+    ],
+    "nodes": [
+        {
+            "id": 1,
+            "label": "start",
+            "is_start": true,
+            "response": [
+                "How can I help?",
+                "Hello, what can I do for you?"
+            ]
+        }
+    ]
+}
