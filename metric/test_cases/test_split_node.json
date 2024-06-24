@@ -4,12 +4,12 @@
         {
             "source": 1,
             "target": 3,
-            "request": "I need to order"
+            "utterances": "I need to order"
         },
         {
             "source": 1,
             "target": 2,
-            "request": "I want to change details about my order"
+            "utterances": "I want to change details about my order"
         }
     ],
     "nodes": [
@@ -17,19 +17,19 @@
             "id": 1,
             "label": "start",
             "is_start": true,
-            "response": "How can I help?"
+            "utterances": "How can I help?"
         },
         {
             "id": 3,
             "label": "ask_item",
             "is_start": false,
-            "response": "Which books would you like to order?"
+            "utterances": "Which books would you like to order?"
         },
         {
             "id": 2,
             "label": "ask_what_to_change",
             "is_start": false,
-            "response": "What exactly would you like to change?"
+            "utterances": "What exactly would you like to change?"
         }
     ]
 
@@ -39,17 +39,17 @@
         {
             "source": 1,
             "target": 3,
-            "request": "I need to order"
+            "utterances": "I need to order"
         },
         {
             "source": 1,
             "target": 3,
-            "request": "I want to change details about my order"
+            "utterances": "I want to change details about my order"
         },
         {
             "source": 1,
             "target": 2,
-            "request": "How are you"
+            "utterances": "How are you"
         }
     ],
     "nodes": [
@@ -57,19 +57,19 @@
             "id": 1,
             "label": "start",
             "is_start": true,
-            "response": "How can I help?"
+            "utterances": "How can I help?"
         },
         {
             "id": 3,
             "label": "ask_user",
             "is_start": false,
-            "response": "Which would you like to change?"
+            "utterances": "Which would you like to change?"
         },
         {
             "id": 2,
             "label": "chitchat",
             "is_start": false,
-            "response": "I am fine, you?"
+            "utterances": "I am fine, you?"
         }
     ]
 
