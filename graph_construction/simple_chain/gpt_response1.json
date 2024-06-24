@@ -3,22 +3,22 @@
       {
         "source": 1,
         "target": 2,
-        "request": "I need to make an order"
+        "utterances": "I need to make an order"
       },
       {
         "source": 2,
         "target": 3,
-        "request": "One War and Piece in hard cover and one Pride and Prejudice"
+        "utterances": "One War and Piece in hard cover and one Pride and Prejudice"
       },
       {
         "source": 3,
         "target": 4,
-        "request": "I will pickup my order"
+        "utterances": "I will pickup my order"
       },
       {
         "source": 4,
         "target": 5,
-        "request": "Cash"
+        "utterances": "Cash"
       }
     ],
     "nodes": [
@@ -26,31 +26,31 @@
         "id": 1,
         "label": "start",
         "is_start": true,
-        "response": ["How can I help?", "Hello"]
+        "utterances": ["How can I help?", "Hello"]
       },
       {
         "id": 2,
-        "label": "order_request",
+        "label": "order_utterances",
         "is_start": false,
-        "response": ["Which books would you like to order?"]
+        "utterances": ["Which books would you like to order?"]
       },
       {
         "id": 3,
         "label": "order_details",
         "is_start": false,
-        "response": ["Please, enter the payment method you would like to use: cash or credit card."]
+        "utterances": ["Please, enter the payment method you would like to use: cash or credit card."]
       },
       {
         "id": 4,
         "label": "pickup_order",
         "is_start": false,
-        "response": ["Please, enter the payment method you would like to use: cash or credit card."]
+        "utterances": ["Please, enter the payment method you would like to use: cash or credit card."]
       },
       {
         "id": 5,
         "label": "payment",
         "is_start": false,
-        "response": ["Success"]
+        "utterances": ["Success"]
       }
     ]
   }

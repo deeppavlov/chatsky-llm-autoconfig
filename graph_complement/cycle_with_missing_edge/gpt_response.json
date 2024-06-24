@@ -3,42 +3,42 @@
         {
             "source": 1,
             "target": 2,
-            "request": "I need to make an order"
+            "utterances": "I need to make an order"
         },
         {
             "source": 1,
             "target": 2,
-            "request": "I want to order from you"
+            "utterances": "I want to order from you"
         },
         {
             "source": 2,
             "target": 3,
-            "request": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please"
+            "utterances": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please"
         },
         {
             "source": 2,
             "target": 3,
-            "request": "One War and Piece in hard cover and one Pride and Prejudice"
+            "utterances": "One War and Piece in hard cover and one Pride and Prejudice"
         },
         {
             "source": 3,
             "target": 4,
-            "request": "Cash"
+            "utterances": "Cash"
         },
         {
             "source": 3,
             "target": 4,
-            "request": "With credit card, please"
+            "utterances": "With credit card, please"
         },
         {
             "source": 4,
             "target": 1,
-            "request": "Start new order"
+            "utterances": "Start new order"
         },
         {
             "source": 4,
             "target": 5,
-            "request": "I will enter new payment method"
+            "utterances": "I will enter new payment method"
         }
     ],
     "nodes": [
@@ -46,7 +46,7 @@
             "id": 1,
             "label": "start",
             "is_start": true,
-            "response": [
+            "utterances": [
                 "How can I help?",
                 "Hello"
             ]
@@ -55,25 +55,25 @@
             "id": 2,
             "label": "ask_item",
             "is_start": false,
-            "response": "Which books would you like to order?"
+            "utterances": "Which books would you like to order?"
         },
         {
             "id": 3,
             "label": "ask_payment_method",
             "is_start": false,
-            "response":  "Please, enter the payment method you would like to use: cash or credit card."
+            "utterances":  "Please, enter the payment method you would like to use: cash or credit card."
         },
         {
             "id": 4,
             "label": "ask_to_redo",
             "is_start": false,
-            "response": "Something is wrong, can you please use other payment method or start order again"
+            "utterances": "Something is wrong, can you please use other payment method or start order again"
         },
         {
             "id": 5,
             "label": "payment_method_retry",
             "is_start": false,
-            "response": "Please enter your new payment method."
+            "utterances": "Please enter your new payment method."
         }
     ]
 }
