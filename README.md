@@ -44,9 +44,14 @@ Here is the example of set of rules:
 
 I will give a dialogue, your task is to build a graph for this dialogue in the format above. We allow several edges with equal soruce and target and also multiple respnses on one node so try not to add new nodes if it is logical just to extend an exsiting one. utterances in one node or on multiedge should close between each other and correspond to different answers to one question or different ways to say something.  For example, for question about preferences or a Yes/No question both answers can be fit in one multiedge, there's no need to make a new node.  If two nodes has the same responses they should be united in one node. Do not make up utterances that aren't present in the dialogue. Please do not combine utterances for multiedges in one list, write them separately like in example above. Every utterance from the dialogue, whether it is from user or assistanst, should contain in one of the nodes. Do not forget ending nodes with goodbyes. Dialogue: 
 
+## Промпт для проверки, что каждой реплике соответствует какая-то нода / ребро
 
+You have a dialogue and a structure of graph built on this dialogue it is a set of nodes when chatbot system responses and a set of transitions that are triggered by user requests. 
+Please say if for every utterance in the dialogue there exist either a utteranse in node or in some edge:
+Graph: 
+Dialogue:
 
-### Промпт для проверки что граф валидный:
+## Промпт для проверки что граф валидный:
 
 1. You have an example of dialogue from customer chatbot system.
 2. You also have a set of rules how chatbot system works - a set of nodes when chatbot system respons and a set of transitions that are triggered by user requests.
