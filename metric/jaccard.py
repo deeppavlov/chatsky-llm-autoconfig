@@ -60,7 +60,6 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
         for node2 in generated_graph_nodes:
             node1_id = node1[0]
             node2_id = node2[0]
-
             node1_utterances = set(get_list_of_node_utterances(node1))
             node2_utterances = set(get_list_of_node_utterances(node2))
 

@@ -13,7 +13,9 @@ def parse_edge(edge):
     return int(src) - 1, int(trg) - 1
 
 
-def triplet_match(g1, g2):
+def triplet_match(G1, G2, change_to_original_ids=False):
+    g1 = G1.nx_graph
+    g2 = G2.nx_graph
     node_mapping = {}
     for node in g1.nodes:
         node_mapping[node] = None
@@ -69,4 +71,27 @@ def triplet_match(g1, g2):
                         node_mapping[node1_trg + 1] = node2_trg + 1
                     print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {node1_src_nx["utterances"]}, {node2_src_nx["utterances"]}')
                     print(f'The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {node1_trg_nx["utterances"]}, {node2_trg_nx["utterances"]}')
+
+    if G1.node_mapping != {} and change_to_original_ids:
+        new_node_mapping = {}
+        new_edge_mapping = {}
+
+        # какому ключу в старом графе соовтетвует новый ключ в перенумерованном графе
+        inverse_mapping = {}
+
+        for k, v in G1.node_mapping.items():
+            inverse_mapping[v] = k
+        # {1: 1, 3: 2} -> {1: 1, 4:2} если в g1 4 перенумеровалась в 3
+        for k, v in node_mapping.items():
+            if inverse_mapping.get(k) is None and v is None:
+                new_node_mapping[k] = v
+            elif inverse_mapping.get(k) is None:
+                raise ValueError("Invalid renumeration")
+            else:
+                new_node_mapping[inverse_mapping[k]] = v 
+
+        for edge1, edge2 in edge_mapping.items():
+            src1,trg1 = edge1.split('->')
+            new_edge_mapping[f'{inverse_mapping[int(src1)]}->{inverse_mapping[int(trg1)]}'] = edge2
+        return new_node_mapping, new_edge_mapping
     return node_mapping, edge_mapping
