@@ -7,7 +7,8 @@
         {"text": "Added it to your cart. Anything else?", "participant": "assistant"},
         {"text": "No, that's all", "participant": "user"},
         {"text": "Okay, everything is done, you can go to cart and finish the order.", "participant": "assistant"},
-        {"text": "Thanks", "participant": "user"}
+        {"text": "Thanks", "participant": "user"},
+        {"text": "Goodbye", "participant": "assistant"}
     ]
 
 }

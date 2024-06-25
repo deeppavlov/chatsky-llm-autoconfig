@@ -1,14 +1,15 @@
 {
+    "nodes": [
+        { "id": 1, "label": "start", "is_start": true, "utterances": ["How can I help?"] },
+        { "id": 2, "label": "order_books", "is_start": false, "utterances": ["Which books would you like to order?"] },
+        { "id": 3, "label": "add_to_cart", "is_start": false, "utterances": ["Added it to your cart. Anything else?"] },
+        { "id": 4, "label": "finish_order", "is_start": false, "utterances": ["Okay, everything is done, you can go to cart and finish the order."] },
+        { "id": 5, "label": "goodbye", "is_start": false, "utterances": ["Goodbye"] }
+    ],
     "edges": [
         { "source": 1, "target": 2, "utterances": "I need to make an order" },
-        { "source": 1, "target": 2, "utterances": "I want to order from you" },
         { "source": 2, "target": 3, "utterances": "I need Crime and Punishment" },
-        { "source": 3, "target": 4, "utterances": "No, that's all" }
-    ],
-    "nodes": [
-        { "id": 1, "label": "start", "is_start": true, "utterances": [ "How can I help?", "Hello" ] },
-        { "id": 2, "label": "order_books", "utterances": [ "Which books would you like to order?", "I would like to purchase 'Pale Fire' and 'Anna Karenina', please" ] },
-        { "id": 3, "label": "add_to_cart", "utterances": [ "Added it to your cart. Anything else?" ] },
-        { "id": 4, "label": "finish_order", "utterances": [ "Okay, everything is done, you can go to cart and finish the order." ] }
+        { "source": 3, "target": 4, "utterances": "No, that's all" },
+        { "source": 4, "target": 5, "utterances": "Thanks" }
     ]
 }

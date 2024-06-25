@@ -3,22 +3,7 @@
         {
             "source": 1,
             "target": 2,
-            "utterances": "I need to make an order"
-        },
-        {
-            "source": 1,
-            "target": 2,
             "utterances": "I want to order"
-        },
-        {
-            "source": 2,
-            "target": 3,
-            "utterances": "I need Crime and Punishment"
-        },
-        {
-            "source": 2,
-            "target": 4,
-            "utterances": "Do you have War and Piece?"
         },
         {
             "source": 2,
@@ -46,16 +31,6 @@
             "utterances": "No, that's all"
         },
         {
-            "source": 3,
-            "target": 7,
-            "utterances": "No, that's all"
-        },
-        {
-            "source": 7,
-            "target": 8,
-            "utterances": "Thanks"
-        },
-        {
             "source": 7,
             "target": 8,
             "utterances": "Goodbye"
@@ -67,8 +42,7 @@
             "label": "start",
             "is_start": true,
             "utterances": [
-                "Is there anything can I help with?",
-                "How can I help?"
+                "Is there anything can I help with?"
             ]
         },
         {
@@ -76,15 +50,8 @@
             "label": "ask_item",
             "is_start": false,
             "utterances": [
-                "Which books would you like to order?",
-                "What would you like to buy?"
+                "Which books would you like to order?"
             ]
-        },
-        {
-            "id": 3,
-            "label": "confirm_adding_book",
-            "is_start": false,
-            "utterances": "Added it to your cart. Anything else?"
         },
         {
             "id": 4,
