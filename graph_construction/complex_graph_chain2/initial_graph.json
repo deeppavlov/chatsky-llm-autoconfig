@@ -37,12 +37,12 @@
         },
         {
             "source": 6,
-            "target": 2,
+            "target": 4,
             "utterances": "I need a book Catching in the Rye"
         },
         {
             "source": 5,
-            "target": 2,
+            "target": 4,
             "utterances": "Yes, I also need a book Catching in the Rye"
         },
         {
