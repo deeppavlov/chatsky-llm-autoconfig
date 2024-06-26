@@ -1,4 +1,4 @@
 ,Single Node, Chain, Cycle with missing edge,Complex Graph1,Complex Graph 2,Correct Graph Complettion(Complex Graph3)
 Triplet Loss,1,1,1,1,1,-
-Construction of new nodes,-,[0.5 -> 1];1,[0.8->0.8];0.8,0.5->0.8,0.75->1,0.75->1
+Construction of new nodes,-,[0.5 -> 1],[0.8->0.8],0.5->0.8,0.75->1,0.75->1
 Construction of graph from scratch,1,1,1,1,0.66,0.5
