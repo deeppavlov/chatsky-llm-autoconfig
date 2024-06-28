@@ -9,20 +9,14 @@ class TYPES_OF_GRAPH(Enum):
 
 class Graph:
     def __init__(self, graph: dict, graph_type: TYPES_OF_GRAPH) -> None:
-        if graph_type == TYPES_OF_GRAPH.MULTI:
-            self.nx_graph = nx.MultiDiGraph()
-        else:
-            self.nx_graph = nx.DiGraph()
+        self.nx_graph = nx.MultiDiGraph() if graph_type == TYPES_OF_GRAPH.MULTI else nx.DiGraph()
         self.type = graph_type
         self.graph_degrees = []
         nodes  = sorted([v['id'] for v in graph['nodes']])
         self.node_mapping = {}
-        renumber_flg = False
-        if nodes != [i for i in range(1, len(nodes) + 1)]:
-            renumber_flg = True
-            for j in range(len(nodes)):
-                self.node_mapping[nodes[j]] = j + 1
-
+        renumber_flg = nodes != list(range(1, len(nodes) + 1))
+        if renumber_flg:
+            self.node_mapping = {node_id: idx + 1 for idx, node_id in enumerate(nodes)}
 
         for node in graph['nodes']:
             cur_node_id = node['id']
@@ -33,12 +27,8 @@ class Graph:
                 self.nx_graph.add_node(cur_node_id, utterances=node['utterances'])
             else:
                 self.nx_graph.add_node(cur_node_id, utterances=[node['utterances']])
-    
         
         for link in graph['edges']:
-                first = link['source']
-                second = link['target']
-                if renumber_flg:
-                    first = self.node_mapping[first]
-                    second = self.node_mapping[second]
-                self.nx_graph.add_edges_from([(first, second, {"utterances": link['utterances']})])
+            source = self.node_mapping.get(link['source'], link['source'])
+            target = self.node_mapping.get(link['target'], link['target'])
+            self.nx_graph.add_edges_from([(source, target, {"utterances": link['utterances']})])

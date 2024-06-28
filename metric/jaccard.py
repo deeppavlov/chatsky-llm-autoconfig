@@ -6,7 +6,7 @@ def collapse_multiedges(edges):
         key=f'{u}->{v}'
         if key not in collapsed_edges:
             collapsed_edges[key] = []
-        collapsed_edges[key].append(*data.values())
+        collapsed_edges[key].extend(data['utterances'])
     return collapsed_edges
 
 def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return_matrix=False):
@@ -42,7 +42,7 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     return max_jaccard_values, max_jaccard_indices
 
 def get_list_of_node_utterances(node):
-    if type(node[1]['utterances']) is str:
+    if isinstance(node[1]['utterances'], str):
         return [node[1]['utterances']]
     return node[1]['utterances']
 
