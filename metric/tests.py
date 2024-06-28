@@ -49,7 +49,7 @@ def test_cycle_with_missing_edge():
                                             return_matrix=True)
 
     assert np.array_equal(values, np.array([1., 1., 1., 1., 0]))
-    assert np.array_equal(indices, [0, 1, 2, 3, 0])
+    assert np.array_equal(indices, np.array([0, 1, 2, 3, 0]))
     m = np.array([[1., 0., 0., 0., ],
                   [0., 1., 0., 0.],
                   [0., 0., 1., 0.],
@@ -60,7 +60,7 @@ def test_cycle_with_missing_edge():
     values, indices, matrix = jaccard_nodes(true_graph.nodes(data=True), generated_graph.nodes(data=True),
                                             return_matrix=True)
     assert np.array_equal(values, np.array([1., 1., 1., 1.]))
-    assert np.array_equal(indices, [0, 1, 2, 3])
+    assert np.array_equal(indices, np.array([0, 1, 2, 3]))
 
 
 def test_split_node():
@@ -68,7 +68,7 @@ def test_split_node():
     values, indices, matrix = jaccard_edges(true_graph.edges(data=True), generated_graph.edges(data=True),
                                             return_matrix=True)
     assert np.array_equal(values, np.array([0.5, 0.5]))
-    assert np.array_equal(indices, [0, 0])
+    assert np.array_equal(indices, np.array([0, 0]))
     m = np.array([[0.5, 0],
                   [0.5, 0]])
     assert np.array_equal(matrix, m)
@@ -78,7 +78,7 @@ def test_split_node():
     m[0][0] = 1.0
     assert np.array_equal(matrix, m)
     assert np.array_equal(values, np.array([1, 0, 0]))
-    assert np.array_equal(indices, [0, 0, 0])
+    assert np.array_equal(indices, np.array([0, 0, 0]))
     # print(matrix)
     # print(values)
     # print(indices)
