@@ -1,0 +1,289 @@
+[
+    {
+        "dialog_id": 1,
+        "proposed_dialog": [
+            {
+                "text": "Do you want to choose a book, a movie, or a game?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Can you recommend a book?",
+                "participant": "user",
+                "source": 1,
+                "target": 2
+            },
+            {
+                "text": "You're looking for a book recommendation.",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want to read fiction.",
+                "participant": "user",
+                "source": 2,
+                "target": 3
+            },
+            {
+                "text": "How about something from the fiction genre?",
+                "participant": "assistant"
+            },
+            {
+                "text": "How about science fiction?",
+                "participant": "user",
+                "source": 3,
+                "target": 5
+            },
+            {
+                "text": "Which genre do you prefer?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want to see the top books.",
+                "participant": "user",
+                "source": 5,
+                "target": 6
+            },
+            {
+                "text": "These are some highly recommended books.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Any recommendations for authors?",
+                "participant": "user",
+                "source": 6,
+                "target": 7
+            },
+            {
+                "text": "Are there any authors you like?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Give me the details of this book.",
+                "participant": "user",
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Shall I provide more information about this book?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Show me more books.",
+                "participant": "user",
+                "source": 8,
+                "target": 6
+            },
+            {
+                "text": "These are some highly recommended books.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Any recommendations for authors?",
+                "participant": "user",
+                "source": 6,
+                "target": 7
+            },
+            {
+                "text": "Which authors do you prefer?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Give me the details of this book.",
+                "participant": "user",
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Shall I provide more information about this book?",
+                "participant": "assistant"
+            },
+            {
+                "text": "This book looks good to me.",
+                "participant": "user",
+                "source": 8,
+                "target": 9
+            },
+            {
+                "text": "I am sure you will like it",
+                "participant": "assistant"
+            }
+        ]
+    },
+    {
+        "dialog_id": 2,
+        "proposed_dialog": [
+            {
+                "text": "How can I help?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want to watch something.",
+                "participant": "user",
+                "source": 1,
+                "target": 10
+            },
+            {
+                "text": "Sure, let's find a movie for you.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Recommend me a genre of movie.",
+                "participant": "user",
+                "source": 10,
+                "target": 11
+            },
+            {
+                "text": "What genre of movies are you interested in?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Tell me about movies with specific directors or actors.",
+                "participant": "user",
+                "source": 11,
+                "target": 13
+            },
+            {
+                "text": "Which directors or actors do you prefer?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want more information on this movie.",
+                "participant": "user",
+                "source": 13,
+                "target": 14
+            },
+            {
+                "text": "Shall I provide more information about this movie?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I'll choose this movie.",
+                "participant": "user",
+                "source": 14,
+                "target": 15
+            },
+            {
+                "text": "I recommend you watch this movie.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Thanks for the recommendation!",
+                "participant": "user",
+                "source": 15,
+                "target": 9
+            },
+            {
+                "text": "I am sure you will like it",
+                "participant": "assistant"
+            }
+        ]
+    },
+    {
+        "dialog_id": 3,
+        "proposed_dialog": [
+            {
+                "text": "Do you want to choose a book, a movie, or a game?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Can you recommend a book?",
+                "participant": "user",
+                "source": 1,
+                "target": 2
+            },
+            {
+                "text": "Sure, let's find a book for you.",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want to read fiction.",
+                "participant": "user",
+                "source": 2,
+                "target": 3
+            },
+            {
+                "text": "How about something from the fiction genre?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Do you have any mystery novels?",
+                "participant": "user",
+                "source": 3,
+                "target": 5
+            },
+            {
+                "text": "Do you have a specific genre in mind?",
+                "participant": "assistant"
+            },
+            {
+                "text": "What are the popular books in this genre?",
+                "participant": "user",
+                "source": 5,
+                "target": 6
+            },
+            {
+                "text": "Check out these popular books.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Suggest some authors I should read.",
+                "participant": "user",
+                "source": 6,
+                "target": 7
+            },
+            {
+                "text": "Do you have any favorite authors?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Tell me more about this book.",
+                "participant": "user",
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Do you want to know more about this book?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want to see other popular books.",
+                "participant": "user",
+                "source": 8,
+                "target": 6
+            },
+            {
+                "text": "These are some highly recommended books.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Who are the famous authors in this genre?",
+                "participant": "user",
+                "source": 6,
+                "target": 7
+            },
+            {
+                "text": "Are there any authors you like?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I want more information on this book.",
+                "participant": "user",
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Shall I provide more information about this book?",
+                "participant": "assistant"
+            },
+            {
+                "text": "This book looks good to me.",
+                "participant": "user",
+                "source": 8,
+                "target": 9
+            },
+            {
+                "text": "It seems like a great choice for you.",
+                "participant": "assistant"
+            }
+        ]
+    }
+]
