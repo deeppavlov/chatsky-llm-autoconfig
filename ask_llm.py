@@ -4,8 +4,8 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-OPENAI_API_KEY = 'RD_dff_llm_autoconfiguration:Anastasia_Voznyuk:4960dbfcc69b436b8c4c72edd9edf228'
-OPENAI_BASE_URL='http://193.187.173.33:8002/api/providers/openai/v1'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+OPENAI_BASE_URL=os.getenv('OPENAI_BASE_URL')
 
 client = OpenAI(
         api_key=OPENAI_API_KEY,
