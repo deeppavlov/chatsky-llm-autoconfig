@@ -42,14 +42,70 @@ Here is the example of set of rules:
 "nodes": [ { "id": 1, "label": "start", "is_start": true, "utterances": [ "How can I help?", "Hello" ], 
 { "id": 2, "label": "ask_books", "is_start": false, "utterances": [ "What books do you like?"], }
 
-I will give a dialogue, your task is to build a graph for this dialogue in the format above. We allow several edges with equal soruce and target and also multiple respnses on one node so try not to add new nodes if it is logical just to extend an exsiting one. utterances in one node or on multiedge should close between each other and correspond to different answers to one question or different ways to say something.  For example, for question about preferences or a Yes/No question both answers can be fit in one multiedge, there's no need to make a new node.  If two nodes has the same responses they should be united in one node. Do not make up utterances that aren't present in the dialogue. Please do not combine utterances for multiedges in one list, write them separately like in example above. Every utterance from the dialogue, whether it is from user or assistanst, should contain in one of the nodes. Do not forget ending nodes with goodbyes. Dialogue: 
+I will give a dialogue, your task is to build a graph for this dialogue in the format above. We allow several edges with equal soruce and target and also multiple respnses on one node so try not to add new nodes if it is logical just to extend an exsiting one. utterances in one node or on multiedge should close between each other and correspond to different answers to one question or different ways to say something.  For example, for question about preferences or a Yes/No question both answers can be fit in one multiedge, there's no need to make a new node.  If two nodes has the same responses they should be united in one node. Do not make up utterances that aren't present in the dialogue. Please do not combine utterances for multiedges in one list, write them separately like in example above. Every utterance from the dialogue, whether it is from user or assistanst, should contain in one of the nodes. Do not forget ending nodes with goodbyes. 
+
+Sometimes dialogue can correspond to several iterations of loop, for example:
+  {"text": "Do you have apples?, "participant": "user"},
+        {"text": "Yes,  add it to your cart?", "participant": "assistant»},
+        {"text": "No", "participant": "user"},
+        {"text": "Okay. Anything else?", "participant": "assistant"},
+        {"text": "I need a pack of chips, "participant": "user"},
+        {"text": "Yes,  add it to your cart?, "participant": "assistant"},
+        {"text": "Yes", "participant": "user"},
+        {"text": "Done. Anything else?", "participant": "assistant"},
+        {"text": "No, that's all", "participant": "user"},
+
+it corresponds to following graph:
+{ nodes: 
+            "id": 1,
+            "label": "confirm_availability_and_ask_to_add",
+            "is_start": false,
+            "utterances": "Yes,  add it to your cart?"
+        },
+        {
+            "id": 2,
+            "label": "reply_to_yes",
+            "is_start": false,
+            "utterances": ["Done. Anything else?", "Okay. Anything else?"]
+        },
+        {
+            "id»:3,
+            "label": "finish_filling_cart",
+            "is_start": false,
+            "utterances": "Okay, everything is done, you can go to cart and finish the order."
+        },
+
+edges:
+ {
+            "source": 1,
+            "target": 2,
+            "utterances": "Yes"
+        },
+        {
+            "source": 1,
+            "target": 2,
+            "utterances": "No"
+        },
+        {
+            "source": 2,
+            "target": 1,
+            "utterances": "I need a pack of chips"
+        },
+        {
+            "source": 2,
+            "target": 3,
+            "utterances": "No, that's all"
+        }.      
+This is the end of the example. 
+Dialogue: 
 
 ## Промпт для проверки, что каждой реплике соответствует какая-то нода / ребро
 
 You have a dialogue and a structure of graph built on this dialogue it is a set of nodes when chatbot system responses and a set of transitions that are triggered by user requests. 
-Please say if for every utterance in the dialogue there exist either a utteranse in node or in some edge:
+Please say if for every utterance in the dialogue there exist either a utteranse in node or in some edge. be attentive to what nodes we actually have in the "nodes" list, because some nodes from the list of edges maybe non existent:
 Graph: 
 Dialogue:
+just print the list of utteance and whether there exsit a valid edge of node contating it, if contains print the node or edge
 
 ## Промпт для проверки что граф валидный:
 
