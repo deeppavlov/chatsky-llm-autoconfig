@@ -2,9 +2,13 @@ import networkx as nx
 from metric.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
 
 
-def edge_match_for_multigraph(x, y):
-    set1 = set([elem['utterances'] for elem in list(x.values())])
-    set2 = set([elem['utterances'] for elem in list(y.values())])
+def edge_match_for_muligraph(x, y):
+    if isinstance(x, dict) and isinstance(y, dict) :
+        set1 = set([elem['utterances'] for elem in list(x.values())])
+        set2 = set([elem['utterances'] for elem in list(y.values())])
+    else:
+        set1 = set(x)
+        set2 = set(y)
     return set1.intersection(set2) is not None 
 
 
