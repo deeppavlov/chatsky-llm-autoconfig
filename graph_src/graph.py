@@ -14,7 +14,6 @@ class Graph:
         else:
             self.nx_graph = nx.DiGraph()
         self.type = graph_type
-        self.graph_degrees = []
         nodes  = sorted([v['id'] for v in graph['nodes']])
         self.node_mapping = {}
         renumber_flg = False
@@ -29,10 +28,11 @@ class Graph:
             if renumber_flg:
                 cur_node_id = self.node_mapping[cur_node_id]
             
+            theme = node.get('theme')
             if type(node['utterances']) is list:
-                self.nx_graph.add_node(cur_node_id, utterances=node['utterances'])
+                self.nx_graph.add_node(cur_node_id, theme=theme, utterances=node['utterances'])
             else:
-                self.nx_graph.add_node(cur_node_id, utterances=[node['utterances']])
+                self.nx_graph.add_node(cur_node_id, theme=theme, utterances=[node['utterances']])
     
         
         for link in graph['edges']:
@@ -41,4 +41,6 @@ class Graph:
                 if renumber_flg:
                     first = self.node_mapping[first]
                     second = self.node_mapping[second]
-                self.nx_graph.add_edges_from([(first, second, {"utterances": link['utterances']})])
+                theme = link.get('theme')
+                self.nx_graph.add_edges_from([(first, second, {"theme": theme,
+                                                                "utterances": link['utterances']})])
