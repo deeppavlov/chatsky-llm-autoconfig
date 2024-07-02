@@ -1,6 +1,9 @@
-from graph_src.graph import Graph
 import networkx as nx
 import random
+import json
+from graph.graph import Graph
+from openai import OpenAI
+
 
 # all func are currently unused
 def check_if_nodes_identical(graph_1: Graph, graph_2: Graph):
@@ -110,3 +113,32 @@ def do_mapping(g1, g2):
             if node != elem:
                 mapping[node] = None
     print(mapping)
+
+
+def call_llm_api(query: str, llm: OpenAI, model_name, temp=0.05) -> str | None:
+    try:
+        response = llm.chat.completions.create(
+            model=model_name,
+            messages=[
+                {"role": "user", "content": query},
+            ],
+            temperature=temp
+        )
+        result = ""
+        for choice in response.choices:
+            result += choice.message.content
+        return result
+    except Exception as e:
+        print(e)
+        print("Timeout error, retrying...")
+
+
+def save_json(data: dict, filename: str) -> None:
+    with open(filename, "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
+
+def read_json(path):
+    with open(path, mode="r") as file:
+        data = file.read()
+    return json.loads(data)

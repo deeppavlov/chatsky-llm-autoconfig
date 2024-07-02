@@ -1,5 +1,5 @@
 {
-    "dialog3":[
+    "dialog":[
         {"text": "Is there anything can I help with?", "participant": "assistant"},
         {"text": "I want to order", "participant": "user"},
         {"text": "Which books would you like to order?", "participant": "assistant"},
