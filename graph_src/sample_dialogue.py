@@ -3,7 +3,7 @@ import json
 from graph_src.graph import Graph, TYPES_OF_GRAPH
 
 
-def sample_dialogue(target_graph, graph_obj, start_node, end_node=None):
+def sample_dialogue(graph_obj, start_node, end_node=None):
     # Find the start node
     nodes = graph_obj.nodes(data=True)
     edges = graph_obj.edges(data=True)
@@ -55,7 +55,7 @@ path_prefix = '/Users/anastasia/Documents/DFF_LLM/dff-llm-integration/'
 with open(f'{path_prefix}/dataset/theme_graph.json', 'r') as f:
     content = json.load(f)
 graph = Graph(content, TYPES_OF_GRAPH.DI)
-sampled_dialogue, sampled_base_graph = sample_dialogue(content, graph.nx_graph, start_node=1,
+sampled_dialogue, sampled_base_graph = sample_dialogue(graph.nx_graph, start_node=1,
                                    end_node=9)
 
 with open(f'{path_prefix}/dataset/theme_sampled_graph.json', 'r') as g:
