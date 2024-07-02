@@ -17,9 +17,9 @@
             "label": "choosing_book",
             "theme": "books",
             "utterances": [
-                "Great! You want to read something.",
-                "You're looking for a book recommendation.",
-                "Sure, let's find a book for you."
+                "Are you interested in fiction or non-fiction?",
+                "Would you like a fiction or a non-fiction book?",
+                "How about something from the fiction genre?"
             ]
         },
         {
@@ -27,9 +27,9 @@
             "label": "fiction",
             "theme": "books",
             "utterances": [
-                "Are you interested in fiction?",
-                "Would you like a fiction book?",
-                "How about something from the fiction genre?"
+                "What genres of fiction are you interested in?",
+                "Do you have a specific genre of fiction in mind?",
+                "Which genre of fiction do you prefer?"
             ]
         },
         {
@@ -37,19 +37,19 @@
             "label": "non_fiction",
             "theme": "books",
             "utterances": [
-                "Are you looking for non-fiction?",
-                "Would you prefer a non-fiction book?",
-                "How about something from the non-fiction genre?"
+                "What genres of non-fiction are you interested in?",
+                "Do you have a specific genre of non0fiction in mind?",
+                "Which genre of non-fiction do you prefer?"
             ]
         },
         {
             "id": 5,
-            "label": "genre_specific",
+            "label": "popular_books",
             "theme": "books",
             "utterances": [
-                "What genre are you interested in?",
-                "Do you have a specific genre in mind?",
-                "Which genre do you prefer?"
+                "Bestsellers or something specific?",
+                "Do you look for somhing specific or want just bestsellers",
+                "Do you want to check out popular books."
             ]
         },
         {
@@ -57,7 +57,7 @@
             "label": "popular_books",
             "theme": "books",
             "utterances": [
-                "Here are some popular books in that genre.",
+                "Sure, this is top-5 books of chose genre",
                 "These are some highly recommended books.",
                 "Check out these popular books."
             ]
@@ -77,9 +77,9 @@
             "label": "book_details",
             "theme": "books",
             "utterances": [
-                "Would you like more details about this book?",
-                "Do you want to know more about this book?",
-                "Shall I provide more information about this book?"
+                "Would you like more details about this author' books?",
+                "Do you want to know more about this author' books?",
+                "Shall I provide more information about this author' book?"
             ]
         },
         {
@@ -97,23 +97,13 @@
             "label": "choosing_movie",
             "theme": "movies",
             "utterances": [
-                "Great! You want to watch something.",
-                "You're looking for a movie recommendation.",
-                "Sure, let's find a movie for you."
-            ]
-        },
-        {
-            "id": 11,
-            "label": "genre_specific_movies",
-            "theme": "movies",
-            "utterances": [
                 "What genre of movies are you interested in?",
                 "Do you have a specific movie genre in mind?",
                 "Which genre of movies do you prefer?"
             ]
         },
         {
-            "id": 12,
+            "id": 11,
             "label": "popular_movies",
             "theme": "movies",
             "utterances": [
@@ -123,13 +113,23 @@
             ]
         },
         {
+            "id": 12,
+            "label": "more_popular_movies",
+            "theme": "movies",
+            "utterances": [
+                "Sure, here are some more popular movies in that genre.",
+                "I guess you may like this: ",
+                "Check out also these popular movies."
+            ]
+        },
+        {
             "id": 13,
             "label": "specific_directors_actors",
             "theme": "movies",
             "utterances": [
-                "Are there any directors or actors you like?",
-                "Do you have any favorite directors or actors?",
-                "Which directors or actors do you prefer?"
+                "Sure, there is the list",
+                "Yes, there is the list",
+                "Here is is:"
             ]
         },
         {
@@ -137,9 +137,9 @@
             "label": "movie_details",
             "theme": "movies",
             "utterances": [
-                "Would you like more details about this movie?",
-                "Do you want to know more about this movie?",
-                "Shall I provide more information about this movie?"
+                "The funny fact about this film is that is was filmed on Hawaii",
+                "Do you know that the director was also an actor?",
+                "The director was awarded with Oscar and the rating is 7.5 on IMDB"
             ]
         },
         {
@@ -299,9 +299,9 @@
             "target": 8,
             "theme": "books",
             "utterances": [
-                "Tell me more about this book.",
-                "I want more information on this book.",
-                "Give me the details of this book."
+                "I like this author",
+                "I never heard about this author, but ihe seems interesting",
+                "Give me the details of this authour."
             ]
         },
         {
@@ -309,9 +309,9 @@
             "target": 6,
             "theme": "books",
             "utterances": [
-                "Show me more books.",
-                "I want to see other popular books.",
-                "Can you suggest other titles?"
+                "No, show me more books.",
+                "No, I want to see other popular books.",
+                "Can you suggest other authors and titles?"
             ]
         },
         {
@@ -319,8 +319,8 @@
             "target": 9,
             "theme": "books",
             "utterances": [
-                "I think I'll go with this book.",
-                "This book looks good to me.",
+                "No, I think I'll go with this book.",
+                "No, this book looks good to me.",
                 "I'll choose this book."
             ]
         },
@@ -339,9 +339,9 @@
             "target": 11,
             "theme": "movies",
             "utterances": [
-                "What kind of movies do you like?",
-                "Recommend me a genre of movie.",
-                "I'm interested in a specific genre of movie."
+                "I want to see a romcom",
+                "Recommend me a horror movie.",
+                "I'm interested in a thrillers"
             ]
         },
         {
@@ -349,9 +349,9 @@
             "target": 12,
             "theme": "movies",
             "utterances": [
-                "Show me the popular movies.",
-                "What are the top movies in this genre?",
-                "I want to see popular movies in this genre."
+                "Can you show me more the popular movies.",
+                "What are the other top movies in this genre?",
+                "I want to see other popular movies in this genre."
             ]
         },
         {
@@ -359,9 +359,9 @@
             "target": 13,
             "theme": "movies",
             "utterances": [
-                "Tell me about movies with specific directors or actors.",
-                "Recommend me movies from my favorite actors or directors.",
-                "I like movies from certain directors or actors."
+                "Tell me about movies with Scarlet Johannson.",
+                "Recommend me movies With DiCaprio",
+                "I like movies from Tarantino"
             ]
         },
         {
@@ -377,6 +377,7 @@
         {
             "source": 13,
             "target": 14,
+            "theme": "movies",
             "utterances": [
                 "Tell me more about this movie.",
                 "I want more information on this movie.",
@@ -391,46 +392,6 @@
                 "I want to explore more genres.",
                 "Show me other movie genres.",
                 "Can you suggest movies from other genres?"
-            ]
-        },
-        {
-            "source": 11,
-            "target": 12,
-            "theme": "movies",
-            "utterances": [
-                "Show me more popular movies.",
-                "I want to see other top movies.",
-                "Can you suggest more popular movies?"
-            ]
-        },
-        {
-            "source": 11,
-            "target": 13,
-            "theme": "movies",
-            "utterances": [
-                "Tell me about other directors or actors.",
-                "Recommend me more movies from my favorite actors or directors.",
-                "I like movies from other directors or actors."
-            ]
-        },
-        {
-            "source": 12,
-            "target": 14,
-            "theme": "movies",
-            "utterances": [
-                "Tell me more about this movie.",
-                "I want more information on this movie.",
-                "Give me the details of this movie."
-            ]
-        },
-        {
-            "source": 13,
-            "target": 14,
-            "theme": "movies",
-            "utterances": [
-                "Tell me more about this movie.",
-                "I want more information on this movie.",
-                "Give me the details of this movie."
             ]
         },
         {
