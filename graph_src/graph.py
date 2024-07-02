@@ -29,10 +29,11 @@ class Graph:
                 cur_node_id = self.node_mapping[cur_node_id]
             
             theme = node.get('theme')
+            label = node.get('label')
             if type(node['utterances']) is list:
-                self.nx_graph.add_node(cur_node_id, theme=theme, utterances=node['utterances'])
+                self.nx_graph.add_node(cur_node_id, theme=theme, label=label, utterances=node['utterances'])
             else:
-                self.nx_graph.add_node(cur_node_id, theme=theme, utterances=[node['utterances']])
+                self.nx_graph.add_node(cur_node_id, theme=theme, label=label, utterances=[node['utterances']])
     
         
         for link in graph['edges']:
