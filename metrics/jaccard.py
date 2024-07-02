@@ -6,7 +6,10 @@ def collapse_multiedges(edges):
         key=f'{u}->{v}'
         if key not in collapsed_edges:
             collapsed_edges[key] = []
-        collapsed_edges[key].extend(data['utterances'])
+        if isinstance(data['utterances'], str):
+            collapsed_edges[key].append(data['utterances'])
+        elif isinstance(data['utterances'], list):
+            collapsed_edges[key].extend(data['utterances'])
     return collapsed_edges
 
 def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return_matrix=False):
@@ -17,13 +20,16 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     (1, 2, {"utterances": ...})
     verbose: bool - печать отладочной информации
     '''
+    print(generated_graph_edges)
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
     generated_graph_edges = collapse_multiedges(list(generated_graph_edges))
 
     jaccard_values = np.zeros((len(true_graph_edges), len(generated_graph_edges)))
-    
+    print(generated_graph_edges)
     for idx1, (k1, v1) in enumerate(true_graph_edges.items()):
         for idx2, (k2, v2) in enumerate(generated_graph_edges.items()):
+            print(v2)
+            print(v1)
             value1 = set(v1).intersection(set(v2))
             value2 = set(v1).union(set(v2))
             jaccard_values[idx1][idx2] = len(value1) / len(value2)
