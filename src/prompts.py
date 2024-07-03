@@ -90,5 +90,5 @@ check_graph_validity_prompt = PromptTemplate.from_template(
     "3. Chatbot system can move only along transitions listed in 2.  If a transition from node A to "
     "node B is not listed we cannot move along it.\n"
     "4. If a dialog doesn't contradcit with the rules listed in 2 print YES otherwise if such dialog "
-    "could'nt happen because it contradicts the rules print NO. Dialogue: {dialog}. Set of rules: {rules}"
+    "could'nt happen because it contradicts the rules print NO.\nDialogue: {dialog}.\nSet of rules: {rules}"
 )
