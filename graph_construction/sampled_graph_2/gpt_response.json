@@ -1,0 +1,111 @@
+{
+    "nodes": [
+    {
+        "id": 1,
+        "label": "start",
+        "is_start": true,
+        "utterances": ["How can I help?"]
+    },
+    {
+        "id": 2,
+        "label": "ask_book_preference",
+        "is_start": false,
+        "utterances": ["Would you like a fiction or a non-fiction book?"]
+    },
+    {
+        "id": 3,
+        "label": "ask_non_fiction_genre",
+        "is_start": false,
+        "utterances": ["Do you have a specific genre of non-fiction in mind?"]
+    },
+    {
+        "id": 4,
+        "label": "ask_specific_or_bestsellers",
+        "is_start": false,
+        "utterances": ["Do you look for something specific or want just bestsellers?"]
+    },
+    {
+        "id": 5,
+        "label": "top_books",
+        "is_start": false,
+        "utterances": ["Sure, this is top-5 books of chosen genre"]
+    },
+    {
+        "id": 6,
+        "label": "ask_famous_authors",
+        "is_start": false,
+        "utterances": ["Who are the famous authors in this genre?"]
+    },
+    {
+        "id": 7,
+        "label": "ask_favorite_authors",
+        "is_start": false,
+        "utterances": ["Do you have any favorite authors?", "Are there any authors you like?"]
+    },
+    {
+        "id": 8,
+        "label": "ask_more_author_info",
+        "is_start": false,
+        "utterances": ["Do you want to know more about this author's books?", "Shall I provide more information about this author's book?"]
+    },
+    {
+        "id": 9,
+        "label": "show_popular_books",
+        "is_start": false,
+        "utterances": ["Check out these popular books."]
+    },
+    {
+        "id": 10,
+        "label": "confirm_choice",
+        "is_start": false,
+        "utterances": ["It seems like a great choice for you."]
+    }
+],
+"edges": [
+    {
+        "source": 1,
+        "target": 2,
+        "utterances": "I need a book."
+    },
+    {
+        "source": 2,
+        "target": 3,
+        "utterances": "Can you suggest a non-fiction book?"
+    },
+    {
+        "source": 3,
+        "target": 4,
+        "utterances": "Recommend me a self-help book."
+    },
+    {
+        "source": 4,
+        "target": 5,
+        "utterances": "I want to see the top books."
+    },
+    {
+        "source": 5,
+        "target": 6,
+        "utterances": "Who are the famous authors in this genre?"
+    },
+    {
+        "source": 6,
+        "target": 7,
+        "utterances": "Give me the details of this author."
+    },
+    {
+        "source": 7,
+        "target": 8,
+        "utterances": "I like this author"
+    },
+    {
+        "source": 8,
+        "target": 9,
+        "utterances": "No, show me more books."
+    },
+    {
+        "source": 9,
+        "target": 10,
+        "utterances": "No, this book looks good to me."
+    }
+]
+}

@@ -1,0 +1,90 @@
+{
+        "nodes": [
+          {
+            "id": 1,
+            "label": "start",
+            "is_start": true,
+            "utterances": ["I am ready to help you choose a book, a movie, or a game."]
+          },
+          {
+            "id": 2,
+            "label": "ask_preference",
+            "is_start": false,
+            "utterances": ["How about something from the fiction genre?"]
+          },
+          {
+            "id": 3,
+            "label": "ask_fiction_genre",
+            "is_start": false,
+            "utterances": ["Which genre of fiction do you prefer?"]
+          },
+          {
+            "id": 4,
+            "label": "offer_popular_books",
+            "is_start": false,
+            "utterances": ["Do you want to check out popular books."]
+          },
+          {
+            "id": 5,
+            "label": "show_popular_books",
+            "is_start": false,
+            "utterances": ["Check out these popular books."]
+          },
+          {
+            "id": 6,
+            "label": "ask_favorite_author",
+            "is_start": false,
+            "utterances": ["Are there any authors you like?"]
+          },
+          {
+            "id": 7,
+            "label": "ask_more_about_author",
+            "is_start": false,
+            "utterances": ["Do you want to know more about this author' books?"]
+          },
+          {
+            "id": 8,
+            "label": "confirm_selection",
+            "is_start": false,
+            "utterances": ["I am sure you will like it"]
+          }
+        ],
+        "edges": [
+          {
+            "source": 1,
+            "target": 2,
+            "utterances": "I want to read something."
+          },
+          {
+            "source": 2,
+            "target": 3,
+            "utterances": "I'm interested in fiction."
+          },
+          {
+            "source": 3,
+            "target": 4,
+            "utterances": "I like fantasy."
+          },
+          {
+            "source": 4,
+            "target": 5,
+            "utterances": "I want to see the top books."
+          },
+          {
+            "source": 5,
+            "target": 6,
+            "utterances": "Any recommendations for authors?"
+          },
+          {
+            "source": 6,
+            "target": 7,
+            "utterances": "I like this author"
+          },
+          {
+            "source": 7,
+            "target": 8,
+            "utterances": "No, this book looks good to me."
+          }
+        ]
+}
+       
