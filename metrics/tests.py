@@ -1,5 +1,5 @@
 from jaccard import jaccard_nodes, jaccard_edges
-from graph_src.graph import Graph, TYPES_OF_GRAPH
+from src.graph import Graph, TYPES_OF_GRAPH
 import json
 import numpy as np
 
