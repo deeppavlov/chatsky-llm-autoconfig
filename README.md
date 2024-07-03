@@ -1,4 +1,8 @@
 # dff-llm-integration
+### Добавление src package
+```
+pip install -e .
+```
 
 ### Примеры графов
 
