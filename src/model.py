@@ -1,6 +1,6 @@
-from langchain.prompts import PromptTemplate
 from utils import call_llm_api
 from prompts import create_graph_prompt, check_graph_utterances_prompt, check_graph_validity_prompt
+
 
 class DialogModel:
     def __init__(self, client):
