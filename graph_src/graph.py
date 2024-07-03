@@ -15,6 +15,7 @@ class Graph:
             self.nx_graph = nx.DiGraph()
         self.type = graph_type
         nodes  = sorted([v['id'] for v in graph['nodes']])
+        print(nodes)
         self.node_mapping = {}
         renumber_flg = False
         if nodes != [i for i in range(1, len(nodes) + 1)]:
@@ -22,7 +23,7 @@ class Graph:
             for j in range(len(nodes)):
                 self.node_mapping[nodes[j]] = j + 1
 
-
+        print(renumber_flg)
         for node in graph['nodes']:
             cur_node_id = node['id']
             if renumber_flg:
