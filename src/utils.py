@@ -40,6 +40,7 @@ def check_if_links_identical(graph_1: Graph, graph_2: Graph):
                 continue
     return unmatched_first, unmatched_second
 
+
 def check_graph_isomorphism(graph1, graph2):
     if not check_if_nodes_identical(graph1, graph2):
         return False
@@ -52,6 +53,7 @@ def check_graph_isomorphism(graph1, graph2):
     for edge in unmatched_second:
         print(edge)
     print("_______")
+
 
 def find_split_nodes(g1, g2):
     # Create dictionaries to map edges based on 'requests' attribute
@@ -90,6 +92,7 @@ def find_split_nodes(g1, g2):
         print(f"In g2, node {node} is split into {split_nodes} in g1")
 
     return g1_split, g2_split 
+
 
 def do_mapping(g1, g2):
     if isinstance(g1, nx.MultiDiGraph):
