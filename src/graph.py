@@ -12,10 +12,13 @@ class Graph:
         self.nx_graph = nx.MultiDiGraph() if graph_type == TYPES_OF_GRAPH.MULTI else nx.DiGraph()
         self.type = graph_type
         nodes  = sorted([v['id'] for v in graph['nodes']])
+        print(nodes)
+
         self.node_mapping = {}
         renumber_flg = nodes != list(range(1, len(nodes) + 1))
         if renumber_flg:
             self.node_mapping = {node_id: idx + 1 for idx, node_id in enumerate(nodes)}
+        print(renumber_flg)
 
         for node in graph['nodes']:
             cur_node_id = node['id']

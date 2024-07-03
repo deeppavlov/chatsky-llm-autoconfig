@@ -208,67 +208,107 @@
         "dialog_id": 2,
         "proposed_dialog": [
             {
-                "text": "I am ready to help you choose a book, a movie, or a game.",
+                "text": "How can I help?",
                 "participant": "assistant"
             },
             {
-                "text": "Can you recommend a movie?",
+                "text": "I need a book.",
                 "participant": "user",
                 "source": 1,
-                "target": 10
+                "target": 2
             },
             {
-                "text": "Do you have a specific movie genre in mind?",
+                "text": "Would you like a fiction or a non-fiction book?",
                 "participant": "assistant"
             },
             {
-                "text": "I want to see a romcom",
+                "text": "Can you suggest a non-fiction book?",
                 "participant": "user",
-                "source": 10,
-                "target": 11
+                "source": 2,
+                "target": 4
             },
             {
-                "text": "These are some highly recommended movies.",
+                "text": "Do you have a specific genre of non0fiction in mind?",
                 "participant": "assistant"
             },
             {
-                "text": "I want to see other popular movies in this genre.",
+                "text": "Recommend me a self-help book.",
                 "participant": "user",
-                "source": 11,
-                "target": 12
+                "source": 4,
+                "target": 5
             },
             {
-                "text": "Check out also these popular movies.",
+                "text": "Do you look for somhing specific or want just bestsellers",
                 "participant": "assistant"
             },
             {
-                "text": "Give me the details of this movie.",
+                "text": "I want to see the top books.",
                 "participant": "user",
-                "source": 12,
-                "target": 14
+                "source": 5,
+                "target": 6
             },
             {
-                "text": "Do you know that the director was also an actor?",
+                "text": "Sure, this is top-5 books of chose genre",
                 "participant": "assistant"
             },
             {
-                "text": "I'll choose this movie.",
+                "text": "Who are the famous authors in this genre?",
                 "participant": "user",
-                "source": 14,
-                "target": 15
+                "source": 6,
+                "target": 7
             },
             {
-                "text": "I recommend you watch this movie.",
+                "text": "Do you have any favorite authors?",
                 "participant": "assistant"
             },
             {
-                "text": "Great, I'll check this out.",
+                "text": "Give me the details of this authour.",
                 "participant": "user",
-                "source": 15,
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Do you want to know more about this author' books?",
+                "participant": "assistant"
+            },
+            {
+                "text": "No, show me more books.",
+                "participant": "user",
+                "source": 8,
+                "target": 6
+            },
+            {
+                "text": "Check out these popular books.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Suggest some authors I should read.",
+                "participant": "user",
+                "source": 6,
+                "target": 7
+            },
+            {
+                "text": "Are there any authors you like?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I like this author",
+                "participant": "user",
+                "source": 7,
+                "target": 8
+            },
+            {
+                "text": "Shall I provide more information about this author' book?",
+                "participant": "assistant"
+            },
+            {
+                "text": "No, this book looks good to me.",
+                "participant": "user",
+                "source": 8,
                 "target": 9
             },
             {
-                "text": "I am sure you will like it",
+                "text": "It seems like a great choice for you.",
                 "participant": "assistant"
             }
         ],
@@ -279,47 +319,79 @@
                     "label": "start",
                     "theme": "common",
                     "utterances": [
-                        "I am ready to help you choose a book, a movie, or a game."
+                        "How can I help?"
                     ]
                 },
                 {
-                    "id": 10,
-                    "label": "choosing_movie",
-                    "theme": "movies",
+                    "id": 2,
+                    "label": "choosing_book",
+                    "theme": "books",
                     "utterances": [
-                        "Do you have a specific movie genre in mind?"
+                        "Would you like a fiction or a non-fiction book?"
                     ]
                 },
                 {
-                    "id": 11,
-                    "label": "popular_movies",
-                    "theme": "movies",
+                    "id": 4,
+                    "label": "non_fiction",
+                    "theme": "books",
                     "utterances": [
-                        "These are some highly recommended movies."
+                        "Do you have a specific genre of non0fiction in mind?"
                     ]
                 },
                 {
-                    "id": 12,
-                    "label": "more_popular_movies",
-                    "theme": "movies",
+                    "id": 5,
+                    "label": "popular_books",
+                    "theme": "books",
                     "utterances": [
-                        "Check out also these popular movies."
+                        "Do you look for somhing specific or want just bestsellers"
                     ]
                 },
                 {
-                    "id": 14,
-                    "label": "movie_details",
-                    "theme": "movies",
+                    "id": 6,
+                    "label": "popular_books",
+                    "theme": "books",
                     "utterances": [
-                        "Do you know that the director was also an actor?"
+                        "Sure, this is top-5 books of chose genre"
                     ]
                 },
                 {
-                    "id": 15,
-                    "label": "final_recommendation_movie",
-                    "theme": "movies",
+                    "id": 7,
+                    "label": "specific_authors",
+                    "theme": "books",
                     "utterances": [
-                        "I recommend you watch this movie."
+                        "Do you have any favorite authors?"
+                    ]
+                },
+                {
+                    "id": 8,
+                    "label": "book_details",
+                    "theme": "books",
+                    "utterances": [
+                        "Do you want to know more about this author' books?"
+                    ]
+                },
+                {
+                    "id": 6,
+                    "label": "popular_books",
+                    "theme": "books",
+                    "utterances": [
+                        "Check out these popular books."
+                    ]
+                },
+                {
+                    "id": 7,
+                    "label": "specific_authors",
+                    "theme": "books",
+                    "utterances": [
+                        "Are there any authors you like?"
+                    ]
+                },
+                {
+                    "id": 8,
+                    "label": "book_details",
+                    "theme": "books",
+                    "utterances": [
+                        "Shall I provide more information about this author' book?"
                     ]
                 },
                 {
@@ -327,57 +399,268 @@
                     "label": "final_recommendation",
                     "theme": "common",
                     "utterances": [
-                        "I am sure you will like it"
+                        "It seems like a great choice for you."
                     ]
                 }
             ],
             "edges": [
                 {
                     "source": 1,
-                    "target": 10,
-                    "theme": "movies",
+                    "target": 2,
+                    "theme": "books",
                     "utterances": [
-                        "Can you recommend a movie?"
+                        "I need a book."
                     ]
                 },
                 {
-                    "source": 10,
-                    "target": 11,
-                    "theme": "movies",
+                    "source": 2,
+                    "target": 4,
+                    "theme": "books",
                     "utterances": [
-                        "I want to see a romcom"
+                        "Can you suggest a non-fiction book?"
                     ]
                 },
                 {
-                    "source": 11,
-                    "target": 12,
-                    "theme": "movies",
+                    "source": 4,
+                    "target": 5,
+                    "theme": "books",
                     "utterances": [
-                        "I want to see other popular movies in this genre."
+                        "Recommend me a self-help book."
                     ]
                 },
                 {
-                    "source": 12,
-                    "target": 14,
-                    "theme": "movies",
+                    "source": 5,
+                    "target": 6,
+                    "theme": "books",
                     "utterances": [
-                        "Give me the details of this movie."
+                        "I want to see the top books."
                     ]
                 },
                 {
-                    "source": 14,
-                    "target": 15,
-                    "theme": "movies",
+                    "source": 6,
+                    "target": 7,
+                    "theme": "books",
                     "utterances": [
-                        "I'll choose this movie."
+                        "Who are the famous authors in this genre?"
                     ]
                 },
                 {
-                    "source": 15,
+                    "source": 7,
+                    "target": 8,
+                    "theme": "books",
+                    "utterances": [
+                        "Give me the details of this authour."
+                    ]
+                },
+                {
+                    "source": 8,
+                    "target": 6,
+                    "theme": "books",
+                    "utterances": [
+                        "No, show me more books."
+                    ]
+                },
+                {
+                    "source": 6,
+                    "target": 7,
+                    "theme": "books",
+                    "utterances": [
+                        "Suggest some authors I should read."
+                    ]
+                },
+                {
+                    "source": 7,
+                    "target": 8,
+                    "theme": "books",
+                    "utterances": [
+                        "I like this author"
+                    ]
+                },
+                {
+                    "source": 8,
                     "target": 9,
+                    "theme": "books",
+                    "utterances": [
+                        "No, this book looks good to me."
+                    ]
+                }
+            ]
+        }
+    },
+    {
+        "dialog_id": 3,
+        "proposed_dialog": [
+            {
+                "text": "Do you want to choose a book, a movie, or a game?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Can you recommend a video game?",
+                "participant": "user",
+                "source": 1,
+                "target": 16
+            },
+            {
+                "text": "You're looking for a video game recommendation.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Recommend me a genre of game.",
+                "participant": "user",
+                "source": 16,
+                "target": 17
+            },
+            {
+                "text": "Do you have a specific game genre in mind?",
+                "participant": "assistant"
+            },
+            {
+                "text": "What are the top games in this genre?",
+                "participant": "user",
+                "source": 17,
+                "target": 18
+            },
+            {
+                "text": "Here are some popular games in that genre.",
+                "participant": "assistant"
+            },
+            {
+                "text": "Tell me about games from specific developers.",
+                "participant": "user",
+                "source": 18,
+                "target": 19
+            },
+            {
+                "text": "Do you have any favorite game developers?",
+                "participant": "assistant"
+            },
+            {
+                "text": "Tell me more about this game.",
+                "participant": "user",
+                "source": 19,
+                "target": 20
+            },
+            {
+                "text": "Would you like more details about this game?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I'll definitely play this one.",
+                "participant": "user",
+                "source": 20,
+                "target": 9
+            },
+            {
+                "text": "It seems like a great choice for you.",
+                "participant": "assistant"
+            }
+        ],
+        "base_graph": {
+            "nodes": [
+                {
+                    "id": 1,
+                    "label": "start",
+                    "theme": "common",
+                    "utterances": [
+                        "Do you want to choose a book, a movie, or a game?"
+                    ]
+                },
+                {
+                    "id": 16,
+                    "label": "choosing_video_game",
                     "theme": "movies",
                     "utterances": [
-                        "Great, I'll check this out."
+                        "You're looking for a video game recommendation."
+                    ]
+                },
+                {
+                    "id": 17,
+                    "label": "genre_specific_video_games",
+                    "theme": "movies",
+                    "utterances": [
+                        "Do you have a specific game genre in mind?"
+                    ]
+                },
+                {
+                    "id": 18,
+                    "label": "popular_video_games",
+                    "theme": "videogames",
+                    "utterances": [
+                        "Here are some popular games in that genre."
+                    ]
+                },
+                {
+                    "id": 19,
+                    "label": "specific_developers",
+                    "theme": "videogames",
+                    "utterances": [
+                        "Do you have any favorite game developers?"
+                    ]
+                },
+                {
+                    "id": 20,
+                    "label": "game_details",
+                    "theme": "videogames",
+                    "utterances": [
+                        "Would you like more details about this game?"
+                    ]
+                },
+                {
+                    "id": 9,
+                    "label": "final_recommendation",
+                    "theme": "common",
+                    "utterances": [
+                        "It seems like a great choice for you."
+                    ]
+                }
+            ],
+            "edges": [
+                {
+                    "source": 1,
+                    "target": 16,
+                    "theme": "videogames",
+                    "utterances": [
+                        "Can you recommend a video game?"
+                    ]
+                },
+                {
+                    "source": 16,
+                    "target": 17,
+                    "theme": "videogames",
+                    "utterances": [
+                        "Recommend me a genre of game."
+                    ]
+                },
+                {
+                    "source": 17,
+                    "target": 18,
+                    "theme": "videogames",
+                    "utterances": [
+                        "What are the top games in this genre?"
+                    ]
+                },
+                {
+                    "source": 18,
+                    "target": 19,
+                    "theme": "videogames",
+                    "utterances": [
+                        "Tell me about games from specific developers."
+                    ]
+                },
+                {
+                    "source": 19,
+                    "target": 20,
+                    "theme": "videogames",
+                    "utterances": [
+                        "Tell me more about this game."
+                    ]
+                },
+                {
+                    "source": 20,
+                    "target": 9,
+                    "theme": "videogames",
+                    "utterances": [
+                        "I'll definitely play this one."
                     ]
                 }
             ]
