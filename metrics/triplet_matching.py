@@ -2,7 +2,7 @@ import networkx as nx
 from metric.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
 
 
-def edge_match_for_muligraph(x, y):
+def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict) :
         set1 = set([elem['utterances'] for elem in list(x.values())])
         set2 = set([elem['utterances'] for elem in list(y.values())])
@@ -13,23 +13,20 @@ def edge_match_for_muligraph(x, y):
 
 
 def parse_edge(edge):
-    src, trg = edge.split('->')
-    return int(src) - 1, int(trg) - 1
+    src, trg = map(int, edge.split('->'))
+    return src - 1, trg - 1
 
 
 def triplet_match(G1, G2, change_to_original_ids=False):
     g1 = G1.nx_graph
     g2 = G2.nx_graph
-    node_mapping = {}
-    for node in g1.nodes:
-        node_mapping[node] = None
-    for node in g2.nodes:
-        node_mapping[node] = None
+    node_mapping = {node: None for node in g1.nodes}
+    node_mapping.update({node: None for node in g2.nodes})
     if type(g1) is nx.DiGraph():
         GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x['utterances']).intersection(set(y['utterances'])) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
-        GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_muligraph)
+        GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_multigraph)
         are_isomorphic = GM.is_isomorphic()
     if are_isomorphic:
         print("Graphs are isomorphic")
@@ -46,21 +43,19 @@ def triplet_match(G1, G2, change_to_original_ids=False):
     _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
 
 
-    for i in range(matrix_edges.shape[0]):
-        edge_mapping[edges1[i]] = None
-        mapping_jaccard_values[edges1[i]] = 0
-        for j in range (matrix_edges.shape[1]):
+    for i, edge1 in enumerate(edges1):
+        edge_mapping[edge1] = None
+        mapping_jaccard_values[edge1] = 0
+        for j, edge2 in enumerate(edges2):
             if matrix_edges[i][j] > 0:
-                node1_src, node1_trg = parse_edge(edges1[i])
-                node2_src, node2_trg = parse_edge(edges2[j])
-                if matrix_nodes[node1_src][node2_src] == 0.0 and \
-                    matrix_nodes[node1_trg][node2_trg] == 0.0:
+                node1_src, node1_trg = parse_edge(edge1)
+                node2_src, node2_trg = parse_edge(edge2)
+                if matrix_nodes[node1_src][node2_src] == 0.0 and matrix_nodes[node1_trg][node2_trg] == 0.0:
                     continue
-                elif matrix_nodes[node1_src][node2_src] > 0 and \
-                    matrix_nodes[node1_trg][node2_trg] > 0:
-                    if matrix_edges[i][j] > mapping_jaccard_values[edges1[i]]:
-                        mapping_jaccard_values[edges1[i]] = matrix_edges[i][j]
-                        edge_mapping[edges1[i]] = edges2[j]
+                elif matrix_nodes[node1_src][node2_src] > 0 and matrix_nodes[node1_trg][node2_trg] > 0:
+                    if matrix_edges[i][j] > mapping_jaccard_values[edge1]:
+                        mapping_jaccard_values[edge1] = matrix_edges[i][j]
+                        edge_mapping[edge1] = edge2
                         node_mapping[node1_src + 1] = node2_src + 1
                         node_mapping[node1_trg + 1] = node2_trg + 1
                 else:
@@ -81,10 +76,7 @@ def triplet_match(G1, G2, change_to_original_ids=False):
         new_edge_mapping = {}
 
         # какому ключу в старом графе соовтетвует новый ключ в перенумерованном графе
-        inverse_mapping = {}
-
-        for k, v in G1.node_mapping.items():
-            inverse_mapping[v] = k
+        inverse_mapping = {v: k for k, v in G1.node_mapping.items()}
         # {1: 1, 3: 2} -> {1: 1, 4:2} если в g1 4 перенумеровалась в 3
         for k, v in node_mapping.items():
             if inverse_mapping.get(k) is None and v is None:
@@ -98,4 +90,5 @@ def triplet_match(G1, G2, change_to_original_ids=False):
             src1,trg1 = edge1.split('->')
             new_edge_mapping[f'{inverse_mapping[int(src1)]}->{inverse_mapping[int(trg1)]}'] = edge2
         return new_node_mapping, new_edge_mapping
+    
     return node_mapping, edge_mapping
