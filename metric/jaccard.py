@@ -20,16 +20,13 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     (1, 2, {"utterances": ...})
     verbose: bool - печать отладочной информации
     '''
-    print(generated_graph_edges)
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
     generated_graph_edges = collapse_multiedges(list(generated_graph_edges))
 
     jaccard_values = np.zeros((len(true_graph_edges), len(generated_graph_edges)))
-    print(generated_graph_edges)
+    print(jaccard_values.shape)
     for idx1, (k1, v1) in enumerate(true_graph_edges.items()):
         for idx2, (k2, v2) in enumerate(generated_graph_edges.items()):
-            print(v2)
-            print(v1)
             value1 = set(v1).intersection(set(v2))
             value2 = set(v1).union(set(v2))
             jaccard_values[idx1][idx2] = len(value1) / len(value2)
@@ -47,11 +44,21 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
         return max_jaccard_values, max_jaccard_indices, jaccard_values
     return max_jaccard_values, max_jaccard_indices
 
-def get_list_of_node_utterances(node):
-    if type(node[1]['utterances']) is str:
-        return [node[1]['utterances']]
-    return node[1]['utterances']
+def get_list_of_node_utterances(node1_utterances):
+    if type(node1_utterances) is str:
+        return [node1_utterances]
+    return node1_utterances
 
+def collapse_multinodes(nodes):
+    collapsed_nodes = {}
+    for key, data in nodes:
+        if key not in collapsed_nodes:
+            collapsed_nodes[key] = []
+        if isinstance(data['utterances'], str):
+            collapsed_nodes[key].append(data['utterances'])
+        elif isinstance(data['utterances'], list):
+            collapsed_nodes[key].extend(data['utterances'])
+    return collapsed_nodes
 
 def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return_matrix=False):
     '''
@@ -61,13 +68,15 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
     (1, {"utterances": ...})
     verbose: bool - печать отладочной информации
     '''
+    true_graph_nodes = collapse_multinodes(list(true_graph_nodes))
+    generated_graph_nodes = collapse_multinodes(list(generated_graph_nodes))
+
     jaccard_values = np.zeros((len(true_graph_nodes) + 1, len(generated_graph_nodes) + 1))
-    for node1 in true_graph_nodes:
-        for node2 in generated_graph_nodes:
-            node1_id = node1[0]
-            node2_id = node2[0]
-            node1_utterances = set(get_list_of_node_utterances(node1))
-            node2_utterances = set(get_list_of_node_utterances(node2))
+    print(true_graph_nodes)
+    for node1_id, node1_utterances in true_graph_nodes.items():
+        for node2_id, node2_utterances in generated_graph_nodes.items():
+            node1_utterances = set(get_list_of_node_utterances(node1_utterances))
+            node2_utterances = set(get_list_of_node_utterances(node2_utterances))
 
             jaccard_nominator = node1_utterances.intersection(node2_utterances)
             jaccard_denominator = node1_utterances.union(node2_utterances)
@@ -75,8 +84,8 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
             jaccard_values[node1_id][node2_id] = len(jaccard_nominator) / len(jaccard_denominator)
 
             if verbose:
-                print(node1[1]['utterances'])
-                print(node2[1]['utterances'])
+                print(node1_utterances)
+                print(node2_utterances)
                 print(jaccard_nominator, jaccard_denominator)
                 print("_____")
     if verbose:
