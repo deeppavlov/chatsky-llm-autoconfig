@@ -1,22 +1,34 @@
 import random
 import json
 from graph import Graph, TYPES_OF_GRAPH
+import networkx 
 
 
-def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
+# uniqness_rate = ['equal', '50_percent', 'unique'],
+def sample_dialogue(graph_obj, start_node,
+                    end_node=None, particular_topic=None,
+                    number_of_nodes=None, number_of_topics=None,
+                    number_of_cycles=None, uniqueness_rate=None):
     nodes = graph_obj.nodes(data=True)
     edges = graph_obj.edges(data=True)
     current_node_id = start_node
     current_node = nodes[current_node_id]
+
+    # our output
     dialogue = []
     graph = {"nodes": [], "edges": []}
-    appended_nodes = set()
 
-    while not (current_node_id == start_node and dialogue != []) or current_node_id == end_node:
+    added_nodes = set()
+    visited_nodes = 1
+    added_topics = set()
 
+    cycles = networkx.simple_cycles(graph_obj)
+
+    
+
+    while current_node_id == end_node:
         utterance = random.choice(current_node["utterances"])
         dialogue.append({"text": utterance, "participant": "assistant"})
-
 
         graph['nodes'].append({
             "id": current_node_id,
@@ -29,10 +41,12 @@ def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
         if not possible_edges:
             break
 
-        if topic is not None:
+        if particular_topic is not None:
             chosen_edge = random.choice(possible_edges)
-            while graph_obj.edges[chosen_edge[0], chosen_edge[1]]['theme'] != topic:
+            while graph_obj.edges[chosen_edge[0], chosen_edge[1]]['theme'] != particular_topic:
                 chosen_edge = random.choice(possible_edges)
+        
+        
 
         if isinstance(chosen_edge[2]["utterances"], list):
             edge_utterance = random.choice(chosen_edge[2]["utterances"])
@@ -52,8 +66,15 @@ def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
             "utterances": [edge_utterance],
         })
 
+        added_topics.update(graph_obj.edges[chosen_edge[0], chosen_edge[1]]['theme'])
+
         current_node_id = chosen_edge[1]
         current_node = nodes[current_node_id]
+        visited_nodes += 1
+
+        if visited_nodes >= number_of_nodes:
+            break
+
     return dialogue, graph
 
 
