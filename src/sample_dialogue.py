@@ -1,18 +1,17 @@
 import random
-import json
-from graph import Graph, TYPES_OF_GRAPH
+import networkx as nx
 
 
-def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
+def sample_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, start_node: int, end_node: int = None, topic: str = None):
     nodes = graph_obj.nodes(data=True)
     edges = graph_obj.edges(data=True)
     current_node_id = start_node
     current_node = nodes[current_node_id]
     dialogue = []
     graph = {"nodes": [], "edges": []}
-    appended_nodes = set()
 
-    while not (current_node_id == start_node and dialogue != []) or current_node_id == end_node:
+    # TODO ??
+    while not (current_node_id == start_node and len(dialogue) > 0) or current_node_id == end_node:
 
         utterance = random.choice(current_node["utterances"])
         dialogue.append({"text": utterance, "participant": "assistant"})
@@ -25,12 +24,13 @@ def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
             "utterances": [utterance],
         })
 
-        possible_edges = [edge for edge in edges if edge[0] == current_node_id]
+        possible_edges = [e for e in edges if e[0] == current_node_id]
         if not possible_edges:
             break
 
         if topic is not None:
             chosen_edge = random.choice(possible_edges)
+            # TODO this loop may be infinite
             while graph_obj.edges[chosen_edge[0], chosen_edge[1]]['theme'] != topic:
                 chosen_edge = random.choice(possible_edges)
 
@@ -55,21 +55,3 @@ def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
         current_node_id = chosen_edge[1]
         current_node = nodes[current_node_id]
     return dialogue, graph
-
-
-path_prefix = '/Users/anastasia/Documents/DFF_LLM/dff-llm-integration/'
-with open(f'{path_prefix}/dataset/theme_graph.json', 'r') as f:
-    content = json.load(f)
-graph = Graph(content, TYPES_OF_GRAPH.DI)
-sampled_dialogue, sampled_base_graph = sample_dialogue(graph.nx_graph, start_node=1,
-                                   end_node=9, topic='videogames')
-
-with open(f'{path_prefix}/dataset/theme_sampled_graph.json', 'r') as g:
-    exisint_graph = json.load(g)
-
-dialogues = exisint_graph
-dict_to_dump = {"dialog_id": len(dialogues) + 1, 'proposed_dialog': sampled_dialogue, 'base_graph': sampled_base_graph}
-dialogues.append(dict_to_dump)
-
-with open(f'{path_prefix}/dataset/theme_sampled_graph.json', 'w') as g:
-    json.dump(dialogues, g, indent=4)
