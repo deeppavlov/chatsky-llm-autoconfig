@@ -118,3 +118,24 @@ just print the list of utteance and whether there exsit a valid edge of node con
 3. Chatbot system can move only along transitions listed in 2.  If a transition from node A to node B is not listed we cannot move along it.
 4. If a dialog doesn't contradcit with the rules listed in 2 print YES otherwise if such dialog could'nt happen because it contradicts the rules print NO. Dialogue: {dialogue}. Set of rules: {rules}
 
+
+# Семплирование диалога
+
+Семплирование диалога с заданными параметрами:
+
+- [ ] число тёрнов
+    1. определить максимальное и минимальное число тёрнов [min, max]
+    2. заданный параметр клипнуть до [min, max]
+- [ ] число топиков
+    1. такие же шаги, что и для тёрнов
+- [x] число повторений каждого цикла
+    1. найти все простые пути
+    2. найти все простые циклы
+    3. в заданный путь добавить заданное число выбранных циклов
+- [ ] степень уникальности реплик
+    1. пока алгоритма нет
+    2. но идея такая: выбирать реплики с вероятностью, обратно пропорциональной тому, сколько раз до этого эту реплику уже выбирали
+    3. тогда степенной коэффициент, с которым будет формироваться эта вероятность и будет параметром, отвечающих за степень уникальности:
+```math
+p_i=\frac{P_i^\alpha}{\sum_{k=1}^N P_k^\alpha}
+```
