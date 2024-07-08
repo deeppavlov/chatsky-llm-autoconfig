@@ -2,7 +2,7 @@ import random
 import networkx as nx
 
 
-def sample_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, start_node: int, end_node: int = None, topic: str = None):
+def sample_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, start_node: int, topic: str = None):
     nodes = graph_obj.nodes(data=True)
     edges = graph_obj.edges(data=True)
     current_node_id = start_node
@@ -10,8 +10,7 @@ def sample_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, start_node: int, en
     dialogue = []
     graph = {"nodes": [], "edges": []}
 
-    # TODO ??
-    while not (current_node_id == start_node and len(dialogue) > 0) or current_node_id == end_node:
+    while True:
 
         utterance = random.choice(current_node["utterances"])
         dialogue.append({"text": utterance, "participant": "assistant"})
@@ -55,3 +54,30 @@ def sample_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, start_node: int, en
         current_node_id = chosen_edge[1]
         current_node = nodes[current_node_id]
     return dialogue, graph
+
+
+def sample_node_utterance(node: dict):
+    res = random.choice(node["utterances"])
+    return {"text": res, "participant": "assistant"}
+
+
+def sample_edge_utterance(edge: dict):
+    if isinstance(edge["utterances"], list):
+        res = random.choice(edge["utterances"])
+    else:
+        res = edge["utterances"]
+    return {"text": res, "participant": "user"}
+
+
+def materialize_dialogue(graph_obj: nx.DiGraph | nx.MultiDiGraph, path: list[tuple[int,int]]):
+    nodes = graph_obj.nodes()
+    edges = graph_obj.edges()
+    dialogue = []
+
+    for src, tgt in path:
+        dialogue.append(sample_node_utterance(nodes[src]))
+        dialogue.append(sample_edge_utterance(edges[src, tgt]))
+    
+    dialogue.append(sample_node_utterance(nodes[tgt]))
+    
+    return dialogue
