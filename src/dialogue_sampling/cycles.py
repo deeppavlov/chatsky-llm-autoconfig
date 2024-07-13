@@ -1,4 +1,5 @@
 import networkx as nx
+from typing import Iterable
 
 
 def find_possible_cycles(graph: nx.DiGraph | nx.MultiGraph, path: list[int]) -> list[list[int]]:
@@ -90,7 +91,7 @@ def repeat_and_insert_cycles(cycles: list[list[int]], path: list[int], indexes: 
     return res
 
 
-def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: list[int]):
+def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: Iterable[int]):
     """
     Add cycles to `path`.
     Algorithm:
@@ -105,8 +106,8 @@ def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: list[int]):
     n_possible_cycles = len(possible_cycles)
 
     if n_cycles > n_possible_cycles:
-        print(f'demanded {n_cycles=} is larger than number of unique cycles that can be added to provided path ({n_possible_cycles=})')
-        print('set n_cycles to n_possible_cycles')
+        print(f'Warning: for path {path} demanded {n_cycles=} is larger than number of unique cycles that can be added to provided path ({n_possible_cycles=}), set n_cycles to n_possible_cycles')
+        
         n_cycles = n_possible_cycles
         n_repeats = n_repeats[:n_cycles]
         cycles = possible_cycles

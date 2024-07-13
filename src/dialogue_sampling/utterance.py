@@ -59,7 +59,7 @@ def sample_utterance(node_or_edge, alpha):
     return utterance, node_or_edge
 
 
-def materialize_dialogue(graph: nx.DiGraph, path: list[tuple[int, int]], alpha=0):
+def materialize_dialogue(graph: nx.DiGraph, path: list[tuple[int, int]], alpha=0) -> list[dict[str,str]]:
     """
     Given edge `path` in `graph`, materialize dialogue by sampling node and edge utterances from path. Each utterance is sampled from distribution:
     ```math

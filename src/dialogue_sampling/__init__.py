@@ -1,1 +1,1 @@
-from .cycles import add_cycles
+from .sample_dialogues import sample_dialogues
