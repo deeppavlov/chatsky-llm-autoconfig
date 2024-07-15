@@ -5,11 +5,18 @@ import numpy as np
 
 
 def initialize_counters(graph: nx.DiGraph):
+    """
+    return copy of graph with every node and edge having attribute "n_times_visited"
+    """
+    graph = graph.copy()
+
     edges_counters = get_initial_counters(graph.edges)
     nx.set_edge_attributes(graph, edges_counters)
 
     nodes_counters = get_initial_counters(graph.nodes)
     nx.set_node_attributes(graph, nodes_counters)
+
+    return graph
 
 
 def get_initial_counters(edges_or_nodes):
@@ -70,10 +77,6 @@ def materialize_dialogue(graph: nx.DiGraph, path: list[tuple[int, int]], alpha=0
     - P_i = 1 / number of times this utterance was sampled before 
     - `alpha` is non-negative float representing desired degree of uniqueness (0 is uniform sampling, >>1 is highly prioritized)
     """
-    graph = graph.copy()
-
-    initialize_counters(graph)
-
     dialogue = []
 
     for src, tgt in path:

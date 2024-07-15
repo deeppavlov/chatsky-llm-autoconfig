@@ -91,7 +91,7 @@ def repeat_and_insert_cycles(cycles: list[list[int]], path: list[int], indexes: 
     return res
 
 
-def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: Iterable[int]):
+def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: Iterable[int], skip_when_impossible=True):
     """
     Add cycles to `path`.
     Algorithm:
@@ -106,8 +106,13 @@ def add_cycles(nx_graph, path: list[int], n_cycles: int, n_repeats: Iterable[int
     n_possible_cycles = len(possible_cycles)
 
     if n_cycles > n_possible_cycles:
-        print(f'Warning: for path {path} demanded {n_cycles=} is larger than number of unique cycles that can be added to provided path ({n_possible_cycles=}), set n_cycles to n_possible_cycles')
-        
+        print(f'Warning: for path {path} demanded {n_cycles=} is larger than number of unique cycles that can be added to provided path ({n_possible_cycles=})')
+        if skip_when_impossible:
+            print(f'skipping this example, because {skip_when_impossible=}')
+            return None
+        else:
+            print(f'set n_cycles to n_possible_cycles, because {skip_when_impossible=}')
+
         n_cycles = n_possible_cycles
         n_repeats = n_repeats[:n_cycles]
         cycles = possible_cycles

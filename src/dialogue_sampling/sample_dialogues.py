@@ -4,7 +4,7 @@ import networkx as nx
 
 from .cycles import add_cycles
 from .topics import get_topics
-from .utterance import materialize_dialogue
+from .utterance import materialize_dialogue, initialize_counters
 
 
 def valid_topics(desired_topics: Iterable[str] | int | None, current_topics: set[str]):
@@ -45,12 +45,14 @@ def sample_dialogues(
 ):
     """
     Algorithm:
-    - find simple path from `start_node` to `terminal_node`
-    - filter out paths that doesn't match given `topics` (set of topics or just number of topics)
-    - add `n_cycles` and repeat them `n_repeats` times
-    - meterialize dialogue by sampling utterances based on `uniqueness` measure (non-negative float, where `0` means uniform sampling, `>>1` means highly prioritized to avoid repeatitions)
-    - repeat these steps `n` times
+    - for each of `n` times:
+        - find simple path from `start_node` to `terminal_node`
+        - skip if path doesn't match given `topics` (set of topics or just number of topics)
+        - add `n_cycles` and repeat them `n_repeats` times
+        - meterialize dialogue by sampling utterances based on `uniqueness` measure (non-negative float, where `0` means uniform sampling, `>>1` means highly prioritized to avoid repeatitions)
+
     """
+    graph = initialize_counters(graph)
 
     paths_generator = nx.all_simple_edge_paths(graph, start_node, terminal_node)
 
@@ -64,6 +66,8 @@ def sample_dialogues(
         if n_cycles is not None and n_repeats is not None:
             path = edge_to_node(path)
             path = add_cycles(graph, path, n_cycles, n_repeats)
+            if path is None:
+                continue
             path = node_to_edge(path)
 
         dialog = materialize_dialogue(graph, path, uniqueness)
