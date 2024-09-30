@@ -42,7 +42,7 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     max_jaccard_indices = np.argmax(jaccard_values, axis=1)
     if return_matrix:
         return max_jaccard_values, max_jaccard_indices, jaccard_values
-    return max_jaccard_values, max_jaccard_indices
+    return list(max_jaccard_values), list(max_jaccard_indices)
 
 def get_list_of_node_utterances(node1_utterances):
     if type(node1_utterances) is str:
@@ -97,4 +97,4 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
     max_jaccard_indices = max_jaccard_indices.astype(int)
     if return_matrix:
         return max_jaccard_values, max_jaccard_indices, jaccard_values[1:, 1:]
-    return max_jaccard_values, max_jaccard_indices
+    return list(max_jaccard_values), list(max_jaccard_indices)

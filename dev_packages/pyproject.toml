@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dev-packages"
+version = "0.1.0"
+description = "Development packages for Chatsky LLM-Autoconfiguration"
+authors = ["askatasuna <andruhabobr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain-community = "^0.3.1"
+langchain-anthropic = "^0.2.1"
+anthropic = "^0.34.2"
+langchain-openai = "^0.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
