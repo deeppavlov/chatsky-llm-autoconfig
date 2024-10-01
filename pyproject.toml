@@ -1,18 +1,13 @@
 [tool.poetry]
-name = "chatsky llm-autoconfig"
+name = "dff-llm-integration"
 version = "0.1.0"
-description = "This module provides functionality for automatic script creation based on dialogue description"
-authors = ["Your Name <you@example.com>"]
+description = "Repository with all of the work related to Chatsky LLM-Autoconfig project"
+authors = ["askatasuna <andruhabobr@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.10"
-networkx = "^3.3"
-langchain = "^0.3.1"
-langchain-openai = "^0.2.1"
-chatsky = "^0.8.0"
-matplotlib = "^3.9.2"
-langchain-community = "^0.3.1"
+python = "^3.12"
+llm_autoconfig = {path = "dev_packages/llm_autoconfig", develop = true}
 
 
 [build-system]

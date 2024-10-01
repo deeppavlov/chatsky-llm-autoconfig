@@ -11,7 +11,7 @@ poetry install
 ./data - Examples, tests and other dialogue data in JSON format
 ./experiments - Test field for experimental features, test data and results
 ./metrics - Graph evaluation metrics module
-./llm_autoconfig - Main directory
+./dev_packages/llm_autoconfig - Directory containing all the code for the `llm_autoconfig` module
 ```
 
 ### Current progress
