@@ -1,5 +1,5 @@
-from llm_autoconfig.utils import call_llm_api
-from llm_autoconfig.prompts import create_graph_prompt, check_graph_utterances_prompt, check_graph_validity_prompt, cycle_graph_generation_prompt
+from chatsky_llm_autoconfig.utils import call_llm_api
+from chatsky_llm_autoconfig.prompts import create_graph_prompt, check_graph_utterances_prompt, check_graph_validity_prompt, cycle_graph_generation_prompt
 
 
 class DialogModel:

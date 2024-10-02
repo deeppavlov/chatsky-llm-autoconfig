@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "chatsky llm-autoconfig"
+name = "chatsky_llm_autoconfig"
 version = "0.1.0"
 description = "This module provides functionality for automatic script creation based on dialogue description"
 authors = ["Your Name <you@example.com>"]

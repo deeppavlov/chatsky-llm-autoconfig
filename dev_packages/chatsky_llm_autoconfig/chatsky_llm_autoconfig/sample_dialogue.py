@@ -1,6 +1,6 @@
 import random
 import json
-from llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
+from chatsky_llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
 
 
 def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
