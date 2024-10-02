@@ -24,6 +24,13 @@ poetry run python
 - Include docstrings for functions and classes
 - Write unit tests for new features or bug fixes
 
+## Conducting experiments
+Until any of the code make it way to the main repo it should be tested in `./experiments` folder.
+Each of the experiments must lay in the separate folder with name like `<YYYY.MM.DD>_<experiment_name>`.
+Inside of this directory must be a `report.md` file with results, metrics, future plans and other relevant information.
+
+**Do not put images into the folder you are commiting, use GoogleDrive instead**
+
 ## Reporting Issues
 
 If you encounter any bugs or have feature requests, please open an issue on the GitHub repository. Provide as much detail as possible, including:

@@ -5,7 +5,7 @@ Graphs with cycles: 88 (88%)
 Average number of nodes per graph: 9.26
 Average number of edges per graph: 9.19
 
-Text to utterance conversion rate: 96.73%
+Text to utterance rate: 96.73%
 
 # To check:
 - theme variety
