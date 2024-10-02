@@ -9,6 +9,7 @@ Thank you for your interest in contributing to the dff-llm-integration project! 
 3. Set up the development environment:
 ```bash
 poetry install
+poetry run python
 ```
 
 ## How to Contribute

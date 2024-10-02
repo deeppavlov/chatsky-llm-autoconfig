@@ -1,7 +1,7 @@
 import networkx as nx
 import random
 import json
-from llm_autoconfig.graph import Graph
+from chatsky_llm_autoconfig.graph import Graph
 from langchain.schema import HumanMessage
 
 # all func are currently unused

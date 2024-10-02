@@ -1,5 +1,5 @@
 from jaccard import jaccard_nodes, jaccard_edges
-from src.graph import Graph, TYPES_OF_GRAPH
+from chatsky_llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
 import json
 import numpy as np
 

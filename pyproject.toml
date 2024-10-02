@@ -7,7 +7,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-llm_autoconfig = {path = "dev_packages/llm_autoconfig", develop = true}
+chatsky_llm_autoconfig = {path = "dev_packages/chatsky_llm_autoconfig", develop = true}
+tqdm = "^4.66.5"
 
 
 [build-system]

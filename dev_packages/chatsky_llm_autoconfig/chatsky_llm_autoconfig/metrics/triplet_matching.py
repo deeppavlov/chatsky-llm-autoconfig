@@ -1,5 +1,5 @@
 import networkx as nx
-from metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
+from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
 
 
 def edge_match_for_multigraph(x, y):
