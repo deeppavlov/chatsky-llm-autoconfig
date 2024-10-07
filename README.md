@@ -28,19 +28,19 @@ Currently unsupported types:
 
 ### Evaluation Pipeline:
 
-После подчета Жаккара мы берем все пары edge_i -> node -> edge_j, так что jaccard(edge_i, edge_j) > 0 и оба ребра инциденты ноде node.
+After calculating the Jaccard index, we take all pairs of edge_i -> node -> edge_j, such that jaccard(edge_i, edge_j) > 0 and both edges are incident to the node.
 
-Подсчитывается Triplet Match Accuracy.
+The Triplet Match Accuracy is calculated.
 
-Пусть у нас есть идельный граф (ground_truth).
+Let's assume we have an ideal graph (ground truth).
 
-Для создания графа с нуля по диалогу пытается построиться граф и мы его сравниваем с подграфом идеального графа, который должен бы был получиться после простроения графа с нуля по диалогу. Для всех следующих графов данная задача уже является задачей достраивания графа.
+To create a graph from scratch based on a dialogue, we attempt to construct a graph and compare it with a subgraph of the ideal graph that should have been obtained after building the graph from scratch using the dialogue. For all subsequent graphs, this task is already considered a graph completion task.
 
-Для задачи достраивания графа мы берем граф, который должен бы получиться после построения на текущем диалоге и сравниваем его с тем, который получился у модели.
+For the graph completion task, we take the graph that should have been obtained after construction based on the current dialogue and compare it with the one produced by the model.
 
-# Prompts
+## Prompts
 
-## Graph creration prompt (one-shot): 
+### Graph creration prompt (one-shot): 
 
 ```
 You have an example of dialogue from customer chatbot system. You also have an 
@@ -116,18 +116,20 @@ You have an example of dialogue from customer chatbot system. You also have an
     Dialogue: {dialog}
 ```
 
-## Prompt for node/edge - utterance correspondance
+### Prompt for node/edge - utterance correspondance
 
+```
 You have a dialogue and a structure of graph built on this dialogue it is a set of nodes when chatbot system responses and a set of transitions that are triggered by user requests. 
 Please say if for every utterance in the dialogue there exist either a utteranse in node or in some edge. be attentive to what nodes we actually have in the "nodes" list, because some nodes from the list of edges maybe non existent:
 Graph: 
 Dialogue:
 just print the list of utteance and whether there exsit a valid edge of node contating it, if contains print the node or edge
+```
+### Graph validation prompt:
 
-## Graph validation prompt:
-
+```
 1. You have an example of dialogue from customer chatbot system.
 2. You also have a set of rules how chatbot system works - a set of nodes when chatbot system respons and a set of transitions that are triggered by user requests.
 3. Chatbot system can move only along transitions listed in 2.  If a transition from node A to node B is not listed we cannot move along it.
 4. If a dialog doesn't contradcit with the rules listed in 2 print YES otherwise if such dialog could'nt happen because it contradicts the rules print NO. Dialogue: {dialogue}. Set of rules: {rules}
-
+```
