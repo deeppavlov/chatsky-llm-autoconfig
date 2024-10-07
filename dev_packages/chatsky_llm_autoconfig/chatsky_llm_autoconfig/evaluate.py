@@ -3,7 +3,6 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import networkx as nx
-from openai import OpenAI
 from langchain.chat_models import ChatOpenAI
 from dotenv import load_dotenv
 from chatsky_llm_autoconfig.model import DialogModel
@@ -129,9 +128,10 @@ def evaluate_model(input_json_path, output_directory, model_name):
 
         try:
             metrics = calculate_metrics(generated_graph, target_graph)
-        except:
+        except Exception as e:
             metrics = {"Triplet Match Accuracy": 0, "Node Accuracy": 0, "Edge Accuracy": 0}
             print(f"Invalid graph for dialogue {idx}")
+            print(e)
 
         all_metrics[idx] = metrics
 
@@ -182,8 +182,7 @@ def evaluate_generation(input_json_path, output_directory):
         "text_to_utterance_percentage": 0,
     }
 
-    for idx, dialogue in enumerate(data):
-        sample_dialogue = dialogue["dialog"]
+    for _, dialogue in enumerate(data):
         gen_graph = dialogue["graph"]
 
         # Convert to NetworkX graph for analysis
@@ -228,5 +227,5 @@ def evaluate_generation(input_json_path, output_directory):
 if __name__ == "__main__":
     input_json_path = "data/cycles.json"
     output_directory = "experiments/results/gpt-4o-mini-cycles"
-    report_file = evaluation_pipeline(input_json_path, output_directory)
+    report_file = evaluate_generation(input_json_path, output_directory)
     print(f"Evaluation complete. Report saved to: {report_file}")

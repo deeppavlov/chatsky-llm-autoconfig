@@ -10,7 +10,6 @@ def sample_dialogue(graph_obj, start_node, end_node=None, topic=None):
     current_node = nodes[current_node_id]
     dialogue = []
     graph = {"nodes": [], "edges": []}
-    appended_nodes = set()
 
     while not (current_node_id == start_node and dialogue != []) or current_node_id == end_node:
 
