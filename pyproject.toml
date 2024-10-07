@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "dff-llm-integration"
+version = "0.1.0"
+description = "Repository with all of the work related to Chatsky LLM-Autoconfig project"
+authors = ["askatasuna <andruhabobr@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+chatsky_llm_autoconfig = {path = "dev_packages/chatsky_llm_autoconfig", develop = true}
+tqdm = "^4.66.5"
+poethepoet = "^0.29.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.lint]
+optional = true
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "*"
+isort = "*"
+black = "*"
+mypy = "*"
+
+
+[tool.poe]
+default_task_type = "script"
+
+[tool.poe.tasks]
+flake = "scripts.codestyle:_run_flake"
+black = "scripts.codestyle:_run_black(modify=False)"
+format = "scripts.codestyle:_run_black(modify=True)"
+lint.sequence = ["flake", "black"]
