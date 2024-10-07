@@ -4,12 +4,13 @@ import json
 from chatsky_llm_autoconfig.graph import Graph
 from langchain.schema import HumanMessage
 
+
 # all func are currently unused
 def check_if_nodes_identical(graph_1: Graph, graph_2: Graph):
-    #check if we have the same amount of nodes:
+    # check if we have the same amount of nodes:
     if len(graph_1.nodes) != len(graph_2.nodes):
         return False
-    #check if the nodes are in the same 
+    # check if the nodes are in the same
     return set(graph_1.nodes) == set(graph_2.nodes)
 
 
@@ -29,12 +30,12 @@ def check_if_links_identical(graph_1: Graph, graph_2: Graph):
                         # print(graph_1.transitions[i][j].requests)
                         # print(graph_2.transitions[i][j].requests)
                         # raise ValueError("The target and source are identical, but the responses aren't")
-                        unmatched_first.append((i,j,graph_1.transitions[i][j].requests))
-                        unmatched_second.append((i,j,graph_2.transitions[i][j].requests))
+                        unmatched_first.append((i, j, graph_1.transitions[i][j].requests))
+                        unmatched_second.append((i, j, graph_2.transitions[i][j].requests))
             elif graph_1.transitions[i][j] is not None:
-                unmatched_first.append((i,j,graph_1.transitions[i][j].requests))
+                unmatched_first.append((i, j, graph_1.transitions[i][j].requests))
             elif graph_2.transitions[i][j] is not None:
-                unmatched_second.append((i,j,graph_2.transitions[i][j].requests))
+                unmatched_second.append((i, j, graph_2.transitions[i][j].requests))
             else:
                 continue
     return unmatched_first, unmatched_second
@@ -45,7 +46,7 @@ def check_graph_isomorphism(graph1, graph2):
         return False
 
     unmatched_first, unmatched_second = check_if_links_identical(graph1, graph2)
-    
+
     for edge in unmatched_first:
         print(edge)
     print("_______")
@@ -60,20 +61,20 @@ def find_split_nodes(g1, g2):
         requests_map = {}
         edges_map = {}
         for u, v, data in graph.edges(data=True):
-            request = data.get('requests')
+            request = data.get("requests")
             if request not in requests_map:
                 requests_map[request] = []
             requests_map[request].append((u, v))
-            key = f'{u}->{v}'
+            key = f"{u}->{v}"
             if key not in edges_map:
                 edges_map[key] = []
             edges_map[key].append(*data.values())
         return requests_map, edges_map
-    
+
     def find_splits(graph_edges, other_graph_edges, requests_map, graph_split, other_requests_map):
         for edge, data in graph_edges.items():
             if len(data) > 1 and len(other_graph_edges.get(edge, [])) < len(data):
-                node = int(edge.split('->')[1])
+                node = int(edge.split("->")[1])
                 end_nodes = [other_requests_map[request][0][1] for request in data]
                 graph_split[node] = end_nodes
 
@@ -90,20 +91,27 @@ def find_split_nodes(g1, g2):
     for node, split_nodes in g2_split.items():
         print(f"In g2, node {node} is split into {split_nodes} in g1")
 
-    return g1_split, g2_split 
+    return g1_split, g2_split
 
 
 def do_mapping(g1, g2):
     if isinstance(g1, nx.MultiDiGraph):
-        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x['requests']).intersection(set( y['requests'])) is not None)
+        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["requests"]).intersection(set(y["requests"])) is not None)
     else:
-        GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=lambda x, y: set([elem['requests'] for elem in list(x.values())]).intersection(set([elem['requests'] for elem in list(y.values())])) is not None)
-    
+        GM = nx.isomorphism.MultiDiGraphMatcher(
+            g1,
+            g2,
+            edge_match=lambda x, y: set([elem["requests"] for elem in list(x.values())]).intersection(
+                set([elem["requests"] for elem in list(y.values())])
+            )
+            is not None,
+        )
+
     if GM.is_isomorphic():
         print("Graphs are isomorphic and correct")
         mapping = nx.vf2pp_isomorphism(g1, g2, node_label=None)
         return mapping
-    
+
     mapping = {i: i for i in range(1, len(g1.nodes))}
     g1_unmatched_nodes, g2_unmatched_nodes = find_split_nodes(g1, g2)
     print(g1_unmatched_nodes)
@@ -126,12 +134,12 @@ def call_llm_api(query: str, llm, client=None, temp: float = 0.05, langchain_mod
         else:
             messages.append({"role": "user", "content": query})
             response_big = client.chat.completions.create(
-            model=llm, # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
-            messages=messages,
-            temperature=0.7,
-            n=1,
-            max_tokens=3000, # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
-            extra_headers={ "X-Title": "My App" }, # опционально - передача информация об источнике API-вызова
+                model=llm,  # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
+                messages=messages,
+                temperature=0.7,
+                n=1,
+                max_tokens=3000,  # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
+                extra_headers={"X-Title": "My App"},  # опционально - передача информация об источнике API-вызова
             )
             return response_big.choices[0].message.content
 
