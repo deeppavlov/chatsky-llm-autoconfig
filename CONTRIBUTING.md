@@ -14,8 +14,17 @@ poetry run python <filename>
 
 ## How to Contribute
 1. Make your changes and test hypothesis in the `./experiments` folder
-2. Write if needed and run the tests from the `./tests` folder
-3. If tests run smoothly create a pull request with clear description of fixed and features
+2. Write if needed and run the tests from the `./tests` folder via
+```
+poetry run pytest tests/<your_tests_directory>
+```
+3. Ensure linting using commands as
+```
+poetry run poe lint
+poetry run poe format
+```
+4. Create a pull request with clear description of fixed and features
+
 
 ## Coding Guidelines
 

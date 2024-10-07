@@ -1,25 +1,27 @@
 import numpy as np
 
+
 def collapse_multiedges(edges):
     collapsed_edges = {}
     for u, v, data in edges:
-        key=f'{u}->{v}'
+        key = f"{u}->{v}"
         if key not in collapsed_edges:
             collapsed_edges[key] = []
-        if isinstance(data['utterances'], str):
-            collapsed_edges[key].append(data['utterances'])
-        elif isinstance(data['utterances'], list):
-            collapsed_edges[key].extend(data['utterances'])
+        if isinstance(data["utterances"], str):
+            collapsed_edges[key].append(data["utterances"])
+        elif isinstance(data["utterances"], list):
+            collapsed_edges[key].extend(data["utterances"])
     return collapsed_edges
 
+
 def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return_matrix=False):
-    '''
+    """
     true_graph_edges:Graph.edges - ребра истинного графа
     generated_graph_edges: nx.Graph.edges - ребра сгенерированного графу
     формат ребер:
     (1, 2, {"utterances": ...})
     verbose: bool - печать отладочной информации
-    '''
+    """
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
     generated_graph_edges = collapse_multiedges(list(generated_graph_edges))
 
@@ -30,7 +32,7 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
             value1 = set(v1).intersection(set(v2))
             value2 = set(v1).union(set(v2))
             jaccard_values[idx1][idx2] = len(value1) / len(value2)
-            
+
             if verbose:
                 print(k1, v1)
                 print(k2, v2)
@@ -44,30 +46,33 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
         return max_jaccard_values, max_jaccard_indices, jaccard_values
     return list(max_jaccard_values), list(max_jaccard_indices)
 
+
 def get_list_of_node_utterances(node1_utterances):
     if type(node1_utterances) is str:
         return [node1_utterances]
     return node1_utterances
+
 
 def collapse_multinodes(nodes):
     collapsed_nodes = {}
     for key, data in nodes:
         if key not in collapsed_nodes:
             collapsed_nodes[key] = []
-        if isinstance(data['utterances'], str):
-            collapsed_nodes[key].append(data['utterances'])
-        elif isinstance(data['utterances'], list):
-            collapsed_nodes[key].extend(data['utterances'])
+        if isinstance(data["utterances"], str):
+            collapsed_nodes[key].append(data["utterances"])
+        elif isinstance(data["utterances"], list):
+            collapsed_nodes[key].extend(data["utterances"])
     return collapsed_nodes
 
+
 def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return_matrix=False):
-    '''
+    """
     true_graph_nodes: Graph.nodes - вершины истинного графа
     generated_graph_nodes: nx.Graph.nodes - вершины сгенерированного графу
     формат вершин:
     (1, {"utterances": ...})
     verbose: bool - печать отладочной информации
-    '''
+    """
     true_graph_nodes = collapse_multinodes(list(true_graph_nodes))
     generated_graph_nodes = collapse_multinodes(list(generated_graph_nodes))
 
@@ -80,7 +85,7 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
 
             jaccard_nominator = node1_utterances.intersection(node2_utterances)
             jaccard_denominator = node1_utterances.union(node2_utterances)
-            
+
             jaccard_values[node1_id][node2_id] = len(jaccard_nominator) / len(jaccard_denominator)
 
             if verbose:
@@ -92,7 +97,7 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
         print(jaccard_values)
     max_jaccard_values = np.max(jaccard_values[1:], axis=1)
     max_jaccard_indices = np.argmax(jaccard_values[1:], axis=1)
-    max_jaccard_indices =  max_jaccard_indices - np.ones(max_jaccard_indices.shape)
+    max_jaccard_indices = max_jaccard_indices - np.ones(max_jaccard_indices.shape)
     np.place(max_jaccard_indices, max_jaccard_indices < 0, 0)
     max_jaccard_indices = max_jaccard_indices.astype(int)
     if return_matrix:
