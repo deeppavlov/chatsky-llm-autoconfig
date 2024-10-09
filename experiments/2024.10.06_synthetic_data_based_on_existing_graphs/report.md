@@ -9,7 +9,12 @@ So we will try to increase robustness of the generated synthetic data using appr
 
 The overview of the approach is so:
 - Firstly we create a graph of desired configuration
-- 
+- Then we send this graph in a networkx notation and ask a LLM to fill the nodes and edges with the utterances
+- We iterate through triplets and ask another model if such a triplet can exist (it is logical and sensible)
+- If not we mark this triplet and fault and continue
+- We sent faulted triplets to the LLM and re-itrerate several times
+- When we are satisfied with resulted graph we ask LLM to augment it to other themes and situations
+- We move to the next graph
 
 ## Results
 All metrics, insights and overall results go here
