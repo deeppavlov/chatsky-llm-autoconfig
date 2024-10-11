@@ -17,7 +17,8 @@ The overview of the approach is so:
 - We move to the next graph
 
 ## Results
-All metrics, insights and overall results go here
+Created a pipeline for utterance generation for existing graph. Created sampler that returns dialogs from graph. Working on a augmentation.
+Is it better to pass a graph for augmentation or just dialog?
 
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
