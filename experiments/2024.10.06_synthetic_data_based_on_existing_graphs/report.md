@@ -20,5 +20,7 @@ The overview of the approach is so:
 Created a pipeline for utterance generation for existing graph. Created sampler that returns dialogs from graph. Working on a augmentation.
 Is it better to pass a graph for augmentation or just dialog?
 
+For visualisation sake we can use average graph - overlayed multiple graphs where the complementary edges are thicker (also may include average cosine distance between nodes/edges utterances of these graphs as weight)
+
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
