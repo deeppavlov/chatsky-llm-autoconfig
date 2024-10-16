@@ -23,7 +23,7 @@ poetry run python <your_file_name>.py
 ./data - Examples, tests and other dialogue data in JSON format
 ./experiments - Test field for experimental features, test data and results
 ./scripts - Here we put scripts needed for `poethepoet` automation (you probably do not need to look inside)
-./dev_packages/llm_autoconfig - Directory containing all the code for the `llm_autoconfig` module
+./dev_packages/chatsky_llm_autoconfig - Directory containing all the code for the `chatsky_llm_autoconfig` module
 ```
 
 ### Current progress
