@@ -1,4 +1,4 @@
-# dff-llm-integration
+# chatsky-llm-integration
 Chatsky LLM-Autoconfig allows you to effortlessly create chatsky flows and scripts from dialogues using Large Language Models.
 
 ### Setup
