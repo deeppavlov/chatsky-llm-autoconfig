@@ -1,10 +1,22 @@
 # chatsky-llm-integration
 Chatsky LLM-Autoconfig allows you to effortlessly create chatsky flows and scripts from dialogues using Large Language Models.
 
-### Setup
-```
+### How to start?
+You can simply clone this repo and run poetry install to install all dependencies
+```bash
+git clone https://github.com/deeppavlov/chatsky-llm-autoconfig.git
+cd chatsky-llm-autoconfig
 poetry install
 ```
+
+Now you can try to run some scripts or previous experiments to see if everything is working as expected.
+
+To run python file using poetry run the following:
+```bash
+poetry run python <your_file_name>.py
+```
+
+**!!! Put your tokens and other sensitive credentials only in `.env` files and never hardcode them !!!**
 
 ### Contents
 ```
@@ -26,17 +38,8 @@ Currently unsupported types:
   - [ ]  complex graph with cycles
 
 
-### Evaluation Pipeline:
-
-After calculating the Jaccard index, we take all pairs of edge_i -> node -> edge_j, such that jaccard(edge_i, edge_j) > 0 and both edges are incident to the node.
-
-The Triplet Match Accuracy is calculated.
-
-Let's assume we have an ideal graph (ground truth).
-
-To create a graph from scratch based on a dialogue, we attempt to construct a graph and compare it with a subgraph of the ideal graph that should have been obtained after building the graph from scratch using the dialogue. For all subsequent graphs, this task is already considered a graph completion task.
-
-For the graph completion task, we take the graph that should have been obtained after construction based on the current dialogue and compare it with the one produced by the model.
+### How to contribute?
+You can find contribution guideline in [CONTRIBUTING.md](https://github.com/deeppavlov/chatsky-llm-autoconfig/blob/main/CONTRIBUTING.md)
 
 ## Prompts
 
