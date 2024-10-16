@@ -76,10 +76,13 @@ def visualize_graph(graph, title):
     for edge in graph["edges"]:
         G.add_edge(edge["source"], edge["target"], label=edge["utterances"])
 
-    pos = nx.spring_layout(G)
-    nx.draw(G, pos, with_labels=True, node_color="lightblue", node_size=500, font_size=8, arrows=True)
+    pos = nx.kamada_kawai_layout(G)
+    nx.draw(G, pos, with_labels=False, node_color="lightblue", node_size=500, font_size=8, arrows=True)
     edge_labels = nx.get_edge_attributes(G, "label")
-    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=6)
+    node_labels = nx.get_node_attributes(G, "label")
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels, font_size=12)
+    nx.draw_networkx_labels(G, pos, labels=node_labels, font_size=10)
+
     plt.title(title)
     plt.axis("off")
 
@@ -225,7 +228,7 @@ def evaluate_generation(input_json_path, output_directory):
 
 
 if __name__ == "__main__":
-    input_json_path = "data/cycles.json"
-    output_directory = "experiments/results/gpt-4o-mini-cycles"
+    input_json_path = "data/data.json"
+    output_directory = "experiments/results/gpt-4o-mini"
     report_file = evaluate_generation(input_json_path, output_directory)
     print(f"Evaluation complete. Report saved to: {report_file}")

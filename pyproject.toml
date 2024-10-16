@@ -10,6 +10,7 @@ python = "^3.10"
 chatsky_llm_autoconfig = {path = "dev_packages/chatsky_llm_autoconfig", develop = true}
 tqdm = "^4.66.5"
 poethepoet = "^0.29.0"
+pandas = "^2.2.3"
 
 [tool.poetry.group.docs]
 optional = true
@@ -32,6 +33,7 @@ jupyter = "*"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+
 [tool.poetry.group.lint]
 optional = true
 
@@ -41,6 +43,11 @@ isort = "*"
 black = "*"
 mypy = "*"
 
+[tool.poetry.group.tests]
+optional = true
+
+[tool.poetry.group.tests.dependencies]
+pytest = "*"
 
 [tool.poe]
 default_task_type = "script"
