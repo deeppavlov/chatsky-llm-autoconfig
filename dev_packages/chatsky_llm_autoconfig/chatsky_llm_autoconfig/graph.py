@@ -10,15 +10,9 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class TYPES_OF_GRAPH(Enum):
-    DI = 1  # if we do not allow multiedges
-    MULTI = 2  # if we allow multiedges
-
-
 class BaseGraph(BaseModel, abc.ABC):
     graph_dict: dict
     graph: Optional[nx.Graph] = None
-    graph_type: Union[1, 2] = 1
     node_mapping: Optional[dict] = None
 
     class Config:
@@ -40,7 +34,7 @@ class Graph(BaseGraph):
         self.load_graph()
 
     def load_graph(self):
-        self.graph = nx.MultiDiGraph() if self.graph_type == TYPES_OF_GRAPH.MULTI else nx.DiGraph()
+        self.graph = nx.DiGraph()
         nodes = sorted([v["id"] for v in self.graph_dict["nodes"]])
         logging.debug(f"Nodes: {nodes}")
 
