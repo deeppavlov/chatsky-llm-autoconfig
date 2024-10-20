@@ -6,7 +6,9 @@ import json
 import matplotlib.pyplot as plt
 import abc
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 class TYPES_OF_GRAPH(Enum):
     DI = 1  # if we do not allow multiedges
@@ -30,6 +32,7 @@ class BaseGraph(BaseModel, abc.ABC):
     def visualise(self, *args, **kwargs):
         raise NotImplementedError
 
+
 class Graph(BaseGraph):
 
     def __init__(self, graph_dict: dict, **kwargs: Any):
@@ -47,7 +50,6 @@ class Graph(BaseGraph):
             self.node_mapping = {node_id: idx + 1 for idx, node_id in enumerate(nodes)}
         logging.debug(f"Renumber flag: {renumber_flg}")
 
-
         for node in self.graph_dict["nodes"]:
             cur_node_id = node["id"]
             if renumber_flg:
@@ -64,7 +66,7 @@ class Graph(BaseGraph):
             source = self.node_mapping.get(link["source"], link["source"])
             target = self.node_mapping.get(link["target"], link["target"])
             self.graph.add_edges_from([(source, target, {"theme": link.get("theme"), "utterances": link["utterances"]})])
-        
+
     def visualise(self, *args, **kwargs):
         pos = nx.kamada_kawai_layout(self.graph)
         nx.draw(self.graph, pos, with_labels=False, node_color="lightblue", node_size=500, font_size=8, arrows=True)
@@ -77,8 +79,9 @@ class Graph(BaseGraph):
         plt.axis("off")
         plt.show()
 
-if __name__=="__main__":
-    with open('/home/askatasuna/Документы/DeepPavlov/chatsky-llm-autoconfig/data/data.json') as f:
+
+if __name__ == "__main__":
+    with open("/home/askatasuna/Документы/DeepPavlov/chatsky-llm-autoconfig/data/data.json") as f:
         d = json.load(f)
     g = Graph(d[0]["target_graph"])
     # g.visualise()
