@@ -64,7 +64,7 @@ class Graph(BaseGraph):
     def visualise(self, *args, **kwargs):
         pos = nx.kamada_kawai_layout(self.graph)
         nx.draw(self.graph, pos, with_labels=False, node_color="lightblue", node_size=500, font_size=8, arrows=True)
-        edge_labels = nx.get_edge_attributes(self.graph, "label")
+        edge_labels = nx.get_edge_attributes(self.graph, "utterances")
         node_labels = nx.get_node_attributes(self.graph, "label")
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=edge_labels, font_size=12)
         nx.draw_networkx_labels(self.graph, pos, labels=node_labels, font_size=10)
@@ -78,4 +78,4 @@ if __name__ == "__main__":
     with open("/home/askatasuna/Документы/DeepPavlov/chatsky-llm-autoconfig/data/data.json") as f:
         d = json.load(f)
     g = Graph(d[0]["target_graph"])
-    # g.visualise()
+    g.visualise()
