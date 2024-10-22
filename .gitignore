@@ -7,3 +7,4 @@ __pycache__
 *.png
 *.jpg
 *.jpeg
+.mypy_cache
