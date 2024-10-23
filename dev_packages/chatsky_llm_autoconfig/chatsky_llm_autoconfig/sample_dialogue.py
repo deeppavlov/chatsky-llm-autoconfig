@@ -1,13 +1,12 @@
 import random
-import json
 from chatsky_llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
 from chatsky_llm_autoconfig.algorithms import DialogueGenerator
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
 class DialogueSampler(DialogueGenerator):
-    def invoke(graph_obj, start_node, end_node=None, topic=None):
-        nodes = graph_obj.nodes(data=True)
-        edges = graph_obj.edges(data=True)
+    def invoke(graph_obj: Graph, start_node: int, end_node=None, topic=None):
+        nodes = graph_obj.graph.nodes(data=True)
+        edges = graph_obj.graph.edges(data=True)
         current_node_id = start_node
         current_node = nodes[current_node_id]
         dialogue = []

@@ -28,6 +28,5 @@ class GraphGenerator(BaseAlgorithm):
     def __init__(self):
         super().__init__()
     
-    def invoke(self, dialogue: Dialogue, graph : BaseGraph = None) -> BaseGraph:
+    def invoke(self, dialogue: Dialogue, graph : BaseGraph = None, topic: str = "") -> BaseGraph:
         raise NotImplementedError
-
