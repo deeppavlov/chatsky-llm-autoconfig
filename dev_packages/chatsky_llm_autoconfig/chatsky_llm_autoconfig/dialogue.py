@@ -25,7 +25,8 @@ class Dialogue(BaseModel, abc.ABC):
 
     """
 
-    dialogue: list[dict] = [{}]
+    dialogue: list[dict] = []
+    topic: str = ""
 
     class Config:
         arbitrary_types_allowed = True
