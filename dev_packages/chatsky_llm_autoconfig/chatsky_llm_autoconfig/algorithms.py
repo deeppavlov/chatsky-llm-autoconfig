@@ -19,5 +19,14 @@ class DialogueGenerator(BaseAlgorithm):
     def __init__(self):
         super().__init__()
     
-    def invoke(self, graph: BaseGraph) -> Dialogue:
+    def invoke(self, graph: BaseGraph, start_node: int = 1, end_node=None, topic=None) -> Dialogue:
+        raise NotImplementedError
+
+
+class GraphGenerator(BaseAlgorithm):
+    
+    def __init__(self):
+        super().__init__()
+    
+    def invoke(self, dialogue: Dialogue, graph : BaseGraph = None, topic: str = "") -> BaseGraph:
         raise NotImplementedError

@@ -34,6 +34,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 
+
 [tool.poetry.group.lint]
 optional = true
 
@@ -42,6 +43,7 @@ flake8 = "*"
 isort = "*"
 black = "*"
 mypy = "*"
+
 
 [tool.poetry.group.tests]
 optional = true
@@ -56,4 +58,5 @@ default_task_type = "script"
 flake = "scripts.codestyle:_run_flake"
 black = "scripts.codestyle:_run_black(modify=False)"
 format = "scripts.codestyle:_run_black(modify=True)"
+test = "scripts.test:_test"
 lint.sequence = ["flake", "black"]
