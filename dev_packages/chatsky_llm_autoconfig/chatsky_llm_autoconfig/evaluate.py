@@ -6,9 +6,9 @@ import networkx as nx
 from langchain.chat_models import ChatOpenAI
 from dotenv import load_dotenv
 from chatsky_llm_autoconfig.model import DialogModel
-from chatsky_llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
+from chatsky_llm_autoconfig.graph import Graph
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes
-from chatsky_llm_autoconfig.metrics.triplet_matching import triplet_match
+from chatsky_llm_autoconfig.metrics.graph_metrics import triplet_match
 
 load_dotenv()
 
@@ -30,8 +30,8 @@ def generate_graph(dialogue, model_name):
 
 
 def calculate_metrics(generated_graph, target_graph):
-    true_graph = Graph(target_graph, TYPES_OF_GRAPH.MULTI)
-    gen_graph = Graph(generated_graph, TYPES_OF_GRAPH.MULTI)
+    true_graph = Graph(target_graph)
+    gen_graph = Graph(generated_graph)
 
     # Calculate Jaccard similarity for edges and nodes
     edge_similarity, _ = jaccard_edges(true_graph.nx_graph.edges(data=True), gen_graph.nx_graph.edges(data=True))
@@ -189,7 +189,7 @@ def evaluate_generation(input_json_path, output_directory):
         gen_graph = dialogue["graph"]
 
         # Convert to NetworkX graph for analysis
-        nx_graph = Graph(gen_graph, TYPES_OF_GRAPH.MULTI).nx_graph
+        nx_graph = Graph(gen_graph).nx_graph
 
         # Check for cycles
         cycle = has_cycle(nx_graph)

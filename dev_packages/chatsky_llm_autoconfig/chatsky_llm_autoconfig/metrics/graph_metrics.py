@@ -1,6 +1,7 @@
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
-
+from chatsky_llm_autoconfig.graph import BaseGraph
+from chatsky_llm_autoconfig.dialogue import Dialogue
 
 def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict):
@@ -17,9 +18,9 @@ def parse_edge(edge):
     return src - 1, trg - 1
 
 
-def triplet_match(G1, G2, change_to_original_ids=False):
-    g1 = G1.nx_graph
-    g2 = G2.nx_graph
+def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
+    g1 = G1.graph
+    g2 = G2.graph
     node_mapping = {node: None for node in g1.nodes}
     node_mapping.update({node: None for node in g2.nodes})
     if type(g1) is nx.DiGraph():
@@ -95,3 +96,23 @@ def triplet_match(G1, G2, change_to_original_ids=False):
         return new_node_mapping, new_edge_mapping
 
     return node_mapping, edge_mapping
+
+def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
+    g1 = G1.graph
+    g2 = G2.graph
+    return nx.is_isomorphic(g1, g2)
+
+def all_utterances_present(G: BaseGraph, dialogue: Dialogue) -> bool:
+    pass
+
+def all_paths_sampled(G: BaseGraph, dialogues: list[Dialogue]) -> bool:
+    pass
+
+def all_roles_correct(D1: Dialogue, D2: Dialogue) -> bool:
+    pass
+
+def is_correct_lenght(D1: Dialogue, D2: Dialogue) -> bool:
+    pass
+
+def are_answers_similar(D1: Dialogue, D2: Dialogue, threshold: float) -> bool:
+    pass
