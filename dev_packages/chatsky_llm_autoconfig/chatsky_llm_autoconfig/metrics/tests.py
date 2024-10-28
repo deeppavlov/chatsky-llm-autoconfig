@@ -1,5 +1,5 @@
 from jaccard import jaccard_nodes, jaccard_edges
-from chatsky_llm_autoconfig.graph import Graph, TYPES_OF_GRAPH
+from chatsky_llm_autoconfig.graph import Graph
 import json
 import numpy as np
 
@@ -8,8 +8,8 @@ def load_graphs(test_name):
     with open(f"metrics/test_cases/{test_name}.json", "r") as f:
         content = json.load(f)
 
-    G1 = Graph(content["true"], TYPES_OF_GRAPH.MULTI).nx_graph
-    G2 = Graph(content["generated"], TYPES_OF_GRAPH.MULTI).nx_graph
+    G1 = Graph(content["true"]).nx_graph
+    G2 = Graph(content["generated"]).nx_graph
     return G1, G2
 
 
