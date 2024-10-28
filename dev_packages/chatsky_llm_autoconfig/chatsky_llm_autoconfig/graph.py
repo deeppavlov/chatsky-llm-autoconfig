@@ -1,8 +1,6 @@
-from enum import Enum
 import networkx as nx
-from pydantic import BaseModel
-from typing import Optional, Any, Union
-import json
+from pydantic import Field, BaseModel
+from typing import Optional, Any, List
 import matplotlib.pyplot as plt
 import abc
 import logging
@@ -73,9 +71,20 @@ class Graph(BaseGraph):
         plt.axis("off")
         plt.show()
 
+"""
+Pydantic models for Langchain structured output
+"""
+class Edge(BaseModel):
+    source: int = Field(description="ID of the source node")
+    target: int = Field(description="ID of the target node")
+    utterances: str = Field(description="User's utterance that triggers this transition")
 
-if __name__ == "__main__":
-    with open("/home/askatasuna/Документы/DeepPavlov/chatsky-llm-autoconfig/data/data.json") as f:
-        d = json.load(f)
-    g = Graph(d[0]["target_graph"])
-    g.visualise()
+class Node(BaseModel):
+    id: int = Field(description="Unique identifier for the node")
+    label: str = Field(description="Label describing the node's purpose")
+    is_start: bool = Field(description="Whether this is the starting node")
+    utterances: List[str] = Field(description="Possible assistant responses at this node")
+
+class DialogueGraph(BaseModel):
+    edges: List[Edge] = Field(description="List of transitions between nodes")
+    nodes: List[Node] = Field(description="List of nodes representing assistant states")

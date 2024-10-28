@@ -33,7 +33,7 @@ class DialogueGenerator(BaseAlgorithm):
     def __init__(self):
         super().__init__()
     
-    def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = None, topic: str = None) -> Dialogue:
+    def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = 0, topic: str = "") -> Dialogue:
         raise NotImplementedError
 
 
@@ -50,7 +50,7 @@ class DialogAugmentation(BaseAlgorithm):
     def __init__(self):
         super().__init__()
     
-    def invoke(self, dialogue: Dialogue, topic : str = None) -> Dialogue:
+    def invoke(self, dialogue: Dialogue, topic : str = "") -> Dialogue:
         raise NotImplementedError
 
 
