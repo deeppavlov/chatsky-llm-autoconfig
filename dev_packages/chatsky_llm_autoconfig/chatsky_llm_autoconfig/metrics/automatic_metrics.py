@@ -1,7 +1,16 @@
+"""
+Automatic Metrics.
+------------------
+
+This module contains functions that automatically (without using LLMs) checks Graphs and Dialogues
+for various metrics.
+"""
+
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
+
 
 def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict):
@@ -97,59 +106,64 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
 
     return node_mapping, edge_mapping
 
+
 def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
     g1 = G1.graph
     g2 = G2.graph
     return nx.is_isomorphic(g1, g2)
 
+
 def all_paths_sampled(G: BaseGraph, dialogue: Dialogue) -> bool:
     pass
+
 
 def all_utterances_present(G: BaseGraph, dialogues: list[Dialogue]) -> bool:
     """
     Check if all graph elements (nodes and edges) appear in at least one dialogue.
-    
+
     Args:
         G: BaseGraph object containing the dialogue graph
         dialogues: List of Dialogue objects to check against
-    
+
     Returns:
         bool: True if all graph elements are present in at least one dialogue
     """
     # Get all unique utterances from nodes and edges in the graph
     graph_utterances = set()
-    
+
     # Add node utterances
     for node_id, node_data in G.graph.nodes(data=True):
-        graph_utterances.update(node_data['utterances'])
-    
+        graph_utterances.update(node_data["utterances"])
+
     # Add edge utterances
     for _, _, edge_data in G.graph.edges(data=True):
-        if isinstance(edge_data['utterances'], list):
-            graph_utterances.update(edge_data['utterances'])
+        if isinstance(edge_data["utterances"], list):
+            graph_utterances.update(edge_data["utterances"])
         else:
-            graph_utterances.add(edge_data['utterances'])
-    
+            graph_utterances.add(edge_data["utterances"])
+
     # Collect all utterances from dialogues
     dialogue_utterances = set()
     for dialogue in dialogues:
-        dialogue_utterances.update(utt['text'] for utt in dialogue.dialogue)
-    
+        dialogue_utterances.update(utt["text"] for utt in dialogue.dialogue)
+
     # Check if all graph utterances are present in dialogues
     if graph_utterances.issubset(dialogue_utterances):
         return True
     else:
         return graph_utterances.difference(dialogue_utterances)
-    
+
 
 def all_roles_correct(D1: Dialogue, D2: Dialogue) -> bool:
     for phrase_1, phrase_2 in zip(D1.dialogue, D2.dialogue):
-        if phrase_1['participant'] != phrase_2['participant']:
+        if phrase_1["participant"] != phrase_2["participant"]:
             return False
     return True
 
+
 def is_correct_lenght(D1: Dialogue, D2: Dialogue) -> bool:
     return len(D1.dialogue) == len(D2.dialogue)
+
 
 def are_answers_similar(D1: Dialogue, D2: Dialogue, model, threshold: float) -> bool:
     raise NotImplementedError
