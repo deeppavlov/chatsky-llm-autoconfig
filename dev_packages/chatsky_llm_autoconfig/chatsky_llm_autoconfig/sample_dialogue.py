@@ -4,63 +4,59 @@ from chatsky_llm_autoconfig.algorithms import DialogueGenerator
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
 class DialogueSampler(DialogueGenerator):
-    def invoke(self, graph: BaseGraph, start_node: int, end_node: int=-1, topic="") -> Dialogue:
-        nodes = graph.graph.nodes(data=True)
-        edges = graph.graph.edges(data=True)
-        current_node_id = start_node
-        current_node = nodes[current_node_id]
-        dialogue = []
-        graph_to_sample = {"nodes": [], "edges": []}
-
-        while not (current_node_id == start_node and dialogue != []) or current_node_id == end_node:
-
-            utterance = random.choice(current_node["utterances"])
-            dialogue.append({"text": utterance, "participant": "assistant"})
-
-            graph_to_sample["nodes"].append(
-                {
-                    "id": current_node_id,
-                    "label": graph.nodes[current_node_id]["label"],
-                    "theme": graph.nodes[current_node_id]["theme"],
-                    "utterances": [utterance],
-                }
-            )
-
-            possible_edges = [edge for edge in edges if edge[0] == current_node_id]
-            if not possible_edges:
-                break
-
-            if topic is not None:
-                chosen_edge = random.choice(possible_edges)
-                while graph.edges[chosen_edge[0], chosen_edge[1]]["theme"] != topic:
-                    chosen_edge = random.choice(possible_edges)
-
-            if isinstance(chosen_edge[2]["utterances"], list):
-                edge_utterance = random.choice(chosen_edge[2]["utterances"])
-            else:
-                edge_utterance = chosen_edge[2]["utterances"]
-
-            dialogue.append(
-                {
-                    "text": edge_utterance,
-                    "participant": "user",
-                    "source": chosen_edge[0],
-                    "target": chosen_edge[1],
-                }
-            )
-
-            graph_to_sample["edges"].append(
-                {
-                    "source": chosen_edge[0],
-                    "target": chosen_edge[1],
-                    "theme": graph.edges[chosen_edge[0], chosen_edge[1]]["theme"],
-                    "utterances": [edge_utterance],
-                }
-            )
-
-            current_node_id = chosen_edge[1]
-            current_node = nodes[current_node_id]
-        return Dialogue(dialogue=dialogue)
+    def invoke(self, graph: BaseGraph, start_node: int=1, end_node: int=-1, topic="") -> list[Dialogue]:
+        nx_graph = graph.graph
+        if end_node == -1:
+            end_node = list(nx_graph.nodes)[-1]
+        
+        all_dialogues = []
+        start_nodes = [n for n, attr in nx_graph.nodes(data=True) if attr.get("is_start", n == start_node)]
+        
+        for start in start_nodes:
+            # Stack contains: (current_node, path, visited_edges)
+            stack = [(start, [], set())]
+            
+            while stack:
+                current_node, path, visited_edges = stack.pop()
+                
+                # Add assistant utterance
+                current_utterance = random.choice(nx_graph.nodes[current_node]["utterances"])
+                path.append({"text": current_utterance, "participant": "assistant"})
+                
+                if current_node == end_node:
+                    all_dialogues.append(Dialogue(dialogue=path.copy()))
+                    path.pop()
+                    continue
+                
+                # Get all outgoing edges
+                edges = list(nx_graph.edges(current_node, data=True))
+                
+                # Process each edge
+                for source, target, edge_data in edges:
+                    edge_key = (source, target)
+                    if edge_key in visited_edges:
+                        continue
+                        
+                    # if topic and edge_data.get("theme") != topic:
+                    #     continue
+                    
+                    edge_utterance = random.choice(edge_data["utterances"]) if isinstance(edge_data["utterances"], list) else edge_data["utterances"]
+                    
+                    # Create new path and visited_edges for this branch
+                    new_path = path.copy()
+                    new_path.append({
+                        "text": edge_utterance,
+                        "participant": "user",
+                        "source": source,
+                        "target": target
+                    })
+                    
+                    new_visited = visited_edges | {edge_key}
+                    stack.append((target, new_path, new_visited))
+                
+                path.pop()
+                
+        return all_dialogues
 
     async def ainvoke(self, *args, **kwargs):
-        return await super().ainvoke(*args, **kwargs)
+        return self.invoke(*args, **kwargs)

@@ -8,3 +8,4 @@ __pycache__
 *.jpg
 *.jpeg
 .pytest_cache
+.mypy_cache
