@@ -71,19 +71,24 @@ class Graph(BaseGraph):
         plt.axis("off")
         plt.show()
 
+
 """
 Pydantic models for Langchain structured output
 """
+
+
 class Edge(BaseModel):
     source: int = Field(description="ID of the source node")
     target: int = Field(description="ID of the target node")
     utterances: str = Field(description="User's utterance that triggers this transition")
+
 
 class Node(BaseModel):
     id: int = Field(description="Unique identifier for the node")
     label: str = Field(description="Label describing the node's purpose")
     is_start: bool = Field(description="Whether this is the starting node")
     utterances: List[str] = Field(description="Possible assistant responses at this node")
+
 
 class DialogueGraph(BaseModel):
     edges: List[Edge] = Field(description="List of transitions between nodes")
