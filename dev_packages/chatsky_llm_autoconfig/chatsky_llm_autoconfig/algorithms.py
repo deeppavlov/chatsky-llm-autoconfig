@@ -3,17 +3,18 @@ import abc
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
+
 class BaseAlgorithm(BaseModel, abc.ABC):
     """
     Base class for all algorithms that interact with Dialogues or Graphs.
 
     This class defines the interface for invoking algorithms, both synchronously and asynchronously.
     """
-    
+
     @abc.abstractmethod
     def invoke(self, *args, **kwargs):
         raise NotImplementedError
-    
+
     @abc.abstractmethod
     async def ainvoke(self, *args, **kwargs):
         raise NotImplementedError
@@ -30,9 +31,10 @@ class DialogueGenerator(BaseAlgorithm):
     :param end_node: The ending node in the Graph for the generation process (optional).
     :param topic: The topic to guide the generation process (optional).
     """
+
     def __init__(self):
         super().__init__()
-    
+
     def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = 0, topic: str = "") -> Dialogue:
         raise NotImplementedError
 
@@ -47,10 +49,11 @@ class DialogAugmentation(BaseAlgorithm):
     :param dialogue: The Dialogue object to be augmented.
     :param topic: The topic to guide the augmentation process (optional).
     """
+
     def __init__(self):
         super().__init__()
-    
-    def invoke(self, dialogue: Dialogue, topic : str = "") -> Dialogue:
+
+    def invoke(self, dialogue: Dialogue, topic: str = "") -> Dialogue:
         raise NotImplementedError
 
 
@@ -64,8 +67,9 @@ class GraphGenerator(BaseAlgorithm):
     :param graph: An existing Graph object to base the generation on (optional).
     :param topic: The topic to guide the Graph generation process (optional).
     """
+
     def __init__(self):
         super().__init__()
-    
-    def invoke(self, dialogue: Dialogue, graph : BaseGraph = None, topic: str = "") -> BaseGraph:
+
+    def invoke(self, dialogue: Dialogue, graph: BaseGraph = None, topic: str = "") -> BaseGraph:
         raise NotImplementedError

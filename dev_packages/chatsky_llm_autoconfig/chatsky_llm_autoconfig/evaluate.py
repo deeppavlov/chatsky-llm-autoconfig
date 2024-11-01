@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 from chatsky_llm_autoconfig.model import DialogModel
 from chatsky_llm_autoconfig.graph import Graph
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes
-from chatsky_llm_autoconfig.metrics.graph_metrics import triplet_match
+from chatsky_llm_autoconfig.metrics.automatic_metrics import triplet_match
 
 load_dotenv()
 
