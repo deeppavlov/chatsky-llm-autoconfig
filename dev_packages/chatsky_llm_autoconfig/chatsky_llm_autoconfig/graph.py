@@ -60,10 +60,11 @@ class Graph(BaseGraph):
             self.graph.add_edges_from([(source, target, {"theme": link.get("theme"), "utterances": link["utterances"]})])
 
     def visualise(self, *args, **kwargs):
-        pos = nx.kamada_kawai_layout(self.graph)
+        plt.figure(figsize=(17, 11))  # Make the plot bigger
+        pos = nx.spring_layout(self.graph)
         nx.draw(self.graph, pos, with_labels=False, node_color="lightblue", node_size=500, font_size=8, arrows=True)
         edge_labels = nx.get_edge_attributes(self.graph, "utterances")
-        node_labels = nx.get_node_attributes(self.graph, "label")
+        node_labels = nx.get_node_attributes(self.graph, "utterances")
         nx.draw_networkx_edge_labels(self.graph, pos, edge_labels=edge_labels, font_size=12)
         nx.draw_networkx_labels(self.graph, pos, labels=node_labels, font_size=10)
 
