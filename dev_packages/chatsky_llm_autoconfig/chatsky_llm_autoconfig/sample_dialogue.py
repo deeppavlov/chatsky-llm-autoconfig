@@ -25,6 +25,17 @@ class DialogueSampler(DialogueGenerator):
                 path.append({"text": current_utterance, "participant": "assistant"})
 
                 if current_node == end_node:
+                    # Check if the last node has edges and add the last edge utterances
+                    edges = list(nx_graph.edges(current_node, data=True))
+                    if edges:
+                        last_edge_data = edges[-1][2]  # Get the last edge's data
+                        last_edge_utterance = (
+                            random.choice(last_edge_data["utterances"])
+                            if isinstance(last_edge_data["utterances"], list)
+                            else last_edge_data["utterances"]
+                        )
+                        path.append({"text": last_edge_utterance, "participant": "user", "source": edges[-1][0], "target": edges[-1][1]})
+
                     all_dialogues.append(Dialogue(dialogue=path.copy()))
                     path.pop()
                     continue

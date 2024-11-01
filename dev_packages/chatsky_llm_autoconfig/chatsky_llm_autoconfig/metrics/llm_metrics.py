@@ -14,6 +14,17 @@ from typing import List
 from langchain_core.output_parsers import PydanticOutputParser
 
 
+class BaseLLMMetric(BaseModel):
+    model: BaseChatModel
+
+    def invoke(self):
+        raise NotImplementedError
+
+
+class TripletValidation(BaseLLMMetric):
+    pass
+
+
 def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]:
     """
     Validates the dialog graph structure and logical transitions between nodes.
