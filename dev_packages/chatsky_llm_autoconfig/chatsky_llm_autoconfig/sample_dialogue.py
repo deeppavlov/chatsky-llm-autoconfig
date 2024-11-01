@@ -34,7 +34,7 @@ class DialogueSampler(DialogueGenerator):
                             if isinstance(last_edge_data["utterances"], list)
                             else last_edge_data["utterances"]
                         )
-                        path.append({"text": last_edge_utterance, "participant": "user", "source": edges[-1][0], "target": edges[-1][1]})
+                        path.append({"text": last_edge_utterance, "participant": "user"})
 
                     all_dialogues.append(Dialogue(dialogue=path.copy()))
                     path.pop()
@@ -56,7 +56,7 @@ class DialogueSampler(DialogueGenerator):
 
                     # Create new path and visited_edges for this branch
                     new_path = path.copy()
-                    new_path.append({"text": edge_utterance, "participant": "user", "source": source, "target": target})
+                    new_path.append({"text": edge_utterance, "participant": "user"})
 
                     new_visited = visited_edges | {edge_key}
                     stack.append((target, new_path, new_visited))
