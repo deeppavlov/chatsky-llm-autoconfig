@@ -1,0 +1,102 @@
+{
+"dialogue": [
+            {
+                "text": "How can I help?",
+                "participant": "assistant"
+            },
+            {
+                "text": "I need to make an order",
+                "participant": "user"
+            },
+            {
+                "text": "Which books would you like to order?",
+                "participant": "assistant"
+            },
+            {
+                "text": "One War and Piece in hard cover and one Pride and Prejudice",
+                "participant": "user"
+            },
+            {
+                "text": "Please, enter the payment method you would like to use: cash or credit card.",
+                "participant": "assistant"
+            },
+            {
+                "text": "With credit card, please",
+                "participant": "user"
+            },
+            {
+                "text": "Something is wrong, can you please use other payment method or start order again",
+                "participant": "assistant"
+            },
+            {
+                "text": "I will enter new payment method",
+                "participant": "user"
+            }
+        ],
+        "graph": {
+            "edges": [
+                {
+                    "utterances": [
+                        "I need to make an order"
+                    ],
+                    "source": 1,
+                    "target": 2
+                },
+                {
+                    "utterances": [
+                        "I would like to purchase 'Pale Fire' and 'Anna Karenina', please"
+                    ],
+                    "source": 2,
+                    "target": 3
+                },
+                {
+                    "utterances": [
+                        "Cash"
+                    ],
+                    "source": 3,
+                    "target": 4
+                },
+                {
+                    "utterances": [
+                        "Start new order"
+                    ],
+                    "source": 4,
+                    "target": 1
+                }
+            ],
+            "nodes": [
+                {
+                    "id": 1,
+                    "label": "start",
+                    "is_start": true,
+                    "utterances": [
+                        "How can I help?"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "label": "ask_item",
+                    "is_start": false,
+                    "utterances": [
+                        "Which books would you like to order?"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "label": "ask_payment_method",
+                    "is_start": false,
+                    "utterances": [
+                        "Please, enter the payment method you would like to use: cash or credit card."
+                    ]
+                },
+                {
+                    "id": 4,
+                    "label": "ask_to_redo",
+                    "is_start": false,
+                    "utterances": [
+                        "Something is wrong, can you please use other payment method or start order again"
+                    ]
+                }
+            ]
+        }
+}
