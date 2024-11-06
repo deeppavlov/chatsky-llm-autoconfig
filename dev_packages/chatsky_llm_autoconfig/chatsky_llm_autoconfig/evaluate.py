@@ -117,7 +117,7 @@ def save_mean_metrics(mean_metrics, output_path):
             f.write(f"{metric}: {value:.4f}\n")
 
 
-def evaluate_model(input_json_path, output_directory, model_name):
+def evaluate_model(input_json_path, output_directory):
     os.makedirs(output_directory, exist_ok=True)
 
     dialogues = load_dialogues(input_json_path)
@@ -230,5 +230,5 @@ def evaluate_generation(input_json_path, output_directory):
 if __name__ == "__main__":
     input_json_path = "data/data.json"
     output_directory = "experiments/results/gpt-4o-mini"
-    report_file = evaluate_generation(input_json_path, output_directory)
+    report_file = evaluate_model(input_json_path, output_directory)
     print(f"Evaluation complete. Report saved to: {report_file}")
