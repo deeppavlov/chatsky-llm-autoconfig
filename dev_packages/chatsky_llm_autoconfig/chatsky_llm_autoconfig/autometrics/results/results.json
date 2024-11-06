@@ -4,5 +4,21 @@
       "all_paths_sampled": true,
       "all_utterances_present": true
     }
+  },
+  "2024-11-06 12:50:44.905469": {
+    "DialogueSampler": {
+      "all_paths_sampled": true,
+      "all_utterances_present": true
+    }
+  },
+  "2024-11-06 14:24:21.022803": {
+    "DialogueSampler": {
+      "all_paths_sampled": true,
+      "all_utterances_present": true
+    },
+    "DialogueSampler2": {
+      "all_paths_sampled": true,
+      "all_utterances_present": true
+    }
   }
 }
