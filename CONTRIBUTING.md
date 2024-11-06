@@ -29,12 +29,21 @@ In order to update versions specified in poetry.lock, run
 poetry update
 ```
 
+## How to test your code
+To test your algorithm or pipeline you need to follow these steps:
+1. Decorate your class with AlgorithRegistry.register() like so:
+```python
+from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
+
+@AlgorithmRegistry.register(input_type=BaseGraph, output_type=list[Dialogue])
+class DialogueSampler(DialogueGenerator)
+```
+2. Make sure that `input_type` and `output_type` are matching with the signature of `.invoke()` method
+
+
 ## How to Contribute
 1. Make your changes and test hypothesis in the `./experiments` folder as it is described in **Conducting experiments** section
-2. Write if needed and run the tests from the `./tests` folder via
-```
-poetry run pytest tests/<your_tests_directory>
-```
+
 3. Ensure linting using commands as
 ```
 poetry run poe lint
