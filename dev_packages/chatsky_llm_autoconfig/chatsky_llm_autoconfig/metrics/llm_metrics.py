@@ -17,6 +17,7 @@ import logging
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
+
 def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]:
     """
     Validates the dialog graph structure and logical transitions between nodes.
@@ -106,12 +107,12 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
             "source_utterances": source_utterances,
             "edge_utterances": edge_utterances,
             "target_utterances": target_utterances,
-            "topic": topic
+            "topic": topic,
         }
-        
+
         triplet_check_chain = triplet_validate_prompt | model | parser
         response = triplet_check_chain.invoke(input_data)
-        
+
         if not response.isValid:
             overall_valid = False
             description = f"Invalid transition from {source_utterances} to {target_utterances} via edge '{edge_utterances}': {response.description}"
@@ -120,6 +121,7 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
 
     result = {"value": overall_valid, "description": " ".join(descriptions) if descriptions else "All transitions are valid."}
     return result
+
 
 def are_theme_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]:
     """
@@ -133,6 +135,7 @@ def are_theme_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]
     Returns:
         dict: {'value': bool, 'description': str}
     """
+
     class ThemeValidationResult(BaseModel):
         isValid: bool = Field(description="Whether the dialog stays on theme")
         description: str = Field(description="Explanation of why it's valid or invalid")
@@ -140,43 +143,43 @@ def are_theme_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]
     theme_validate_prompt = PromptTemplate(
         input_variables=["utterances", "topic"],
         template="""
-        Analyze the following dialog utterances and determine if they stay on the expected topic.
+        You are given a dialog between assistant and a user.
+        Analyze the following dialog and determine if it stays on the expected topic.
         
         Expected Topic: {topic}
         
         Dialog utterances:
         {utterances}
         
-        Provide your answer in JSON format:
-        {{"isValid": true or false, "description": "Explanation of why the dialog does or doesn't stay on topic"}}
-        """
+        Provide your answer in the following JSON format:
+        {{"isValid": true or false, "description": "Explanation of why it's valid or invalid."}}
+
+        Your answer:
+        """,
     )
-    
+
     parser = PydanticOutputParser(pydantic_object=ThemeValidationResult)
-    
+
     # Extract all utterances from the graph
-    graph = G.graph
+    graph = G.graph_dict
     all_utterances = []
-    
+
     # Get assistant utterances from nodes
     for node in graph["nodes"]:
         all_utterances.extend(node.get("utterances", []))
-    
+
     # Get user utterances from edges
     for edge in graph["edges"]:
         all_utterances.extend(edge.get("utterances", []))
-    
+
     # Format utterances for the prompt
     formatted_utterances = "\n".join([f"- {utterance}" for utterance in all_utterances])
-    
+
     # Prepare input data
-    input_data = {
-        "utterances": formatted_utterances,
-        "topic": topic
-    }
-    
+    input_data = {"utterances": formatted_utterances, "topic": topic}
+
     # Create and run the chain
     theme_check_chain = theme_validate_prompt | model | parser
     response = theme_check_chain.invoke(input_data)
-    
+
     return {"value": response.isValid, "description": response.description}

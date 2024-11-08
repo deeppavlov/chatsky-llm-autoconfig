@@ -7,13 +7,14 @@ import json
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.metrics.automatic_metrics import *
-from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid
+from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
 import datetime
 from colorama import Fore
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
-load_dotenv() 
+
+load_dotenv()
 
 
 model = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
@@ -21,6 +22,7 @@ model = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"), base_url
 with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json") as f:
     test_data = json.load(f)
     graph_to_dialogue = test_data["graph_to_dialogue"]
+    graph_to_graph = test_data["graph_to_graph"]
     dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
 
 
@@ -35,11 +37,7 @@ def run_all_algorithms():
         metrics = {}
 
         if algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is Dialogue:
-            metrics = {
-                "all_paths_sampled": [],
-                "all_utterances_present": [],
-                "are_triplets_valid": []
-            }
+            metrics = {"all_paths_sampled": [], "all_utterances_present": [], "are_triplets_valid": []}
             for case in graph_to_dialogue:
                 test_dialogue = Dialogue(dialogue=case["dialogue"])
                 test_graph = Graph(graph_dict=case["graph"])
@@ -69,19 +67,30 @@ def run_all_algorithms():
             metrics["is_correct_lenght_avg"] = sum(metrics["is_correct_lenght"]) / len(metrics["is_correct_lenght"])
 
         elif algorithms[class_]["input_type"] is str and algorithms[class_]["output_type"] is BaseGraph:
-            result = class_instance.invoke(test_dialogue)
-            metrics = {}
-        
-        elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:
-            result = class_instance.invoke(test_dialogue)
-            metrics = {}
+            metrics = {"are_theme_valid": []}
+            for case in graph_to_dialogue:
+                test_graph = Graph(graph_dict=case["graph"])
+                result = class_instance.invoke(test_graph)
 
+                metrics["are_theme_valid"].append(are_theme_valid(result, model, topic="")["value"])
+
+            metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
+
+        elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:
+            metrics = {"are_theme_valid": []}
+            for case in graph_to_dialogue:
+                test_graph = Graph(graph_dict=case["graph"])
+                result = class_instance.invoke(test_graph)
+
+                metrics["are_theme_valid"].append(are_theme_valid(result, model, topic="")["value"])
+
+            metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
         total_metrics[class_] = metrics
 
     return total_metrics
 
 
-def compare_results(date, old_data, compare_to: str=""):
+def compare_results(date, old_data, compare_to: str = ""):
 
     current_metrics = old_data.get(date, {})
     if previous_date == "":
