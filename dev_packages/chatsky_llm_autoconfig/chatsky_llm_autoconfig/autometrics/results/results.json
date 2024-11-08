@@ -1,24 +1,66 @@
 {
-  "2024-11-06 01:03:16.054569": {
+  "2024-11-08 08:36:09.361006": {
     "DialogueSampler": {
-      "all_paths_sampled": true,
-      "all_utterances_present": true
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        false,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.3333333333333333
     }
   },
-  "2024-11-06 12:50:44.905469": {
+  "2024-11-08 08:46:12.796705": {
     "DialogueSampler": {
-      "all_paths_sampled": true,
-      "all_utterances_present": true
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
     }
   },
-  "2024-11-06 14:24:21.022803": {
+  "2024-11-08 08:59:00.654385": {
     "DialogueSampler": {
-      "all_paths_sampled": true,
-      "all_utterances_present": true
-    },
-    "DialogueSampler2": {
-      "all_paths_sampled": true,
-      "all_utterances_present": true
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    }
+  },
+  "2024-11-08 09:00:40.185875": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
     }
   }
 }
