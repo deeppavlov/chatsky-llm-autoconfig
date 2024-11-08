@@ -39,7 +39,11 @@ from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 class DialogueSampler(DialogueGenerator)
 ```
 2. Make sure that `input_type` and `output_type` are matching with the signature of `.invoke()` method
-
+3. Run
+```bash
+poetry run python dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/run_autometrics.py
+```
+4. If metrics didn't drop then everything is fine. Add, commit and push as usual.
 
 ## How to Contribute
 1. Make your changes and test hypothesis in the `./experiments` folder as it is described in **Conducting experiments** section
