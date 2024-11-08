@@ -8,6 +8,7 @@ from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.metrics.automatic_metrics import *
 import datetime
+from colorama import Fore
 
 
 with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json") as f:
@@ -19,6 +20,7 @@ def run_all_algorithms():
     # Get all registered classes
     algorithms = AlgorithmRegistry.get_all()
     print("Classes to test:", *algorithms.keys(), sep="\n")
+    print("------------------\n\n")
     total_metrics = {}
     for class_ in algorithms:
         class_instance = algorithms[class_]["type"]()
@@ -92,6 +94,15 @@ def compare_results(date, old_data):
                 )
             }
 
+    for algorithm, diff in differences.items():
+        print(f"Algorithm: {algorithm}")
+        for metric, value in diff.items():
+            if value < 0:
+                print(f"{metric}: {Fore.RED}{value}{Fore.RESET}")
+            elif value > 0:
+                print(f"{metric}: {Fore.GREEN}{value}{Fore.RESET}")
+            else:
+                print(f"{metric}: {Fore.YELLOW}{value}{Fore.RESET}")
     return differences
 
 
@@ -102,7 +113,7 @@ if __name__ == "__main__":
     date = str(datetime.datetime.now())
     new_metrics = {date: run_all_algorithms()}
     old_data.update(new_metrics)
-    print(compare_results(date, old_data))
+    compare_results(date, old_data)
 
     with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/results/results.json", "w") as f:
         f.write(json.dumps(old_data, indent=2, ensure_ascii=False))
