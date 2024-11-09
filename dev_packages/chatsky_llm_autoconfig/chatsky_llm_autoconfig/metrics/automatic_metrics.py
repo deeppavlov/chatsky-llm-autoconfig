@@ -32,7 +32,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     g2 = G2.graph
     node_mapping = {node: None for node in g1.nodes}
     node_mapping.update({node: None for node in g2.nodes})
-    if type(g1) is nx.DiGraph():
+    if type(g1) is nx.DiGraph:
         GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
@@ -51,6 +51,8 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
     _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
+
+    print("1: ", g1.edges(data=True))
 
     for i, edge1 in enumerate(edges1):
         edge_mapping[edge1] = None

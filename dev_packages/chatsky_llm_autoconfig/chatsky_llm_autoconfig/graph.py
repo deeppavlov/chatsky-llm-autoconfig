@@ -81,6 +81,7 @@ Pydantic models for Langchain structured output
 class Edge(BaseModel):
     source: int = Field(description="ID of the source node")
     target: int = Field(description="ID of the target node")
+    #utterances: List[str] = Field(description="User's utterance that triggers this transition")
     utterances: str = Field(description="User's utterance that triggers this transition")
 
 

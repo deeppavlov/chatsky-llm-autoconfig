@@ -3,6 +3,16 @@ import random
 import json
 from chatsky_llm_autoconfig.graph import Graph
 from langchain.schema import HumanMessage
+from typing import Optional
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class EnvSettings(BaseSettings, case_sensitive=True):
+
+    model_config = SettingsConfigDict(env_file='chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
+
+    OPENAI_API_KEY: Optional[str]
+    OPENAI_BASE_URL: Optional[str]
 
 
 # all func are currently unused
