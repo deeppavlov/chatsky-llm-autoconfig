@@ -1,3 +1,4 @@
+from typing import List
 from pydantic import BaseModel
 import abc
 from chatsky_llm_autoconfig.graph import BaseGraph
@@ -35,7 +36,7 @@ class DialogueGenerator(BaseAlgorithm):
     def __init__(self):
         super().__init__()
 
-    def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = 0, topic: str = "") -> Dialogue:
+    def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = 0, topic: str = "") -> List[Dialogue]:
         raise NotImplementedError
 
 
