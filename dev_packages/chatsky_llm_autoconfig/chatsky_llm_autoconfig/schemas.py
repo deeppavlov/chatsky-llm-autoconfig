@@ -24,5 +24,11 @@ class DialogueGraph(BaseModel):
 
 
 class DialogueMessage(BaseModel):
+    """Represents a single message in a dialogue.
+
+    Attributes:
+        text: The content of the message
+        participant: The sender of the message (e.g. "user" or "assistant")
+    """
     text: str
     participant: str

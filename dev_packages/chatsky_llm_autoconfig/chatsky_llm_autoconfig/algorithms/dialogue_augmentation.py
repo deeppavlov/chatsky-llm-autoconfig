@@ -1,5 +1,6 @@
 
 
+from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.schemas import DialogueMessage
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -7,6 +8,7 @@ from typing import List
 
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
+import os
 
 augmentation_prompt = PromptTemplate.from_template("""
 You are tasked with augmenting a dialogue by adding variations to existing utterances while maintaining the original dialogue flow and intent.
@@ -51,20 +53,60 @@ class DialogueSequence(BaseModel):
     result: List[DialogueMessage]
 
 
-parser = JsonOutputParser(pydantic_object=DialogueSequence)
+class DialogAugmentation(BaseModel):
+    """Base class for augmenting Dialogues."""
 
-# Usage
-model = ChatOpenAI(
-    model="gpt-4o-mini",
-    api_key=os.getenv("OPENAI_API_KEY"),
-    base_url=os.getenv("OPENAI_BASE_URL"),
-    temperature=0.7
-)
+    def __init__(self, **data):
+        super().__init__(**data)
+        self.parser = JsonOutputParser(pydantic_object=DialogueSequence)
+        self.model = ChatOpenAI(
+            model="gpt-4o-mini",
+            api_key=os.getenv("OPENAI_API_KEY"),
+            base_url=os.getenv("OPENAI_BASE_URL"),
+            temperature=0.7
+        )
+        self.chain = augmentation_prompt | self.model | self.parser
 
-chain = augmentation_prompt | model | parser
+    def invoke(self, *, dialogue: Dialogue, topic: str = "") -> Dialogue:
+        """
+        Augment the input dialogue with variations.
 
+        Args:
+            dialogue: The input Dialogue object to augment
+            topic: Optional topic to guide the augmentation
 
-result = chain.invoke({
-    "topic": topic,
-    "dialogue": dialogue
-})
+        Returns:
+            Dialogue: Augmented dialogue object
+        """
+        # Convert dialogue to string format for prompt
+        # Предполагая, что у Dialogue есть str представление
+        dialogue_str = str(dialogue)
+
+        # Get augmented messages
+        result = self.chain.invoke({
+            "topic": topic,
+            "dialogue": dialogue_str
+        })
+
+        # Create new Dialogue object with augmented messages
+        return Dialogue(messages=result, topic=topic)
+
+    async def ainvoke(self, *, dialogue: Dialogue, topic: str = "") -> Dialogue:
+        """
+        Async version of dialogue augmentation.
+
+        Args:
+            dialogue: The input Dialogue object to augment
+            topic: Optional topic to guide the augmentation
+
+        Returns:
+            Dialogue: Augmented dialogue object
+        """
+        dialogue_str = str(dialogue)
+
+        result = await self.chain.ainvoke({
+            "topic": topic,
+            "dialogue": dialogue_str
+        })
+
+        return Dialogue(messages=result, topic=topic)
