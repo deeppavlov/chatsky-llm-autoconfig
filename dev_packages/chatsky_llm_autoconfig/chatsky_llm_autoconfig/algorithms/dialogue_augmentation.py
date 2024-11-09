@@ -1,5 +1,3 @@
-
-
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.schemas import DialogueMessage
 from langchain.prompts import PromptTemplate
@@ -10,7 +8,8 @@ from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 import os
 
-augmentation_prompt = PromptTemplate.from_template("""
+augmentation_prompt = PromptTemplate.from_template(
+    """
 You are tasked with augmenting a dialogue by adding variations to existing utterances while maintaining the original dialogue flow and intent.
 
 THEME: {topic}
@@ -46,7 +45,8 @@ Example format:
     {{"text": "I need help with a package", "participant": "user"}},
     {{"text": "What kind of package is it?", "participant": "assistant"}}
 ]
-""")
+"""
+)
 
 
 class DialogueSequence(BaseModel):
@@ -59,12 +59,7 @@ class DialogAugmentation(BaseModel):
     def __init__(self, **data):
         super().__init__(**data)
         self.parser = JsonOutputParser(pydantic_object=DialogueSequence)
-        self.model = ChatOpenAI(
-            model="gpt-4o-mini",
-            api_key=os.getenv("OPENAI_API_KEY"),
-            base_url=os.getenv("OPENAI_BASE_URL"),
-            temperature=0.7
-        )
+        self.model = ChatOpenAI(model="gpt-4o-mini", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0.7)
         self.chain = augmentation_prompt | self.model | self.parser
 
     def invoke(self, *, dialogue: Dialogue, topic: str = "") -> Dialogue:
@@ -83,10 +78,7 @@ class DialogAugmentation(BaseModel):
         dialogue_str = str(dialogue)
 
         # Get augmented messages
-        result = self.chain.invoke({
-            "topic": topic,
-            "dialogue": dialogue_str
-        })
+        result = self.chain.invoke({"topic": topic, "dialogue": dialogue_str})
 
         # Create new Dialogue object with augmented messages
         return Dialogue(messages=result, topic=topic)
@@ -104,9 +96,6 @@ class DialogAugmentation(BaseModel):
         """
         dialogue_str = str(dialogue)
 
-        result = await self.chain.ainvoke({
-            "topic": topic,
-            "dialogue": dialogue_str
-        })
+        result = await self.chain.ainvoke({"topic": topic, "dialogue": dialogue_str})
 
         return Dialogue(messages=result, topic=topic)

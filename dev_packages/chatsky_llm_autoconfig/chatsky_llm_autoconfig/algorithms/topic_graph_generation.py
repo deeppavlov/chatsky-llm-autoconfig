@@ -75,8 +75,7 @@ class CycleGraphGenerator(TopicGraphGenerator):
 
         prompt_template = cycle_graph_generation_prompt
         parser = JsonOutputParser(pydantic_object=DialogueGraph)
-        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ''),
-                           base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
+        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
         chain = prompt_template | model | parser
 
         generated_graph = chain.invoke({"topic": topic})

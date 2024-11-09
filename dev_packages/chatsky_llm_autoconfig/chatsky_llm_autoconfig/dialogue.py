@@ -9,6 +9,7 @@ class Dialogue(BaseModel):
     The class provides methods for creating dialogues from different formats
     and converting dialogues to various representations.
     """
+
     messages: List[DialogueMessage] = Field(default_factory=list)
     topic: str = ""
 
@@ -28,9 +29,7 @@ class Dialogue(BaseModel):
             Dialogue object with parsed messages
         """
         messages: List[DialogueMessage] = [
-            DialogueMessage(participant=line.split(
-                "\t")[0], text=line.split("\t")[1])
-            for line in string.strip().split("\n")
+            DialogueMessage(participant=line.split("\t")[0], text=line.split("\t")[1]) for line in string.strip().split("\n")
         ]
         return cls(messages=messages)
 
@@ -53,10 +52,7 @@ class Dialogue(BaseModel):
 
     def __str__(self) -> str:
         """Returns a readable string representation of the dialogue."""
-        return "\n".join(
-            f"{msg.participant}: {msg.text}"
-            for msg in self.messages
-        ).strip()
+        return "\n".join(f"{msg.participant}: {msg.text}" for msg in self.messages).strip()
 
     def append(self, text: str, participant: str) -> None:
         """Adds a new message to the dialogue.
@@ -65,8 +61,7 @@ class Dialogue(BaseModel):
             text: Content of the message
             participant: Sender of the message
         """
-        self.messages.append(DialogueMessage(
-            text=text, participant=participant))
+        self.messages.append(DialogueMessage(text=text, participant=participant))
 
     def extend(self, messages: List[Union[DialogueMessage, Dict[str, str]]]) -> None:
         """Adds multiple messages to the dialogue.
@@ -74,36 +69,28 @@ class Dialogue(BaseModel):
         Args:
             messages: List of DialogueMessage objects or dicts to add
         """
-        new_messages = [
-            msg if isinstance(msg, DialogueMessage) else DialogueMessage(**msg)
-            for msg in messages
-        ]
+        new_messages = [msg if isinstance(msg, DialogueMessage) else DialogueMessage(**msg) for msg in messages]
         self.messages.extend(new_messages)
 
 
 # Type-safe usage examples
 if __name__ == "__main__":
     # Create from list of dicts
-    dialogue1 = Dialogue(messages=[
-        DialogueMessage(text="How can I help?", participant="assistant"),
-        DialogueMessage(text="I need coffee", participant="user")
-    ])
+    dialogue1 = Dialogue(
+        messages=[DialogueMessage(text="How can I help?", participant="assistant"), DialogueMessage(text="I need coffee", participant="user")]
+    )
 
     # Create using from_list
-    dialogue2 = Dialogue.from_list([
-        {"text": "How can I help?", "participant": "assistant"},
-        {"text": "I need coffee", "participant": "user"}
-    ])
+    dialogue2 = Dialogue.from_list([{"text": "How can I help?", "participant": "assistant"}, {"text": "I need coffee", "participant": "user"}])
 
     # Create from string
-    dialogue3 = Dialogue.from_string("""
+    dialogue3 = Dialogue.from_string(
+        """
         assistant\tHow can I help?
         user\tI need coffee
-""".strip())
+""".strip()
+    )
 
     # Append and extend
     dialogue1.append("What kind of coffee?", "assistant")
-    dialogue1.extend([
-        {"text": "Espresso please", "participant": "user"},
-        DialogueMessage(text="Coming right up!", participant="assistant")
-    ])
+    dialogue1.extend([{"text": "Espresso please", "participant": "user"}, DialogueMessage(text="Coming right up!", participant="assistant")])
