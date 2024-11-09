@@ -57,19 +57,41 @@ class DialogAugmentation(BaseAlgorithm):
         raise NotImplementedError
 
 
+class GraphAugmentation(BaseAlgorithm):
+    """Graph generator that works only with topics."""
+
+    def invoke(self, topic: str, Gaph: BaseGraph) -> BaseGraph:
+        raise NotImplementedError
+
+    async def ainvoke(self, topic: str, Gaph: BaseGraph) -> BaseGraph:
+        raise NotImplementedError
+
+
+class TopicGraphGenerator(BaseAlgorithm):
+    """Graph generator that works only with topics."""
+
+    def invoke(self, topic: str) -> BaseGraph:
+        raise NotImplementedError
+
+    async def ainvoke(self, topic: str) -> BaseGraph:
+        raise NotImplementedError
+
+
 class GraphGenerator(BaseAlgorithm):
-    """
-    Base class for generating Graph objects.
+    """Graph generator that works only with topics."""
 
-    This class is used to create a Graph based on a Dialogue, a specified topic, or an existing Graph.
+    def invoke(self, dialogue: Dialogue) -> BaseGraph:
+        raise NotImplementedError
 
-    :param dialogue: The Dialogue object used for generating the Graph.
-    :param graph: An existing Graph object to base the generation on (optional).
-    :param topic: The topic to guide the Graph generation process (optional).
-    """
+    async def ainvoke(self, dialogue: Dialogue) -> BaseGraph:
+        raise NotImplementedError
 
-    def __init__(self):
-        super().__init__()
 
-    def invoke(self, dialogue: Dialogue = None, graph: BaseGraph = None, topic: str = "") -> BaseGraph:
+class GraphExtender(BaseAlgorithm):
+    """Graph generator that works only with topics."""
+
+    def invoke(self, dialogue: Dialogue, graph: BaseGraph) -> BaseGraph:
+        raise NotImplementedError
+
+    async def ainvoke(self, dialogue: Dialogue, graph: BaseGraph) -> BaseGraph:
         raise NotImplementedError

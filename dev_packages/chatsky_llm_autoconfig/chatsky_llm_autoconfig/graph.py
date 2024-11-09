@@ -1,6 +1,6 @@
 import networkx as nx
-from pydantic import Field, BaseModel
-from typing import Optional, Any, List
+from pydantic import BaseModel
+from typing import Optional, Any
 import matplotlib.pyplot as plt
 import abc
 import logging
@@ -28,7 +28,8 @@ class BaseGraph(BaseModel, abc.ABC):
 class Graph(BaseGraph):
 
     def __init__(self, graph_dict: dict, **kwargs: Any):
-        super().__init__(graph_dict=graph_dict, **kwargs)  # Pass graph_dict to the parent class
+        # Pass graph_dict to the parent class
+        super().__init__(graph_dict=graph_dict, **kwargs)
         self.load_graph()
 
     def load_graph(self):
@@ -71,26 +72,3 @@ class Graph(BaseGraph):
         plt.title(__name__)
         plt.axis("off")
         plt.show()
-
-
-"""
-Pydantic models for Langchain structured output
-"""
-
-
-class Edge(BaseModel):
-    source: int = Field(description="ID of the source node")
-    target: int = Field(description="ID of the target node")
-    utterances: str = Field(description="User's utterance that triggers this transition")
-
-
-class Node(BaseModel):
-    id: int = Field(description="Unique identifier for the node")
-    label: str = Field(description="Label describing the node's purpose")
-    is_start: bool = Field(description="Whether this is the starting node")
-    utterances: List[str] = Field(description="Possible assistant responses at this node")
-
-
-class DialogueGraph(BaseModel):
-    edges: List[Edge] = Field(description="List of transitions between nodes")
-    nodes: List[Node] = Field(description="List of nodes representing assistant states")
