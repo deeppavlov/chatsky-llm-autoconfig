@@ -7,8 +7,6 @@ from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 
 from chatsky_llm_autoconfig.graph import BaseGraph, Graph
-
-from langchain.prompts import PromptTemplate
 import os
 
 from pydantic import SecretStr
