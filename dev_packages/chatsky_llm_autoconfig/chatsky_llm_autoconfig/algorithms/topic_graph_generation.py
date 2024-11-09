@@ -1,4 +1,5 @@
 from chatsky_llm_autoconfig.algorithms.base import TopicGraphGenerator
+from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 from chatsky_llm_autoconfig.schemas import DialogueGraph
 from langchain_openai import ChatOpenAI
 
@@ -9,6 +10,8 @@ from chatsky_llm_autoconfig.graph import BaseGraph, Graph
 
 from langchain.prompts import PromptTemplate
 import os
+
+from pydantic import SecretStr
 
 cycle_graph_generation_prompt = PromptTemplate.from_template(
     """
@@ -55,6 +58,7 @@ cycle_graph_generation_prompt = PromptTemplate.from_template(
 )
 
 
+@AlgorithmRegistry.register(input_type=str, output_type=Graph)
 class CycleGraphGenerator(TopicGraphGenerator):
     """Generator specifically for topic-based cyclic graphs"""
 
@@ -71,17 +75,13 @@ class CycleGraphGenerator(TopicGraphGenerator):
 
         prompt_template = cycle_graph_generation_prompt
         parser = JsonOutputParser(pydantic_object=DialogueGraph)
-        model = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
+        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ''),
+                           base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
         chain = prompt_template | model | parser
 
-        generated_graph = chain.invoke(topic)
+        generated_graph = chain.invoke({"topic": topic})
 
         return Graph(generated_graph)
 
     async def ainvoke(self, *args, **kwargs):
         pass
-
-
-cyc = CycleGraphGenerator()
-
-cyc.invoke(topic="cofee")
