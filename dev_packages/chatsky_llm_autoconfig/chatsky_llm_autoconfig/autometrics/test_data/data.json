@@ -408,5 +408,6 @@
             }
         }
     ],
-    "dialogue_to_dialogue": []
+    "dialogue_to_dialogue": [],
+    "graph_to_graph": []
 }
