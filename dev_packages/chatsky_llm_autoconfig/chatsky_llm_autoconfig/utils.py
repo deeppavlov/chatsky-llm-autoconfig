@@ -9,10 +9,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class EnvSettings(BaseSettings, case_sensitive=True):
 
-    model_config = SettingsConfigDict(env_file='chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
+    model_config = SettingsConfigDict(env_file='dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
 
     OPENAI_API_KEY: Optional[str]
     OPENAI_BASE_URL: Optional[str]
+    GENERATION_MODEL_NAME: Optional[str]
+    GENERATION_SAVE_PATH: Optional[str]
 
 
 # all func are currently unused
@@ -140,7 +142,7 @@ def call_llm_api(query: str, llm, client=None, temp: float = 0.05, langchain_mod
         if langchain_model:
             messages = [HumanMessage(content=query)]
             response = llm.invoke(messages)
-            return response.content
+            return response
         else:
             messages.append({"role": "user", "content": query})
             response_big = client.chat.completions.create(

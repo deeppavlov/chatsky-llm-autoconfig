@@ -1,17 +1,13 @@
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 import chatsky_llm_autoconfig.algorithms.dialogue_generation
 import chatsky_llm_autoconfig.algorithms.dialogue_augmentation
-#import chatsky_llm_autoconfig.algorithms.graph_generation
+import chatsky_llm_autoconfig.algorithms.graph_generation
 
 import json
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
-from chatsky_llm_autoconfig.graph import DialogueGraph
 from chatsky_llm_autoconfig.metrics.automatic_metrics import *
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
-from chatsky_llm_autoconfig.prompts import (
-    general_graph_generation_prompt,
-)
 import datetime
 from colorama import Fore
 from langchain_openai import ChatOpenAI
@@ -89,21 +85,6 @@ def run_all_algorithms():
                 metrics["are_theme_valid"].append(are_theme_valid(result, model, topic="")["value"])
 
             metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
-
-        elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is DialogueGraph:
-            metrics = {"triplet_match": [], "is_same_structure": []}
-            for case in graph_to_dialogue:
-                test_dialogue = Dialogue(dialogue=case["dialogue"])
-                test_graph = Graph(graph_dict=case["graph"])
-                result = class_instance.invoke(test_dialogue, prompt_name=general_graph_generation_prompt, use_saved=algorithms[class_]["use_saved"])
-                print("RESULT: ", result)
-                result_graph = Graph(graph_dict=result)
-
-                metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
-                metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
-
-            metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
-            metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])
         total_metrics[class_] = metrics
 
     return total_metrics
