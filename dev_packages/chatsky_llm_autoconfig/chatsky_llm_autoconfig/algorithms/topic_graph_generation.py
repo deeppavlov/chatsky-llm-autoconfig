@@ -11,8 +11,15 @@ import os
 
 from pydantic import SecretStr
 
-cycle_graph_generation_prompt = PromptTemplate.from_template(
-    """
+
+@AlgorithmRegistry.register(input_type=str, output_type=Graph)
+class CycleGraphGenerator(TopicGraphGenerator):
+    """Generator specifically for topic-based cyclic graphs"""
+
+    def __init__(self):
+        super().__init__()
+        self.cycle_graph_generation_prompt = PromptTemplate.from_template(
+            """
     Create a cyclic dialogue graph where the conversation MUST return to an existing node.
 
     **CRITICAL: Response Specificity**
@@ -53,15 +60,7 @@ cycle_graph_generation_prompt = PromptTemplate.from_template(
 
     **Your task is to create a cyclic dialogue graph about the following topic:** {topic}.
     """
-)
-
-
-@AlgorithmRegistry.register(input_type=str, output_type=Graph)
-class CycleGraphGenerator(TopicGraphGenerator):
-    """Generator specifically for topic-based cyclic graphs"""
-
-    def __init__(self):
-        super().__init__()
+        )
 
     def invoke(self, topic: str) -> BaseGraph:
         """
@@ -70,11 +69,10 @@ class CycleGraphGenerator(TopicGraphGenerator):
         :param input_data: TopicInput containing the topic
         :return: Generated Graph object with cyclic structure
         """
-
-        prompt_template = cycle_graph_generation_prompt
         parser = JsonOutputParser(pydantic_object=DialogueGraph)
-        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
-        chain = prompt_template | model | parser
+        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY")
+                           or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
+        chain = self.cycle_graph_generation_prompt | model | parser
 
         generated_graph = chain.invoke({"topic": topic})
 
@@ -82,3 +80,7 @@ class CycleGraphGenerator(TopicGraphGenerator):
 
     async def ainvoke(self, *args, **kwargs):
         pass
+
+
+if __name__ == "__main__":
+    cycle_graph_generator = CycleGraphGenerator()
