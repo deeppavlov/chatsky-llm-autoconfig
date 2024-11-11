@@ -1,5 +1,6 @@
 from langchain.prompts import PromptTemplate
 
+prompts = {}
 
 create_graph_prompt = PromptTemplate.from_template(
     "You have an example of dialogue from customer chatbot system. You also have an "
@@ -75,7 +76,7 @@ create_graph_prompt = PromptTemplate.from_template(
     "Dialogue: {dialog}"
 )
 
-general_graph_generation_prompt = PromptTemplate.from_template(
+prompts["general_graph_generation_prompt"] = PromptTemplate.from_template(
     "You have an example of dialogue from customer chatbot system. You also have an "
     "example of set of rules how chatbot system works should be looking - it is "
     "a set of nodes with chatbot system responses and a set of transitions that are "
