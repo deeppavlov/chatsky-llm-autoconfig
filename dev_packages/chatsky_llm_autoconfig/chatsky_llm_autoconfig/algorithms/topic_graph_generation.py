@@ -70,8 +70,7 @@ class CycleGraphGenerator(TopicGraphGenerator):
         :return: Generated Graph object with cyclic structure
         """
         parser = JsonOutputParser(pydantic_object=DialogueGraph)
-        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY")
-                           or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
+        model = ChatOpenAI(model="gpt-4o", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
         chain = self.cycle_graph_generation_prompt | model | parser
 
         generated_graph = chain.invoke({"topic": topic})
