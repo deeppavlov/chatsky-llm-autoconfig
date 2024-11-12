@@ -31,7 +31,8 @@ class DialogueSampler(DialogueGenerator):
                     # Check if the last node has edges and add the last edge utterances
                     edges = list(nx_graph.edges(current_node, data=True))
                     if edges:
-                        last_edge_data = edges[-1][2]  # Get the last edge's data
+                        # Get the last edge's data
+                        last_edge_data = edges[-1][2]
                         last_edge_utterance = (
                             random.choice(last_edge_data["utterances"])
                             if isinstance(last_edge_data["utterances"], list)
