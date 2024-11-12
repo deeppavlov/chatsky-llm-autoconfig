@@ -5,7 +5,7 @@ from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 
 
-@AlgorithmRegistry.register(input_type=BaseGraph, output_type=list[Dialogue])
+@AlgorithmRegistry.register(input_type=BaseGraph, output_type=Dialogue)
 class DialogueSampler(DialogueGenerator):
 
     def invoke(self, graph: BaseGraph, start_node: int = 1, end_node: int = -1, topic="") -> list[Dialogue]:
