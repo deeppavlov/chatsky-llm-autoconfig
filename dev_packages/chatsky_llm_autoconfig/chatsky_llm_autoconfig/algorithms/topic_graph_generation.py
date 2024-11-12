@@ -16,6 +16,9 @@ from pydantic import SecretStr
 class CycleGraphGenerator(TopicGraphGenerator):
     """Generator specifically for topic-based cyclic graphs"""
 
+    prompt: str = ""
+    cycle_graph_generation_prompt: str = ""
+
     def __init__(self):
         super().__init__()
         self.cycle_graph_generation_prompt = PromptTemplate.from_template(
