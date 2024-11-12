@@ -61,10 +61,10 @@ class DialogAugmentation(BaseAlgorithm):
 class GraphAugmentation(BaseAlgorithm):
     """Graph generator that works only with topics."""
 
-    def invoke(self, topic: str, Gaph: BaseGraph) -> BaseGraph:
+    def invoke(self, topic: str, graph: BaseGraph) -> BaseGraph:
         raise NotImplementedError
 
-    async def ainvoke(self, topic: str, Gaph: BaseGraph) -> BaseGraph:
+    async def ainvoke(self, topic: str, graph: BaseGraph) -> BaseGraph:
         raise NotImplementedError
 
 
