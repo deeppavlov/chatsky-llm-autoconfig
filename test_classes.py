@@ -1,5 +1,5 @@
+from chatsky_llm_autoconfig.algorithms.dialogue_generation import DialogueSampler
 from chatsky_llm_autoconfig.dialogue import Dialogue
-from chatsky_llm_autoconfig.sample_dialogue import DialogueSampler
 from chatsky_llm_autoconfig.graph import Graph
 from chatsky_llm_autoconfig.metrics.automatic_metrics import all_paths_sampled
 import json

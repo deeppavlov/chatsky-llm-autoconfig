@@ -1,6 +1,6 @@
+from chatsky_llm_autoconfig.algorithms.base import DialogAugmentation, DialogueGenerator, GraphGenerator
 from pydantic import BaseModel
 from typing import Union
-from chatsky_llm_autoconfig.algorithms import DialogueGenerator, DialogAugmentation, GraphGenerator
 
 
 class Pipeline(BaseModel):
