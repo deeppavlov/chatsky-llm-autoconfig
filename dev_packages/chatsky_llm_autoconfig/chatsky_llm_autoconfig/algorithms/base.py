@@ -40,24 +40,6 @@ class DialogueGenerator(BaseAlgorithm):
         raise NotImplementedError
 
 
-class DialogAugmentation(BaseAlgorithm):
-    """
-    Base class for augmenting Dialogues.
-
-    This class takes a Dialogue as input and returns an augmented Dialogue as output.
-    It is designed for data augmentation or other manipulations of Dialogues.
-
-    :param dialogue: The Dialogue object to be augmented.
-    :param topic: The topic to guide the augmentation process (optional).
-    """
-
-    def __init__(self):
-        super().__init__()
-
-    def invoke(self, dialogue: Dialogue, topic: str = "") -> Dialogue:
-        raise NotImplementedError
-
-
 class GraphAugmentation(BaseAlgorithm):
     """Graph generator that works only with topics."""
 

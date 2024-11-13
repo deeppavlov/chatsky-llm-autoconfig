@@ -5,8 +5,11 @@ LLM Metrics.
 This module contains functions that checks Graphs and Dialogues for various metrics using LLM calls.
 """
 
+from langchain.chat_models.base import BaseChatModel
+from langchain.output_parsers import PydanticOutputParser
+from typing import TypedDict, List
 from chatsky_llm_autoconfig.graph import BaseGraph
-from typing import List, Tuple
+from typing import List
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain.prompts import PromptTemplate
 from pydantic import BaseModel, Field
@@ -18,7 +21,12 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 
-def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[str]:
+class ValidationResult(TypedDict):
+    value: bool
+    description: str
+
+
+def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> ValidationResult:
     """
     Validates the dialog graph structure and logical transitions between nodes.
 
@@ -28,7 +36,7 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
         topic (str): The topic of the dialog
 
     Returns:
-        dict: {'value': bool, 'description': str}
+        ValidationResult: Dictionary with structure {'value': bool, 'description': str}
     """
     # Define prompt template and parser inside the function since they're only used here
     triplet_validate_prompt_template = """
@@ -74,7 +82,7 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
     # Create a mapping from node IDs to node data for quick access
     node_map = {node["id"]: node for node in graph["nodes"]}
     overall_valid = True
-    descriptions = []
+    descriptions: List[str] = []
 
     for edge in graph["edges"]:
         source_id = edge["source"]
@@ -83,13 +91,15 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
 
         # Check if source and target nodes exist
         if source_id not in node_map:
-            description = f"Invalid edge: source node {source_id} does not exist."
+            description = f"Invalid edge: source node {
+                source_id} does not exist."
             logging.info(description)
             overall_valid = False
             descriptions.append(description)
             continue
         if target_id not in node_map:
-            description = f"Invalid edge: target node {target_id} does not exist."
+            description = f"Invalid edge: target node {
+                target_id} does not exist."
             logging.info(description)
             overall_valid = False
             descriptions.append(description)
@@ -115,11 +125,12 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
 
         if not response.isValid:
             overall_valid = False
-            description = f"Invalid transition from {source_utterances} to {target_utterances} via edge '{edge_utterances}': {response.description}"
+            description = f"Invalid transition from {source_utterances} to {
+                target_utterances} via edge '{edge_utterances}': {response.description}"
             logging.info(description)
             descriptions.append(description)
 
-    result = {"value": overall_valid, "description": " ".join(descriptions) if descriptions else "All transitions are valid."}
+    result: ValidationResult = {"value": overall_valid, "description": " ".join(descriptions) if descriptions else "All transitions are valid."}
     return result
 
 

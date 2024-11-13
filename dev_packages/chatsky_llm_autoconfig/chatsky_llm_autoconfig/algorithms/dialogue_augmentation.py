@@ -2,14 +2,29 @@ from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.schemas import DialogueMessage
 from langchain.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
-from typing import List
-
+from typing import List, Any
 from langchain_openai import ChatOpenAI
-from pydantic import BaseModel
+from pydantic import BaseModel, SecretStr
 import os
+from chatsky_llm_autoconfig.algorithms.base import BaseAlgorithm
+from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
+from langchain_core.runnables import RunnableSerializable
 
-augmentation_prompt = PromptTemplate.from_template(
-    """
+
+class DialogueSequence(BaseModel):
+    result: List[DialogueMessage]
+
+
+@AlgorithmRegistry.register(input_type=Dialogue, output_type=Dialogue)
+class DialogAugmentation(BaseAlgorithm):
+    """Base class for augmenting Dialogues."""
+
+    augmentation_prompt: PromptTemplate = ""
+
+    def __init__(self):
+        super().__init__()
+        self.augmentation_prompt = PromptTemplate.from_template(
+            """
 You are tasked with augmenting a dialogue by adding variations to existing utterances while maintaining the original dialogue flow and intent.
 
 THEME: {topic}
@@ -46,21 +61,7 @@ Example format:
     {{"text": "What kind of package is it?", "participant": "assistant"}}
 ]
 """
-)
-
-
-class DialogueSequence(BaseModel):
-    result: List[DialogueMessage]
-
-
-class DialogAugmentation(BaseModel):
-    """Base class for augmenting Dialogues."""
-
-    def __init__(self, **data):
-        super().__init__(**data)
-        self.parser = JsonOutputParser(pydantic_object=DialogueSequence)
-        self.model = ChatOpenAI(model="gpt-4o-mini", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0.7)
-        self.chain = augmentation_prompt | self.model | self.parser
+        )
 
     def invoke(self, *, dialogue: Dialogue, topic: str = "") -> Dialogue:
         """
@@ -73,14 +74,15 @@ class DialogAugmentation(BaseModel):
         Returns:
             Dialogue: Augmented dialogue object
         """
-        # Convert dialogue to string format for prompt
-        # Предполагая, что у Dialogue есть str представление
-        dialogue_str = str(dialogue)
+        parser: JsonOutputParser = JsonOutputParser(pydantic_object=DialogueSequence)
+        model: ChatOpenAI = ChatOpenAI(
+            model="gpt-4o-mini", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0.7
+        )
+        chain: RunnableSerializable[Any, Any] = self.augmentation_prompt | model | parser
 
-        # Get augmented messages
-        result = self.chain.invoke({"topic": topic, "dialogue": dialogue_str})
+        dialogue_str: str = str(dialogue)
+        result: List[DialogueMessage] = chain.invoke({"topic": topic, "dialogue": dialogue_str})
 
-        # Create new Dialogue object with augmented messages
         return Dialogue(messages=result, topic=topic)
 
     async def ainvoke(self, *, dialogue: Dialogue, topic: str = "") -> Dialogue:
@@ -94,8 +96,13 @@ class DialogAugmentation(BaseModel):
         Returns:
             Dialogue: Augmented dialogue object
         """
-        dialogue_str = str(dialogue)
+        parser: JsonOutputParser = JsonOutputParser(pydantic_object=DialogueSequence)
+        model: ChatOpenAI = ChatOpenAI(
+            model="gpt-4o-mini", api_key=SecretStr(os.getenv("OPENAI_API_KEY") or ""), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0.7
+        )
+        chain: RunnableSerializable[Any, Any] = self.augmentation_prompt | model | parser
 
-        result = await self.chain.ainvoke({"topic": topic, "dialogue": dialogue_str})
+        dialogue_str: str = str(dialogue)
+        result: List[DialogueMessage] = await chain.ainvoke({"topic": topic, "dialogue": dialogue_str})
 
         return Dialogue(messages=result, topic=topic)
