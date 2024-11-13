@@ -150,7 +150,7 @@ def all_utterances_present(G: BaseGraph, dialogues: list[Dialogue]) -> bool:
     # Collect all utterances from dialogues
     dialogue_utterances = set()
     for dialogue in dialogues:
-        dialogue_utterances.update(utt["text"] for utt in dialogue.dialogue)
+        dialogue_utterances.update(utt.text for utt in dialogue.messages)
 
     # Check if all graph utterances are present in dialogues
     if graph_utterances.issubset(dialogue_utterances):
@@ -161,14 +161,14 @@ def all_utterances_present(G: BaseGraph, dialogues: list[Dialogue]) -> bool:
 
 
 def all_roles_correct(D1: Dialogue, D2: Dialogue) -> bool:
-    for phrase_1, phrase_2 in zip(D1.dialogue, D2.dialogue):
-        if phrase_1["participant"] != phrase_2["participant"]:
+    for phrase_1, phrase_2 in zip(D1.messages, D2.messages):
+        if phrase_1.participant != phrase_2.participant:
             return False
     return True
 
 
 def is_correct_lenght(D1: Dialogue, D2: Dialogue) -> bool:
-    return len(D1.dialogue) == len(D2.dialogue)
+    return len(D1.messages) == len(D2.messages)
 
 
 def are_answers_similar(D1: Dialogue, D2: Dialogue, model, threshold: float) -> bool:
