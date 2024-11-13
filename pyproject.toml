@@ -11,6 +11,7 @@ chatsky_llm_autoconfig = {path = "dev_packages/chatsky_llm_autoconfig", develop 
 tqdm = "^4.66.5"
 poethepoet = "^0.29.0"
 pandas = "^2.2.3"
+colorama = "^0.4.6"
 
 [tool.poetry.group.docs]
 optional = true
@@ -36,6 +37,7 @@ build-backend = "poetry.core.masonry.api"
 
 
 
+
 [tool.poetry.group.lint]
 optional = true
 
@@ -44,6 +46,7 @@ flake8 = "*"
 isort = "*"
 black = "*"
 mypy = "*"
+
 
 
 
@@ -61,4 +64,5 @@ flake = "scripts.codestyle:_run_flake"
 black = "scripts.codestyle:_run_black(modify=False)"
 format = "scripts.codestyle:_run_black(modify=True)"
 test = "scripts.test:_test"
+metrics = "scripts.metrics:_run_check"
 lint.sequence = ["flake", "black"]

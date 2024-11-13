@@ -15,6 +15,7 @@ matplotlib = "^3.9.2"
 langchain-community = "^0.3.1"
 scipy = "*"
 pydantic = "*"
+sentence-transformers = "*"
 
 
 [build-system]

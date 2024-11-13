@@ -21,10 +21,44 @@
       "all_utterances_present": true
     }
   },
-  "2024-11-11 11:05:57.169712": {
-    "DialogueSampler": {}
+  "2024-11-13 08:12:44.272639": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
   },
-  "2024-11-11 11:27:53.368099": {
-    "CycleGraphGenerator": null
+  "2024-11-13 08:18:47.867573": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
   }
 }

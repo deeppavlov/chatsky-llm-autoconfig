@@ -1,3 +1,4 @@
+from pathlib import Path
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 import chatsky_llm_autoconfig.algorithms.dialogue_generation
 import chatsky_llm_autoconfig.algorithms.dialogue_augmentation
@@ -6,25 +7,26 @@ import chatsky_llm_autoconfig.algorithms.graph_generation
 import json
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
-from chatsky_llm_autoconfig.graph import DialogueGraph
 from chatsky_llm_autoconfig.metrics.automatic_metrics import *
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
+from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json
 import datetime
 from colorama import Fore
-from langchain_openai import ChatOpenAI
+from langchain_openai  import ChatOpenAI
 from dotenv import load_dotenv
 import os
 
 load_dotenv()
-
+env_settings = EnvSettings()
 
 model = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
 
-with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json") as f:
-    test_data = json.load(f)
-    graph_to_dialogue = test_data["graph_to_dialogue"]
-    # graph_to_graph = test_data["graph_to_graph"]
-    dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
+
+test_data = read_json("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json")
+graph_to_dialogue = test_data["graph_to_dialogue"]
+dialogue_to_graph = test_data["dialogue_to_graph"]
+graph_to_graph = test_data["graph_to_graph"]
+dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
 
 
 def run_all_algorithms():
@@ -77,14 +79,28 @@ def run_all_algorithms():
             metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
             metrics["are_triplets_valid"] = sum(metrics["are_triplets_valid"]) / len(metrics["are_triplets_valid"])
 
-        elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is DialogueGraph:
+        elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
+            tp = algorithms[class_]["type"]
+            class_instance = tp(prompt_name="general_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
-            for case in graph_to_dialogue:
+            for case in dialogue_to_graph:
+                result  = {}
                 test_dialogue = Dialogue(dialogue=case["dialogue"])
                 test_graph = Graph(graph_dict=case["graph"])
-                result = class_instance.invoke(test_dialogue, prompt_name="general_graph_generation_prompt", use_saved=algorithms[class_]["use_saved"])
-                print("RESULT: ", result)
-                result_graph = Graph(graph_dict=result)
+                saved_data = {}
+                if algorithms[class_]["path_to_result"] is not None:
+                    if Path(algorithms[class_]["path_to_result"]).is_file():
+                        saved_data = read_json(algorithms[class_]["path_to_result"])
+
+                if saved_data and env_settings.GENERATION_MODEL_NAME in saved_data and class_instance.prompt_name in saved_data.get(env_settings.GENERATION_MODEL_NAME):
+                    result = saved_data.get(env_settings.GENERATION_MODEL_NAME).get(class_instance.prompt_name)
+                    if result:
+                        result_graph = Graph(graph_dict=result)
+                if not result:
+                    result_graph = class_instance.invoke(test_dialogue)
+                    new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name:result_graph.graph_dict.json_dumps()}}
+                    saved_data.update(new_data)
+                    save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
 
                 metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
                 metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))

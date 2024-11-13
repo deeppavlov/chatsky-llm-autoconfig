@@ -3,11 +3,12 @@ Automatic Metrics.
 ------------------
 
 This module contains functions that automatically (without using LLMs) checks Graphs and Dialogues
-for various metrics.
+for various metrics
 """
 
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
+from chatsky_llm_autoconfig.metrics.embedder import EmbeddableString
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
@@ -26,14 +27,22 @@ def parse_edge(edge):
     src, trg = map(int, edge.split("->"))
     return src - 1, trg - 1
 
+def check_mapping(mapping):
+    return all(x == y for x,y in mapping.items())
+
+def emb_list(x):
+    return [EmbeddableString(el) for el in x["utterances"]]
 
 def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     g1 = G1.graph
     g2 = G2.graph
+
     node_mapping = {node: None for node in g1.nodes}
     node_mapping.update({node: None for node in g2.nodes})
     if type(g1) is nx.DiGraph:
-        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
+
+        #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
+        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x)).intersection(set(emb_list(y))) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
         GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_multigraph)
@@ -51,8 +60,6 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
     _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
-
-    print("1: ", g1.edges(data=True))
 
     for i, edge1 in enumerate(edges1):
         edge_mapping[edge1] = None
@@ -90,7 +97,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
         new_node_mapping = {}
         new_edge_mapping = {}
 
-        # какому ключу в старом графе соовтетвует новый ключ в перенумерованном графе
+        # какому ключу в старом графе соответствует новый ключ в перенумерованном графе
         inverse_mapping = {v: k for k, v in G1.node_mapping.items()}
         # {1: 1, 3: 2} -> {1: 1, 4:2} если в g1 4 перенумеровалась в 3
         for k, v in node_mapping.items():
@@ -104,9 +111,9 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
         for edge1, edge2 in edge_mapping.items():
             src1, trg1 = edge1.split("->")
             new_edge_mapping[f"{inverse_mapping[int(src1)]}->{inverse_mapping[int(trg1)]}"] = edge2
-        return new_node_mapping, new_edge_mapping
+        return check_mapping(new_node_mapping) and check_mapping(new_edge_mapping)
 
-    return node_mapping, edge_mapping
+    return check_mapping(node_mapping) and check_mapping(edge_mapping)
 
 
 def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
@@ -153,7 +160,7 @@ def all_utterances_present(G: BaseGraph, dialogues: list[Dialogue]) -> bool:
     if graph_utterances.issubset(dialogue_utterances):
         return True
     else:
-        return graph_utterances.difference(dialogue_utterances)
+        return False
 
 
 def all_roles_correct(D1: Dialogue, D2: Dialogue) -> bool:

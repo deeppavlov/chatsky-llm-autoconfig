@@ -15,6 +15,9 @@ class EnvSettings(BaseSettings, case_sensitive=True):
     OPENAI_BASE_URL: Optional[str]
     GENERATION_MODEL_NAME: Optional[str]
     GENERATION_SAVE_PATH: Optional[str]
+    EMBEDDER_MODEL: Optional[str]
+    EMBEDDER_THRESHOLD: Optional[float]
+    EMBEDDER_DEVICE: Optional[str]
 
 
 # all func are currently unused

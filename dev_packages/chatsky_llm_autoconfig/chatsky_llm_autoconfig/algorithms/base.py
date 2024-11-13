@@ -73,5 +73,3 @@ class GraphGenerator(BaseAlgorithm):
 
     def invoke(self, dialogue: Dialogue = None, graph: BaseGraph = None, topic: str = "") -> BaseGraph:
         raise NotImplementedError
-
-        

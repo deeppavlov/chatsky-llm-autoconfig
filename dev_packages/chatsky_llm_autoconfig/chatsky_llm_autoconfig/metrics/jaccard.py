@@ -27,9 +27,9 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
 
     jaccard_values = np.zeros((len(true_graph_edges), len(generated_graph_edges)))
     print(jaccard_values.shape)
-    print("it: ",true_graph_edges.items())
     for idx1, (k1, v1) in enumerate(true_graph_edges.items()):
         for idx2, (k2, v2) in enumerate(generated_graph_edges.items()):
+            print("Pair: ", v1, v2)
             value1 = set(v1).intersection(set(v2))
             value2 = set(v1).union(set(v2))
             jaccard_values[idx1][idx2] = len(value1) / len(value2)
