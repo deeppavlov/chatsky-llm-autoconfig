@@ -27,7 +27,11 @@ class GeneralGraphGenerator(GraphGenerator):
 
         result = call_llm_api(prompts[self.prompt_name].format(dialog=dialogue.model_dump()['dialogue']), model, temp=0)
  
-        result_graph = Graph(graph_dict=json.loads(result))
+        print("GRAPH: ", result.model_dump())
+
+        result_graph = Graph(graph_dict=result.model_dump())
+
+        #result_graph = Graph(graph_dict=json.loads(result))
         return result_graph
 
     async def ainvoke(self, *args, **kwargs):

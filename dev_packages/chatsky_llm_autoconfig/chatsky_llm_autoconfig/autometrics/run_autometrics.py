@@ -7,19 +7,24 @@ import chatsky_llm_autoconfig.algorithms.graph_generation
 import json
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
-from chatsky_llm_autoconfig.metrics.automatic_metrics import *
+from chatsky_llm_autoconfig.metrics.automatic_metrics import (
+    all_paths_sampled,
+    all_utterances_present,
+    all_roles_correct,
+    is_same_structure,
+    is_correct_length,
+    triplet_match
+)
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
 from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json
 import datetime
 from colorama import Fore
 from langchain_openai  import ChatOpenAI
 from dotenv import load_dotenv
-import os
 
-load_dotenv()
 env_settings = EnvSettings()
 
-model = ChatOpenAI(model="gpt-4o", api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"), temperature=0)
+model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0)
 
 
 test_data = read_json("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json")
@@ -62,7 +67,7 @@ def run_all_algorithms():
                 result = class_instance.invoke(test_dialogue)
 
                 metrics["all_roles_correct"].append(all_roles_correct(test_dialogue, result))
-                metrics["is_correct_lenght"].append(is_correct_lenght(test_dialogue, result))
+                metrics["is_correct_lenght"].append(is_correct_length(test_dialogue, result))
 
             metrics["all_roles_correct_avg"] = sum(metrics["all_roles_correct"]) / len(metrics["all_roles_correct"])
             metrics["is_correct_lenght_avg"] = sum(metrics["is_correct_lenght"]) / len(metrics["is_correct_lenght"])
@@ -83,25 +88,31 @@ def run_all_algorithms():
             tp = algorithms[class_]["type"]
             class_instance = tp(prompt_name="general_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
-            for case in dialogue_to_graph:
-                result  = {}
-                test_dialogue = Dialogue(dialogue=case["dialogue"])
-                test_graph = Graph(graph_dict=case["graph"])
-                saved_data = {}
-                if algorithms[class_]["path_to_result"] is not None:
-                    if Path(algorithms[class_]["path_to_result"]).is_file():
-                        saved_data = read_json(algorithms[class_]["path_to_result"])
+            saved_data = {}
+            result_list = []
+            test_list = []
+            if algorithms[class_]["path_to_result"] is not None:
+                if Path(algorithms[class_]["path_to_result"]).is_file():
+                    saved_data = read_json(algorithms[class_]["path_to_result"])
 
-                if saved_data and env_settings.GENERATION_MODEL_NAME in saved_data and class_instance.prompt_name in saved_data.get(env_settings.GENERATION_MODEL_NAME):
-                    result = saved_data.get(env_settings.GENERATION_MODEL_NAME).get(class_instance.prompt_name)
-                    if result:
-                        result_graph = Graph(graph_dict=result)
-                if not result:
+            if saved_data and env_settings.GENERATION_MODEL_NAME in saved_data and class_instance.prompt_name in saved_data.get(env_settings.GENERATION_MODEL_NAME):
+                result = saved_data.get(env_settings.GENERATION_MODEL_NAME).get(class_instance.prompt_name)
+                if result:
+                    test_list = [Graph(graph_dict=res) for res in result]
+
+            if not test_list:
+                for case in dialogue_to_graph:
+                    test_dialogue = Dialogue(dialogue=case["dialogue"])
                     result_graph = class_instance.invoke(test_dialogue)
-                    new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name:result_graph.graph_dict.json_dumps()}}
-                    saved_data.update(new_data)
-                    save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
+                    test_list.append(result_graph)
 
+                    #result_list.append(json.dumps(result_graph.graph_dict, indent=2, ensure_ascii=False))
+                    result_list.append(result_graph.graph_dict)
+                new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name: result_list}}
+                saved_data.update(new_data)
+                save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
+            for case, result_graph in zip(dialogue_to_graph, test_list):
+                test_graph = Graph(graph_dict=case["graph"])
                 metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
                 metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
 

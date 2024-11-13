@@ -60,5 +60,165 @@
       "triplet_match": 1.0,
       "is_same_structure": 1.0
     }
+  },
+  "2024-11-13 09:16:34.619553": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 11:28:51.774656": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 11:30:51.229055": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 11:36:34.313725": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 11:49:16.538292": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 11:59:37.410065": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 12:00:25.588828": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
+  },
+  "2024-11-13 12:11:24.900727": {
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        true,
+        true,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.6666666666666666
+    },
+    "GeneralGraphGenerator": {
+      "triplet_match": 1.0,
+      "is_same_structure": 1.0
+    }
   }
 }

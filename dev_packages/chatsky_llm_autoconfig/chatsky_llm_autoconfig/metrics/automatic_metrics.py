@@ -170,7 +170,7 @@ def all_roles_correct(D1: Dialogue, D2: Dialogue) -> bool:
     return True
 
 
-def is_correct_lenght(D1: Dialogue, D2: Dialogue) -> bool:
+def is_correct_length(D1: Dialogue, D2: Dialogue) -> bool:
     return len(D1.dialogue) == len(D2.dialogue)
 
 
