@@ -1,10 +1,11 @@
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
-
+from chatsky_llm_autoconfig.algorithms.topic_graph_generation import CycleGraphGenerator
+from chatsky_llm_autoconfig.algorithms.dialogue_generation import DialogueSampler
 import json
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.metrics.automatic_metrics import *
-from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
+from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, is_theme_valid
 import datetime
 from colorama import Fore
 from langchain_openai import ChatOpenAI
@@ -21,6 +22,7 @@ with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometric
     graph_to_dialogue = test_data["graph_to_dialogue"]
     # graph_to_graph = test_data["graph_to_graph"]
     dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
+    topic_to_graph = test_data["topic_to_graph"]
 
 
 def run_all_algorithms():
@@ -62,15 +64,15 @@ def run_all_algorithms():
             metrics["is_correct_lenght_avg"] = sum(metrics["is_correct_lenght"]) / len(metrics["is_correct_lenght"])
 
         elif algorithms[class_]["input_type"] is str and algorithms[class_]["output_type"] is BaseGraph:
-            metrics = {"are_theme_valid": [], "are_triplets_valid": []}
-            for case in graph_to_dialogue:
-                test_graph = Graph(graph_dict=case["graph"])
-                result = class_instance.invoke(test_graph)
+            metrics = {"is_theme_valid": [], "are_triplets_valid": []}
+            for case in topic_to_graph:
+                test_topic = case['topic']
+                result = class_instance.invoke(test_topic)
 
-                metrics["are_triplets_valid"].append(are_triplets_valid(result, model, topic="")["value"])
-                metrics["are_theme_valid"].append(are_theme_valid(result, model, topic="")["value"])
+                metrics["are_triplets_valid"].append(are_triplets_valid(result, model, topic=test_topic)["value"])
+                metrics["is_theme_valid"].append(is_theme_valid(result, model, topic=test_topic)["value"])
 
-            metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
+            metrics["is_theme_valid_avg"] = sum(metrics["is_theme_valid"]) / len(metrics["is_theme_valid"])
             metrics["are_triplets_valid"] = sum(metrics["are_triplets_valid"]) / len(metrics["are_triplets_valid"])
 
         elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:

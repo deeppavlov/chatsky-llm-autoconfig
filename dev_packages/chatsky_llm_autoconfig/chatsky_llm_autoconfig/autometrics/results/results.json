@@ -46,5 +46,49 @@
       "all_paths_sampled_avg": 1.0,
       "all_utterances_present_avg": 0.6666666666666666
     }
+  },
+  "2024-11-13 14:53:57.488517": {},
+  "2024-11-13 14:54:44.972236": {
+    "CycleGraphGenerator": {},
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        false,
+        false,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.0
+    }
+  },
+  "2024-11-13 14:56:57.058611": {
+    "CycleGraphGenerator": {
+      "is_theme_valid": [
+        true,
+        true,
+        true,
+        true
+      ],
+      "are_triplets_valid": 0.75,
+      "is_theme_valid_avg": 1.0
+    },
+    "DialogueSampler": {
+      "all_paths_sampled": [
+        true,
+        true,
+        true
+      ],
+      "all_utterances_present": [
+        false,
+        false,
+        false
+      ],
+      "all_paths_sampled_avg": 1.0,
+      "all_utterances_present_avg": 0.0
+    }
   }
 }
