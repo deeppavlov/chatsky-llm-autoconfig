@@ -2,7 +2,8 @@ import json
 from langchain.chat_models import ChatOpenAI
 from langchain.output_parsers import PydanticOutputParser
 from chatsky_llm_autoconfig.algorithms.base import GraphGenerator
-from chatsky_llm_autoconfig.graph import BaseGraph, Graph, DialogueGraph
+from chatsky_llm_autoconfig.graph import BaseGraph, Graph
+from chatsky_llm_autoconfig.schemas import DialogueGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings
@@ -26,12 +27,9 @@ class GeneralGraphGenerator(GraphGenerator):
         model=ChatOpenAI(model=env_settings.GENERATION_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0) | PydanticOutputParser(pydantic_object=DialogueGraph)
 
         result = call_llm_api(prompts[self.prompt_name].format(dialog=dialogue.model_dump()['dialogue']), model, temp=0)
- 
-        print("GRAPH: ", result.model_dump())
 
         result_graph = Graph(graph_dict=result.model_dump())
 
-        #result_graph = Graph(graph_dict=json.loads(result))
         return result_graph
 
     async def ainvoke(self, *args, **kwargs):

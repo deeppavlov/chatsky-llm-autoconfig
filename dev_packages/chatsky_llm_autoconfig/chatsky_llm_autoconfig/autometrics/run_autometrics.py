@@ -72,7 +72,7 @@ def run_all_algorithms():
             metrics["all_roles_correct_avg"] = sum(metrics["all_roles_correct"]) / len(metrics["all_roles_correct"])
             metrics["is_correct_lenght_avg"] = sum(metrics["is_correct_lenght"]) / len(metrics["is_correct_lenght"])
 
-        elif algorithms[class_]["input_type"] is str and algorithms[class_]["output_type"] is BaseGraph:
+        elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:
             metrics = {"are_theme_valid": [], "are_triplets_valid": []}
             for case in graph_to_dialogue:
                 test_graph = Graph(graph_dict=case["graph"])
@@ -81,8 +81,8 @@ def run_all_algorithms():
                 metrics["are_triplets_valid"].append(are_triplets_valid(result, model, topic="")["value"])
                 metrics["are_theme_valid"].append(are_theme_valid(result, model, topic="")["value"])
 
-            metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
             metrics["are_triplets_valid"] = sum(metrics["are_triplets_valid"]) / len(metrics["are_triplets_valid"])
+            metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
 
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
@@ -105,8 +105,6 @@ def run_all_algorithms():
                     test_dialogue = Dialogue(dialogue=case["dialogue"])
                     result_graph = class_instance.invoke(test_dialogue)
                     test_list.append(result_graph)
-
-                    #result_list.append(json.dumps(result_graph.graph_dict, indent=2, ensure_ascii=False))
                     result_list.append(result_graph.graph_dict)
                 new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name: result_list}}
                 saved_data.update(new_data)
@@ -115,9 +113,6 @@ def run_all_algorithms():
                 test_graph = Graph(graph_dict=case["graph"])
                 metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
                 metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
-
-            metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
-            metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])
 
 
         elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:
