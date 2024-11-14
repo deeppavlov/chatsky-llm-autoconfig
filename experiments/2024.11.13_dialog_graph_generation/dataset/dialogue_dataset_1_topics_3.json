@@ -1,0 +1,223 @@
+[
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I'd like to schedule a COVID-19 test"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I prefer a drive-through test"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Yes, that location works for me"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "I'll be there at 10 AM"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "I need to schedule another test"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome! How can I assist you with COVID-19 testing today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_test_type",
+          "is_start": false,
+          "utterances": [
+            "What type of COVID-19 test would you like to schedule?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "confirm_location",
+          "is_start": false,
+          "utterances": [
+            "We have a drive-through test available at our main center. Does that work for you?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "confirm_time",
+          "is_start": false,
+          "utterances": [
+            "Great! What time would you like to schedule your test?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "completed",
+          "is_start": false,
+          "utterances": [
+            "Your appointment is confirmed. Would you like to schedule another test?"
+          ]
+        }
+      ]
+    },
+    "topic": "covid-19 test scheduling",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Welcome! How can I assist you with COVID-19 testing today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to schedule a COVID-19 test",
+            "participant": "user"
+          },
+          {
+            "text": "What type of COVID-19 test would you like to schedule?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I prefer a drive-through test",
+            "participant": "user"
+          },
+          {
+            "text": "We have a drive-through test available at our main center. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that location works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What time would you like to schedule your test?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'll be there at 10 AM",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is confirmed. Would you like to schedule another test?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule another test",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Hello! How can I help you with COVID-19 testing today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book a COVID-19 test",
+            "participant": "user"
+          },
+          {
+            "text": "Which type of COVID-19 test would you like to arrange?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I would prefer a drive-through test",
+            "participant": "user"
+          },
+          {
+            "text": "We offer a drive-through testing option at our main location. Does that suit you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that location is fine for me",
+            "participant": "user"
+          },
+          {
+            "text": "Perfect! What time would you like to set your appointment for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I’ll arrive at 10 AM",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is now confirmed. Would you like to book another test as well?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to arrange another test",
+            "participant": "user"
+          }
+        ],
+        "topic": "covid-19 test scheduling"
+      },
+      {
+        "messages": [
+          {
+            "text": "Hello! How can I help you regarding COVID-19 testing today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I would like to book a COVID-19 test",
+            "participant": "user"
+          },
+          {
+            "text": "Which type of COVID-19 test are you looking to schedule?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I would like to go for a drive-through test",
+            "participant": "user"
+          },
+          {
+            "text": "We have a drive-through testing option at our main location. Does that suit you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that place is fine for me",
+            "participant": "user"
+          },
+          {
+            "text": "Perfect! What time would you like your test appointment?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I plan to arrive at 10 AM",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is all set for that time. Would you like to book another test as well?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to arrange another test",
+            "participant": "user"
+          }
+        ],
+        "topic": "covid-19 test scheduling"
+      }
+    ]
+  }
+]
