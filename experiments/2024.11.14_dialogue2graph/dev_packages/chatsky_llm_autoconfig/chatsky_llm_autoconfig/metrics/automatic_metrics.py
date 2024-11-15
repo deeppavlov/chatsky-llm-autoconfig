@@ -41,6 +41,8 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     node_mapping.update({node: None for node in g2.nodes})
     if type(g1) is nx.DiGraph:
 
+        print("type1")
+
         #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
         GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x)).intersection(set(emb_list(y))) is not None)
         are_isomorphic = GM.is_isomorphic()

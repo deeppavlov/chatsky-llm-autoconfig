@@ -8,7 +8,7 @@ from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings
 from chatsky_llm_autoconfig.prompts import (
-    prompts,
+    prompts, graph_example_1, dialogue_example_2, graph_example_2
 )
 
 env_settings = EnvSettings()
@@ -26,7 +26,7 @@ class GeneralGraphGenerator(GraphGenerator):
 
         model=ChatOpenAI(model=env_settings.GENERATION_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0) | PydanticOutputParser(pydantic_object=DialogueGraph)
 
-        result = call_llm_api(prompts[self.prompt_name].format(dialog=dialogue.model_dump()['dialogue']), model, temp=0)
+        result = call_llm_api(prompts[self.prompt_name].format(graph_example_1=graph_example_1, dialogue_example_2=dialogue_example_2, graph_example_2=graph_example_2, dialog=dialogue.to_list()), model, temp=0)
 
         result_graph = Graph(graph_dict=result.model_dump())
 

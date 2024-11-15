@@ -1,7 +1,7 @@
 from pathlib import Path
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
-import chatsky_llm_autoconfig.algorithms.dialogue_generation
-import chatsky_llm_autoconfig.algorithms.dialogue_augmentation
+#import chatsky_llm_autoconfig.algorithms.dialogue_generation
+#import chatsky_llm_autoconfig.algorithms.dialogue_augmentation
 import chatsky_llm_autoconfig.algorithms.graph_generation
 
 import json
@@ -27,11 +27,13 @@ env_settings = EnvSettings()
 model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0)
 
 
-test_data = read_json("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/test_data/data.json")
-graph_to_dialogue = test_data["graph_to_dialogue"]
-dialogue_to_graph = test_data["dialogue_to_graph"]
-graph_to_graph = test_data["graph_to_graph"]
-dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
+#test_data = read_json(env_settings.TEST_DATA_PATH
+dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+#graph_to_dialogue = test_data["graph_to_dialogue"]
+#dialogue_to_graph = test_data["dialogue_to_graph"]
+
+#graph_to_graph = test_data["graph_to_graph"]
+#dialogue_to_dialogue = test_data["dialogue_to_dialogue"]
 
 
 def run_all_algorithms():
@@ -98,21 +100,33 @@ def run_all_algorithms():
             if saved_data and env_settings.GENERATION_MODEL_NAME in saved_data and class_instance.prompt_name in saved_data.get(env_settings.GENERATION_MODEL_NAME):
                 result = saved_data.get(env_settings.GENERATION_MODEL_NAME).get(class_instance.prompt_name)
                 if result:
-                    test_list = [Graph(graph_dict=res) for res in result]
+                    test_list =  [{next(iter(case)): [Graph(graph_dict=r) for r in case[next(iter(case))]]} for case in result]
+                    #print("TEST: ", len(test_list), test_list)
 
             if not test_list:
                 for case in dialogue_to_graph:
-                    test_dialogue = Dialogue(dialogue=case["dialogue"])
-                    result_graph = class_instance.invoke(test_dialogue)
-                    test_list.append(result_graph)
-                    result_list.append(result_graph.graph_dict)
+                    case_list = []
+                    cur_list = []
+                    for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
+
+                        print("TST: ", test_dialogue)
+                        result_graph = class_instance.invoke(test_dialogue)
+                        cur_list.append(result_graph)
+                        case_list.append(result_graph.graph_dict)
+                    result_list.append({case["topic"]: case_list})
+                    test_list.append({case["topic"]: cur_list})
                 new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name: result_list}}
                 saved_data.update(new_data)
                 save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
-            for case, result_graph in zip(dialogue_to_graph, test_list):
+            for case, dialogues in zip(dialogue_to_graph, test_list):
                 test_graph = Graph(graph_dict=case["graph"])
-                metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
-                metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
+                for result_graph in dialogues[case["topic"]]:
+                    print("METRICS: ", case["graph"])
+                    print("METRICS-2: ", result_graph.graph_dict)
+            # for case, result_graph in zip(dialogue_to_graph, test_list):
+
+                    metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
+                    metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
 
             metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
             metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])
@@ -180,7 +194,7 @@ def compare_results(date, old_data, compare_to: str = ""):
 
 
 if __name__ == "__main__":
-    with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/results/results.json") as f:
+    with open(env_settings.RESULTS_PATH) as f:
         old_data = json.load(f)
 
     date = str(datetime.datetime.now())
@@ -188,5 +202,5 @@ if __name__ == "__main__":
     old_data.update(new_metrics)
     compare_results(date, old_data)
 
-    with open("dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/autometrics/results/results.json", "w") as f:
+    with open(env_settings.RESULTS_PATH, "w") as f:
         f.write(json.dumps(old_data, indent=2, ensure_ascii=False))
