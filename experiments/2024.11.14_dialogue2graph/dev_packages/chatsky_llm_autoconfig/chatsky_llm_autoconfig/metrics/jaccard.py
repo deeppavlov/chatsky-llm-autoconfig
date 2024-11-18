@@ -1,4 +1,5 @@
 import numpy as np
+from chatsky_llm_autoconfig.metrics.embedder import emb_list
 
 
 def collapse_multiedges(edges):
@@ -14,6 +15,8 @@ def collapse_multiedges(edges):
     return collapsed_edges
 
 
+#        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x)).intersection(set(emb_list(y))) is not None)
+
 def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return_matrix=False):
     """
     true_graph_edges:Graph.edges - ребра истинного графа
@@ -22,15 +25,21 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     (1, 2, {"utterances": ...})
     verbose: bool - печать отладочной информации
     """
+
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
+    #print("COLLAPSE: ", type((list(true_graph_edges.values()))[0]))
     generated_graph_edges = collapse_multiedges(list(generated_graph_edges))
 
     jaccard_values = np.zeros((len(true_graph_edges), len(generated_graph_edges)))
     print(jaccard_values.shape)
     for idx1, (k1, v1) in enumerate(true_graph_edges.items()):
         for idx2, (k2, v2) in enumerate(generated_graph_edges.items()):
-            value1 = set(v1).intersection(set(v2))
-            value2 = set(v1).union(set(v2))
+            # value1 = set(v1).intersection(set(v2))
+            # value2 = set(v1).union(set(v2))
+            set1 = set(emb_list(v1))
+            set2 = set(emb_list(v2))
+            value1 = set1.intersection(set2)
+            value2 = set1.union(set2)          
             jaccard_values[idx1][idx2] = len(value1) / len(value2)
 
             if verbose:
@@ -58,7 +67,6 @@ def collapse_multinodes(nodes):
     for key, data in nodes:
         if key not in collapsed_nodes:
             collapsed_nodes[key] = []
-        print("COLLAPSE: ", data)
         if isinstance(data["utterances"], str):
             collapsed_nodes[key].append(data["utterances"])
         elif isinstance(data["utterances"], list):
@@ -83,12 +91,14 @@ def jaccard_nodes(true_graph_nodes, generated_graph_nodes, verbose=False, return
     jaccard_values = np.zeros((len(true_graph_nodes) + 1, len(generated_graph_nodes) + 1))
     print(true_graph_nodes)
     for node1_id, node1_utterances in true_graph_nodes.items():
+        # print("NODE1: ", true_graph_nodes.items())
         for node2_id, node2_utterances in generated_graph_nodes.items():
-            node1_utterances = set(get_list_of_node_utterances(node1_utterances))
-            node2_utterances = set(get_list_of_node_utterances(node2_utterances))
+            # print("NNODE: ", node1_utterances)
+            utterances_1 = set(emb_list(get_list_of_node_utterances(node1_utterances)))
+            utterances_2 = set(emb_list(get_list_of_node_utterances(node2_utterances)))
 
-            jaccard_nominator = node1_utterances.intersection(node2_utterances)
-            jaccard_denominator = node1_utterances.union(node2_utterances)
+            jaccard_nominator = utterances_1.intersection(utterances_2)
+            jaccard_denominator = utterances_1.union(utterances_2)
 
             jaccard_values[node1_id][node2_id] = len(jaccard_nominator) / len(jaccard_denominator)
 

@@ -8,7 +8,7 @@ for various metrics.
 
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
-from chatsky_llm_autoconfig.metrics.embedder import EmbeddableString
+from chatsky_llm_autoconfig.metrics.embedder import emb_list
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
@@ -30,12 +30,12 @@ def parse_edge(edge):
 def check_mapping(mapping):
     return all(x == y for x,y in mapping.items())
 
-def emb_list(x):
-    return [EmbeddableString(el) for el in x["utterances"]]
-
 def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     g1 = G1.graph
     g2 = G2.graph
+
+    print("\nTRIPLETS: ", G1.graph_dict, "\n")
+    print("TRIPLETS: ", G2.graph_dict, "\n")
 
     node_mapping = {node: None for node in g1.nodes}
     node_mapping.update({node: None for node in g2.nodes})
@@ -44,7 +44,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
         print("type1")
 
         #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
-        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x)).intersection(set(emb_list(y))) is not None)
+        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x['utterances'])).intersection(set(emb_list(y['utterances']))) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
         GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_multigraph)
@@ -63,6 +63,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
 
     _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
 
+    print("MATRIX: ", matrix_nodes, matrix_edges)
     for i, edge1 in enumerate(edges1):
         edge_mapping[edge1] = None
         mapping_jaccard_values[edge1] = 0
@@ -117,6 +118,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
             ] = edge2
         return check_mapping(new_node_mapping) and check_mapping(new_edge_mapping)
 
+    print("MAPS: ", node_mapping, edge_mapping)
     return check_mapping(node_mapping) and check_mapping(edge_mapping)
 
 

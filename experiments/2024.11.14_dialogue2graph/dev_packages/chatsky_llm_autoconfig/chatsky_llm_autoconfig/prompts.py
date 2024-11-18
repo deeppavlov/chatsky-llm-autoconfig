@@ -230,7 +230,7 @@ create_graph_prompt = PromptTemplate.from_template(
 
 graph_example_1 = {
     "edges": [
-        {'source': 1, 'target': 2, 'utterances': ['I need to make an order']},
+#        {'source': 1, 'target': 2, 'utterances': ['I need to make an order']},
         {'source': 1, 'target': 2, 'utterances': ['I want to order from you']},
         {'source': 2, 'target': 3, 'utterances': ['I would like to purchase Pale Fire and Anna Karenina, please']}
     ],
@@ -283,51 +283,51 @@ dialogue_example_2 = [
                 "text": "Start new order",
                 "participant": "user"
             },
-            # {
-            #     "text": "Which books would you like to order?",
-            #     "participant": "assistant"
-            # }
+            {
+                "text": "Which books would you like to order?",
+                "participant": "assistant"
+            }
         ]
 
 graph_example_2 = {
     "edges": [
                 {
-                    "utterances": [
-                        "I need to make an order",
-                        "I want to order from you"
-                    ],
                     "source": 1,
-                    "target": 2
-                },
-                {
+                    "target": 2,
                     "utterances": [
-                        "I would like to purchase 'Pale Fire' and 'Anna Karenina', please",
-                        "One War and Piece in hard cover and one Pride and Prejudice"
-                    ],
-                    "source": 2,
-                    "target": 3
+                        "I need to make an order"
+#                        "I want to order from you"
+                    ]
                 },
                 {
+                    "source": 2,
+                    "target": 3,
+                    "utterances": [
+#                        "I would like to purchase 'Pale Fire' and 'Anna Karenina', please",
+                        "One War and Piece in hard cover and one Pride and Prejudice"
+                    ]
+                },
+                {
+                    "source": 3,
+                    "target": 4,
                     "utterances": [
                         "Cash",
                         "With credit card, please"
-                    ],
-                    "source": 3,
-                    "target": 4
+                    ]
                 },
                 {
+                    "source": 4,
+                    "target": 3,
                     "utterances": [
                         "I will enter new payment method"
-                    ],
-                    "source": 4,
-                    "target": 3
+                    ]
                 },
                 {
+                    "source": 4,
+                    "target": 2,
                     "utterances": [
                         "Start new order"
-                    ],
-                    "source": 4,
-                    "target": 2
+                    ]
                 }
             ],
             "nodes": [
@@ -369,24 +369,79 @@ graph_example_2 = {
 
 prompts["general_graph_generation_prompt"] = PromptTemplate.from_template(
     "You have an example of a dialogue from customer chatbot system. You also have an "
-    "example of the graph (set of rules) how chatbot system looks like) - it is "
+    "example of the graph (set of rules) how chatbot system looks like - it is "
     "a set of nodes with chatbot system utterances and a set of transitions that are "
     "triggered by user requests. "
+    # "Every transition in all edges shall start from and result in nodes which are present in set of nodes."
     "Here is the graph example: {graph_example_1}"
-    "I will give a dialogue, your task is to build a graph for this dialogue in the format above. We allow several edges with same "
-    "source and target and also multiple responses in one node so try not to add new nodes if it is logical just to extend an "
-    "exsiting one. Utterances in one node or in multiedge should be close to each other and correspond to different answers "
-    "to one question or different ways to say something. For example, for question about preferences or a Yes/No question "
-    "both answers can go in one multiedge, there’s no need to make a new node. If two nodes have the same response they "
-    "should be united in one node. Do not make up utterances that aren’t present in the dialogue. Please do not combine "
-    "utterances from multiedges in one list, write them separately like in example above. Every utterance from the dialogue, "
-    "whether it is from user or assistanst, shall be present in the graph. Nodes must be assistant's utterances, edges must be utterances from the user. Do not forget ending nodes with goodbyes. "
-    "Sometimes dialogue can correspond to several iterations of loop, for example: {dialogue_example_2}"
+    "I will give a dialogue, your task is to build a graph for this dialogue in the format above. "
+    # "We allow several edges with same "
+    # "source and target and also multiple responses in one node so try not to add new nodes if it is logical just to extend an "
+    # "exsiting one. Utterances in one node or in multiedge should be close to each other and correspond to different answers "
+    # "to one question or different ways to say something. For example, for question about preferences or a Yes/No question "
+    # "both answers can go in one multiedge, there’s no need to make a new node. "
+    #"If two nodes have the same response they should be united in one node. "
+    "Do not make up utterances that aren’t present in the dialogue. "
+    # "Please do not combine "
+    # "utterances from multiedges in one list, write them separately like in example above. "
+    "Every utterance from the dialogue, "
+    "whether it is from user or assistanst, shall be present in the graph. "
+    "Nodes must be assistant's utterances, edges must be utterances from the user. "
+    # "Do not forget ending nodes with goodbyes. "
+    "Dialogue may to contain cycles, for example: {dialogue_example_2}"
     "It shall result in the graph below: {graph_example_2}"
     "This is the end of the example."
-    "IMPORTANT: All assistant's utterances are nodes, but all user's utterances are edges. All the dialogues you've prompted are cyclic. Before answering you must check where the dialogue can loop or cycle and make the first node of a cycle a target node for the last node of the cycle. Return ONLY JSON string in plain text (no code blocks) without any additional commentaries."
+    #"A cycle is a closed path in a graph, which means that it starts and ends at the same vertex and passes through a sequence of distinct vertices and edges."
+    "Use cycle in a graph when you see that assistant repeats phrase which already was used earlier in dialogue, and make this repeat the first node of this cycle. "
+    "This repeat means that you don't create new node, but use node you created before for this assistant's utterance. "
+    "User's utterance in a dialogue before this repeating utterance will be an edge leading from cycle's last node to the cycle's start node (the node with the repeating assistant's utterance). "
+    "IMPORTANT: All the dialogues you've prompted are cyclic. "
+    # "Before answering you must check where the dialogue can loop or cycle and make the first node of a cycle a target node for the last node of the cycle. "
+    # "All the dialogues start from assistant's utterance, so first node of any loop cannot be first node of the whole graph. "
+
+#    "Return ONLY JSON string in plain text (no code blocks) without any additional commentaries."
+    "You must always return valid JSON fenced by a markdown code block. Do not return any additional text."
     "Dialogue: {dialog}"
 )
+
+prompts["specific_graph_generation_prompt"] = PromptTemplate.from_template(
+    "You have a dialogue from customer chatbot system as input. "
+    "Your task is to create a dialogue graph corresponding to that dialogue."
+    "Next is an example of the graph (set of rules) how chatbot system looks like - it is "
+    "a set of nodes with chatbot system utterances and a set of transitions that are "
+    "triggered by user requests: {graph_example_1} "
+    # "Every transition in all edges shall start from and result in nodes which are present in set of nodes."
+    "So I will give a dialogue, your task is to build a graph for this dialogue in the format above. "
+    "Dialogue may to contain cycles, for example: {dialogue_example_2}"
+    "It shall result in the graph below: {graph_example_2}"
+    "This is the end of the example."
+    #"A cycle is a closed path in a graph, which means that it starts and ends at the same vertex and passes through a sequence of distinct vertices and edges."
+    # "Use cycle in a graph when you see that assistant repeats phrase which already was used earlier in dialogue, and make this repeat the first node of this cycle. "
+    # "This repeat means that you don't create new node, but use node you created before for this assistant's utterance. "
+    # "User's utterance in a dialogue before this repeating utterance will be an edge leading from cycle's last node to the cycle's start node (the node with the repeating assistant's utterance). "
+    "**Rules:**"
+    "1) Every utterance from the dialogue, "
+    "whether it is from user or assistanst, shall be present in the graph. "
+    "2) Nodes must be assistant's utterances, edges must be utterances from the user. "
+    "3) Each node must have clear purpose"
+    "4) All edges must connect to existing nodes"
+    "5) The cycle point should make logical sense"
+    "6) You must always return valid JSON fenced by a markdown code block. Do not return any additional text."
+
+    # "Do not make up utterances that aren’t present in the dialogue. "
+    # "Please do not combine "
+    # "utterances from multiedges in one list, write them separately like in example above. "
+    # "Do not forget ending nodes with goodbyes. "
+
+    "IMPORTANT: All the dialogues you've prompted are cyclic. "
+    "Before answering you must check where the dialogue can loop or cycle and make the first node of a cycle a target node for the last node of the cycle. "
+    "All the dialogues start from assistant's utterance, so first node of any loop cannot be first node of the whole graph. "
+
+#    "Return ONLY JSON string in plain text (no code blocks) without any additional commentaries."
+    
+    "Dialogue: {dialog}"
+)
+
 
 
 check_graph_utterances_prompt = PromptTemplate.from_template(

@@ -1,6 +1,6 @@
 {
     "gpt-4o-mini": {
-        "general_graph_generation_prompt": [
+        "specific_graph_generation_prompt": [
             {
                 "booking a hotel room": [
                     {
@@ -35,7 +35,14 @@
                             },
                             {
                                 "source": 5,
-                                "target": 2,
+                                "target": 6,
+                                "utterances": [
+                                    "I'd like to book another room"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 3,
                                 "utterances": [
                                     "I'd like to book another room"
                                 ]
@@ -76,10 +83,18 @@
                             },
                             {
                                 "id": 5,
-                                "label": "thank_you",
+                                "label": "thank_you_booking",
                                 "is_start": false,
                                 "utterances": [
                                     "Thank you for your booking! Would you like to book another room?"
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_to_book_again",
+                                "is_start": false,
+                                "utterances": [
+                                    "Would you like to book another room?"
                                 ]
                             }
                         ]
@@ -123,9 +138,9 @@
                             },
                             {
                                 "source": 6,
-                                "target": 3,
+                                "target": 2,
                                 "utterances": [
-                                    "I would like a double room for a two-night stay, please."
+                                    "Start new reservation"
                                 ]
                             }
                         ],
@@ -164,7 +179,7 @@
                             },
                             {
                                 "id": 5,
-                                "label": "booking_confirmation",
+                                "label": "confirm_booking",
                                 "is_start": false,
                                 "utterances": [
                                     "Thank you for completing your booking! Would you like to reserve an additional room?"
@@ -175,7 +190,7 @@
                                 "label": "ask_for_additional_room",
                                 "is_start": false,
                                 "utterances": [
-                                    "What kind of room are you looking to reserve?"
+                                    "Would you like to reserve another room?"
                                 ]
                             }
                         ]
@@ -212,7 +227,14 @@
                             },
                             {
                                 "source": 5,
-                                "target": 2,
+                                "target": 6,
+                                "utterances": [
+                                    "I would like to reserve another room."
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 3,
                                 "utterances": [
                                     "I would like to reserve another room."
                                 ]
@@ -253,10 +275,18 @@
                             },
                             {
                                 "id": 5,
-                                "label": "thank_you",
+                                "label": "confirm_reservation",
                                 "is_start": false,
                                 "utterances": [
                                     "Thank you for your reservation! Would you like to book an additional room?"
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_for_additional_room",
+                                "is_start": false,
+                                "utterances": [
+                                    "Would you like to book an additional room?"
                                 ]
                             }
                         ]

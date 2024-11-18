@@ -88,7 +88,7 @@ def run_all_algorithms():
 
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
-            class_instance = tp(prompt_name="general_graph_generation_prompt")
+            class_instance = tp(prompt_name="specific_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
             saved_data = {}
             result_list = []
@@ -121,8 +121,8 @@ def run_all_algorithms():
             for case, dialogues in zip(dialogue_to_graph, test_list):
                 test_graph = Graph(graph_dict=case["graph"])
                 for result_graph in dialogues[case["topic"]]:
-                    print("METRICS: ", case["graph"])
-                    print("METRICS-2: ", result_graph.graph_dict)
+                    # print("METRICS: ", case["graph"])
+                    # print("METRICS-2: ", result_graph.graph_dict)
             # for case, result_graph in zip(dialogue_to_graph, test_list):
 
                     metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
@@ -202,5 +202,6 @@ if __name__ == "__main__":
     old_data.update(new_metrics)
     compare_results(date, old_data)
 
+    print("WRITING")
     with open(env_settings.RESULTS_PATH, "w") as f:
         f.write(json.dumps(old_data, indent=2, ensure_ascii=False))

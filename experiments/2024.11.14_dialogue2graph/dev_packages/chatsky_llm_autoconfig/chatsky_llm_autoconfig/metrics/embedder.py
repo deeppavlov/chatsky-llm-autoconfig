@@ -17,6 +17,10 @@ class EmbeddableString:
     def __eq__(self, other):
         return compare_strings(self.element,other.element)
     def __hash__(self):
-        return hash(self.element)
+        return hash("")
     def __str__(self):
         return self.element
+
+def emb_list(x):
+    #print("EMB_LIST: ", x, type(x))
+    return [EmbeddableString(el) for el in x]
