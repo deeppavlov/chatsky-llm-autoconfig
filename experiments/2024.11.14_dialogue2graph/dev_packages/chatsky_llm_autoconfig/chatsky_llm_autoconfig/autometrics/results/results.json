@@ -1,698 +1,800 @@
 {
-  "2024-11-08 08:36:09.361006": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        false,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.3333333333333333
-    }
-  },
-  "2024-11-08 08:46:12.796705": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
-    }
-  },
-  "2024-11-08 08:59:00.654385": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
-    }
-  },
-  "2024-11-13 08:12:44.272639": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-08 08:36:09.361006": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                false,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.3333333333333333
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 08:18:47.867573": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-08 08:46:12.796705": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 09:16:34.619553": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-08 08:59:00.654385": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 11:28:51.774656": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 08:12:44.272639": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 11:30:51.229055": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 08:18:47.867573": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 11:36:34.313725": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 09:16:34.619553": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 11:49:16.538292": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 11:28:51.774656": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 11:59:37.410065": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 11:30:51.229055": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 12:00:25.588828": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 11:36:34.313725": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 12:11:24.900727": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        true,
-        true,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.6666666666666666
+    "2024-11-13 11:49:16.538292": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-13 14:40:34.474053": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        false,
-        false,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.0
-    }
-  },
-  "2024-11-13 14:48:00.983083": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        false,
-        false,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.0
+    "2024-11-13 11:59:37.410065": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-14 11:17:45.171882": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        false,
-        false,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.0
+    "2024-11-13 12:00:25.588828": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-14 11:21:05.488653": {
-    "DialogueSampler": {
-      "all_paths_sampled": [
-        true,
-        true,
-        true
-      ],
-      "all_utterances_present": [
-        false,
-        false,
-        false
-      ],
-      "all_paths_sampled_avg": 1.0,
-      "all_utterances_present_avg": 0.0
+    "2024-11-13 12:11:24.900727": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                true,
+                true,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.6666666666666666
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     },
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
+    "2024-11-13 14:40:34.474053": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                false,
+                false,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.0
+        }
+    },
+    "2024-11-13 14:48:00.983083": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                false,
+                false,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.0
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-14 11:17:45.171882": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                false,
+                false,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.0
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-14 11:21:05.488653": {
+        "DialogueSampler": {
+            "all_paths_sampled": [
+                true,
+                true,
+                true
+            ],
+            "all_utterances_present": [
+                false,
+                false,
+                false
+            ],
+            "all_paths_sampled_avg": 1.0,
+            "all_utterances_present_avg": 0.0
+        },
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-14 15:05:40.244089": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.1111111111111111,
+            "is_same_structure": 0.1111111111111111
+        }
+    },
+    "2024-11-14 16:23:26.855741": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.1111111111111111
+        }
+    },
+    "2024-11-15 11:01:21.881629": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-15 11:25:00.420842": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-15 12:43:21.337773": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 12:44:32.413801": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 12:45:56.046551": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 12:47:57.538891": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 12:58:09.569850": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:01:09.666622": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:02:52.900248": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:04:56.760972": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:08:12.702705": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:17:47.675608": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 13:32:28.442300": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-15 14:02:13.220741": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-16 08:07:43.323700": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-16 08:16:04.107750": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-16 08:18:04.939405": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:00:45.027813": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:11:15.809986": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:17:51.235716": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:18:58.851445": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:22:54.256544": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:26:16.748993": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:29:45.458519": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:30:31.726066": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:31:32.479954": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:31:57.829601": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:32:33.363279": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 08:33:09.437663": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 13:56:45.762587": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:06:02.695895": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:07:43.220170": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:09:00.668243": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:26:44.273401": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:29:27.257402": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:36:03.710137": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:38:23.240866": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 14:56:50.666038": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-17 15:02:11.061417": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-18 08:14:07.669729": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 08:18:10.704245": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 08:23:26.206894": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 08:41:37.280659": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 11:28:22.781867": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-18 11:41:51.629402": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 11:42:49.611524": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-18 12:12:30.432804": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 12:46:48.940823": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 14:04:12.019381": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 14:22:42.547800": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-18 14:27:27.396317": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-18 14:29:23.516584": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-18 14:34:42.687726": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.6666666666666666,
+            "is_same_structure": 0.6666666666666666
+        }
+    },
+    "2024-11-18 14:47:04.141532": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-18 14:55:20.208294": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-18 14:58:00.282727": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 15:02:29.996727": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 16:45:51.508705": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-18 16:48:12.723585": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-18 16:49:58.221056": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 06:53:53.172114": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 06:57:58.126671": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 0.3333333333333333
+        }
+    },
+    "2024-11-19 06:59:50.911081": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 07:01:57.187603": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 07:05:57.978033": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 07:09:53.745909": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 07:49:04.793581": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 07:53:24.046491": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:03:11.270100": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:10:32.712746": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:17:41.129920": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:24:57.109818": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:32:10.505192": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.0,
+            "is_same_structure": 0.0
+        }
+    },
+    "2024-11-19 08:47:57.052720": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-19 08:56:40.680510": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-19 09:07:41.206820": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 0.3333333333333333,
+            "is_same_structure": 1.0
+        }
+    },
+    "2024-11-19 13:00:20.534843": {
+        "GeneralGraphGenerator": {
+            "triplet_match": 1.0,
+            "is_same_structure": 1.0
+        }
     }
-  },
-  "2024-11-14 15:05:40.244089": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.1111111111111111,
-      "is_same_structure": 0.1111111111111111
-    }
-  },
-  "2024-11-14 16:23:26.855741": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.1111111111111111
-    }
-  },
-  "2024-11-15 11:01:21.881629": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-15 11:25:00.420842": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-15 12:43:21.337773": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 12:44:32.413801": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 12:45:56.046551": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 12:47:57.538891": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 12:58:09.569850": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:01:09.666622": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:02:52.900248": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:04:56.760972": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:08:12.702705": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:17:47.675608": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 13:32:28.442300": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-15 14:02:13.220741": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-16 08:07:43.323700": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-16 08:16:04.107750": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-16 08:18:04.939405": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:00:45.027813": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:11:15.809986": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:17:51.235716": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:18:58.851445": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:22:54.256544": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:26:16.748993": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:29:45.458519": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:30:31.726066": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:31:32.479954": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:31:57.829601": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:32:33.363279": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 08:33:09.437663": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 13:56:45.762587": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:06:02.695895": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:07:43.220170": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:09:00.668243": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:26:44.273401": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:29:27.257402": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:36:03.710137": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:38:23.240866": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 14:56:50.666038": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-17 15:02:11.061417": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-18 08:14:07.669729": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 08:18:10.704245": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 08:23:26.206894": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 08:41:37.280659": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 11:28:22.781867": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-18 11:41:51.629402": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 11:42:49.611524": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 1.0,
-      "is_same_structure": 1.0
-    }
-  },
-  "2024-11-18 12:12:30.432804": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 12:46:48.940823": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 14:04:12.019381": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 14:22:42.547800": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-18 14:27:27.396317": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-18 14:29:23.516584": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-18 14:34:42.687726": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.6666666666666666,
-      "is_same_structure": 0.6666666666666666
-    }
-  },
-  "2024-11-18 14:47:04.141532": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-18 14:55:20.208294": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-18 14:58:00.282727": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 15:02:29.996727": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 16:45:51.508705": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  },
-  "2024-11-18 16:48:12.723585": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.3333333333333333,
-      "is_same_structure": 0.3333333333333333
-    }
-  },
-  "2024-11-18 16:49:58.221056": {
-    "GeneralGraphGenerator": {
-      "triplet_match": 0.0,
-      "is_same_structure": 0.0
-    }
-  }
 }

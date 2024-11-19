@@ -2,42 +2,56 @@
     "gpt-4o-mini": {
         "general_graph_generation_prompt": [
             {
-                "booking a hotel room": [
+                "tech support for a laptop issue": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hi, I'd like to book a hotel room"
+                                    "Hi, I'm having trouble with my laptop"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "A double room for two nights, please"
+                                    "The screen is flickering"
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "Yes, that's correct"
+                                    "Yes, I've tried restarting it"
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Here's my credit card information"
+                                    "No, I haven't updated the drivers"
                                 ]
                             },
                             {
                                 "source": 5,
+                                "target": 6,
+                                "utterances": [
+                                    "Sure, I'll update the drivers now"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 7,
+                                "utterances": [
+                                    "Yes, the issue is resolved"
+                                ]
+                            },
+                            {
+                                "source": 7,
                                 "target": 2,
                                 "utterances": [
-                                    "I'd like to book another room"
+                                    "Actually, there's another issue"
                                 ]
                             }
                         ],
@@ -47,39 +61,55 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Welcome to our hotel booking service! How can I assist you today?"
+                                    "Welcome to tech support! How can I assist you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_room_type",
+                                "label": "ask_issue",
                                 "is_start": false,
                                 "utterances": [
-                                    "What type of room would you like to book?"
+                                    "Can you describe the issue you're experiencing with your laptop?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "confirm_booking",
+                                "label": "ask_restart",
                                 "is_start": false,
                                 "utterances": [
-                                    "You've selected a double room for two nights. Is this correct?"
+                                    "Have you tried restarting your laptop to see if that resolves the flickering?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_payment_details",
+                                "label": "ask_drivers",
                                 "is_start": false,
                                 "utterances": [
-                                    "Great! Please provide your payment details to proceed."
+                                    "Have you checked if your graphics drivers are up to date?"
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "thank_you",
+                                "label": "ask_update",
                                 "is_start": false,
                                 "utterances": [
-                                    "Thank you for your booking! Would you like to book another room?"
+                                    "Please update your graphics drivers and let me know if the issue persists."
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_resolution",
+                                "is_start": false,
+                                "utterances": [
+                                    "Is the screen flickering issue resolved after updating the drivers?"
+                                ]
+                            },
+                            {
+                                "id": 7,
+                                "label": "ask_more_help",
+                                "is_start": false,
+                                "utterances": [
+                                    "Great to hear! Is there anything else I can help you with?"
                                 ]
                             }
                         ]
@@ -90,35 +120,49 @@
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hello, I'm interested in reserving a hotel room."
+                                    "Hello, I'm facing an issue with my laptop."
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "I would like a double room for a two-night stay, please."
+                                    "The display keeps flickering."
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "Yes, that’s right."
+                                    "Yes, I have already restarted it."
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Here’s my credit card details."
+                                    "No, I haven't checked for driver updates."
                                 ]
                             },
                             {
                                 "source": 5,
+                                "target": 6,
+                                "utterances": [
+                                    "Okay, I'll update the drivers now."
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 7,
+                                "utterances": [
+                                    "Yes, the flickering has stopped."
+                                ]
+                            },
+                            {
+                                "source": 7,
                                 "target": 2,
                                 "utterances": [
-                                    "Yes, I would like to book another room as well."
+                                    "Actually, there's one more problem."
                                 ]
                             }
                         ],
@@ -128,39 +172,55 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Thank you for choosing our hotel booking service! How may I help you today?"
+                                    "Thank you for contacting tech support! How can I help you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_room_type",
+                                "label": "ask_problem",
                                 "is_start": false,
                                 "utterances": [
-                                    "What kind of room are you looking to reserve?"
+                                    "Could you please elaborate on the problem you're having with your laptop?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "confirm_room",
+                                "label": "ask_reboot",
                                 "is_start": false,
                                 "utterances": [
-                                    "Just to confirm, you're requesting a double room for two nights, correct?"
+                                    "Have you attempted to reboot your laptop to see if that fixes the flickering?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_payment_info",
+                                "label": "ask_drivers",
                                 "is_start": false,
                                 "utterances": [
-                                    "Perfect! Could you please provide your payment information to continue?"
+                                    "Have you verified whether your graphics drivers are current?"
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "thank_you",
+                                "label": "ask_update",
                                 "is_start": false,
                                 "utterances": [
-                                    "Thank you for completing your booking! Would you like to reserve an additional room?"
+                                    "Please go ahead and update your graphics drivers, and let me know if the problem continues."
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_fix",
+                                "is_start": false,
+                                "utterances": [
+                                    "Did updating the drivers fix the flickering issue?"
+                                ]
+                            },
+                            {
+                                "id": 7,
+                                "label": "ask_more_help",
+                                "is_start": false,
+                                "utterances": [
+                                    "That's wonderful to hear! Is there anything else I can assist you with?"
                                 ]
                             }
                         ]
@@ -171,35 +231,49 @@
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hello, I want to reserve a hotel room."
+                                    "Hello, I'm encountering an issue with my laptop."
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "A double room for a two-night stay, please."
+                                    "The display is flickering."
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "Yes, that's correct."
+                                    "Yes, I already restarted it."
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Here is my credit card information."
+                                    "No, I haven't checked for driver updates."
                                 ]
                             },
                             {
                                 "source": 5,
+                                "target": 6,
+                                "utterances": [
+                                    "Alright, I will update the drivers now."
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 7,
+                                "utterances": [
+                                    "Yes, the flickering has stopped."
+                                ]
+                            },
+                            {
+                                "source": 7,
                                 "target": 2,
                                 "utterances": [
-                                    "I would like to reserve another room."
+                                    "Actually, I have another concern."
                                 ]
                             }
                         ],
@@ -209,39 +283,55 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Thank you for reaching out to our hotel booking service! How can I help you today?"
+                                    "Thank you for reaching out to tech support! What seems to be the problem today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_room_type",
+                                "label": "ask_problem",
                                 "is_start": false,
                                 "utterances": [
-                                    "What kind of room are you interested in booking?"
+                                    "Could you please elaborate on the problem you're facing with your laptop?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "confirm_room",
+                                "label": "ask_restart",
                                 "is_start": false,
                                 "utterances": [
-                                    "So, you would like to reserve a double room for two nights. Is that right?"
+                                    "Have you attempted to restart your laptop to see if that fixes the flickering issue?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_payment_details",
+                                "label": "ask_driver_update",
                                 "is_start": false,
                                 "utterances": [
-                                    "Fantastic! Please share your payment details to finalize the booking."
+                                    "Have you verified whether your graphics drivers are current?"
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "thank_you",
+                                "label": "ask_flickering_fix",
                                 "is_start": false,
                                 "utterances": [
-                                    "Thank you for your reservation! Would you like to book an additional room?"
+                                    "Please go ahead and update your graphics drivers, then let me know if the flickering continues."
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_if_fixed",
+                                "is_start": false,
+                                "utterances": [
+                                    "Did updating the drivers fix the flickering problem?"
+                                ]
+                            },
+                            {
+                                "id": 7,
+                                "label": "ask_more_help",
+                                "is_start": false,
+                                "utterances": [
+                                    "That's wonderful to hear! Is there anything else you need assistance with?"
                                 ]
                             }
                         ]

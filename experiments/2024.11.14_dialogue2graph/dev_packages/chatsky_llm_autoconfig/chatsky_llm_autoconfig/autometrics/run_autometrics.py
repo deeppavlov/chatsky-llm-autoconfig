@@ -88,7 +88,7 @@ def run_all_algorithms():
 
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
-            class_instance = tp(prompt_name="specific_graph_generation_prompt")
+            class_instance = tp(prompt_name="general_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
             saved_data = {}
             result_list = []
@@ -203,5 +203,6 @@ if __name__ == "__main__":
     compare_results(date, old_data)
 
     print("WRITING")
-    with open(env_settings.RESULTS_PATH, "w") as f:
-        f.write(json.dumps(old_data, indent=2, ensure_ascii=False))
+    save_json(data=old_data, filename=env_settings.RESULTS_PATH)
+    # with open(env_settings.RESULTS_PATH, "w") as f:
+    #     f.write(json.dumps(old_data, indent=2, ensure_ascii=False))
