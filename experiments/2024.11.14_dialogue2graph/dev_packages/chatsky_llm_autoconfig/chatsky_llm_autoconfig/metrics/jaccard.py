@@ -26,8 +26,9 @@ def jaccard_edges(true_graph_edges, generated_graph_edges, verbose=False, return
     verbose: bool - печать отладочной информации
     """
 
+    print("BEFORE: ", true_graph_edges)
     true_graph_edges = collapse_multiedges(list(true_graph_edges))
-    #print("COLLAPSE: ", type((list(true_graph_edges.values()))[0]))
+    print("COLLAPSE: ", true_graph_edges)
     generated_graph_edges = collapse_multiedges(list(generated_graph_edges))
 
     jaccard_values = np.zeros((len(true_graph_edges), len(generated_graph_edges)))

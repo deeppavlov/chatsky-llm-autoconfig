@@ -12,7 +12,6 @@ from chatsky_llm_autoconfig.metrics.embedder import emb_list
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 
-
 def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict):
         set1 = set([elem["utterances"] for elem in list(x.values())])
@@ -43,8 +42,10 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
 
         print("type1")
 
+        #GM = nx.isomorphism.DiGraphMatcher(g1, g2, node_match=lambda x, y: emb_list(x))
         #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
         GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x['utterances'])).intersection(set(emb_list(y['utterances']))) is not None)
+        #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x['utterances'],x)).intersection(set(emb_list(y['utterances'],y))) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
         GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_multigraph)
@@ -59,11 +60,15 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     edges1 = list(collapse_multiedges(g1.edges(data=True)).keys())
     edges2 = list(collapse_multiedges(g2.edges(data=True)).keys())
 
-    _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
-    _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
+    try:
+        _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
-    print("MATRIX: ", matrix_nodes, matrix_edges)
+        _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
+    except Exception as e:
+        print("Exception: ", e)
+        return False
+    print("MATRIX: ", g1.nodes(data=True))
     for i, edge1 in enumerate(edges1):
         edge_mapping[edge1] = None
         mapping_jaccard_values[edge1] = 0

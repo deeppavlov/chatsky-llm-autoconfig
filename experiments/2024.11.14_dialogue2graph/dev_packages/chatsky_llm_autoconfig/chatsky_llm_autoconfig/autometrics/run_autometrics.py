@@ -16,7 +16,7 @@ from chatsky_llm_autoconfig.metrics.automatic_metrics import (
     triplet_match
 )
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
-from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json
+from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json, graph2comparable
 import datetime
 from colorama import Fore
 from langchain_openai  import ChatOpenAI
@@ -88,7 +88,8 @@ def run_all_algorithms():
 
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
-            class_instance = tp(prompt_name="general_graph_generation_prompt")
+            # class_instance = tp(prompt_name="general_graph_generation_prompt")
+            class_instance = tp(prompt_name="specific_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
             saved_data = {}
             result_list = []
@@ -119,14 +120,20 @@ def run_all_algorithms():
                 saved_data.update(new_data)
                 save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
             for case, dialogues in zip(dialogue_to_graph, test_list):
-                test_graph = Graph(graph_dict=case["graph"])
+                test_graph = Graph(graph_dict=graph2comparable(case["graph"]))
                 for result_graph in dialogues[case["topic"]]:
+                    try:
+                        comp_graph=Graph(graph_dict=graph2comparable(result_graph.graph_dict))
                     # print("METRICS: ", case["graph"])
                     # print("METRICS-2: ", result_graph.graph_dict)
             # for case, result_graph in zip(dialogue_to_graph, test_list):
 
-                    metrics["triplet_match"].append(triplet_match(test_graph, result_graph))
-                    metrics["is_same_structure"].append(is_same_structure(test_graph, result_graph))
+                        metrics["triplet_match"].append(triplet_match(test_graph, comp_graph))
+                        metrics["is_same_structure"].append(is_same_structure(test_graph, comp_graph))
+                    except Exception as e:
+                        print("Exception: ", e)
+                        metrics["triplet_match"].append(False)
+                        metrics["is_same_structure"].append(False)
 
             metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
             metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])

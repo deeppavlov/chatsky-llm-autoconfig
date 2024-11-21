@@ -1,3 +1,4 @@
+import copy
 import networkx as nx
 import random
 import json
@@ -20,6 +21,8 @@ class EnvSettings(BaseSettings, case_sensitive=True):
     EMBEDDER_MODEL: Optional[str]
     EMBEDDER_THRESHOLD: Optional[float]
     EMBEDDER_DEVICE: Optional[str]
+    RERANKER_MODEL: Optional[str]
+    RERANKER_THRESHOLD: Optional[float]
 
 
 
@@ -142,29 +145,42 @@ def do_mapping(g1, g2):
                 mapping[node] = None
     print(mapping)
 
+def graph2comparable(graph_dict: dict) -> dict:
+    new_dict = copy.deepcopy(graph_dict)
+    new_edges = []
+    for edge in new_dict["edges"]:
+        print("ITERATION: ", edge, [node for node in graph_dict["nodes"] if node["id"] == edge["source"]])
+        edge["utterances"] = [next(node for node in graph_dict["nodes"] if node["id"] == edge["source"])["utterances"][0] + " " + edge["utterances"][0]]
+        new_edges.append(edge)
+    new_dict["edges"] = new_edges
+    return new_dict
+
 
 def call_llm_api(query: str, llm, client=None, temp: float = 0.05, langchain_model=True) -> str | None:
-    try:
-        if langchain_model:
-            messages = [HumanMessage(content=query)]
-            response = llm.invoke(messages)
-            return response
-        else:
-            messages.append({"role": "user", "content": query})
-            response_big = client.chat.completions.create(
-                model=llm,  # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
-                messages=messages,
-                temperature=0.7,
-                n=1,
-                max_tokens=3000,  # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
-                extra_headers={"X-Title": "My App"},  # опционально - передача информация об источнике API-вызова
-            )
-            return response_big.choices[0].message.content
+    tries = 0
+    while tries < 3:
+        try:
+            if langchain_model:
+                messages = [HumanMessage(content=query)]
+                response = llm.invoke(messages)
+                return response
+            else:
+                messages.append({"role": "user", "content": query})
+                response_big = client.chat.completions.create(
+                    model=llm,  # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
+                    messages=messages,
+                    temperature=0.7,
+                    n=1,
+                    max_tokens=3000,  # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
+                    extra_headers={"X-Title": "My App"},  # опционально - передача информация об источнике API-вызова
+                )
+                return response_big.choices[0].message.content
 
-    except Exception as e:
-        print(e)
-        print("Timeout error, retrying...")
-        return None
+        except Exception as e:
+            print(e)
+            print("Timeout error, retrying...")
+            tries += 1
+    return None
 
 
 def save_json(data: dict, filename: str) -> None:
