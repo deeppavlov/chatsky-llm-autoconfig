@@ -6,11 +6,9 @@ This module contains functions that checks Graphs and Dialogues for various metr
 """
 
 from chatsky_llm_autoconfig.graph import BaseGraph
-from typing import List, Tuple
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain.prompts import PromptTemplate
 from pydantic import BaseModel, Field
-from typing import List
 from langchain_core.output_parsers import PydanticOutputParser
 import logging
 
@@ -32,32 +30,34 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
     """
     # Define prompt template and parser inside the function since they're only used here
     triplet_validate_prompt_template = """
-    You are given a dialog between assistant and a user.
-    source_utterances, edge_utterances, target_utterances are dialog parts and each contains an array with exactly one utterance.
-    They should be read left to right.
+        You are evaluating if a dialog transition is logically valid.
 
-    - source_utterances are assistant phrases 
-    - edge_utterances are user phrases
-    - target_utterances are assistant phrases 
+        Given a triplet of utterances:
+        - source: assistant's phrase
+        - edge: user's phrase 
+        - target: assistant's next phrase
 
-    TASK. Evaluate if the transition makes a logical connection when reading from Source utterances to Target utterances through Edge utterances
+        TASK: Determine if the transition makes logical sense in any potential dialog context.
 
-    this is an invalid transition:
-    {{
-        'source_utterances': ['Welcome to our online bookstore. How can I assist you today?'],
-        'edge_utterances': ['Hello! Are you looking for any book recommendations?'],
-        'target_utterances': ['We have a wide selection of genres. Which do you prefer?'],
-        'topic': 'Dialog about purchasing books between assistant and customer'
-    }}
+        Examples of INVALID transitions:
 
-    Provide your answer in the following JSON format:
-    {{"isValid": true or false, "description": "Explanation of why it's valid or invalid."}}
+        1) Invalid because asks general question ignoring specific request:
+        source: "Great! Your membership is set up. Would you like to know about our other facilities?"
+        edge: "Can you tell me about other facilities?" 
+        target: "What would you like to know about our gym?"
 
-    Dialog topic: {topic}
+        2) Invalid because asks generic question instead of handling specific request:
+        source: "Your appointment is confirmed. Thank you for choosing AutoCare!"
+        edge: "Actually, I need to add a brake check"
+        target: "What type of service do you need?"
 
-    (source_utterances) {source_utterances} -> (edge_utterances) {edge_utterances} -> (target_utterances) {target_utterances}
+        Review this transition for topic: {topic}
+        source: {source_utterances}
+        edge: {edge_utterances}
+        target: {target_utterances}
 
-    Your answer:"""
+        Reply in JSON format:
+        {{"isValid": true/false, "description": "Brief explanation of why it's valid or invalid."}}"""
 
     triplet_validate_prompt = PromptTemplate(
         input_variables=["source_utterances", "edge_utterances", "target_utterances", "topic"],
