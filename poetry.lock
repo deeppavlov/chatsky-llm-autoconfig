@@ -3472,6 +3472,7 @@ files = [
 tests = ["pytest"]
 
 [[package]]
+<<<<<<< HEAD
 name = "pyarrow"
 version = "18.0.0"
 description = "Python library for Apache Arrow"
@@ -3526,6 +3527,8 @@ files = [
 test = ["cffi", "hypothesis", "pandas", "pytest", "pytz"]
 
 [[package]]
+=======
+>>>>>>> aa341269fece8d44c041cb7ff4e7857c4f7a83f7
 name = "pycodestyle"
 version = "2.12.1"
 description = "Python style guide checker"
@@ -5329,4 +5332,8 @@ propcache = ">=0.2.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
+<<<<<<< HEAD
 content-hash = "962a728709e252cf7ec4af39456ed3d1bfe8172befd67c2f53c26b3928b4fcb3"
+=======
+content-hash = "f91a93a6a5cc8837974d9f3045c0dcf75fe921d26b096d3332245480ccec0e34"
+>>>>>>> aa341269fece8d44c041cb7ff4e7857c4f7a83f7
