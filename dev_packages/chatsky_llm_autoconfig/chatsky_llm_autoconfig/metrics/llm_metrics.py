@@ -39,18 +39,6 @@ def are_triplets_valid(G: BaseGraph, model: BaseChatModel, topic: str) -> dict[s
 
         TASK: Determine if the transition makes logical sense in any potential dialog context.
 
-        Examples of INVALID transitions:
-
-        1) Invalid because asks general question ignoring specific request:
-        source: "Great! Your membership is set up. Would you like to know about our other facilities?"
-        edge: "Can you tell me about other facilities?" 
-        target: "What would you like to know about our gym?"
-
-        2) Invalid because asks generic question instead of handling specific request:
-        source: "Your appointment is confirmed. Thank you for choosing AutoCare!"
-        edge: "Actually, I need to add a brake check"
-        target: "What type of service do you need?"
-
         Review this transition for topic: {topic}
         source: {source_utterances}
         edge: {edge_utterances}
