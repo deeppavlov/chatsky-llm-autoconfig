@@ -1,4 +1,5 @@
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
+from chatsky_llm_autoconfig.algorithms.dialogue_augmentation import DialogAugmentator
 from chatsky_llm_autoconfig.algorithms.topic_graph_generation import CycleGraphGenerator
 from chatsky_llm_autoconfig.algorithms.dialogue_generation import DialogueSampler
 import json
@@ -55,7 +56,7 @@ def run_all_algorithms():
             }
             for case in dialogue_to_dialogue:
                 test_dialogue = Dialogue(dialogue=case["dialogue"])
-                result = class_instance.invoke(test_dialogue)
+                result = class_instance.invoke(dialogue=test_dialogue)
 
                 metrics["all_roles_correct"].append(all_roles_correct(test_dialogue, result))
                 metrics["is_correct_lenght"].append(is_correct_lenght(test_dialogue, result))
