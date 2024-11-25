@@ -23,7 +23,7 @@ class GeneralGraphGenerator(GraphGenerator):
 
     def invoke(self, dialogue: Dialogue = None, graph: DialogueGraph = None, topic: str = "") -> BaseGraph:
 
-        model=ChatOpenAI(model=env_settings.GENERATION_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0) | PydanticOutputParser(pydantic_object=DialogueGraph)
+        model=ChatOpenAI(model=env_settings.GENERATION_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=1) | PydanticOutputParser(pydantic_object=DialogueGraph)
         #model=ChatOpenAI(model=env_settings.GENERATION_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0)
 
         result = call_llm_api(prompts[self.prompt_name].format(graph_example_1=graph_example_1, dialogue_example_2=dialogue_example_2, graph_example_2=graph_example_2, dialog=dialogue.to_list()), model, temp=0)

@@ -1,4 +1,5 @@
 import copy
+import numpy as np
 import networkx as nx
 import random
 import json
@@ -15,6 +16,7 @@ class EnvSettings(BaseSettings, case_sensitive=True):
     OPENAI_API_KEY: Optional[str]
     OPENAI_BASE_URL: Optional[str]
     GENERATION_MODEL_NAME: Optional[str]
+    COMPARE_MODEL_NAME: Optional[str]
     GENERATION_SAVE_PATH: Optional[str]
     TEST_DATA_PATH: Optional[str]
     RESULTS_PATH: Optional[str]
@@ -192,3 +194,19 @@ def read_json(path):
     with open(path, mode="r") as file:
         data = file.read()
     return json.loads(data)
+
+def graph2list(graph: dict) -> list:
+    return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
+
+def get_diagonals(matrix):
+    s = matrix.shape[0]
+    diag = np.diag(matrix,0)
+    for n in range(1,s):
+        diag = np.vstack([diag,np.concatenate((np.diag(matrix,n),np.diag(matrix,n-s)))])
+    return diag
+
+def get_diagonal(graph, i):
+    result = {}
+    result['edges'] = graph['edges'][i:] + graph['edges'][:i]
+    result['nodes'] = graph['nodes'][i:] + graph['nodes'][:i]
+    return result

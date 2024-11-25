@@ -13,7 +13,8 @@ from chatsky_llm_autoconfig.metrics.automatic_metrics import (
     all_roles_correct,
     is_same_structure,
     is_correct_length,
-    triplet_match
+    triplet_match,
+    llm_match
 )
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
 from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json, graph2comparable
@@ -89,7 +90,8 @@ def run_all_algorithms():
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
             # class_instance = tp(prompt_name="general_graph_generation_prompt")
-            class_instance = tp(prompt_name="specific_graph_generation_prompt")
+            # class_instance = tp(prompt_name="specific_graph_generation_prompt")
+            class_instance = tp(prompt_name="fourth_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": []}
             saved_data = {}
             result_list = []
@@ -129,13 +131,20 @@ def run_all_algorithms():
             # for case, result_graph in zip(dialogue_to_graph, test_list):
 
                         metrics["triplet_match"].append(triplet_match(test_graph, comp_graph))
-                        metrics["is_same_structure"].append(is_same_structure(test_graph, comp_graph))
+                        comp = is_same_structure(test_graph, comp_graph)
+                        metrics["is_same_structure"].append(comp)
+                        if comp:
+                            metrics["llm_match"].append(llm_match(test_graph, comp_graph))
+                        else:
+                            metrics["llm_match"].append(False)                            
                     except Exception as e:
                         print("Exception: ", e)
                         metrics["triplet_match"].append(False)
                         metrics["is_same_structure"].append(False)
+                        metrics["llm_match"].append(False)
 
             metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
+            metrics["llm_match"] = sum(metrics["llm_match"]) / len(metrics["llm_match"])
             metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])
 
         elif algorithms[class_]["input_type"] is BaseGraph and algorithms[class_]["output_type"] is BaseGraph:

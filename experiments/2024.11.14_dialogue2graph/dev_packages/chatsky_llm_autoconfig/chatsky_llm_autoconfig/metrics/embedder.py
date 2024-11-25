@@ -12,7 +12,8 @@ def compare_strings(first: str, second: str):
 
     # score = evaluator.evaluate_string_pairs(prediction=first, prediction_b=second)['score']
     score = evaluator.score([(first, second)])[0]
-    print("SCORE: ", score, first, second)
+    if 0.99 > score > 0.94:
+        print("SCORE: ", score, first, second)
     # return score <= env_settings.EMBEDDER_THRESHOLD
     return score >= env_settings.RERANKER_THRESHOLD
 
@@ -29,3 +30,13 @@ class EmbeddableString:
 def emb_list(x):
     #print("EMB_LIST: ", x)
     return [EmbeddableString(el) for el in x]
+
+def get_embedding(golden: list[str], generated: list[str], emb_name: str, device: str):
+
+    if emb_name not in embedding:
+        embedding[emb_name] = SentenceTransformer(emb_name,device=device)
+ 
+    golden_vectors = embedding[emb_name].encode(golden, normalize_embeddings=True)
+    generated_vectors = embedding[emb_name].encode(generated, normalize_embeddings=True)
+    similarities = generated_vectors @ golden_vectors.T
+    return similarities

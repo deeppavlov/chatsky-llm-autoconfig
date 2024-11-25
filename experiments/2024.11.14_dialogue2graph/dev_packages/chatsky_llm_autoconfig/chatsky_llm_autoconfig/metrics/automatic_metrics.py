@@ -6,11 +6,22 @@ This module contains functions that automatically (without using LLMs) checks Gr
 for various metrics.
 """
 
+import numpy as np
+from langchain.output_parsers import PydanticOutputParser
+from sentence_transformers import SentenceTransformer
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
-from chatsky_llm_autoconfig.metrics.embedder import emb_list
+from chatsky_llm_autoconfig.metrics.embedder import emb_list, get_embedding
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
+from chatsky_llm_autoconfig.schemas import CompareResponse
+from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings, graph2list, get_diagonals, get_diagonal
+from chatsky_llm_autoconfig.prompts import (
+    compare_graphs_prompt, graph_example_1
+)
+
+env_settings = EnvSettings()
+from langchain.chat_models import ChatOpenAI
 
 def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict):
@@ -131,6 +142,20 @@ def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
     g1 = G1.graph
     g2 = G2.graph
     return nx.is_isomorphic(g1, g2)
+
+def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
+    g1 = G1.graph_dict
+    g2 = G2.graph_dict
+
+
+    matrix = get_embedding(graph2list(g1), graph2list(g2), env_settings.COMPARE_MODEL_NAME, env_settings.EMBEDDER_DEVICE)
+    diags = get_diagonals(matrix)
+    sums = np.sum(diags,axis=1)
+    g1_best = get_diagonal(g1,np.argmax(sums))
+
+    model=ChatOpenAI(model=env_settings.COMPARE_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL) | PydanticOutputParser(pydantic_object=CompareResponse)
+
+    return call_llm_api(compare_graphs_prompt.format(graph_example_1=graph_example_1, graph_1=g1_best, graph_2=g2), model, temp=0).result
 
 
 def all_paths_sampled(G: BaseGraph, dialogue: Dialogue) -> bool:

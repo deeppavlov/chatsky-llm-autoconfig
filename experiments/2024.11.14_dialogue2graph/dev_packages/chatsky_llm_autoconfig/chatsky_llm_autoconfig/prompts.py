@@ -243,7 +243,8 @@ graph_example_1 = {
           {'id': 2, 'label': 'ask_books', 'is_start': False, 'utterances': [ 'What books do you like?']},
           {'id': 3, 'label': 'ask_payment_method', 'is_start': False, 'utterances': [ 'Please, enter the payment method you would like to use: cash or credit card.']},
           {"id": 4, "label": "ask_to_redo", "is_start": False, "utterances": [ "Something is wrong, can you please use other payment method or start order again"]}
-      ]
+      ],
+      'reason': ""
 }
 
 dialogue_example_2 = [
@@ -496,22 +497,22 @@ prompts["general_graph_generation_prompt"] = PromptTemplate.from_template(
     # "exsiting one. Utterances in one node or in multiedge should be close to each other and correspond to different answers "
     # "to one question or different ways to say something. For example, for question about preferences or a Yes/No question "
     # "both answers can go in one multiedge, there’s no need to make a new node. "
-    "If two nodes have the same response they "
-    "should be united in one node. "
+    # "If two nodes have the same response they "
+    # "should be united in one node. "
     "Do not make up utterances that aren’t present in the dialogue. "
     # "Please do not combine "
     # "utterances from multiedges in one list, write them separately like in example above. "
     "Every utterance from the dialogue, "
     "whether it is from user or assistanst, shall be present in the graph. Nodes must be assistant's utterances, edges must be utterances from the user. "
-    "It is impossible to have an edge connecting to non-existent node. "
+    # "It is impossible to have an edge connecting to non-existent node. "
     "Never create nodes with same utterance. "
     # "Do not forget ending nodes with goodbyes. "
-    "Every dialogue corresponds to a cycled graph, for example: {dialogue_example_2}. "
-    "It shall result in the graph below: {graph_example_2}. "
-    "This is the end of the example. "
-    # "Cyclic graph means you don't duplicate nodes, but connect new edge to one of previously created nodes instead. "
-    # "When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes. "
-    # "If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here. "
+    # "Every dialogue corresponds to a cycled graph, for example: {dialogue_example_2}. "
+    # "It shall result in the graph below: {graph_example_2}. "
+    # "This is the end of the example. "
+    "Cyclic graph means you don't duplicate nodes, but connect new edge to one of previously created nodes instead. "
+    "When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes. "
+    "If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here. "
     #"Never create nodes with user's utterances. "
     # "Don't repeat assistance's utterance from one of existing nodes, just cycle to previously created node with that utterance. "
     "IMPORTANT: All assistant's utterances are nodes, but all user's utterances are edges. "
@@ -672,7 +673,136 @@ prompts["specific_graph_generation_prompt"] = PromptTemplate.from_template(
     "Dialogue: {dialog}"
 )
 
+prompts["second_graph_generation_prompt"] = PromptTemplate.from_template(
+    "Your input is a dialogue from customer chatbot system. "
+    "Your task is to create a cyclic dialogue graph corresponding to the dialogue. "
+    "Next is an example of the graph (set of rules) how chatbot system looks like - it is "
+    "a set of nodes with chatbot system utterances and a set of edges that are "
+    "triggered by user requests: {graph_example_1} "
+    "This is the end of the example."
+    "**Rules:**"
+    "1) Nodes must be assistant's utterances, edges must be utterances from the user. "
+    "2) When you go to next user's utterance, first try to find answer relevant to that utterance from one of previously created nodes. "
+    "If it is found then create next edge connecting back to the node with the right answer. Don't create more nodes after that step. "
+    "3) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. " 
+    "4) Every user's utterance from the dialogue shall be present in one and only one edge of a graph. "    
+    "5) Use ony utterances from the dialogue. It is prohibited to create new utterances different from input ones. "
+    "6) Never create nodes with user's utterances. "
+    "7) Graph must be cyclic - no dead ends. "
+    "8) Number of nodes must be equal to the number of assistant's utterances. "
+    "9) Number of edges must be equal to the number of user's utterances. "
+    "10) You must always return valid JSON fenced by a markdown code block. Do not return any additional text. "
+    "I will give a dialogue, your task is to build a graph for this dialogue according to the rules and examples above. "
+    "Dialogue: {dialog}"
+)
 
+
+
+prompts["third_graph_generation_prompt"] = PromptTemplate.from_template(
+    "Your input is a dialogue from customer chatbot system. "
+    "Your task is to create a cyclic dialogue graph corresponding to the dialogue. "
+    "Next is an example of the graph (set of rules) how chatbot system looks like - it is "
+    "a set of nodes with chatbot system utterances and a set of edges that are "
+    "triggered by user requests: {graph_example_1} "
+    "This is the end of the example."
+    "**Rules:**"
+    "1) Nodes must be assistant's utterances, edges must be utterances from the user. "
+    "2) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. " 
+    "3) Every user's utterance from the dialogue shall be present in one and only one edge of a graph. "    
+    "4) Use ony utterances from the dialogue. It is prohibited to create new utterances different from input ones. "
+    "6) Never create nodes with user's utterances. "
+    "7) Graph must be cyclic - no dead ends. "
+    "8) The number of nodes shall be equal to number of assistant's phrases. "
+    "9) You must always return valid JSON fenced by a markdown code block. Do not return any additional text. "
+    "I will give a dialogue, your task is to build a graph for this dialogue according to the rules and examples above. "
+    "Dialogue: {dialog}"
+)
+
+
+prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
+    "Your input is a dialogue from customer chatbot system. "
+    "Your task is to create a cyclic dialogue graph corresponding to the dialogue. "
+    "Next is an example of the graph (set of rules) how chatbot system looks like - it is "
+    "a set of nodes with chatbot system utterances and a set of edges that are "
+    "triggered by user requests: {graph_example_1} "
+    "This is the end of the example."
+    # "Every transition in all edges shall start from and result in nodes which are present in set of nodes."
+    # "Another dialogue example: {dialogue_example_2}"
+    # "It shall result in the graph below: {graph_example_2}"
+    # "This is the end of the example."
+    #"A cycle is a closed path in a graph, which means that it starts and ends at the same vertex and passes through a sequence of distinct vertices and edges."
+    # "Use cycle in a graph when you see that assistant repeats phrase which already was used earlier in dialogue, and make this repeat the first node of this cycle. "
+    # "This repeat means that you don't create new node, but use node you created before for this assistant's utterance. "
+    # "User's utterance in a dialogue before this repeating utterance will be an edge leading from cycle's last node to the cycle's start node (the node with the repeating assistant's utterance). "
+    "**Rules:**"
+    "1) Nodes must be assistant's utterances, edges must be utterances from the user. "
+    "2) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. " 
+    "3) Every user's utterance from the dialogue shall be present in one and only one edge of a graph. "    
+    "4) Use ony utterances from the dialogue. It is prohibited to create new utterances different from input ones. "
+    "6) Never create nodes with user's utterances. "
+    # "3) The final node MUST connect back to an existing node. "
+    "7) Graph must be cyclic - no dead ends. "
+    "8) The cycle point should make logical sense. "
+    "9) Use one of assistant's utterances from the dialogue for the cycle point, don't add/create more nodes with same or simiar utterances. "
+    "Number of nodes is the number of unique node ID's. "
+    "Remember that the number of nodes cannot exceed the number of assistant's phrases. "
+    "When you add node with same utterances it duplicates nodes and increases number of nodes. So when this situation takes place, just combine such two duplicates into one node. " 
+    # "10) It is prohibited to duplicate nodes with same assistant's utterances. "
+    # "11) Duplicated nodes are "
+    "10) Number of nodes and edges cannot exceed number of utterances in a dialogue. "
+
+    # "9) Categorical imperative: The number of nodes must be equal to number of assistant's phrases. "
+    # "10) Categorical imperative: The number of edges must be equal to the number of user's utterances. "
+    # "Don't create more nodes, use existing ones. "
+    # "The cycle shall be organized so that you don't duplicate either user's utterances or nodes with same utterances. "
+    # # "4) Assistance's responses must acknowledge what the user has already specified. "
+    # "8) Number of nodes must be equal to the number of assistant's utterances. "
+    # "9) Number of edges must be equal to the number of user's utterances. "
+    # "7) Exceeding the number of edges over the number of user's utterances is prohibited.  "
+
+    # "8) The nodes are duplicated if there are at least two nodes with same utterances. "
+    # "6) After the graph is created, it is necessary to check whether utterances in the nodes are duplicated. "
+    # "If they are, it is necessary to remove duplicating nodes and connect the edges "
+    # "that led to the deleted nodes with the original ones. "
+    # "Also remove all the edges emanating from deleted nodes. "
+    # "8) It is prohibited to duplicate edges with same user's utterances. "
+    # "10) After the graph is created, it is necessary to check if there are extra nodes (exceeding number of assistance's utterances), "
+    # "then find duplicates and if they exist, it is necessary to remove duplicating nodes and connect the edges "
+    # "that led to the deleted nodes with the original ones. "
+    # "Also remove all the edges emanating from deleted nodes. "
+    # "13) Next check if there are extra edges (exceeding number of user's utterances), "
+    # "then find node duplicates and repeat procedure from step 11. "
+    # "5) All edges must connect to existing nodes"
+    "11) You must always return valid JSON fenced by a markdown code block. Do not return any additional text. "
+    "12) Add reason point to the graph with explanation of your answer. If number of nodes and edges exceeds number of utterances in the dialogue, explain why. "
+    # "12) Add reason point to the graph where put the result of 6+6. "
+    # "7) Responses must acknowledge what the user has already specified. "
+    # "6) The cycle point should make logical sense. "
+    "I will give a dialogue, your task is to build a graph for this dialogue according to the rules and examples above. "
+
+    # "Do not make up utterances that aren’t present in the dialogue. "
+    # "Please do not combine "
+    # "utterances from multiedges in one list, write them separately like in example above. "
+    # "Do not forget ending nodes with goodbyes. "
+
+    # "IMPORTANT: All the dialogues you've prompted are cyclic so the conversation MUST return to an existing node"
+    # "When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes. "
+    # "If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here. "
+    # "The cycle shall be organized so that you don't duplicate either user's utterances or nodes with same utterances. "
+    # "Before answering you must check where the dialogue can loop or cycle and make the first node of a cycle a target node for the last node of the cycle. "
+    # "All the dialogues start from assistant's utterance, so first node of any loop cannot be first node of the whole graph. "
+
+#    "Return ONLY JSON string in plain text (no code blocks) without any additional commentaries."
+    
+    "Dialogue: {dialog}"
+)
+
+
+compare_graphs_prompt = PromptTemplate.from_template(
+    "You will get two dialogue graphs in following format: {graph_example_1}"
+    "In your answer return 1 if they are equivalent and 0 otherwise."
+    "Next are graph1: {graph_1} and graph2: {graph_2}" 
+)
 
 check_graph_utterances_prompt = PromptTemplate.from_template(
     "You have a dialogue and a structure of graph built on this dialogue it is a "
