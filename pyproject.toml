@@ -12,6 +12,7 @@ tqdm = "^4.66.5"
 poethepoet = "^0.29.0"
 pandas = "^2.2.3"
 colorama = "^0.4.6"
+pyarrow = "^18.0.0"
 
 [tool.poetry.group.docs]
 optional = true
@@ -30,9 +31,15 @@ sphinx-autodoc-typehints = "*"
 jupytext = "*"
 jupyter = "*"
 
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^6.29.5"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
 
 
 
@@ -46,6 +53,8 @@ flake8 = "*"
 isort = "*"
 black = "*"
 mypy = "*"
+
+
 
 
 
