@@ -1,0 +1,692 @@
+[
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I'm having trouble with my device"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "It's not turning on"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 4,
+          "utterances": [
+            "It's running slow"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 5,
+          "utterances": [
+            "Yes, I have"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 6,
+          "utterances": [
+            "No, I haven't"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 7,
+          "utterances": [
+            "Yes, I have"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 8,
+          "utterances": [
+            "No, I haven't"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 9,
+          "utterances": [
+            "Yes, it worked"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 10,
+          "utterances": [
+            "No, it didn't work"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 11,
+          "utterances": [
+            "Okay, I'll try that"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 12,
+          "utterances": [
+            "Yes, it helped"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 13,
+          "utterances": [
+            "No, it's still slow"
+          ]
+        },
+        {
+          "source": 8,
+          "target": 14,
+          "utterances": [
+            "Okay, I'll try that"
+          ]
+        },
+        {
+          "source": 9,
+          "target": 15,
+          "utterances": [
+            "No, that's all"
+          ]
+        },
+        {
+          "source": 10,
+          "target": 16,
+          "utterances": [
+            "Yes, please"
+          ]
+        },
+        {
+          "source": 11,
+          "target": 3,
+          "utterances": [
+            "It's still not turning on"
+          ]
+        },
+        {
+          "source": 12,
+          "target": 15,
+          "utterances": [
+            "No, that's all"
+          ]
+        },
+        {
+          "source": 13,
+          "target": 16,
+          "utterances": [
+            "Yes, please"
+          ]
+        },
+        {
+          "source": 14,
+          "target": 4,
+          "utterances": [
+            "It's still running slow"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Hello! Welcome to Tech Support. How can I assist you today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "problem_identification",
+          "is_start": false,
+          "utterances": [
+            "Can you please describe the issue you're experiencing?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "power_issue",
+          "is_start": false,
+          "utterances": [
+            "Have you tried charging the device or checking the power source?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "performance_issue",
+          "is_start": false,
+          "utterances": [
+            "Have you tried restarting the device or closing unused applications?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "power_solution",
+          "is_start": false,
+          "utterances": [
+            "Great! Is there anything else I can help you with?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "suggest_power_fix",
+          "is_start": false,
+          "utterances": [
+            "Please try charging the device and ensure the power source is working."
+          ]
+        },
+        {
+          "id": 7,
+          "label": "performance_solution",
+          "is_start": false,
+          "utterances": [
+            "Great! Is there anything else I can help you with?"
+          ]
+        },
+        {
+          "id": 8,
+          "label": "suggest_performance_fix",
+          "is_start": false,
+          "utterances": [
+            "Please try restarting the device and closing any unused applications."
+          ]
+        },
+        {
+          "id": 9,
+          "label": "issue_resolved",
+          "is_start": false,
+          "utterances": [
+            "I'm glad to hear that! Is there anything else I can assist you with?"
+          ]
+        },
+        {
+          "id": 10,
+          "label": "escalate_issue",
+          "is_start": false,
+          "utterances": [
+            "I'm sorry to hear that. Would you like to speak with a specialist?"
+          ]
+        },
+        {
+          "id": 11,
+          "label": "retry_power_fix",
+          "is_start": false,
+          "utterances": [
+            "Please try the suggested steps and let me know if it helps."
+          ]
+        },
+        {
+          "id": 12,
+          "label": "issue_resolved",
+          "is_start": false,
+          "utterances": [
+            "I'm glad to hear that! Is there anything else I can assist you with?"
+          ]
+        },
+        {
+          "id": 13,
+          "label": "escalate_issue",
+          "is_start": false,
+          "utterances": [
+            "I'm sorry to hear that. Would you like to speak with a specialist?"
+          ]
+        },
+        {
+          "id": 14,
+          "label": "retry_performance_fix",
+          "is_start": false,
+          "utterances": [
+            "Please try the suggested steps and let me know if it helps."
+          ]
+        },
+        {
+          "id": 15,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Thank you for contacting Tech Support. Have a great day!"
+          ]
+        },
+        {
+          "id": 16,
+          "label": "connect_specialist",
+          "is_start": false,
+          "utterances": [
+            "Please hold while I connect you to a specialist."
+          ]
+        }
+      ]
+    },
+    "topic": "tech support troubleshooting",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Hello! Welcome to Tech Support. How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm having trouble with my device",
+            "participant": "user"
+          },
+          {
+            "text": "Can you please describe the issue you're experiencing?",
+            "participant": "assistant"
+          },
+          {
+            "text": "It's running slow",
+            "participant": "user"
+          },
+          {
+            "text": "Have you tried restarting the device or closing unused applications?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, I haven't",
+            "participant": "user"
+          },
+          {
+            "text": "Please try restarting the device and closing any unused applications.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, I'll try that",
+            "participant": "user"
+          },
+          {
+            "text": "Please try the suggested steps and let me know if it helps.",
+            "participant": "assistant"
+          },
+          {
+            "text": "It's still running slow",
+            "participant": "user"
+          },
+          {
+            "text": "Have you tried restarting the device or closing unused applications?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I have",
+            "participant": "user"
+          },
+          {
+            "text": "Great! Is there anything else I can help you with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, it's still slow",
+            "participant": "user"
+          },
+          {
+            "text": "I'm sorry to hear that. Would you like to speak with a specialist?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, please",
+            "participant": "user"
+          },
+          {
+            "text": "Please hold while I connect you to a specialist.",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['Great! Is there anything else I can help you with?'] to [\"I'm sorry to hear that. Would you like to speak with a specialist?\"] via edge '[\"No, it didn't work\"]': The user's response 'No, it didn't work' does not logically follow the assistant's question 'Is there anything else I can help you with?'. The user's response seems to be addressing a previous troubleshooting step, not a new issue. Invalid transition from ['Please try charging the device and ensure the power source is working.'] to ['Please try the suggested steps and let me know if it helps.'] via edge '[\"Okay, I'll try that\"]': The transition is invalid because the assistant is repeating the same instruction to try the suggested steps after the user has already agreed to do so. Invalid transition from ['Great! Is there anything else I can help you with?'] to [\"I'm glad to hear that! Is there anything else I can assist you with?\"] via edge '['Yes, it helped']': The user's response 'Yes, it helped' does not logically follow the assistant's question 'Is there anything else I can help you with?'. The assistant's next phrase also does not logically follow the user's response. Invalid transition from ['Please try restarting the device and closing any unused applications.'] to ['Please try the suggested steps and let me know if it helps.'] via edge '[\"Okay, I'll try that\"]': The assistant's next phrase is invalid because it is redundant. The user has already acknowledged the assistant's initial suggestion to restart the device and close unused applications, so there's no need for the assistant to repeat the same instruction."
+    }
+  },
+  
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I need to schedule a car service appointment"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I prefer next Monday"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Morning works for me"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "I need an oil change and tire rotation"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "utterances": [
+            "Yes, that's all"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 2,
+          "utterances": [
+            "I need to change the date"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome to AutoCare! How can I assist you today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_date",
+          "is_start": false,
+          "utterances": [
+            "When would you like to schedule your appointment?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_time",
+          "is_start": false,
+          "utterances": [
+            "What time of day works best for you?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "ask_services",
+          "is_start": false,
+          "utterances": [
+            "What services do you need for your car?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "confirm_services",
+          "is_start": false,
+          "utterances": [
+            "Got it. Is there anything else you need?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Your appointment is scheduled. Would you like to make any changes?"
+          ]
+        }
+      ]
+    },
+    "topic": "car service appointment",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Welcome to AutoCare! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule a car service appointment",
+            "participant": "user"
+          },
+          {
+            "text": "When would you like to schedule your appointment?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I prefer next Monday",
+            "participant": "user"
+          },
+          {
+            "text": "What time of day works best for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Morning works for me",
+            "participant": "user"
+          },
+          {
+            "text": "What services do you need for your car?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need an oil change and tire rotation",
+            "participant": "user"
+          },
+          {
+            "text": "Got it. Is there anything else you need?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's all",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is scheduled. Would you like to make any changes?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to change the date",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['Got it. Is there anything else you need?'] to ['Your appointment is scheduled. Would you like to make any changes?'] via edge '[\"Yes, that's all\"]': The transition is not logically valid. The user's phrase 'Yes, that's all' indicates that they do not need anything else. However, the assistant's next phrase asks if they would like to make changes to an appointment, which contradicts the user's previous statement."
+    }
+  },
+ 
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I'm interested in enrolling in a course"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I'm looking for a data science course"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "I prefer beginner level"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "I'd like to start next month"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "utterances": [
+            "Yes, I have a discount code"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 7,
+          "utterances": [
+            "No, that's all for now"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 2,
+          "utterances": [
+            "I want to explore more courses"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome to EduPlatform! How can I assist you with your learning journey today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_course_interest",
+          "is_start": false,
+          "utterances": [
+            "What type of course are you interested in?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "offer_course_options",
+          "is_start": false,
+          "utterances": [
+            "We have several data science courses. What level are you looking for?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "check_level",
+          "is_start": false,
+          "utterances": [
+            "Great choice! When would you like to start?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "confirm_start_date",
+          "is_start": false,
+          "utterances": [
+            "Perfect! Do you have any discount codes to apply?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "apply_discount",
+          "is_start": false,
+          "utterances": [
+            "Discount applied! Would you like to enroll in any other courses?"
+          ]
+        },
+        {
+          "id": 7,
+          "label": "complete_enrollment",
+          "is_start": false,
+          "utterances": [
+            "Your enrollment is complete. Would you like to explore more courses?"
+          ]
+        }
+      ]
+    },
+    "topic": "online course enrollment",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Welcome to EduPlatform! How can I assist you with your learning journey today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in enrolling in a course",
+            "participant": "user"
+          },
+          {
+            "text": "What type of course are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for a data science course",
+            "participant": "user"
+          },
+          {
+            "text": "We have several data science courses. What level are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I prefer beginner level",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! When would you like to start?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to start next month",
+            "participant": "user"
+          },
+          {
+            "text": "Perfect! Do you have any discount codes to apply?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I have a discount code",
+            "participant": "user"
+          },
+          {
+            "text": "Discount applied! Would you like to enroll in any other courses?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Your enrollment is complete. Would you like to explore more courses?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to explore more courses",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['Perfect! Do you have any discount codes to apply?'] to ['Discount applied! Would you like to enroll in any other courses?'] via edge '['Yes, I have a discount code']': The transition is invalid because the assistant didn't ask for the discount code or confirm that it was successfully applied before stating 'Discount applied!'. The user only confirmed they have a discount code, but didn't provide it."
+    }
+  }
+]
