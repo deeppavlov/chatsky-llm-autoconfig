@@ -18,6 +18,7 @@ class EnvSettings(BaseSettings, case_sensitive=True):
     GENERATION_MODEL_NAME: Optional[str]
     COMPARE_MODEL_NAME: Optional[str]
     GENERATION_SAVE_PATH: Optional[str]
+    FORMATTER_MODEL_NAME: Optional[str]
     TEST_DATA_PATH: Optional[str]
     RESULTS_PATH: Optional[str]
     EMBEDDER_MODEL: Optional[str]
@@ -25,6 +26,7 @@ class EnvSettings(BaseSettings, case_sensitive=True):
     EMBEDDER_DEVICE: Optional[str]
     RERANKER_MODEL: Optional[str]
     RERANKER_THRESHOLD: Optional[float]
+    SIM_THRESHOLD: Optional[float]
 
 
 
@@ -151,7 +153,7 @@ def graph2comparable(graph_dict: dict) -> dict:
     new_dict = copy.deepcopy(graph_dict)
     new_edges = []
     for edge in new_dict["edges"]:
-        print("ITERATION: ", edge, [node for node in graph_dict["nodes"] if node["id"] == edge["source"]])
+        # print("ITERATION: ", edge, [node for node in graph_dict["nodes"] if node["id"] == edge["source"]])
         edge["utterances"] = [next(node for node in graph_dict["nodes"] if node["id"] == edge["source"])["utterances"][0] + " " + edge["utterances"][0]]
         new_edges.append(edge)
     new_dict["edges"] = new_edges
@@ -180,7 +182,7 @@ def call_llm_api(query: str, llm, client=None, temp: float = 0.05, langchain_mod
 
         except Exception as e:
             print(e)
-            print("Timeout error, retrying...")
+            print("error, retrying...")
             tries += 1
     return None
 
@@ -195,8 +197,28 @@ def read_json(path):
         data = file.read()
     return json.loads(data)
 
+def graph_order(graph: dict) -> dict:
+    nodes = []
+    edges = []
+    node = [node for node in graph["nodes"] if node["is_start"]][0]
+    for _ in range(len(graph["nodes"])):
+        edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
+        nodes.append(node)
+        edges.append(edge)
+        node = [node for node in graph["nodes"] if node["id"]==edge['target']][0]
+    return {"edges": edges, "nodes": nodes}
+
 def graph2list(graph: dict) -> list:
+    # res = []
+    # node = [node for node in graph["nodes"] if node["is_start"]][0]
+    # for idx in range(len(graph["nodes"])):
+    #     edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
+    #     res.append(node['utterances'][0]+" "+edge['utterances'][0])
+    #     node = [node for node in graph["nodes"] if node["id"]==edge['target']][0] 
+    # return res
     return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
+
+
 
 def get_diagonals(matrix):
     s = matrix.shape[0]

@@ -28,8 +28,9 @@ class GeneralGraphGenerator(GraphGenerator):
 
         result = call_llm_api(prompts[self.prompt_name].format(graph_example_1=graph_example_1, dialogue_example_2=dialogue_example_2, graph_example_2=graph_example_2, dialog=dialogue.to_list()), model, temp=0)
 
-        print("RESULT: ", result)
-
+        # print("RESULT: ", result)
+        if result is None:
+            return Graph(graph_dict={})
         result_graph = Graph(graph_dict=result.model_dump())
         #result_graph = Graph(graph_dict=json.loads(result))
         return result_graph

@@ -92,7 +92,7 @@ def run_all_algorithms():
             # class_instance = tp(prompt_name="general_graph_generation_prompt")
             # class_instance = tp(prompt_name="specific_graph_generation_prompt")
             class_instance = tp(prompt_name="fourth_graph_generation_prompt")
-            metrics = {"triplet_match": [], "is_same_structure": []}
+            metrics = {"triplet_match": [], "is_same_structure": [], "llm_match": []}
             saved_data = {}
             result_list = []
             test_list = []
@@ -112,7 +112,7 @@ def run_all_algorithms():
                     cur_list = []
                     for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
 
-                        print("TST: ", test_dialogue)
+                        # print("TST: ", test_dialogue)
                         result_graph = class_instance.invoke(test_dialogue)
                         cur_list.append(result_graph)
                         case_list.append(result_graph.graph_dict)
@@ -123,6 +123,7 @@ def run_all_algorithms():
                 save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
             for case, dialogues in zip(dialogue_to_graph, test_list):
                 test_graph = Graph(graph_dict=graph2comparable(case["graph"]))
+                test_graph_orig = Graph(graph_dict=case["graph"])
                 for result_graph in dialogues[case["topic"]]:
                     try:
                         comp_graph=Graph(graph_dict=graph2comparable(result_graph.graph_dict))
@@ -130,20 +131,20 @@ def run_all_algorithms():
                     # print("METRICS-2: ", result_graph.graph_dict)
             # for case, result_graph in zip(dialogue_to_graph, test_list):
 
-                        metrics["triplet_match"].append(triplet_match(test_graph, comp_graph))
+                        # metrics["triplet_match"].append(triplet_match(test_graph, comp_graph))
                         comp = is_same_structure(test_graph, comp_graph)
                         metrics["is_same_structure"].append(comp)
                         if comp:
-                            metrics["llm_match"].append(llm_match(test_graph, comp_graph))
+                            metrics["llm_match"].append(llm_match(Graph(graph_dict=result_graph.graph_dict), test_graph_orig))
                         else:
                             metrics["llm_match"].append(False)                            
                     except Exception as e:
                         print("Exception: ", e)
-                        metrics["triplet_match"].append(False)
+                        # metrics["triplet_match"].append(False)
                         metrics["is_same_structure"].append(False)
                         metrics["llm_match"].append(False)
 
-            metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
+            # metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
             metrics["llm_match"] = sum(metrics["llm_match"]) / len(metrics["llm_match"])
             metrics["is_same_structure"] = sum(metrics["is_same_structure"]) / len(metrics["is_same_structure"])
 

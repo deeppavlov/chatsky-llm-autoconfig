@@ -718,6 +718,9 @@ prompts["third_graph_generation_prompt"] = PromptTemplate.from_template(
     "Dialogue: {dialog}"
 )
 
+#user's follow-up concern loops back to the problem elaboration stage, maintaining a logical and continuous support flo
+#"Cycle starts at the 'elaborate_problem' node (id:2) because it acknowledges and addresses new user concerns when the user mentions another issue."
+#"The cycle starts at the 'ask_membership_type' node as it represents the problem elaboration stage. This allows the user's intent to register another member to loop back to selecting a membership type, ensuring a continuous and logical registration flow."
 
 prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     "Your input is a dialogue from customer chatbot system. "
@@ -726,6 +729,7 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     "a set of nodes with chatbot system utterances and a set of edges that are "
     "triggered by user requests: {graph_example_1} "
     "This is the end of the example."
+    "Note that is_start field in the node is an entry point to the whole graph, not to the cycle. "
     # "Every transition in all edges shall start from and result in nodes which are present in set of nodes."
     # "Another dialogue example: {dialogue_example_2}"
     # "It shall result in the graph below: {graph_example_2}"
@@ -743,10 +747,20 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     # "3) The final node MUST connect back to an existing node. "
     "7) Graph must be cyclic - no dead ends. "
     "8) The cycle point should make logical sense. "
-    "9) Use one of assistant's utterances from the dialogue for the cycle point, don't add/create more nodes with same or simiar utterances. "
-    "Number of nodes is the number of unique node ID's. "
-    "Remember that the number of nodes cannot exceed the number of assistant's phrases. "
-    "When you add node with same utterances it duplicates nodes and increases number of nodes. So when this situation takes place, just combine such two duplicates into one node. " 
+    "9) The starting node of the cycle cannot be the beginning of a conversation with the user. "
+    "It must be a continuation of the user's previous phrase, kind of problem elaboration stage. "
+    "So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node. "
+    # "9) When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes. "
+    # "9) Choose the start of the cycle so that user's follow-up concern loops back to the problem elaboration stage, maintaining a logical and continuous support flow. "
+    # "It shall not look like assistants"
+    # "9) For the start of the cycle choose the node where assistant's answer will show user that information from their request (in looping back edge) is understood and taken into account. "
+    # "If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here. "
+    # "For the start of the cycle choose such a node where the assistant's answer will be based on information from that edge. "
+
+    # "10) Use one of assistant's utterances from the dialogue for the cycle point, don't add/create more nodes with same or simiar utterances. "
+    # "Number of nodes is the number of unique node ID's. "
+    # "Remember that the number of nodes cannot exceed the number of assistant's phrases. "
+    # "When you add node with same utterances it duplicates nodes and increases number of nodes. So when this situation takes place, just combine such two duplicates into one node. " 
     # "10) It is prohibited to duplicate nodes with same assistant's utterances. "
     # "11) Duplicated nodes are "
     "10) Number of nodes and edges cannot exceed number of utterances in a dialogue. "
@@ -774,7 +788,7 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     # "then find node duplicates and repeat procedure from step 11. "
     # "5) All edges must connect to existing nodes"
     "11) You must always return valid JSON fenced by a markdown code block. Do not return any additional text. "
-    "12) Add reason point to the graph with explanation of your answer. If number of nodes and edges exceeds number of utterances in the dialogue, explain why. "
+    "12) Add reason point to the graph with explanation how cycle start point has been chosen. "
     # "12) Add reason point to the graph where put the result of 6+6. "
     # "7) Responses must acknowledge what the user has already specified. "
     # "6) The cycle point should make logical sense. "
@@ -797,10 +811,20 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     "Dialogue: {dialog}"
 )
 
+result_form = {"result": True, "reason": ""}
 
 compare_graphs_prompt = PromptTemplate.from_template(
-    "You will get two dialogue graphs in following format: {graph_example_1}"
-    "In your answer return 1 if they are equivalent and 0 otherwise."
+    "You will get two dialogue graphs in following format: {graph_example_1}. "
+    "Graphs are equivalent when they have the same number of nodes connected in the same way, meaning there is one-to-one correspondence "
+    "between their nodes which preserves adjacency. "
+    "Equal nodes or edges may have different utterances when utterances have same intents, logics and similar meaning. "
+    "Equivalent graphs are equal when corresponding nodes from both graphs are equal, "
+    "and corresponding edges from both graphs are equal. Labels do not matter. "
+    "In your answer return True if graphs are equal and False otherwise. "
+    "In a field marked by reason explain your answer. "
+    "Form of the answer is {result_form} ."
+    # "Output your response in the demanded json format. "
+    "You must always return only valid JSON fenced by a markdown code block. Do not return any additional text. "
     "Next are graph1: {graph_1} and graph2: {graph_2}" 
 )
 
