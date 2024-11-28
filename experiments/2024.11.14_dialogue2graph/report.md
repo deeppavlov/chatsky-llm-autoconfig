@@ -35,7 +35,7 @@ It is true pair, but doesn't satisfy threshold
 
 Here and further concatenation of utterances (node+edge) was used, it showed better results
 
-So I tried BAAI/bge-reranker-v2-m3 cross-encoder, it is better but shows problems here:
+So I tried BAAI/bge-reranker-v2-m3 cross-encoder cosine similarity, it is better but shows problems here:
 
 True: 0.9595928 (Welcome to our car service center! How can I assist you today?, Thank you! Is there anything else I can assist you with today?)
 False: 0.978375 (Have you tried restarting your laptop to see if that resolves the flickering? Yes, I've tried restarting it, Could you please elaborate on the problem you're facing with your laptop? The display is flickering.)
@@ -53,11 +53,12 @@ gpt-4o for 27 examples: 74% of right answers
 gpt-4o-mini for 27 examples: 15% of right answers
 
 Nov 25:
-So it was decided to take pair of graphs as true one when minimal cosine similarity between (node+edge) of graphs >= 0.99, otherwise
-gpt-4o with compare_graphs_prompt is used to compare two graphs. 
+It was decided to take pair of graphs as true one when minimal cosine similarity between (node+edge) of graphs >= 0.99, otherwise
+gpt-4o with compare_graphs_prompt is used to compare two graphs. The name of algorithm is llm_match.
 
 Nov 27
 o1-mini for 27 examples: 96% of right answers
+And llm_match works 100%, still positives only
 
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
