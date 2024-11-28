@@ -2760,5 +2760,12 @@
             "is_same_structure": 0.9629629629629629,
             "llm_match": 0.9629629629629629
         }
+    },
+    "2024-11-28 08:01:29.155490": {
+        "GeneralGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
     }
 }

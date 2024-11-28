@@ -749,6 +749,7 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     "8) The cycle point should make logical sense. "
     "9) The starting node of the cycle cannot be the beginning of a conversation with the user. "
     "It must be a continuation of the user's previous phrase, kind of problem elaboration stage. "
+    "Typically it is clarifying question to previous users' phrase for example. "
     "So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node. "
     # "9) When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes. "
     # "9) Choose the start of the cycle so that user's follow-up concern loops back to the problem elaboration stage, maintaining a logical and continuous support flow. "

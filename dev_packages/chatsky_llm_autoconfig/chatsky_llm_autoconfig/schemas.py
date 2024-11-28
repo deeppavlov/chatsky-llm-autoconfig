@@ -18,7 +18,11 @@ class Node(BaseModel):
 class DialogueGraph(BaseModel):
     edges: List[Edge] = Field(description="List of transitions between nodes")
     nodes: List[Node] = Field(description="List of nodes representing assistant states")
+    reason: str = Field(description="explanation")
 
+class CompareResponse(BaseModel):
+    result: bool = Field(description="compare result")
+    reason: str = Field(description="explanation")
 
 class DialogueMessage(BaseModel):
     """Represents a single message in a dialogue.

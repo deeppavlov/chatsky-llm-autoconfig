@@ -6,12 +6,22 @@ This module contains functions that automatically (without using LLMs) checks Gr
 for various metrics.
 """
 
+import numpy as np
+from langchain.output_parsers import PydanticOutputParser, OutputFixingParser
+
 import networkx as nx
 from chatsky_llm_autoconfig.metrics.jaccard import jaccard_edges, jaccard_nodes, collapse_multiedges
-from chatsky_llm_autoconfig.metrics.embedder import EmbeddableString
+from chatsky_llm_autoconfig.metrics.embedder import emb_list, get_embedding, get_reranking
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
+from chatsky_llm_autoconfig.schemas import CompareResponse
+from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings, graph2list, get_diagonals, get_diagonal, graph_order
+from chatsky_llm_autoconfig.prompts import (
+    compare_graphs_prompt, graph_example_1, result_form
+)
 
+env_settings = EnvSettings()
+from langchain.chat_models import ChatOpenAI
 
 def edge_match_for_multigraph(x, y):
     if isinstance(x, dict) and isinstance(y, dict):
@@ -30,19 +40,23 @@ def parse_edge(edge):
 def check_mapping(mapping):
     return all(x == y for x,y in mapping.items())
 
-def emb_list(x):
-    return [EmbeddableString(el) for el in x["utterances"]]
-
 def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     g1 = G1.graph
     g2 = G2.graph
+
+    print("\nTRIPLETS: ", G1.graph_dict, "\n")
+    print("TRIPLETS: ", G2.graph_dict, "\n")
 
     node_mapping = {node: None for node in g1.nodes}
     node_mapping.update({node: None for node in g2.nodes})
     if type(g1) is nx.DiGraph:
 
+        # print("type1")
+
+        #GM = nx.isomorphism.DiGraphMatcher(g1, g2, node_match=lambda x, y: emb_list(x))
         #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(x["utterances"]).intersection(set(y["utterances"])) is not None)
-        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x)).intersection(set(emb_list(y))) is not None)
+        GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x['utterances'])).intersection(set(emb_list(y['utterances']))) is not None)
+        #GM = nx.isomorphism.DiGraphMatcher(g1, g2, edge_match=lambda x, y: set(emb_list(x['utterances'],x)).intersection(set(emb_list(y['utterances'],y))) is not None)
         are_isomorphic = GM.is_isomorphic()
     else:
         GM = nx.isomorphism.MultiDiGraphMatcher(g1, g2, edge_match=edge_match_for_multigraph)
@@ -57,10 +71,15 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
     edges1 = list(collapse_multiedges(g1.edges(data=True)).keys())
     edges2 = list(collapse_multiedges(g2.edges(data=True)).keys())
 
-    _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
-    _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
+    try:
+        _, _, matrix_edges = jaccard_edges(g1.edges(data=True), g2.edges(data=True), verbose=False, return_matrix=True)
 
+        _, _, matrix_nodes = jaccard_nodes(g1.nodes(data=True), g2.nodes(data=True), verbose=False, return_matrix=True)
+    except Exception as e:
+        print("Exception: ", e)
+        return False
+    # print("MATRIX: ", g1.nodes(data=True))
     for i, edge1 in enumerate(edges1):
         edge_mapping[edge1] = None
         mapping_jaccard_values[edge1] = 0
@@ -115,6 +134,7 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
             ] = edge2
         return check_mapping(new_node_mapping) and check_mapping(new_edge_mapping)
 
+    # print("MAPS: ", node_mapping, edge_mapping)
     return check_mapping(node_mapping) and check_mapping(edge_mapping)
 
 
@@ -122,6 +142,40 @@ def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
     g1 = G1.graph
     g2 = G2.graph
     return nx.is_isomorphic(g1, g2)
+
+
+
+def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
+    g1 = G1.graph_dict
+    g2 = G2.graph_dict
+
+    # print("ORIG: ", g1)
+    g1_order = graph_order(g1)
+    g2_order = graph_order(g2)
+    # print("ORDER: ", g1_order, "\n")
+    # print("2LIST: ", graph2list(g1_order), "\n")
+    #matrix = get_embedding(graph2list(g1_order), graph2list(g2_order), env_settings.EMBEDDER_MODEL, env_settings.EMBEDDER_DEVICE)
+    matrix = get_reranking(graph2list(g1_order), graph2list(g2_order))
+    # print("MATRIX: ", matrix, "\n")
+    diags = get_diagonals(matrix)
+    # print("DIAGS: ", diags, "\n")
+    sums = np.sum(diags,axis=1)
+    max_index = np.argmax(sums)
+    g1_best = get_diagonal(g1_order,max_index)
+    min_value = np.min(diags[max_index])
+    # print("MIN: ", min_value)
+    # print("\nG1: ", g1_best, "\n")
+    # print("G2: ", g2_order, "\n")
+
+    if min_value >= env_settings.SIM_THRESHOLD:
+        return True
+    parser = PydanticOutputParser(pydantic_object=CompareResponse)
+    format_model=ChatOpenAI(model=env_settings.FORMATTER_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL)
+    model=ChatOpenAI(model=env_settings.COMPARE_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL)
+    new_parser = OutputFixingParser.from_llm(parser=parser, llm=format_model)
+    result = call_llm_api(compare_graphs_prompt.format(result_form=result_form,graph_example_1=graph_example_1, graph_1=g1_best, graph_2=g2_order), model|new_parser, temp=0).model_dump()
+    # print("RES: ", result)
+    return result['result']
 
 
 def all_paths_sampled(G: BaseGraph, dialogue: Dialogue) -> bool:

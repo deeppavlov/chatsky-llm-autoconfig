@@ -5,6 +5,7 @@ from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 import chatsky_llm_autoconfig.algorithms.graph_generation
 
 import json
+from datasets import load_dataset
 from chatsky_llm_autoconfig.graph import Graph, BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.metrics.automatic_metrics import (
@@ -21,7 +22,6 @@ from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json, grap
 import datetime
 from colorama import Fore
 from langchain_openai  import ChatOpenAI
-from dotenv import load_dotenv
 
 env_settings = EnvSettings()
 
@@ -29,7 +29,8 @@ model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url
 
 
 #test_data = read_json(env_settings.TEST_DATA_PATH
-dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+#dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
 #dialogue_to_graph = test_data["dialogue_to_graph"]
 

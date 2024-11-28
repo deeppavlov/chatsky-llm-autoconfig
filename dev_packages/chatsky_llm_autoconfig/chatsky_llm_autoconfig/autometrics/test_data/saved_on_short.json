@@ -1,50 +1,43 @@
 {
-    "o1-mini": {
-        "fourth_graph_generation_prompt": [
+    "gpt-4o-mini": {
+        "general_graph_generation_prompt": [
             {
-                "car maintenance service": [
+                "booking a hotel room": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hi, I need to schedule a car maintenance service"
+                                    "Hi, I'd like to book a hotel room"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry"
+                                    "A double room for two nights, please"
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "Yes, I would like the full service package"
+                                    "Yes, that's correct"
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Sure, Saturday morning works for me"
+                                    "Here's my credit card information"
                                 ]
                             },
                             {
                                 "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here's my contact information"
-                                ]
-                            },
-                            {
-                                "source": 6,
                                 "target": 2,
                                 "utterances": [
-                                    "I need to schedule another service for my other car"
+                                    "I'd like to book another room"
                                 ]
                             }
                         ],
@@ -54,51 +47,42 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Welcome to our car service center! How can I assist you today?"
+                                    "Welcome to our hotel booking service! How can I assist you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "provide_make_model",
+                                "label": "ask_room_type",
                                 "is_start": false,
                                 "utterances": [
-                                    "Can you please provide the make and model of your car?"
+                                    "What type of room would you like to book?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "choose_service_package",
+                                "label": "confirm_booking",
                                 "is_start": false,
                                 "utterances": [
-                                    "Would you like the full service package or a specific service?"
+                                    "You've selected a double room for two nights. Is this correct?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "schedule_appointment",
+                                "label": "ask_payment_details",
                                 "is_start": false,
                                 "utterances": [
-                                    "When would you like to schedule your service appointment?"
+                                    "Great! Please provide your payment details to proceed."
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "provide_contact_information",
+                                "label": "thank_you",
                                 "is_start": false,
                                 "utterances": [
-                                    "Great! Could you please provide your contact information?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "finalize",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can help you with today?"
+                                    "Thank you for your booking! Would you like to book another room?"
                                 ]
                             }
-                        ],
-                        "reason": "The cycle starts at the 'provide_make_model' node (id: 2) to allow the user to schedule additional services by looping back after finalizing an appointment."
+                        ]
                     },
                     {
                         "edges": [
@@ -106,42 +90,35 @@
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hi there, I’d like to book a car maintenance service."
+                                    "Hello, I'm interested in reserving a hotel room."
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry."
+                                    "I would like a double room for a two-night stay, please."
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "I’d like to go with the comprehensive service package."
+                                    "Yes, that’s right."
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Saturday morning would be perfect for me."
+                                    "Here’s my credit card details."
                                 ]
                             },
                             {
                                 "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here are my contact details."
-                                ]
-                            },
-                            {
-                                "source": 6,
                                 "target": 2,
                                 "utterances": [
-                                    "I also need to arrange a service for my other vehicle."
+                                    "Yes, I would like to book another room as well."
                                 ]
                             }
                         ],
@@ -151,51 +128,42 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Hello and welcome to our car service center! How can I help you today?"
+                                    "Thank you for choosing our hotel booking service! How may I help you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_vehicle_make",
+                                "label": "ask_room_type",
                                 "is_start": false,
                                 "utterances": [
-                                    "Could you let me know the make and model of your vehicle?"
+                                    "What kind of room are you looking to reserve?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "ask_service_package",
+                                "label": "confirm_room",
                                 "is_start": false,
                                 "utterances": [
-                                    "Would you prefer the comprehensive service package or just a specific service?"
+                                    "Just to confirm, you're requesting a double room for two nights, correct?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_appointment_time",
+                                "label": "ask_payment_info",
                                 "is_start": false,
                                 "utterances": [
-                                    "What time would you like to set your appointment for?"
+                                    "Perfect! Could you please provide your payment information to continue?"
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "ask_contact_details",
+                                "label": "thank_you",
                                 "is_start": false,
                                 "utterances": [
-                                    "Awesome! Can you provide your contact details, please?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "ask_anything_else",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can assist you with today?"
+                                    "Thank you for completing your booking! Would you like to reserve an additional room?"
                                 ]
                             }
-                        ],
-                        "reason": "The cycle starts at the 'ask_vehicle_make' node (id 2) because the user's request to arrange a service for another vehicle logically leads back to providing vehicle details, enabling the process to handle additional services seamlessly."
+                        ]
                     },
                     {
                         "edges": [
@@ -203,42 +171,35 @@
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hello, I'd like to set up a maintenance appointment for my car."
+                                    "Hello, I want to reserve a hotel room."
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry."
+                                    "A double room for a two-night stay, please."
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "I would like to go with the complete service package."
+                                    "Yes, that's correct."
                                 ]
                             },
                             {
                                 "source": 4,
                                 "target": 5,
                                 "utterances": [
-                                    "Saturday morning would be perfect for me."
+                                    "Here is my credit card information."
                                 ]
                             },
                             {
                                 "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here's my contact information."
-                                ]
-                            },
-                            {
-                                "source": 6,
                                 "target": 2,
                                 "utterances": [
-                                    "I also need to book a service for my other vehicle."
+                                    "I would like to reserve another room."
                                 ]
                             }
                         ],
@@ -248,51 +209,42 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Thank you for visiting our auto service center! How can I help you today?"
+                                    "Thank you for reaching out to our hotel booking service! How can I help you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_vehicle_info",
+                                "label": "ask_room_type",
                                 "is_start": false,
                                 "utterances": [
-                                    "Could you let me know the make and model of your vehicle?"
+                                    "What kind of room are you interested in booking?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "ask_service_preference",
+                                "label": "confirm_room",
                                 "is_start": false,
                                 "utterances": [
-                                    "Would you prefer our complete service package or just certain services?"
+                                    "So, you would like to reserve a double room for two nights. Is that right?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_appointment_time",
+                                "label": "ask_payment_details",
                                 "is_start": false,
                                 "utterances": [
-                                    "What time works best for you to come in for your appointment?"
+                                    "Fantastic! Please share your payment details to finalize the booking."
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "ask_contact_details",
+                                "label": "thank_you",
                                 "is_start": false,
                                 "utterances": [
-                                    "Awesome! Can I have your contact details, please?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "ask_additional_services",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can assist you with today?"
+                                    "Thank you for your reservation! Would you like to book an additional room?"
                                 ]
                             }
-                        ],
-                        "reason": "The cycle starts at node 6 ('ask_additional_services') because after completing an initial service appointment setup, the user requests to book an additional service. This logically leads the dialogue back to node 2 ('ask_vehicle_info') to handle the new service request, thus creating a meaningful cycle."
+                        ]
                     }
                 ]
             }

@@ -1,3 +1,5 @@
+import copy
+import numpy as np
 import networkx as nx
 import random
 import json
@@ -9,15 +11,24 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class EnvSettings(BaseSettings, case_sensitive=True):
 
-    model_config = SettingsConfigDict(env_file='dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
+    model_config = SettingsConfigDict(env_file='experiments/2024.11.14_dialogue2graph/dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
 
     OPENAI_API_KEY: Optional[str]
     OPENAI_BASE_URL: Optional[str]
     GENERATION_MODEL_NAME: Optional[str]
+    COMPARE_MODEL_NAME: Optional[str]
     GENERATION_SAVE_PATH: Optional[str]
+    FORMATTER_MODEL_NAME: Optional[str]
+    TEST_DATA_PATH: Optional[str]
+    RESULTS_PATH: Optional[str]
     EMBEDDER_MODEL: Optional[str]
     EMBEDDER_THRESHOLD: Optional[float]
     EMBEDDER_DEVICE: Optional[str]
+    RERANKER_MODEL: Optional[str]
+    RERANKER_THRESHOLD: Optional[float]
+    SIM_THRESHOLD: Optional[float]
+    HUGGINGFACE_TOKEN: Optional[str]
+    TEST_DATASET: Optional[str] 
 
 
 # all func are currently unused
@@ -139,29 +150,42 @@ def do_mapping(g1, g2):
                 mapping[node] = None
     print(mapping)
 
+def graph2comparable(graph_dict: dict) -> dict:
+    new_dict = copy.deepcopy(graph_dict)
+    new_edges = []
+    for edge in new_dict["edges"]:
+        # print("ITERATION: ", edge, [node for node in graph_dict["nodes"] if node["id"] == edge["source"]])
+        edge["utterances"] = [next(node for node in graph_dict["nodes"] if node["id"] == edge["source"])["utterances"][0] + " " + edge["utterances"][0]]
+        new_edges.append(edge)
+    new_dict["edges"] = new_edges
+    return new_dict
+
 
 def call_llm_api(query: str, llm, client=None, temp: float = 0.05, langchain_model=True) -> str | None:
-    try:
-        if langchain_model:
-            messages = [HumanMessage(content=query)]
-            response = llm.invoke(messages)
-            return response
-        else:
-            messages.append({"role": "user", "content": query})
-            response_big = client.chat.completions.create(
-                model=llm,  # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
-                messages=messages,
-                temperature=0.7,
-                n=1,
-                max_tokens=3000,  # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
-                extra_headers={"X-Title": "My App"},  # опционально - передача информация об источнике API-вызова
-            )
-            return response_big.choices[0].message.content
+    tries = 0
+    while tries < 3:
+        try:
+            if langchain_model:
+                messages = [HumanMessage(content=query)]
+                response = llm.invoke(messages)
+                return response
+            else:
+                messages.append({"role": "user", "content": query})
+                response_big = client.chat.completions.create(
+                    model=llm,  # id модели из списка моделей - можно использовать OpenAI, Anthropic и пр. меняя только этот параметр
+                    messages=messages,
+                    temperature=0.7,
+                    n=1,
+                    max_tokens=3000,  # максимальное число ВЫХОДНЫХ токенов. Для большинства моделей не должно превышать 4096
+                    extra_headers={"X-Title": "My App"},  # опционально - передача информация об источнике API-вызова
+                )
+                return response_big.choices[0].message.content
 
-    except Exception as e:
-        print(e)
-        print("Timeout error, retrying...")
-        return None
+        except Exception as e:
+            print(e)
+            print("error, retrying...")
+            tries += 1
+    return None
 
 
 def save_json(data: dict, filename: str) -> None:
@@ -173,3 +197,39 @@ def read_json(path):
     with open(path, mode="r") as file:
         data = file.read()
     return json.loads(data)
+
+def graph_order(graph: dict) -> dict:
+    nodes = []
+    edges = []
+    node = [node for node in graph["nodes"] if node["is_start"]][0]
+    for _ in range(len(graph["nodes"])):
+        edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
+        nodes.append(node)
+        edges.append(edge)
+        node = [node for node in graph["nodes"] if node["id"]==edge['target']][0]
+    return {"edges": edges, "nodes": nodes}
+
+def graph2list(graph: dict) -> list:
+    # res = []
+    # node = [node for node in graph["nodes"] if node["is_start"]][0]
+    # for idx in range(len(graph["nodes"])):
+    #     edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
+    #     res.append(node['utterances'][0]+" "+edge['utterances'][0])
+    #     node = [node for node in graph["nodes"] if node["id"]==edge['target']][0] 
+    # return res
+    return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
+
+
+
+def get_diagonals(matrix):
+    s = matrix.shape[0]
+    diag = np.diag(matrix,0)
+    for n in range(1,s):
+        diag = np.vstack([diag,np.concatenate((np.diag(matrix,n),np.diag(matrix,n-s)))])
+    return diag
+
+def get_diagonal(graph, i):
+    result = {}
+    result['edges'] = graph['edges'][i:] + graph['edges'][:i]
+    result['nodes'] = graph['nodes'][i:] + graph['nodes'][:i]
+    return result
