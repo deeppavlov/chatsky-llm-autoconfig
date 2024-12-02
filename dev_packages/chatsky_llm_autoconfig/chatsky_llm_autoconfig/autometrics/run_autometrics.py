@@ -29,8 +29,8 @@ model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url
 
 
 #test_data = read_json(env_settings.TEST_DATA_PATH
-#dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
-dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
+dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+#dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
 #dialogue_to_graph = test_data["dialogue_to_graph"]
 
@@ -92,7 +92,8 @@ def run_all_algorithms():
             tp = algorithms[class_]["type"]
             # class_instance = tp(prompt_name="general_graph_generation_prompt")
             # class_instance = tp(prompt_name="specific_graph_generation_prompt")
-            class_instance = tp(prompt_name="fourth_graph_generation_prompt")
+            #class_instance = tp(prompt_name="fourth_graph_generation_prompt")
+            class_instance = tp(prompt_name="options_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": [], "llm_match": []}
             saved_data = {}
             result_list = []

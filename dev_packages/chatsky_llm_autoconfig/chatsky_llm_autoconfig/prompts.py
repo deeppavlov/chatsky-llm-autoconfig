@@ -228,13 +228,12 @@ create_graph_prompt = PromptTemplate.from_template(
 #     "Dialogue: {dialog}"
 # )
 
-
 graph_example_1 = {
     "edges": [
 #        {'source': 1, 'target': 2, 'utterances': ['I need to make an order']},
-        {'source': 1, 'target': 2, 'utterances': ['I want to order from you']},
-        {'source': 2, 'target': 3, 'utterances': ['I would like to purchase Pale Fire and Anna Karenina, please']},
-        {"source": 3, "target": 4, "utterances": ["With credit card, please"]},
+        {'source': 1, 'target': 2, 'utterances': ['I want to order from you', "I need to make an order"]},
+        {'source': 2, 'target': 3, 'utterances': ['I would like to purchase Pale Fire and Anna Karenina, please', "One War and Piece in hard cover and one Pride and Prejudice"]},
+        {"source": 3, "target": 4, "utterances": ["With credit card, please", "Cash"]},
         {"source": 4, "target": 2, "utterances": ["Start new order"]}
     ],
     'nodes':
@@ -811,6 +810,36 @@ prompts["fourth_graph_generation_prompt"] = PromptTemplate.from_template(
     
     "Dialogue: {dialog}"
 )
+
+
+prompts["options_graph_generation_prompt"] = PromptTemplate.from_template(
+    "Your input is a dialogue from customer chatbot system. "
+    "Your task is to create a cyclic dialogue graph corresponding to the dialogue. "
+    "Next is an example of the graph (set of rules) how chatbot system looks like - it is "
+    "a set of nodes with chatbot system utterances and a set of edges that are "
+    "triggered by user requests: {graph_example_1} "
+    "This is the end of the example."
+    "Note that is_start field in the node is an entry point to the whole graph, not to the cycle. "
+
+    "**Rules:**"
+    "1) Nodes must be assistant's utterances, edges must be utterances from the user. "
+    "2) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. " 
+    "3) Every user's utterance from the dialogue shall be present in one and only one edge of a graph. "    
+    "4) Use ony utterances from the dialogue. It is prohibited to create new utterances different from input ones. "
+    "6) Never create nodes with user's utterances. "
+    "7) Graph must be cyclic - shall contain cycle(s). "
+    "8) The cycle point(s) should make logical sense. "
+    "9) The starting node of the cycle cannot be the beginning of a conversation with the user. "
+    "It must be a continuation of the user's previous phrase, kind of problem elaboration stage. "
+    "Typically it is clarifying question to previous users' phrase for example. "
+    "So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node. "
+    "10) Number of nodes and edges cannot exceed number of utterances in a dialogue. "
+    "11) You must always return valid JSON fenced by a markdown code block. Do not return any additional text. "
+    "12) Add reason point to the graph with explanation how cycle start point has been chosen. "
+    "I will give a dialogue, your task is to build a graph for this dialogue according to the rules and examples above. "
+    "Dialogue: {dialog}"
+)
+
 
 result_form = {"result": True, "reason": ""}
 

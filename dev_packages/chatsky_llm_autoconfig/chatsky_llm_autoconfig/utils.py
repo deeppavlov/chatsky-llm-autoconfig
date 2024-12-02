@@ -11,7 +11,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class EnvSettings(BaseSettings, case_sensitive=True):
 
-    model_config = SettingsConfigDict(env_file='experiments/2024.11.14_dialogue2graph/dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
+    model_config = SettingsConfigDict(env_file='dev_packages/chatsky_llm_autoconfig/chatsky_llm_autoconfig/.env', env_file_encoding='utf-8')
 
     OPENAI_API_KEY: Optional[str]
     OPENAI_BASE_URL: Optional[str]
@@ -198,26 +198,36 @@ def read_json(path):
         data = file.read()
     return json.loads(data)
 
+
+
 def graph_order(graph: dict) -> dict:
     nodes = []
     edges = []
     node = [node for node in graph["nodes"] if node["is_start"]][0]
     for _ in range(len(graph["nodes"])):
-        edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
+        edge = [e for e in graph['edges'] if e['source']==node["id"]]
         nodes.append(node)
-        edges.append(edge)
+        edges.extend(edge)
         node = [node for node in graph["nodes"] if node["id"]==edge['target']][0]
     return {"edges": edges, "nodes": nodes}
 
 def graph2list(graph: dict) -> list:
-    # res = []
+    res = []
+
     # node = [node for node in graph["nodes"] if node["is_start"]][0]
-    # for idx in range(len(graph["nodes"])):
-    #     edge = [e for e in graph['edges'] if e['source']==node["id"]][0]
-    #     res.append(node['utterances'][0]+" "+edge['utterances'][0])
-    #     node = [node for node in graph["nodes"] if node["id"]==edge['target']][0] 
-    # return res
-    return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
+    for node in graph["nodes"]:
+        edges = [e for e in graph['edges'] if e['source']==node["id"]]
+        utt = ""
+        for n_utt in node['utterances']:
+            utt += n_utt + " "
+        for edge in edges:
+            for e_utt in edge['utterances']:
+                utt += e_utt + " "
+        res.append(utt)
+
+        # node = [node for node in graph["nodes"] if node["id"]==edge['target']][0] 
+    return res
+    # return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
 
 
 
