@@ -356,208 +356,49 @@
           "source": 1,
           "target": 2,
           "utterances": [
-            "I need to schedule a car service appointment"
+            "My cat likes pizza"
           ]
         },
         {
           "source": 2,
           "target": 3,
           "utterances": [
-            "I prefer next Monday"
+            "The sky is purple today"
           ]
         },
         {
           "source": 3,
           "target": 4,
           "utterances": [
-            "Morning works for me"
+            "I can smell colors"
           ]
         },
         {
           "source": 4,
           "target": 5,
           "utterances": [
-            "I need an oil change and tire rotation"
+            "My shoes are singing"
           ]
         },
         {
           "source": 5,
           "target": 6,
           "utterances": [
-            "Yes, that's all"
-          ]
-        },
-        {
-          "source": 6,
-          "target": 2,
-          "utterances": [
-            "I need to change the date"
-          ]
-        }
-      ],
-      "nodes": [
-        {
-          "id": 1,
-          "label": "welcome",
-          "is_start": true,
-          "utterances": [
-            "Welcome to AutoCare! How can I assist you today?"
-          ]
-        },
-        {
-          "id": 2,
-          "label": "ask_date",
-          "is_start": false,
-          "utterances": [
-            "When would you like to schedule your appointment?"
-          ]
-        },
-        {
-          "id": 3,
-          "label": "ask_time",
-          "is_start": false,
-          "utterances": [
-            "What time of day works best for you?"
-          ]
-        },
-        {
-          "id": 4,
-          "label": "ask_services",
-          "is_start": false,
-          "utterances": [
-            "What services do you need for your car?"
-          ]
-        },
-        {
-          "id": 5,
-          "label": "confirm_services",
-          "is_start": false,
-          "utterances": [
-            "Got it. Is there anything else you need?"
-          ]
-        },
-        {
-          "id": 6,
-          "label": "complete",
-          "is_start": false,
-          "utterances": [
-            "Your appointment is scheduled. Would you like to make any changes?"
-          ]
-        }
-      ]
-    },
-    "topic": "car service appointment",
-    "dialogues": [
-      {
-        "messages": [
-          {
-            "text": "Welcome to AutoCare! How can I assist you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I need to schedule a car service appointment",
-            "participant": "user"
-          },
-          {
-            "text": "When would you like to schedule your appointment?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I prefer next Monday",
-            "participant": "user"
-          },
-          {
-            "text": "What time of day works best for you?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Morning works for me",
-            "participant": "user"
-          },
-          {
-            "text": "What services do you need for your car?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I need an oil change and tire rotation",
-            "participant": "user"
-          },
-          {
-            "text": "Got it. Is there anything else you need?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's all",
-            "participant": "user"
-          },
-          {
-            "text": "Your appointment is scheduled. Would you like to make any changes?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I need to change the date",
-            "participant": "user"
-          }
-        ],
-        "topic": ""
-      }
-    ],
-    "validation_result": {
-      "value": false,
-      "description": "Invalid transition from ['Got it. Is there anything else you need?'] to ['Your appointment is scheduled. Would you like to make any changes?'] via edge '[\"Yes, that's all\"]': The transition is not logically valid. The user's phrase 'Yes, that's all' indicates that they do not need anything else. However, the assistant's next phrase asks if they would like to make changes to an appointment, which contradicts the user's previous statement."
-    }
-  },
- 
-  {
-    "graph": {
-      "edges": [
-        {
-          "source": 1,
-          "target": 2,
-          "utterances": [
-            "I'm interested in enrolling in a course"
-          ]
-        },
-        {
-          "source": 2,
-          "target": 3,
-          "utterances": [
-            "I'm looking for a data science course"
-          ]
-        },
-        {
-          "source": 3,
-          "target": 4,
-          "utterances": [
-            "I prefer beginner level"
-          ]
-        },
-        {
-          "source": 4,
-          "target": 5,
-          "utterances": [
-            "I'd like to start next month"
-          ]
-        },
-        {
-          "source": 5,
-          "target": 6,
-          "utterances": [
-            "Yes, I have a discount code"
+            "Trees speak French"
           ]
         },
         {
           "source": 6,
           "target": 7,
           "utterances": [
-            "No, that's all for now"
+            "Clouds taste like math"
           ]
         },
         {
           "source": 7,
           "target": 2,
           "utterances": [
-            "I want to explore more courses"
+            "Time is dancing backwards"
           ]
         }
       ],
@@ -567,7 +408,7 @@
           "label": "welcome",
           "is_start": true,
           "utterances": [
-            "Welcome to EduPlatform! How can I assist you with your learning journey today?"
+            "The ocean is made of bicycles! How can I perplex you today?"
           ]
         },
         {
@@ -575,7 +416,7 @@
           "label": "ask_course_interest",
           "is_start": false,
           "utterances": [
-            "What type of course are you interested in?"
+            "Do numbers have feelings?"
           ]
         },
         {
@@ -583,7 +424,7 @@
           "label": "offer_course_options",
           "is_start": false,
           "utterances": [
-            "We have several data science courses. What level are you looking for?"
+            "My socks are plotting a revolution. What's your favorite dinosaur dream?"
           ]
         },
         {
@@ -591,7 +432,7 @@
           "label": "check_level",
           "is_start": false,
           "utterances": [
-            "Great choice! When would you like to start?"
+            "Can you hear the silence dancing? When do paintings sleep?"
           ]
         },
         {
@@ -599,7 +440,7 @@
           "label": "confirm_start_date",
           "is_start": false,
           "utterances": [
-            "Perfect! Do you have any discount codes to apply?"
+            "The wind is knitting sweaters for fish. Do you collect moonlight?"
           ]
         },
         {
@@ -607,7 +448,7 @@
           "label": "apply_discount",
           "is_start": false,
           "utterances": [
-            "Discount applied! Would you like to enroll in any other courses?"
+            "Gravity is on vacation! Would you like to teach algebra to raindrops?"
           ]
         },
         {
@@ -615,69 +456,29 @@
           "label": "complete_enrollment",
           "is_start": false,
           "utterances": [
-            "Your enrollment is complete. Would you like to explore more courses?"
+            "Your thoughts are now butterfly origami. Would you like to paint with echoes?"
           ]
         }
       ]
     },
-    "topic": "online course enrollment",
+    "topic": "nonsensical conversation",
     "dialogues": [
       {
         "messages": [
           {
-            "text": "Welcome to EduPlatform! How can I assist you with your learning journey today?",
+            "text": "The ocean is made of bicycles! How can I perplex you today?",
             "participant": "assistant"
           },
           {
-            "text": "I'm interested in enrolling in a course",
+            "text": "My cat likes pizza",
             "participant": "user"
           },
           {
-            "text": "What type of course are you interested in?",
+            "text": "Do numbers have feelings?",
             "participant": "assistant"
           },
           {
-            "text": "I'm looking for a data science course",
-            "participant": "user"
-          },
-          {
-            "text": "We have several data science courses. What level are you looking for?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I prefer beginner level",
-            "participant": "user"
-          },
-          {
-            "text": "Great choice! When would you like to start?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I'd like to start next month",
-            "participant": "user"
-          },
-          {
-            "text": "Perfect! Do you have any discount codes to apply?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, I have a discount code",
-            "participant": "user"
-          },
-          {
-            "text": "Discount applied! Would you like to enroll in any other courses?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, that's all for now",
-            "participant": "user"
-          },
-          {
-            "text": "Your enrollment is complete. Would you like to explore more courses?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I want to explore more courses",
+            "text": "The sky is purple today",
             "participant": "user"
           }
         ],
@@ -686,7 +487,526 @@
     ],
     "validation_result": {
       "value": false,
-      "description": "Invalid transition from ['Perfect! Do you have any discount codes to apply?'] to ['Discount applied! Would you like to enroll in any other courses?'] via edge '['Yes, I have a discount code']': The transition is invalid because the assistant didn't ask for the discount code or confirm that it was successfully applied before stating 'Discount applied!'. The user only confirmed they have a discount code, but didn't provide it."
+      "description": "All transitions are completely nonsensical and do not form any coherent conversation flow."
     }
+  },
+
+  
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I'd like to order a pizza"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "A large pepperoni pizza, please"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Yes, that's correct"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "Here's my address"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "utterances": [
+            "Yes, I'd like to add extra cheese"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 7,
+          "utterances": [
+            "Here's my payment"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 2,
+          "utterances": [
+            "I'd like to order another pizza"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome to Pizza Place! How can I assist you today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_pizza_type",
+          "is_start": false,
+          "utterances": [
+            "What kind of pizza would you like to order?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "confirm_order",
+          "is_start": false,
+          "utterances": [
+            "That's a large pepperoni pizza. Is this correct?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "ask_address",
+          "is_start": false,
+          "utterances": [
+            "Great choice! Could you please provide your delivery address?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "ask_customization",
+          "is_start": false,
+          "utterances": [
+            "Would you like to add any extra toppings or customization?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "confirm_customization",
+          "is_start": false,
+          "utterances": [
+            "Extra cheese added. Is there anything else?"
+          ]
+        },
+        {
+          "id": 7,
+          "label": "payment",
+          "is_start": false,
+          "utterances": [
+            "Thank you! That'll be $15. Please proceed with payment."
+          ]
+        }
+      ]
+    },
+    "topic": "pizza delivery customization",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Welcome to Pizza Place! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to order a pizza",
+            "participant": "user"
+          },
+          {
+            "text": "What kind of pizza would you like to order?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A large pepperoni pizza, please",
+            "participant": "user"
+          },
+          {
+            "text": "That's a large pepperoni pizza. Is this correct?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's correct",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! Could you please provide your delivery address?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here's my address",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to add any extra toppings or customization?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to add extra cheese",
+            "participant": "user"
+          },
+          {
+            "text": "Extra cheese added. Is there anything else?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here's my payment",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you! That'll be $15. Please proceed with payment.",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to order another pizza",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Thank you for calling Pizza Place! How can I help you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to place a pizza order",
+            "participant": "user"
+          },
+          {
+            "text": "What type of pizza are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I would like a large pepperoni pizza, please.",
+            "participant": "user"
+          },
+          {
+            "text": "So, that's one large pepperoni pizza. Is that right?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's right.",
+            "participant": "user"
+          },
+          {
+            "text": "Fantastic choice! Could you share your delivery address with me?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here’s where you can send it.",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to include any additional toppings or special requests?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I want to add extra cheese on top.",
+            "participant": "user"
+          },
+          {
+            "text": "Extra cheese has been added. Anything else you’d like to modify?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here’s my payment information.",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you! Your total comes to $15. Please go ahead with the payment.",
+            "participant": "assistant"
+          },
+          {
+            "text": "I’d like to order another pizza as well.",
+            "participant": "user"
+          }
+        ],
+        "topic": "pizza delivery customization"
+      },
+      {
+        "messages": [
+          {
+            "text": "Hello and welcome to Pizza Place! How can I help you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to place an order for a pizza",
+            "participant": "user"
+          },
+          {
+            "text": "What type of pizza would you like to get?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I would like a large pepperoni pizza, please.",
+            "participant": "user"
+          },
+          {
+            "text": "So, that's a large pepperoni pizza. Is that right?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's right!",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent choice! Could you share your delivery address with me?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here's my address.",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to include any additional toppings or make any adjustments?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to add some extra cheese.",
+            "participant": "user"
+          },
+          {
+            "text": "Extra cheese has been added. Is there anything else you'd like?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Here's my payment information.",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you! Your total comes to $15. Please go ahead with the payment.",
+            "participant": "assistant"
+          },
+          {
+            "text": "I’d like to order another pizza as well.",
+            "participant": "user"
+          }
+        ],
+        "topic": "pizza delivery customization"
+      }
+    ]
+  },
+
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "Ok I need to do course registration now"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "Yeah Computer Science I guess"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Morning would be good for me probably"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "Uh yeah that's fine whatever"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "Wait I need one more class actually"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Hello welcome what do you want help with for registration?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_course",
+          "is_start": false,
+          "utterances": [
+            "Ok so which course do you want to take?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_time_preference",
+          "is_start": false,
+          "utterances": [
+            "And what time would work for you maybe?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "confirm",
+          "is_start": false,
+          "utterances": [
+            "So that's Computer Science in morning time right?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Ok done with registration. Need anything more?"
+          ]
+        }
+      ]
+    }
+  },
+
+
+
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I need to schedule an appointment"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I need to see a cardiologist"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Next Monday works for me"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "Yes, that time is good"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "I need to schedule another appointment"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "How can I assist you with your appointment today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_specialty",
+          "is_start": false,
+          "utterances": [
+            "Which specialist do you need to see?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_date",
+          "is_start": false,
+          "utterances": [
+            "When would you like to schedule it?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "confirm_time",
+          "is_start": false,
+          "utterances": [
+            "So, next Monday at 10 AM, is that correct?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Your appointment is set. Anything else?"
+          ]
+        }
+      ]
+    },
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "How can I assist you with your appointment today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule an appointment",
+            "participant": "user"
+          },
+          {
+            "text": "Which specialist do you need to see?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to see a cardiologist",
+            "participant": "user"
+          },
+          {
+            "text": "When would you like to schedule it?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Next Monday works for me",
+            "participant": "user"
+          },
+          {
+            "text": "So, next Monday at 10 AM, is that correct?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that time is good",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is set. Anything else?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule another appointment",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "topic": "hospital appointment scheduling"
   }
 ]

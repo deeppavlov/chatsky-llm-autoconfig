@@ -180,7 +180,6 @@
       "description": "Invalid transition from [\"Do you have a frequent flyer number you'd like to use?\"] to ['Great! Shall I proceed with booking your flight?'] via edge '['Yes, I have a frequent flyer number']': The transition is invalid because the assistant did not ask for or acknowledge the user's frequent flyer number before proceeding to book the flight."
     }
   },
-  
   {
     "graph": {
       "edges": [
@@ -647,6 +646,51 @@
           }
         ],
         "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to FitLife Gym! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in a gym membership",
+            "participant": "user"
+          },
+          {
+            "text": "What type of membership plan are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like a monthly plan",
+            "participant": "user"
+          },
+          {
+            "text": "Have you been a member with us before?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I have",
+            "participant": "user"
+          },
+          {
+            "text": "Great! When would you like to start your membership?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to start next week",
+            "participant": "user"
+          },
+          {
+            "text": "Your membership is all set to begin next week. Would you like to explore other plans?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to know about other plans",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
       }
     ],
     "validation_result": {
@@ -1021,6 +1065,141 @@
           }
         ],
         "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to SecureLife Insurance! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in buying an insurance policy",
+            "participant": "user"
+          },
+          {
+            "text": "What type of insurance policy are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need car insurance",
+            "participant": "user"
+          },
+          {
+            "text": "We have full coverage and liability-only car insurance. Which do you prefer?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want full coverage",
+            "participant": "user"
+          },
+          {
+            "text": "Our full coverage car insurance offers extensive protection. Would you like to proceed with this?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I want that",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! Your policy is being processed. Would you like to explore other options?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to explore other options",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to SecureLife Insurance! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in buying an insurance policy",
+            "participant": "user"
+          },
+          {
+            "text": "What type of insurance policy are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for health insurance",
+            "participant": "user"
+          },
+          {
+            "text": "We offer comprehensive and basic health insurance plans. Which one are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need a basic plan",
+            "participant": "user"
+          },
+          {
+            "text": "Our basic health plan covers essential services. Would you like to proceed with this?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! Your policy is being processed. Would you like to explore other options?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to explore other options",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to SecureLife Insurance! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in buying an insurance policy",
+            "participant": "user"
+          },
+          {
+            "text": "What type of insurance policy are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for health insurance",
+            "participant": "user"
+          },
+          {
+            "text": "We offer comprehensive and basic health insurance plans. Which one are you interested in?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want a comprehensive plan",
+            "participant": "user"
+          },
+          {
+            "text": "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that sounds good",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! Your policy is being processed. Would you like to explore other options?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to explore other options",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
       }
     ],
     "validation_result": {
@@ -1209,6 +1388,165 @@
           }
         ],
         "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Glamour Salon! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book an appointment",
+            "participant": "user"
+          },
+          {
+            "text": "What service are you interested in booking?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want a manicure",
+            "participant": "user"
+          },
+          {
+            "text": "A manicure sounds wonderful! When would you like to schedule it?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Next Tuesday, please",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check availability. Does this time work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is confirmed! Would you like to book another service?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book another service",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Glamour Salon! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book an appointment",
+            "participant": "user"
+          },
+          {
+            "text": "What service are you interested in booking?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in a haircut",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! When would you like to come in for a haircut?",
+            "participant": "assistant"
+          },
+          {
+            "text": "This Saturday, if possible",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check availability. Does this time work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to change the service",
+            "participant": "user"
+          },
+          {
+            "text": "What service are you interested in booking?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want a manicure",
+            "participant": "user"
+          },
+          {
+            "text": "A manicure sounds wonderful! When would you like to schedule it?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Next Tuesday, please",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check availability. Does this time work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is confirmed! Would you like to book another service?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book another service",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Glamour Salon! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book an appointment",
+            "participant": "user"
+          },
+          {
+            "text": "What service are you interested in booking?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in a haircut",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! When would you like to come in for a haircut?",
+            "participant": "assistant"
+          },
+          {
+            "text": "This Saturday, if possible",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check availability. Does this time work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is confirmed! Would you like to book another service?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to book another service",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
       }
     ],
     "validation_result": {
@@ -1357,6 +1695,55 @@
           },
           {
             "text": "A checking account is a good option. Do you have your ID and proof of address with you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I have my ID and proof of address",
+            "participant": "user"
+          },
+          {
+            "text": "Perfect! Let's verify your documents and proceed with the application.",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to proceed with the application",
+            "participant": "user"
+          },
+          {
+            "text": "Your application is being processed. Is there anything else I can help you with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all I need",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing ABC Bank. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to ABC Bank! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to open a bank account",
+            "participant": "user"
+          },
+          {
+            "text": "What type of account are you interested in opening?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in a savings account",
+            "participant": "user"
+          },
+          {
+            "text": "Great choice! Do you have your ID and proof of address with you?",
             "participant": "assistant"
           },
           {
@@ -1622,11 +2009,608 @@
           }
         ],
         "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a cat",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for cats. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Just a bath and nail trim",
+            "participant": "user"
+          },
+          {
+            "text": "A bath and nail trim is a great choice. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a cat",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for cats. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A full grooming session",
+            "participant": "user"
+          },
+          {
+            "text": "A full grooming session includes a bath, haircut, and nail trim. Does that sound good?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have another pet that needs grooming",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a dog",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for dogs. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Just a bath and nail trim",
+            "participant": "user"
+          },
+          {
+            "text": "A bath and nail trim is a great choice. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a cat",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for cats. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A full grooming session",
+            "participant": "user"
+          },
+          {
+            "text": "A full grooming session includes a bath, haircut, and nail trim. Does that sound good?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a dog",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for dogs. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Just a bath and nail trim",
+            "participant": "user"
+          },
+          {
+            "text": "A bath and nail trim is a great choice. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have another pet that needs grooming",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a cat",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for cats. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A full grooming session",
+            "participant": "user"
+          },
+          {
+            "text": "A full grooming session includes a bath, haircut, and nail trim. Does that sound good?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a dog",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for dogs. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Just a bath and nail trim",
+            "participant": "user"
+          },
+          {
+            "text": "A bath and nail trim is a great choice. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a dog",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for dogs. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A full grooming session",
+            "participant": "user"
+          },
+          {
+            "text": "A full grooming session includes a bath, haircut, and nail trim. Does that sound good?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have another pet that needs grooming",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a cat",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for cats. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Just a bath and nail trim",
+            "participant": "user"
+          },
+          {
+            "text": "A bath and nail trim is a great choice. Does that work for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to Paws & Claws Grooming! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in grooming services for my pet",
+            "participant": "user"
+          },
+          {
+            "text": "Great! What type of pet do you have?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I have a dog",
+            "participant": "user"
+          },
+          {
+            "text": "We offer various services for dogs. What are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "A full grooming session",
+            "participant": "user"
+          },
+          {
+            "text": "A full grooming session includes a bath, haircut, and nail trim. Does that sound good?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that works for me",
+            "participant": "user"
+          },
+          {
+            "text": "Excellent! Your appointment is set. Anything else I can help with?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for now",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for choosing Paws & Claws! Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
       }
     ],
     "validation_result": {
       "value": true,
       "description": "All transitions are valid."
+    }
+  },
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I need to schedule a car service appointment"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I prefer next Monday"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Morning works for me"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "I need an oil change and tire rotation"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "utterances": [
+            "Yes, that's all"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 2,
+          "utterances": [
+            "I need to change the date"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome to AutoCare! How can I assist you today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_date",
+          "is_start": false,
+          "utterances": [
+            "When would you like to schedule your appointment?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_time",
+          "is_start": false,
+          "utterances": [
+            "What time of day works best for you?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "ask_services",
+          "is_start": false,
+          "utterances": [
+            "What services do you need for your car?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "confirm_services",
+          "is_start": false,
+          "utterances": [
+            "Got it. Is there anything else you need?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Your appointment is scheduled. Would you like to make any changes?"
+          ]
+        }
+      ]
+    },
+    "topic": "car service appointment",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "Welcome to AutoCare! How can I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule a car service appointment",
+            "participant": "user"
+          },
+          {
+            "text": "When would you like to schedule your appointment?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I prefer next Monday",
+            "participant": "user"
+          },
+          {
+            "text": "What time of day works best for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Morning works for me",
+            "participant": "user"
+          },
+          {
+            "text": "What services do you need for your car?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need an oil change and tire rotation",
+            "participant": "user"
+          },
+          {
+            "text": "Got it. Is there anything else you need?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's all",
+            "participant": "user"
+          },
+          {
+            "text": "Your appointment is scheduled. Would you like to make any changes?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to change the date",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['Got it. Is there anything else you need?'] to ['Your appointment is scheduled. Would you like to make any changes?'] via edge '[\"Yes, that's all\"]': The transition is not logically valid. The user's phrase 'Yes, that's all' indicates that they do not need anything else. However, the assistant's next phrase asks if they would like to make changes to an appointment, which contradicts the user's previous statement."
     }
   }
 ]

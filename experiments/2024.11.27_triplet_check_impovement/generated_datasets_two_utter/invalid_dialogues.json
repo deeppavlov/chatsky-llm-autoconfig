@@ -1084,5 +1084,295 @@
       "value": false,
       "description": "Invalid transition from ['Do you have your identification documents with you?', 'Are your ID documents ready?'] to ['Is there anything else you need help with?', 'Do you need assistance with anything else?'] via edge '['Yes, I have my ID with me', 'I have my identification ready']': The transition is invalid because the assistant's next phrase does not logically follow the user's response. After the user confirms they have their ID ready, the assistant should proceed with the next steps for opening a bank account, not ask if the user needs help with anything else. Invalid transition from ['Is there anything else you need help with?', 'Do you need assistance with anything else?'] to ['Your account setup is complete. Have a great day!', 'Everything is set up. Enjoy your day!'] via edge '[\"Yes, that's all I need\", \"No, that's everything for now\"]': The user's response indicates that they do not need further assistance, but the assistant's next phrase suggests that they have completed an account setup, which was not mentioned or requested by the user."
     }
+  },
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I want to register for courses",
+            "I need to sign up for classes"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I'm interested in Computer Science",
+            "I want to take Computer Science"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "I prefer morning classes",
+            "I'd like classes in the morning"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "Yes, that's what I want",
+            "Yes, that works for me"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "I want to add another course",
+            "I'd like to register for more classes"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "How can I assist you with your registration?",
+            "What can I help you with regarding your courses?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_course",
+          "is_start": false,
+          "utterances": [
+            "Which course are you interested in?",
+            "What class would you like to register for?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_time_preference",
+          "is_start": false,
+          "utterances": [
+            "Do you have a preferred time for your classes?",
+            "What time of day do you prefer for your classes?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "confirm",
+          "is_start": false,
+          "utterances": [
+            "So, you want morning Computer Science classes, correct?",
+            "You prefer morning classes for Computer Science, right?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Your registration is complete. Anything else?",
+            "You're all set. Would you like to do anything else?"
+          ]
+        }
+      ]
+    },
+    "topic": "university course registration flow",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "How can I assist you with your registration?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to sign up for classes",
+            "participant": "user"
+          },
+          {
+            "text": "What class would you like to register for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm interested in Computer Science",
+            "participant": "user"
+          },
+          {
+            "text": "Do you have a preferred time for your classes?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like classes in the morning",
+            "participant": "user"
+          },
+          {
+            "text": "You prefer morning classes for Computer Science, right?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that's what I want",
+            "participant": "user"
+          },
+          {
+            "text": "Your registration is complete. Anything else?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to add another course",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['Do you have a preferred time for your classes?', 'What time of day do you prefer for your classes?'] to ['So, you want morning Computer Science classes, correct?', 'You prefer morning classes for Computer Science, right?'] via edge '['I prefer morning classes', \"I'd like classes in the morning\"]': The transition is invalid because the user did not specify the subject of the classes they prefer in the morning. The assistant assumes it's Computer Science without any prior mention or context. Invalid transition from ['So, you want morning Computer Science classes, correct?', 'You prefer morning classes for Computer Science, right?'] to ['Your registration is complete. Anything else?', \"You're all set. Would you like to do anything else?\"] via edge '[\"Yes, that's what I want\", 'Yes, that works for me']': The transition is invalid because the assistant completes the registration process without confirming the availability of the morning Computer Science classes or going through the necessary steps for registration."
+    }
+  },
+  {
+    "graph": {
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I need to schedule an appointment",
+            "I want to book a doctor's visit"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I need to see a cardiologist",
+            "I want to book with a heart specialist"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Next Monday works for me",
+            "I am available next Monday"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "Yes, that time is good",
+            "Yes, that time works for me"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "I need to schedule another appointment",
+            "I want to book another visit"
+          ]
+        }
+      ],
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "How can I assist you with your appointment today?",
+            "What can I do for you regarding your appointment?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "ask_specialty",
+          "is_start": false,
+          "utterances": [
+            "Which specialist do you need to see?",
+            "What type of doctor do you need?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "ask_date",
+          "is_start": false,
+          "utterances": [
+            "When would you like to schedule it?",
+            "What date works for you?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "confirm_time",
+          "is_start": false,
+          "utterances": [
+            "So, next Monday at 10 AM, is that correct?",
+            "You want to book it for next Monday at 10 AM, right?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "complete",
+          "is_start": false,
+          "utterances": [
+            "Your appointment is set. Anything else?",
+            "I've booked your appointment. Do you need anything else?"
+          ]
+        }
+      ]
+    },
+    "topic": "hospital appointment scheduling",
+    "dialogues": [
+      {
+        "messages": [
+          {
+            "text": "How can I assist you with your appointment today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I need to schedule an appointment",
+            "participant": "user"
+          },
+          {
+            "text": "What type of doctor do you need?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to book with a heart specialist",
+            "participant": "user"
+          },
+          {
+            "text": "What date works for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Next Monday works for me",
+            "participant": "user"
+          },
+          {
+            "text": "You want to book it for next Monday at 10 AM, right?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that time works for me",
+            "participant": "user"
+          },
+          {
+            "text": "I've booked your appointment. Do you need anything else?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I want to book another visit",
+            "participant": "user"
+          }
+        ],
+        "topic": ""
+      }
+    ],
+    "validation_result": {
+      "value": false,
+      "description": "Invalid transition from ['When would you like to schedule it?', 'What date works for you?'] to ['So, next Monday at 10 AM, is that correct?', 'You want to book it for next Monday at 10 AM, right?'] via edge '['Next Monday works for me', 'I am available next Monday']': The transition is invalid because the user did not specify a time for the appointment, but the assistant assumes it's at 10 AM."
+    }
   }
 ]
