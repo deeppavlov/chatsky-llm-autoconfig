@@ -43,10 +43,10 @@ def run_all_algorithms():
                 test_graph = Graph(graph_dict=case["graph"])
                 result = class_instance.invoke(test_graph)
 
-                metrics["all_paths_sampled"].append(all_paths_sampled(test_graph, result[0]))
+                # metrics["all_paths_sampled"].append(all_paths_sampled(test_graph, result[0]))
                 metrics["all_utterances_present"].append(all_utterances_present(test_graph, result))
 
-            metrics["all_paths_sampled_avg"] = sum(metrics["all_paths_sampled"]) / len(metrics["all_paths_sampled"])
+            # metrics["all_paths_sampled_avg"] = sum(metrics["all_paths_sampled"]) / len(metrics["all_paths_sampled"])
             metrics["all_utterances_present_avg"] = sum(metrics["all_utterances_present"]) / len(metrics["all_utterances_present"])
 
         elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is Dialogue:
