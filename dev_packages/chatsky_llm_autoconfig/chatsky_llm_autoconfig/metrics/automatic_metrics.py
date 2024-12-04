@@ -15,7 +15,7 @@ from chatsky_llm_autoconfig.metrics.embedder import emb_list, get_embedding, get
 from chatsky_llm_autoconfig.graph import BaseGraph
 from chatsky_llm_autoconfig.dialogue import Dialogue
 from chatsky_llm_autoconfig.schemas import CompareResponse
-from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings, graph2list, get_diagonals, get_diagonal, graph_order
+from chatsky_llm_autoconfig.utils import call_llm_api, EnvSettings, graph2list, nodes2list, get_diagonals, get_diagonal, graph_order
 from chatsky_llm_autoconfig.prompts import (
     compare_graphs_prompt, graph_example_1, result_form
 )
@@ -150,30 +150,50 @@ def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
     g2 = G2.graph_dict
 
     # print("ORIG: ", g1)
-    g1_order = graph_order(g1)
-    g2_order = graph_order(g2)
+    # g1_order = graph_order(g1)
+    # g2_order = graph_order(g2)
     # print("ORDER: ", g1_order, "\n")
     # print("2LIST: ", graph2list(g1_order), "\n")
     #matrix = get_embedding(graph2list(g1_order), graph2list(g2_order), env_settings.EMBEDDER_MODEL, env_settings.EMBEDDER_DEVICE)
-    matrix = get_reranking(graph2list(g1_order), graph2list(g2_order))
-    # print("MATRIX: ", matrix, "\n")
-    diags = get_diagonals(matrix)
-    # print("DIAGS: ", diags, "\n")
-    sums = np.sum(diags,axis=1)
-    max_index = np.argmax(sums)
-    g1_best = get_diagonal(g1_order,max_index)
-    min_value = np.min(diags[max_index])
+
+    nodes1_list = nodes2list(g1)
+    nodes2_list = nodes2list(g2)
+
+    # print("G1: ", g1_list, "\n")
+    # print("G2: ", g2_list, "\n")
+
+    nodes_matrix = get_reranking(nodes1_list, nodes2_list)
+    nodes_max = np.argmax(nodes_matrix, axis=1)
+    if len(set(nodes_max)) < len(nodes1_list):
+        return False
+
+    g1_list = graph2list(g1)
+    g2_list = graph2list(g2)
+    matrix = get_reranking(g1_list, g2_list)
+    max = np.argmax(matrix, axis=1)
+    if len(set(max)) < len(g1_list) or nodes_max != max:
+        return False
+    
+    if min(np.min(np.max(nodes_matrix, axis=1)),np.min(np.max(matrix, axis=1))) >= env_settings.SIM_THRESHOLD:
+        return True
+    # diags = get_diagonals(matrix)
+    # # print("DIAGS: ", diags, "\n")
+    # sums = np.sum(diags,axis=1)
+    # max_index = np.argmax(sums)
+    # g1_best = get_diagonal(g1,max_index)
+    # min_value = np.min(diags[max_index])
     # print("MIN: ", min_value)
+    # return True
     # print("\nG1: ", g1_best, "\n")
     # print("G2: ", g2_order, "\n")
 
-    if min_value >= env_settings.SIM_THRESHOLD:
-        return True
+    # if min_value >= env_settings.SIM_THRESHOLD:
+    #     return True
     parser = PydanticOutputParser(pydantic_object=CompareResponse)
     format_model=ChatOpenAI(model=env_settings.FORMATTER_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL)
     model=ChatOpenAI(model=env_settings.COMPARE_MODEL_NAME, api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL)
     new_parser = OutputFixingParser.from_llm(parser=parser, llm=format_model)
-    result = call_llm_api(compare_graphs_prompt.format(result_form=result_form,graph_example_1=graph_example_1, graph_1=g1_best, graph_2=g2_order), model|new_parser, temp=0).model_dump()
+    result = call_llm_api(compare_graphs_prompt.format(result_form=result_form,graph_example_1=graph_example_1, graph_1=g1, graph_2=g2), model|new_parser, temp=0).model_dump()
     # print("RES: ", result)
     return result['result']
 

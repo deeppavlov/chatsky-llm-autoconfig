@@ -1,50 +1,36 @@
 {
     "o1-mini": {
-        "fourth_graph_generation_prompt": [
+        "options_graph_generation_prompt": [
             {
-                "car maintenance service": [
+                "BOOK STORE CYCLE": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hi, I need to schedule a car maintenance service"
+                                    "I need to make an order"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry"
+                                    "One War and Piece in hard cover and one Pride and Prejudice"
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "Yes, I would like the full service package"
+                                    "With credit card, please"
                                 ]
                             },
                             {
                                 "source": 4,
-                                "target": 5,
+                                "target": 3,
                                 "utterances": [
-                                    "Sure, Saturday morning works for me"
-                                ]
-                            },
-                            {
-                                "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here's my contact information"
-                                ]
-                            },
-                            {
-                                "source": 6,
-                                "target": 2,
-                                "utterances": [
-                                    "I need to schedule another service for my other car"
+                                    "I will enter new payment method"
                                 ]
                             }
                         ],
@@ -54,94 +40,75 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Welcome to our car service center! How can I assist you today?"
+                                    "How can I help?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "provide_make_model",
+                                "label": "ask_books",
                                 "is_start": false,
                                 "utterances": [
-                                    "Can you please provide the make and model of your car?"
+                                    "Which books would you like to order?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "choose_service_package",
+                                "label": "ask_payment_method",
                                 "is_start": false,
                                 "utterances": [
-                                    "Would you like the full service package or a specific service?"
+                                    "Please, enter the payment method you would like to use: cash or credit card."
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "schedule_appointment",
+                                "label": "ask_to_redo",
                                 "is_start": false,
                                 "utterances": [
-                                    "When would you like to schedule your service appointment?"
-                                ]
-                            },
-                            {
-                                "id": 5,
-                                "label": "provide_contact_information",
-                                "is_start": false,
-                                "utterances": [
-                                    "Great! Could you please provide your contact information?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "finalize",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can help you with today?"
+                                    "Something is wrong, can you please use other payment method or start order again"
                                 ]
                             }
                         ],
-                        "reason": "The cycle starts at the 'provide_make_model' node (id: 2) to allow the user to schedule additional services by looping back after finalizing an appointment."
-                    },
+                        "reason": ""
+                    }
+                ]
+            },
+            {
+                "BOOK STORE": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hi there, I’d like to book a car maintenance service."
+                                    "I need to make an order"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry."
+                                    "One War and Piece in hard cover and one Pride and Prejudice"
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "I’d like to go with the comprehensive service package."
+                                    "I will pickup my order"
                                 ]
                             },
                             {
                                 "source": 4,
+                                "target": 3,
+                                "utterances": [
+                                    "Start new order"
+                                ]
+                            },
+                            {
+                                "source": 3,
                                 "target": 5,
                                 "utterances": [
-                                    "Saturday morning would be perfect for me."
-                                ]
-                            },
-                            {
-                                "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here are my contact details."
-                                ]
-                            },
-                            {
-                                "source": 6,
-                                "target": 2,
-                                "utterances": [
-                                    "I also need to arrange a service for my other vehicle."
+                                    "Cash"
                                 ]
                             }
                         ],
@@ -151,94 +118,62 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Hello and welcome to our car service center! How can I help you today?"
+                                    "How can I help?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_vehicle_make",
+                                "label": "ask_books",
                                 "is_start": false,
                                 "utterances": [
-                                    "Could you let me know the make and model of your vehicle?"
+                                    "Which books would you like to order?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "ask_service_package",
+                                "label": "ask_payment_method",
                                 "is_start": false,
                                 "utterances": [
-                                    "Would you prefer the comprehensive service package or just a specific service?"
+                                    "Please, enter the payment method you would like to use: cash or credit card."
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "ask_appointment_time",
+                                "label": "invalid_payment_method",
                                 "is_start": false,
                                 "utterances": [
-                                    "What time would you like to set your appointment for?"
+                                    "Please, enter the payment method you would like to use: cash or credit card."
                                 ]
                             },
                             {
                                 "id": 5,
-                                "label": "ask_contact_details",
+                                "label": "success",
                                 "is_start": false,
                                 "utterances": [
-                                    "Awesome! Can you provide your contact details, please?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "ask_anything_else",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can assist you with today?"
+                                    "Success"
                                 ]
                             }
                         ],
-                        "reason": "The cycle starts at the 'ask_vehicle_make' node (id 2) because the user's request to arrange a service for another vehicle logically leads back to providing vehicle details, enabling the process to handle additional services seamlessly."
-                    },
+                        "reason": ""
+                    }
+                ]
+            },
+            {
+                "SIMPLE": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "Hello, I'd like to set up a maintenance appointment for my car."
+                                    "No, thanks"
                                 ]
                             },
                             {
                                 "source": 2,
-                                "target": 3,
+                                "target": 1,
                                 "utterances": [
-                                    "It's a 2018 Toyota Camry."
-                                ]
-                            },
-                            {
-                                "source": 3,
-                                "target": 4,
-                                "utterances": [
-                                    "I would like to go with the complete service package."
-                                ]
-                            },
-                            {
-                                "source": 4,
-                                "target": 5,
-                                "utterances": [
-                                    "Saturday morning would be perfect for me."
-                                ]
-                            },
-                            {
-                                "source": 5,
-                                "target": 6,
-                                "utterances": [
-                                    "Here's my contact information."
-                                ]
-                            },
-                            {
-                                "source": 6,
-                                "target": 2,
-                                "utterances": [
-                                    "I also need to book a service for my other vehicle."
+                                    "Start over"
                                 ]
                             }
                         ],
@@ -248,51 +183,19 @@
                                 "label": "start",
                                 "is_start": true,
                                 "utterances": [
-                                    "Thank you for visiting our auto service center! How can I help you today?"
+                                    "Do you need help?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "ask_vehicle_info",
+                                "label": "end",
                                 "is_start": false,
                                 "utterances": [
-                                    "Could you let me know the make and model of your vehicle?"
-                                ]
-                            },
-                            {
-                                "id": 3,
-                                "label": "ask_service_preference",
-                                "is_start": false,
-                                "utterances": [
-                                    "Would you prefer our complete service package or just certain services?"
-                                ]
-                            },
-                            {
-                                "id": 4,
-                                "label": "ask_appointment_time",
-                                "is_start": false,
-                                "utterances": [
-                                    "What time works best for you to come in for your appointment?"
-                                ]
-                            },
-                            {
-                                "id": 5,
-                                "label": "ask_contact_details",
-                                "is_start": false,
-                                "utterances": [
-                                    "Awesome! Can I have your contact details, please?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "ask_additional_services",
-                                "is_start": false,
-                                "utterances": [
-                                    "Thank you! Is there anything else I can assist you with today?"
+                                    "Thank you!"
                                 ]
                             }
                         ],
-                        "reason": "The cycle starts at node 6 ('ask_additional_services') because after completing an initial service appointment setup, the user requests to book an additional service. This logically leads the dialogue back to node 2 ('ask_vehicle_info') to handle the new service request, thus creating a meaningful cycle."
+                        "reason": ""
                     }
                 ]
             }

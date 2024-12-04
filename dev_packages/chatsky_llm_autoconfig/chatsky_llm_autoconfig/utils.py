@@ -229,7 +229,16 @@ def graph2list(graph: dict) -> list:
     return res
     # return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
 
+def nodes2list(graph: dict) -> list:
+    res = []
 
+    for node in graph["nodes"]:
+        utt = ""
+        for n_utt in node['utterances']:
+            utt += n_utt + " "
+        res.append(utt)
+
+    return res
 
 def get_diagonals(matrix):
     s = matrix.shape[0]

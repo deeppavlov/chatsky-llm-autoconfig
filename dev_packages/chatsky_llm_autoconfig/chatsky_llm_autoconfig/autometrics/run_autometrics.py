@@ -29,7 +29,7 @@ model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url
 
 
 #test_data = read_json(env_settings.TEST_DATA_PATH
-dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
 #dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
 #dialogue_to_graph = test_data["dialogue_to_graph"]
@@ -112,12 +112,14 @@ def run_all_algorithms():
                 for case in dialogue_to_graph:
                     case_list = []
                     cur_list = []
-                    for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
+                    # for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
 
                         # print("TST: ", test_dialogue)
-                        result_graph = class_instance.invoke(test_dialogue)
-                        cur_list.append(result_graph)
-                        case_list.append(result_graph.graph_dict)
+                        # result_graph = class_instance.invoke(test_dialogue)
+                    #result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
+                    result_graph = class_instance.invoke([case["dialogue"]])
+                    cur_list.append(result_graph)
+                    case_list.append(result_graph.graph_dict)
                     result_list.append({case["topic"]: case_list})
                     test_list.append({case["topic"]: cur_list})
                 new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name: result_list}}

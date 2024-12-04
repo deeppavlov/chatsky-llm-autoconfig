@@ -1,0 +1,241 @@
+{
+    "o1-mini": {
+        "options_graph_generation_prompt": [
+            {
+                "internet installation setup": [
+                    {
+                        "edges": [
+                            {
+                                "source": 1,
+                                "target": 2,
+                                "utterances": [
+                                    "I need help setting up my internet"
+                                ]
+                            },
+                            {
+                                "source": 2,
+                                "target": 3,
+                                "utterances": [
+                                    "I have the installation kit"
+                                ]
+                            },
+                            {
+                                "source": 3,
+                                "target": 4,
+                                "utterances": [
+                                    "No, it's not connected"
+                                ]
+                            },
+                            {
+                                "source": 4,
+                                "target": 5,
+                                "utterances": [
+                                    "I have plugged it in now"
+                                ]
+                            },
+                            {
+                                "source": 5,
+                                "target": 6,
+                                "utterances": [
+                                    "Yes, everything is plugged in"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 7,
+                                "utterances": [
+                                    "Yes, the lights are on"
+                                ]
+                            },
+                            {
+                                "source": 7,
+                                "target": 8,
+                                "utterances": [
+                                    "Yes, I can access the internet"
+                                ]
+                            },
+                            {
+                                "source": 8,
+                                "target": 9,
+                                "utterances": [
+                                    "I need help with another setup"
+                                ]
+                            },
+                            {
+                                "source": 9,
+                                "target": 10,
+                                "utterances": [
+                                    "I have the equipment"
+                                ]
+                            },
+                            {
+                                "source": 10,
+                                "target": 3,
+                                "utterances": [
+                                    "Yes, it's connected"
+                                ]
+                            },
+                            {
+                                "source": 3,
+                                "target": 6,
+                                "utterances": [
+                                    "Yes, it's connected"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 10,
+                                "utterances": [
+                                    "Yes, the indicators are lit"
+                                ]
+                            },
+                            {
+                                "source": 10,
+                                "target": 11,
+                                "utterances": [
+                                    "No, I am not online"
+                                ]
+                            },
+                            {
+                                "source": 11,
+                                "target": 4,
+                                "utterances": [
+                                    "I will check the connections again"
+                                ]
+                            },
+                            {
+                                "source": 5,
+                                "target": 3,
+                                "utterances": [
+                                    "Yes, everything is plugged in"
+                                ]
+                            },
+                            {
+                                "source": 8,
+                                "target": 14,
+                                "utterances": [
+                                    "No, that's all"
+                                ]
+                            }
+                        ],
+                        "nodes": [
+                            {
+                                "id": 1,
+                                "label": "start",
+                                "is_start": true,
+                                "utterances": [
+                                    "How can I assist you with your internet today?"
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "label": "have_received_kit",
+                                "is_start": false,
+                                "utterances": [
+                                    "Have you received the installation kit?"
+                                ]
+                            },
+                            {
+                                "id": 3,
+                                "label": "is_everything_connected",
+                                "is_start": false,
+                                "utterances": [
+                                    "Is everything connected properly?"
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "label": "connect_cables",
+                                "is_start": false,
+                                "utterances": [
+                                    "Please connect the cables as per the guide"
+                                ]
+                            },
+                            {
+                                "id": 5,
+                                "label": "have_plugged_cables",
+                                "is_start": false,
+                                "utterances": [
+                                    "Have you plugged in all the cables?"
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "are_modem_lights_on",
+                                "is_start": false,
+                                "utterances": [
+                                    "Are the lights on the modem lit?"
+                                ]
+                            },
+                            {
+                                "id": 7,
+                                "label": "can_access_internet",
+                                "is_start": false,
+                                "utterances": [
+                                    "Can you access the internet now?"
+                                ]
+                            },
+                            {
+                                "id": 8,
+                                "label": "anything_else_needed",
+                                "is_start": false,
+                                "utterances": [
+                                    "Great! Is there anything else you need?"
+                                ]
+                            },
+                            {
+                                "id": 9,
+                                "label": "have_necessary_equipment",
+                                "is_start": false,
+                                "utterances": [
+                                    "Do you have the necessary equipment?"
+                                ]
+                            },
+                            {
+                                "id": 10,
+                                "label": "able_to_go_online",
+                                "is_start": false,
+                                "utterances": [
+                                    "Are you able to go online?"
+                                ]
+                            },
+                            {
+                                "id": 11,
+                                "label": "troubleshoot_issue",
+                                "is_start": false,
+                                "utterances": [
+                                    "Let's try troubleshooting the issue"
+                                ]
+                            },
+                            {
+                                "id": 12,
+                                "label": "ensure_secure_cables",
+                                "is_start": false,
+                                "utterances": [
+                                    "Ensure all cables are securely plugged in"
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "label": "see_router_lights",
+                                "is_start": false,
+                                "utterances": [
+                                    "Do you see any lights on the router?"
+                                ]
+                            },
+                            {
+                                "id": 14,
+                                "label": "thank_you",
+                                "is_start": false,
+                                "utterances": [
+                                    "Thank you for choosing our service!"
+                                ]
+                            }
+                        ],
+                        "reason": "The cycle starts at the 'Is everything connected properly?' node, allowing users to re-enter the troubleshooting process logically when issues persist."
+                    }
+                ]
+            }
+        ]
+    }
+}
