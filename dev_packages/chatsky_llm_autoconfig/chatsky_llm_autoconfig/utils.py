@@ -151,6 +151,8 @@ def do_mapping(g1, g2):
     print(mapping)
 
 def graph2comparable(graph_dict: dict) -> dict:
+    if not graph_dict:
+        return graph_dict
     new_dict = copy.deepcopy(graph_dict)
     new_edges = []
     for edge in new_dict["edges"]:

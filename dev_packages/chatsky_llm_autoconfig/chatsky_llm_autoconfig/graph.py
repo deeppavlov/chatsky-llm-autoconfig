@@ -30,7 +30,8 @@ class Graph(BaseGraph):
     def __init__(self, graph_dict: dict, **kwargs: Any):
         # Pass graph_dict to the parent class
         super().__init__(graph_dict=graph_dict, **kwargs)
-        self.load_graph()
+        if graph_dict:
+            self.load_graph()
 
     def load_graph(self):
         self.graph = nx.DiGraph()

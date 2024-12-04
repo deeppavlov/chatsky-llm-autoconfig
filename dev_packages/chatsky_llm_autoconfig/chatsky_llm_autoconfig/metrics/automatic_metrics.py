@@ -139,6 +139,8 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
 
 
 def is_same_structure(G1: BaseGraph, G2: BaseGraph) -> bool:
+    if not G2.graph_dict and G1.graph_dict:
+        return False
     g1 = G1.graph
     g2 = G2.graph
     return nx.is_isomorphic(g1, g2)
@@ -163,14 +165,14 @@ def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
     # print("G2: ", g2_list, "\n")
 
     nodes_matrix = get_reranking(nodes1_list, nodes2_list)
-    nodes_max = np.argmax(nodes_matrix, axis=1)
+    nodes_max = list(np.argmax(nodes_matrix, axis=1))
     if len(set(nodes_max)) < len(nodes1_list):
         return False
 
     g1_list = graph2list(g1)
     g2_list = graph2list(g2)
     matrix = get_reranking(g1_list, g2_list)
-    max = np.argmax(matrix, axis=1)
+    max = list(np.argmax(matrix, axis=1))
     if len(set(max)) < len(g1_list) or nodes_max != max:
         return False
     

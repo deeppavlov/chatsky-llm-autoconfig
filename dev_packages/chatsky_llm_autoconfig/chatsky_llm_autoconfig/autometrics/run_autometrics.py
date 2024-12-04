@@ -29,7 +29,8 @@ model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url
 
 
 #test_data = read_json(env_settings.TEST_DATA_PATH
-dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
+# dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
+dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
 #dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
 #dialogue_to_graph = test_data["dialogue_to_graph"]
@@ -116,8 +117,8 @@ def run_all_algorithms():
 
                         # print("TST: ", test_dialogue)
                         # result_graph = class_instance.invoke(test_dialogue)
-                    #result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
-                    result_graph = class_instance.invoke([case["dialogue"]])
+                    result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
+                    # result_graph = class_instance.invoke([case["dialogue"]])
                     cur_list.append(result_graph)
                     case_list.append(result_graph.graph_dict)
                     result_list.append({case["topic"]: case_list})
@@ -129,7 +130,7 @@ def run_all_algorithms():
                 test_graph = Graph(graph_dict=graph2comparable(case["graph"]))
                 test_graph_orig = Graph(graph_dict=case["graph"])
                 for result_graph in dialogues[case["topic"]]:
-                    try:
+                    # try:
                         comp_graph=Graph(graph_dict=graph2comparable(result_graph.graph_dict))
                     # print("METRICS: ", case["graph"])
                     # print("METRICS-2: ", result_graph.graph_dict)
@@ -142,11 +143,11 @@ def run_all_algorithms():
                             metrics["llm_match"].append(llm_match(Graph(graph_dict=result_graph.graph_dict), test_graph_orig))
                         else:
                             metrics["llm_match"].append(False)                            
-                    except Exception as e:
-                        print("Exception: ", e)
-                        # metrics["triplet_match"].append(False)
-                        metrics["is_same_structure"].append(False)
-                        metrics["llm_match"].append(False)
+                    # except Exception as e:
+                    #     print("Exception: ", e)
+                    #     # metrics["triplet_match"].append(False)
+                    #     metrics["is_same_structure"].append(False)
+                    #     metrics["llm_match"].append(False)
 
             # metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
             metrics["llm_match"] = sum(metrics["llm_match"]) / len(metrics["llm_match"])
