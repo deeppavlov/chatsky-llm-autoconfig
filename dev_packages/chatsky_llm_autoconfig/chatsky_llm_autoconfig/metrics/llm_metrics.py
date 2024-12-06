@@ -12,6 +12,7 @@ from pydantic import BaseModel, Field
 from langchain_core.output_parsers import PydanticOutputParser
 import logging
 import json
+
 # Set up logging
 logging.basicConfig(level=logging.INFO)
 
@@ -27,6 +28,7 @@ def are_triplets_valid(G: Graph, model: BaseChatModel) -> dict[str]:
     Returns:
         dict: {'value': bool, 'description': str}
     """
+
     # Define validation result model
     class TransitionValidationResult(BaseModel):
         isValid: bool = Field(description="Whether the transition is valid or not")
@@ -56,8 +58,7 @@ def are_triplets_valid(G: Graph, model: BaseChatModel) -> dict[str]:
     """
 
     triplet_validate_prompt = PromptTemplate(
-        input_variables=["json_graph", "source_utterances", "edge_utterances", "target_utterances"],
-        template=triplet_validate_prompt_template
+        input_variables=["json_graph", "source_utterances", "edge_utterances", "target_utterances"], template=triplet_validate_prompt_template
     )
 
     parser = PydanticOutputParser(pydantic_object=TransitionValidationResult)
@@ -91,7 +92,7 @@ def are_triplets_valid(G: Graph, model: BaseChatModel) -> dict[str]:
             "json_graph": graph_json,
             "source_utterances": source_utterances,
             "edge_utterances": edge_utterances,
-            "target_utterances": target_utterances
+            "target_utterances": target_utterances,
         }
 
         # print(triplet_validate_prompt.format(**input_data))
@@ -106,10 +107,7 @@ def are_triplets_valid(G: Graph, model: BaseChatModel) -> dict[str]:
             logging.info(description)
             descriptions.append(description)
 
-    result = {
-        "value": overall_valid,
-        "description": " ".join(descriptions) if descriptions else "All transitions are valid."
-    }
+    result = {"value": overall_valid, "description": " ".join(descriptions) if descriptions else "All transitions are valid."}
 
     return result
 

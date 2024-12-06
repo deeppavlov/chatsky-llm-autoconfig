@@ -78,12 +78,12 @@ def triplet_match(G1: BaseGraph, G2: BaseGraph, change_to_original_ids=False):
                     if node1_trg_nx == node2_trg_nx:
                         node_mapping[node1_trg + 1] = node2_trg + 1
                     print(
-                        f'''The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {
-                            node1_src_nx["utterances"]}, {node2_src_nx["utterances"]}'''
+                        f"""The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Sources: {
+                            node1_src_nx["utterances"]}, {node2_src_nx["utterances"]}"""
                     )
                     print(
-                        f'''The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {
-                            node1_trg_nx["utterances"]}, {node2_trg_nx["utterances"]}'''
+                        f"""The nodes of edges {edges1[i]} and {edges2[j]} has something in common, but not complete match: Targets: {
+                            node1_trg_nx["utterances"]}, {node2_trg_nx["utterances"]}"""
                     )
 
     if G1.node_mapping != {} and change_to_original_ids:

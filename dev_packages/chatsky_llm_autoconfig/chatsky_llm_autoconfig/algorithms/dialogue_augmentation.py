@@ -54,9 +54,11 @@ Example format:
 class DialogueSequence(BaseModel):
     result: List[DialogueMessage]
 
+
 @AlgorithmRegistry.register(input_type=Dialogue, output_type=Dialogue)
 class DialogAugmentator(BaseModel):
     """Base class for augmenting Dialogues."""
+
     chain: Callable = None
 
     def __init__(self, **data):

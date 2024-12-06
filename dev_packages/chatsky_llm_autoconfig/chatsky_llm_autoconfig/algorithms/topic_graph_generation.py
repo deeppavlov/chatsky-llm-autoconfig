@@ -20,10 +20,12 @@ class CycleGraphGenerator(TopicGraphGenerator):
     prompt: str = ""
     cycle_graph_generation_prompt: str = ""
 
-
     def __init__(self, prompt: Optional[PromptTemplate] = None):
-            super().__init__()
-            self.cycle_graph_generation_prompt = prompt if prompt else PromptTemplate.from_template(
+        super().__init__()
+        self.cycle_graph_generation_prompt = (
+            prompt
+            if prompt
+            else PromptTemplate.from_template(
                 """
         Create a cyclic dialogue graph where the conversation MUST return to an existing node.
 
@@ -66,8 +68,7 @@ class CycleGraphGenerator(TopicGraphGenerator):
         **Your task is to create a cyclic dialogue graph about the following topic:** {topic}.
         """
             )
-
-
+        )
 
     def invoke(self, topic: str) -> BaseGraph:
         """

@@ -8,4 +8,3 @@ class Pipeline(BaseModel):
 
     def _validate_pipeline(self):
         pass
-        
