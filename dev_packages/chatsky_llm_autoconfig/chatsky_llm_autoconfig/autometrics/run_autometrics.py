@@ -1,3 +1,4 @@
+print("start")
 from pathlib import Path
 from chatsky_llm_autoconfig.autometrics.registry import AlgorithmRegistry
 #import chatsky_llm_autoconfig.algorithms.dialogue_generation
@@ -18,19 +19,25 @@ from chatsky_llm_autoconfig.metrics.automatic_metrics import (
     llm_match
 )
 from chatsky_llm_autoconfig.metrics.llm_metrics import are_triplets_valid, are_theme_valid
-from chatsky_llm_autoconfig.utils import EnvSettings, save_json, read_json, graph2comparable
+from chatsky_llm_autoconfig.utils import (
+    EnvSettings,
+    save_json,
+    read_json,
+    # graph2comparable
+)
 import datetime
 from colorama import Fore
 from langchain_openai  import ChatOpenAI
-
+print("modules loaded")
 env_settings = EnvSettings()
-
+print("settings")
 model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0)
+print("model loaded")
 
-
-#test_data = read_json(env_settings.TEST_DATA_PATH
+#test_data = read_json(env_settings.TEST_DATA_PATH)
 # dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
 dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+print("json read")
 #dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
 #dialogue_to_graph = test_data["dialogue_to_graph"]
@@ -40,12 +47,16 @@ dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
 
 
 def run_all_algorithms():
+    print("IN")
     # Get all registered classes
     algorithms = AlgorithmRegistry.get_all()
     print("Classes to test:", *algorithms.keys(), sep="\n")
     print("------------------\n")
+
     total_metrics = {}
     for class_ in algorithms:
+
+        print("TYPE: ", algorithms[class_]["input_type"], algorithms[class_]["output_type"])
         class_instance = algorithms[class_]["type"]()
         metrics = {}
 
@@ -89,12 +100,13 @@ def run_all_algorithms():
             metrics["are_triplets_valid"] = sum(metrics["are_triplets_valid"]) / len(metrics["are_triplets_valid"])
             metrics["are_theme_valid_avg"] = sum(metrics["are_theme_valid"]) / len(metrics["are_theme_valid"])
 
-        elif algorithms[class_]["input_type"] is Dialogue and algorithms[class_]["output_type"] is BaseGraph:
+        elif algorithms[class_]["input_type"] in [Dialogue,list[Dialogue]] and algorithms[class_]["output_type"] is BaseGraph:
             tp = algorithms[class_]["type"]
             # class_instance = tp(prompt_name="general_graph_generation_prompt")
             # class_instance = tp(prompt_name="specific_graph_generation_prompt")
             #class_instance = tp(prompt_name="fourth_graph_generation_prompt")
-            class_instance = tp(prompt_name="options_graph_generation_prompt")
+            #class_instance = tp(prompt_name="options_graph_generation_prompt")
+            class_instance = tp(prompt_name="list_graph_generation_prompt")
             metrics = {"triplet_match": [], "is_same_structure": [], "llm_match": []}
             saved_data = {}
             result_list = []
@@ -107,47 +119,51 @@ def run_all_algorithms():
                 result = saved_data.get(env_settings.GENERATION_MODEL_NAME).get(class_instance.prompt_name)
                 if result:
                     test_list =  [{next(iter(case)): [Graph(graph_dict=r) for r in case[next(iter(case))]]} for case in result]
-                    #print("TEST: ", len(test_list), test_list)
 
+            print("LIST: ", test_list)
             if not test_list:
                 for case in dialogue_to_graph:
                     case_list = []
                     cur_list = []
-                    # for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
+                    print("TYPE: ", algorithms[class_]["input_type"])
+                    if algorithms[class_]["input_type"] is Dialogue:
+                        for test_dialogue in [Dialogue.from_list(c["messages"]) for c in case["dialogues"]]:
+                            result_graph = class_instance.invoke(test_dialogue)
+                            cur_list.append(result_graph)
+                            case_list.append(result_graph.graph_dict)
+                    
+                    else:
+                        result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
+                        # result_graph = class_instance.invoke([case["dialogue"]])
+                        cur_list.append(result_graph)
+                        case_list.append(result_graph.graph_dict)
 
-                        # print("TST: ", test_dialogue)
-                        # result_graph = class_instance.invoke(test_dialogue)
-                    result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
-                    # result_graph = class_instance.invoke([case["dialogue"]])
-                    cur_list.append(result_graph)
-                    case_list.append(result_graph.graph_dict)
+
                     result_list.append({case["topic"]: case_list})
                     test_list.append({case["topic"]: cur_list})
                 new_data = {env_settings.GENERATION_MODEL_NAME:{class_instance.prompt_name: result_list}}
                 saved_data.update(new_data)
                 save_json(data=saved_data, filename=env_settings.GENERATION_SAVE_PATH)
             for case, dialogues in zip(dialogue_to_graph, test_list):
-                test_graph = Graph(graph_dict=graph2comparable(case["graph"]))
+                # test_graph = Graph(graph_dict=graph2comparable(case["graph"]))
                 test_graph_orig = Graph(graph_dict=case["graph"])
                 for result_graph in dialogues[case["topic"]]:
-                    # try:
-                        comp_graph=Graph(graph_dict=graph2comparable(result_graph.graph_dict))
-                    # print("METRICS: ", case["graph"])
-                    # print("METRICS-2: ", result_graph.graph_dict)
-            # for case, result_graph in zip(dialogue_to_graph, test_list):
+                    try:
+                        # comp_graph=Graph(graph_dict=graph2comparable(result_graph.graph_dict))
 
                         # metrics["triplet_match"].append(triplet_match(test_graph, comp_graph))
-                        comp = is_same_structure(test_graph, comp_graph)
+                        #comp = is_same_structure(test_graph, comp_graph)
+                        comp = is_same_structure(test_graph_orig, result_graph)
                         metrics["is_same_structure"].append(comp)
                         if comp:
                             metrics["llm_match"].append(llm_match(Graph(graph_dict=result_graph.graph_dict), test_graph_orig))
                         else:
                             metrics["llm_match"].append(False)                            
-                    # except Exception as e:
-                    #     print("Exception: ", e)
-                    #     # metrics["triplet_match"].append(False)
-                    #     metrics["is_same_structure"].append(False)
-                    #     metrics["llm_match"].append(False)
+                    except Exception as e:
+                        print("Exception: ", e)
+                        # metrics["triplet_match"].append(False)
+                        metrics["is_same_structure"].append(False)
+                        metrics["llm_match"].append(False)
 
             # metrics["triplet_match"] = sum(metrics["triplet_match"]) / len(metrics["triplet_match"])
             metrics["llm_match"] = sum(metrics["llm_match"]) / len(metrics["llm_match"])

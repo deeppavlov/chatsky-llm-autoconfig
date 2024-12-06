@@ -2921,5 +2921,281 @@
             "is_same_structure": 1.0,
             "llm_match": 1.0
         }
+    },
+    "2024-12-05 08:17:52.711967": {
+        "GeneralGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        },
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:30:46.935710": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:35:44.166725": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:39:17.532977": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:40:39.733287": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:43:15.140832": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:44:28.332413": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:46:41.151174": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:48:52.352185": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:53:49.104654": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:55:29.445959": {
+        "ListGraphGenerator": {}
+    },
+    "2024-12-05 08:56:47.327698": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 09:00:08.855398": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 09:03:46.625349": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 09:05:58.839242": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 10:52:57.661263": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 10:56:12.790102": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 10:57:05.441044": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 10:58:09.589660": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 12:19:30.196885": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 12:39:46.690161": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 12:45:35.036613": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 12:46:14.609497": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 12:55:48.175091": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 12:56:31.838370": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 13:05:08.886912": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 13:09:44.205463": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 13:10:51.277260": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 13:11:40.679420": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 13:12:27.182272": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 13:58:46.979605": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 14:01:25.307276": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 14:10:55.763482": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 14:11:42.332513": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 14:19:36.722413": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 14:20:31.939388": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:46:21.586671": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:48:43.190776": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-05 15:53:02.915436": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:54:00.199045": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:55:05.327391": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:55:58.819094": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 15:59:01.755813": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 16:00:08.138435": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-05 16:02:13.229347": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
     }
 }

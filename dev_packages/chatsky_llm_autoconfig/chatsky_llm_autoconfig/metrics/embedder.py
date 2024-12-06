@@ -51,6 +51,9 @@ def get_reranking(generated: list[str], golden: list[str]):
     for gen in generated:
         for gol in golden:
             to_score.append((gen,gol))
+    print("SCORING...")
+    print(to_score)
     score = np.array(evaluator.score(to_score))
+    print("finished")
 
     return score.reshape(sz,sz)
