@@ -67,7 +67,7 @@ def run_all_algorithms():
         elif algorithms[class_]["input_type"] is str and algorithms[class_]["output_type"] is BaseGraph:
             metrics = {"is_theme_valid": [], "are_triplets_valid": []}
             for case in topic_to_graph:
-                test_topic = case['topic']
+                test_topic = case["topic"]
                 result = class_instance.invoke(test_topic)
 
                 metrics["are_triplets_valid"].append(are_triplets_valid(result, model, topic=test_topic)["value"])
