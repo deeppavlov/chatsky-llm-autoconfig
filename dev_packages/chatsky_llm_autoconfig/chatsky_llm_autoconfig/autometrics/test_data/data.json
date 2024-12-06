@@ -35,6 +35,36 @@
                     "participant": "user"
                 }
             ],
+            "false_dialogue": [
+                {
+                    "text": "How can I help?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "I need to make an order",
+                    "participant": "user"
+                },
+                {
+                    "text": "Which books would you like to order?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "One War and Piece in hard cover and one Pride and Prejudice",
+                    "participant": "user"
+                },
+                {
+                    "text": "Please, enter the payment method you would like to use: cash or credit card.",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "With credit card, please",
+                    "participant": "user"
+                },
+                {
+                    "text": "Something is wrong, can you please use other payment method or start order again",
+                    "participant": "assistant"
+                }
+            ],
             "graph": {
                 "edges": [
                     {
@@ -141,6 +171,44 @@
                     "participant": "assistant"
                 }
             ],
+            "false_dialogue": [
+                {
+                    "text": "How can I help?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "I need to make an order",
+                    "participant": "user"
+                },
+                {
+                    "text": "Which books would you like to order?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "One Romeo and Juliette in hard cover and one Pride and Prejudice",
+                    "participant": "user"
+                },
+                {
+                    "text": "Please, enter the payment method you would like to use: cash or credit card.",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "I will pickup my order",
+                    "participant": "user"
+                },
+                {
+                    "text": "Please, enter the payment method you would like to use: cash or credit card.",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "Cash",
+                    "participant": "user"
+                },
+                {
+                    "text": "Success",
+                    "participant": "assistant"
+                }
+            ],
             "graph": {
                 "edges": [
                     {
@@ -219,39 +287,21 @@
         {
             "dialogue": [
                 {
-                    "text": "How can I help?",
+                    "text": "Do you need help?",
                     "participant": "assistant"
                 },
                 {
-                    "text": "I need to make an order",
+                    "text": "No, thanks",
+                    "participant": "user"
+                }
+            ],
+            "false_dialogue": [
+                {
+                    "text": "Do you need help?",
                     "participant": "user"
                 },
                 {
-                    "text": "Which books would you like to order?",
-                    "participant": "assistant"
-                },
-                {
-                    "text": "I need Crime and Punishment",
-                    "participant": "user"
-                },
-                {
-                    "text": "Added it to your cart. Anything else?",
-                    "participant": "assistant"
-                },
-                {
-                    "text": "No, that's all",
-                    "participant": "user"
-                },
-                {
-                    "text": "Okay, everything is done, you can go to cart and finish the order.",
-                    "participant": "assistant"
-                },
-                {
-                    "text": "Thanks",
-                    "participant": "user"
-                },
-                {
-                    "text": "Goodbye",
+                    "text": "No, thanks",
                     "participant": "assistant"
                 }
             ],
@@ -259,82 +309,10 @@
                 "edges": [
                     {
                         "utterances": [
-                            "I need to make an order"
+                            "No, thanks"
                         ],
                         "source": 1,
-                        "target": 2
-                    },
-                    {
-                        "utterances": [
-                            "I need Crime and Punishment"
-                        ],
-                        "source": 2,
-                        "target": 3
-                    },
-                    {
-                        "utterances": [
-                            "Do you have War and Piece?",
-                            "Do you have Tolstoy's diaries?"
-                        ],
-                        "source": 2,
-                        "target": 4
-                    },
-                    {
-                        "utterances": [
-                            "Yes"
-                        ],
-                        "source": 4,
-                        "target": 5
-                    },
-                    {
-                        "utterances": [
-                            "No"
-                        ],
-                        "source": 4,
-                        "target": 6
-                    },
-                    {
-                        "utterances": [
-                            "I need a book Catching in the Rye"
-                        ],
-                        "source": 6,
-                        "target": 2
-                    },
-                    {
-                        "utterances": [
-                            "Yes, I also need a book Catching in the Rye"
-                        ],
-                        "source": 5,
-                        "target": 2
-                    },
-                    {
-                        "utterances": [
-                            "No, that's all"
-                        ],
-                        "source": 6,
-                        "target": 7
-                    },
-                    {
-                        "utterances": [
-                            "No, that's all"
-                        ],
-                        "source": 5,
-                        "target": 7
-                    },
-                    {
-                        "utterances": [
-                            "No, that's all"
-                        ],
-                        "source": 3,
-                        "target": 7
-                    },
-                    {
-                        "utterances": [
-                            "Thanks",
-                            "Goodbye"
-                        ],
-                        "source": 7,
-                        "target": 8
+                        "target": 1
                     }
                 ],
                 "nodes": [
@@ -343,65 +321,7 @@
                         "label": "start",
                         "is_start": true,
                         "utterances": [
-                            "Is there anything can I help with?",
-                            "How can I help?"
-                        ]
-                    },
-                    {
-                        "id": 2,
-                        "label": "ask_item",
-                        "is_start": false,
-                        "utterances": [
-                            "Which books would you like to order?",
-                            "What would you like to buy?"
-                        ]
-                    },
-                    {
-                        "id": 3,
-                        "label": "confirm_adding_book",
-                        "is_start": false,
-                        "utterances": [
-                            "Added it to your cart. Anything else?"
-                        ]
-                    },
-                    {
-                        "id": 4,
-                        "label": "confirm_availability_and_ask_to_add",
-                        "is_start": false,
-                        "utterances": [
-                            "Yes, we have it. Add it to your cart?"
-                        ]
-                    },
-                    {
-                        "id": 5,
-                        "label": "reply_to_yes",
-                        "is_start": false,
-                        "utterances": [
-                            "Done. Anything else?"
-                        ]
-                    },
-                    {
-                        "id": 6,
-                        "label": "reply_to_no",
-                        "is_start": false,
-                        "utterances": [
-                            "Okay. Anything else?"
-                        ]
-                    },
-                    {
-                        "id": 7,
-                        "label": "finish_filling_cart",
-                        "is_start": false,
-                        "utterances": [
-                            "Okay, everything is done, you can go to cart and finish the order."
-                        ]
-                    },
-                    {
-                        "id": 8,
-                        "label": "goodbye",
-                        "is_start": false,
-                        "utterances": [
-                            "Goodbye"
+                            "Do you need help?"
                         ]
                     }
                 ]
@@ -503,19 +423,250 @@
         }
     ],
     "graph_to_graph": [],
-    "dialogue_to_graph": [],
+    "dialogue_to_graph": [
+        {
+            "graph": {
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "utterances": [
+                            "Hi, I'd like to book a hotel room"
+                        ]
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "utterances": [
+                            "A double room for two nights, please"
+                        ]
+                    },
+                    {
+                        "source": 3,
+                        "target": 4,
+                        "utterances": [
+                            "Yes, that's correct"
+                        ]
+                    },
+                    {
+                        "source": 4,
+                        "target": 5,
+                        "utterances": [
+                            "Here's my credit card information"
+                        ]
+                    },
+                    {
+                        "source": 5,
+                        "target": 2,
+                        "utterances": [
+                            "I'd like to book another room"
+                        ]
+                    }
+                ],
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "welcome",
+                        "is_start": true,
+                        "utterances": [
+                            "Welcome to our hotel booking service! How can I assist you today?"
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "label": "ask_room_type",
+                        "is_start": false,
+                        "utterances": [
+                            "What type of room would you like to book?"
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "label": "confirm_details",
+                        "is_start": false,
+                        "utterances": [
+                            "You've selected a double room for two nights. Is this correct?"
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "label": "payment",
+                        "is_start": false,
+                        "utterances": [
+                            "Great! Please provide your payment details to proceed."
+                        ]
+                    },
+                    {
+                        "id": 5,
+                        "label": "completed",
+                        "is_start": false,
+                        "utterances": [
+                            "Thank you for your booking! Would you like to book another room?"
+                        ]
+                    }
+                ]
+            },
+            "dialogue": [
+                {
+                    "text": "Welcome to our hotel booking service! How can I assist you today?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "Hi, I'd like to book a hotel room",
+                    "participant": "user"
+                },
+                {
+                    "text": "What type of room would you like to book?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "A double room for two nights, please",
+                    "participant": "user"
+                },
+                {
+                    "text": "You've selected a double room for two nights. Is this correct?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "Yes, that's correct",
+                    "participant": "user"
+                },
+                {
+                    "text": "Great! Please provide your payment details to proceed.",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "Here's my credit card information",
+                    "participant": "user"
+                },
+                {
+                    "text": "Thank you for your booking! Would you like to book another room?",
+                    "participant": "assistant"
+                },
+                {
+                    "text": "I'd like to book another room",
+                    "participant": "user"
+                }
+            ],
+            "false_graph": {
+                "edges": [
+                    {
+                        "source": 1,
+                        "target": 2,
+                        "utterances": [
+                            "Hi, I'd like to book a hotel room"
+                        ]
+                    },
+                    {
+                        "source": 2,
+                        "target": 3,
+                        "utterances": [
+                            "A double room for two nights, please"
+                        ]
+                    },
+                    {
+                        "source": 3,
+                        "target": 4,
+                        "utterances": [
+                            "Yes, that's correct"
+                        ]
+                    },
+                    {
+                        "source": 4,
+                        "target": 5,
+                        "utterances": [
+                            "Here's my credit card information"
+                        ]
+                    },
+                    {
+                        "source": 5,
+                        "target": 1,
+                        "utterances": [
+                            "I'd like to book another room"
+                        ]
+                    }
+                ],
+                "nodes": [
+                    {
+                        "id": 1,
+                        "label": "welcome",
+                        "is_start": true,
+                        "utterances": [
+                            "Welcome to our hotel booking service! How can I assist you today?"
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "label": "ask_room_type",
+                        "is_start": false,
+                        "utterances": [
+                            "What type of room would you like to book?"
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "label": "confirm_details",
+                        "is_start": false,
+                        "utterances": [
+                            "You've selected a double room for two nights. Is this correct?"
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "label": "payment",
+                        "is_start": false,
+                        "utterances": [
+                            "Great! Please provide your payment details to proceed."
+                        ]
+                    },
+                    {
+                        "id": 5,
+                        "label": "completed",
+                        "is_start": false,
+                        "utterances": [
+                            "Thank you for your booking! Would you like to book another room?"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
     "topic_to_graph": [
         {
-            "topic": "purchase in a book store"
+            "topic": "purchase in a book store",
+            "false_topics": [
+                "buying coffee in a coffee shop",
+                "gas station dialogue",
+                "conversation with bank assistant",
+                "borrowing a book from a library"
+            ]
         },
         {
-            "topic": "coffee shop"
+            "topic": "coffee shop",
+            "false_topics": [
+                "borrowing a book from a library",
+                "gas station dialogue",
+                "conversation with bank assistant",
+                "purchase in a grocery shop"
+            ]
         },
         {
-            "topic": "dialogue with technical support"
+            "topic": "dialogue with technical support",
+            "false_topics": [
+                "borrowing a book from a library",
+                "gas station dialogue",
+                "conversation with bank assistant",
+                "conversation with accountant in a hardware shop"
+            ]
         },
         {
-            "topic": "dialogue with bank customer service"
+            "topic": "dialogue with bank customer service",
+            "false_topics": [
+                "borrowing a book from a library",
+                "gas station dialogue",
+                "conversation with accountant in a hardware shop",
+                "dialogue with technical support"
+            ]
         }
     ]
 }

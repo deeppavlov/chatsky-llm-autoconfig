@@ -29,4 +29,3 @@ Prompt:
     Original graph: {orig_graph}
 
     Additional branch: {new_dial}
-

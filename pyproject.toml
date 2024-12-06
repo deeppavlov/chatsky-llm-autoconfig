@@ -31,13 +31,10 @@ sphinx-autodoc-typehints = "*"
 jupytext = "*"
 jupyter = "*"
 
-<<<<<<< HEAD
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
 
-=======
->>>>>>> aa341269fece8d44c041cb7ff4e7857c4f7a83f7
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
@@ -46,11 +43,8 @@ build-backend = "poetry.core.masonry.api"
 
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> aa341269fece8d44c041cb7ff4e7857c4f7a83f7
 [tool.poetry.group.lint]
 optional = true
 
@@ -63,11 +57,8 @@ mypy = "*"
 
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> aa341269fece8d44c041cb7ff4e7857c4f7a83f7
 [tool.poetry.group.tests]
 optional = true
 
