@@ -15,7 +15,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "One War and Piece in hard cover and one Pride and Prejudice",
+                    "text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please",
                     "participant": "user"
                 },
                 {
@@ -23,7 +23,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "With credit card, please",
+                    "text": "Cash",
                     "participant": "user"
                 },
                 {
@@ -31,7 +31,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "I will enter new payment method",
+                    "text": "Start new order",
                     "participant": "user"
                 }
             ],
