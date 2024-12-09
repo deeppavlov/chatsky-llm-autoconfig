@@ -213,8 +213,9 @@ def graph_order(graph: dict) -> dict:
         node = [node for node in graph["nodes"] if node["id"]==edge['target']][0]
     return {"edges": edges, "nodes": nodes}
 
-def graph2list(graph: dict) -> list:
+def graph2list(graph: dict) -> tuple[list,int]:
     res = []
+    n_edges = 0
 
     # node = [node for node in graph["nodes"] if node["is_start"]][0]
     for node in graph["nodes"]:
@@ -225,10 +226,11 @@ def graph2list(graph: dict) -> list:
         for edge in edges:
             for e_utt in edge['utterances']:
                 utt += e_utt + " "
+                n_edges += 1
         res.append(utt)
 
         # node = [node for node in graph["nodes"] if node["id"]==edge['target']][0] 
-    return res
+    return res, n_edges
     # return [n['utterances'][0]+" "+e['utterances'][0] for n,e in zip(graph['nodes'], graph['edges'])]
 
 def nodes2list(graph: dict) -> list:

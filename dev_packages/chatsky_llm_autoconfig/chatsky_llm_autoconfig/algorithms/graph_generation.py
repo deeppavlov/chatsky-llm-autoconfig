@@ -32,8 +32,63 @@ env_settings = EnvSettings()
 # 12) Cyclic graph means you don't duplicate nodes, but connect new edge to one of previously created nodes instead.
 # When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes.
 # If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here.
+#So your task not to combine those alternatives in one node but to create new node for every option.
+# part_1 = """Your input is a list of dialogues from customer chatbot system.
+# Your task is to create a cyclic dialogue graph corresponding to these dialogues.
+# Next is an example of the graph (set of rules) how chatbot system looks like - it is
+# a set of nodes with chatbot system utterances and a set of edges that are
+# triggered by user requests: """
+# part_2 = """This is the end of the example.
+# Note that is_start field in the node is an entry point to the whole graph, not to the cycle.
+# **Rules:**
+# 1) Nodes must be assistant's utterances, edges must be utterances from the user.
+# 2) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. 
+# 3) Every user's utterance from the dialogue shall be present in one and only one edge of a graph.
+# 4) Use ony utterances from the dialogue. It is prohibited to create new utterances different from input ones.
+# 6) Never create nodes with user's utterances.
+# 7) Graph must be cyclic - shall contain cycle(s).
+# 8) Usually graph has branches, and different dialogues can present different branches.
+# 9) The cycle point(s) should make logical sense.
+# 10) The starting node of the cycle cannot be the beginning of a conversation with the user.
+# It must be a continuation of the user's previous phrase, kind of problem elaboration stage.
+# Typically it is clarifying question to previous users' phrase for example.
+# So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node.
+# 11) Number of nodes and edges cannot exceed number of utterances in a dialogue.
+# 12) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
+# 13) Add reason point to the graph with explanation how cycle start points have been chosen.
+# I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
+# List of dialogues: """
+# part_2 = """This is the end of the example.
+# Note that is_start field in the node is an entry point to the whole graph, not to the cycle.
+# **Rules:**
+# 1) Nodes must be assistant's utterances, edges must be utterances from the user.
+# 2) Every assistance's utterance from the dialogues shall be present in one and only one node of a graph.
+# 3) Every user's utterance from the dialogues shall be present in one and only one edge of a graph.
+# 4) Never create nodes with user's utterances.
+# 5) Never create edges with assistance's utterances.
+# 6) Never create edges without a single utterance.
+# 7) Every separate node or edge must contain a single utterance only. Different utterances must form only separate nodes or edges.
+# 8) Number of nodes is always equal to the amount of unique assistant's utterances in all the dialogues.
+# 9) Number of edges is always equal to the amount of unique user's utterances in all the dialogues.
+# 10) All edges must connect to existing nodes only.
+# 11) Graph must be cyclic - shall contain cycle(s).
+# 12) Different dialogues may contain various options that arise in the target graph.
+# So you must create new node for every option. Don't ever combine several alternatives in a single node or edge.
+# 13) The starting node of a cycle is the node where last node loops back to.
+# The starting node of a cycle must not start a graph and must not have label "start" where is_start is true.
+# Instead it must be a continuation of the user's previous phrase, kind of problem elaboration stage.
+# Typically it is clarifying question to previous users' phrase.
+# 14) Don't duplicate nodes or edges with same utterances.
+# 15) Don't ever repeat same utterances in different nodes and edges. 
+# 16) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
+# 17) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
+# Or why some utterances repeat in different edges or nodes.
+# I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
+# List of dialogues: """
+
 part_1 = """Your input is a list of dialogues from customer chatbot system.
-Your task is to create a cyclic dialogue graph corresponding to these dialogues.
+Your task is to create a dialogue graph corresponding to these dialogues.
+If the dialogue is cyclic the graph shall be cyclic as well.
 Next is an example of the graph (set of rules) how chatbot system looks like - it is
 a set of nodes with chatbot system utterances and a set of edges that are
 triggered by user requests: """
@@ -41,22 +96,19 @@ part_2 = """This is the end of the example.
 Note that is_start field in the node is an entry point to the whole graph, not to the cycle.
 **Rules:**
 1) Nodes must be assistant's utterances, edges must be utterances from the user.
-2) Every assistance's utterance from the dialogues shall be present in one and only one node of a graph.
-3) Every user's utterance from the dialogues shall be present in one and only one edge of a graph.
-4) Never create nodes with user's utterances.
-5) Never create edges with assistance's utterances.
-6) Every node or edge can have just one utterance.
-7) Number of nodes is always equal to the number of unique assistant's utterances in all dialogues in total.
-8) All edges must connect to existing nodes only.
-9) Graph must be cyclic - shall contain cycle(s).
-10) Different dialogues may contain various options that arise in the target graph.
-So your task not to combine those alternatives in one node but to create new node for every option.
-11) The starting node of a cycle typically does not have label "start" where is_start is true.
-Instead it must be a continuation of the user's previous phrase, kind of problem elaboration stage.
-Typically it is clarifying question to previous users' phrase.
-12) Don't duplicate nodes or edges with same utterance.
-13) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
-14) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
+2) Every assistance's utterance from the dialogue shall be present in one and only one node of a graph. 
+3) Every user's utterance from the dialogue shall be present in one and only one edge of a graph.
+4) Use only utterances from the dialogue. It is prohibited to create new utterances different from input ones.
+5) Never create nodes with user's utterances.
+6) Usually graph has branches, and different dialogues can present different branches.
+7) The cycle point(s) should make logical sense.
+8) The starting node of the cycle cannot be the beginning of a conversation with the user.
+It must be a continuation of the user's previous phrase, kind of problem elaboration stage.
+Typically it is clarifying question to previous users' phrase for example.
+So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node.
+9) Number of nodes and edges cannot exceed number of utterances in a dialogue.
+10) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
+11) Add reason point to the graph with explanation how cycle start points have been chosen.
 I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
 List of dialogues: """
 
@@ -122,10 +174,10 @@ class ListGraphGenerator(GraphGenerator):
     def invoke(self, dialogue: list[Dialogue] = None, graph: DialogueGraph = None, topic: str = "") -> BaseGraph:
 
         partial_variables = {}
-        prompt_extra = ""
+        prompt_extra = part_2
         for idx, dial in enumerate(dialogue):
             #partial_variables[f"var_{idx}"] = dial.to_list()
-            partial_variables[f"var_{idx}"] = dial
+            partial_variables[f"var_{idx}"] = dial.to_list()
             prompt_extra += f" Dialogue_{idx}: {{var_{idx}}}"
         prompt = PromptTemplate(template=part_1+"{graph_example_1}. "+prompt_extra, input_variables=["graph_example_1"], partial_variables=partial_variables)
 

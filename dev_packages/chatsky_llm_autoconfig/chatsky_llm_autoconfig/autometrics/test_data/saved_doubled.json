@@ -21,7 +21,7 @@
                             },
                             {
                                 "source": 2,
-                                "target": 5,
+                                "target": 6,
                                 "utterances": [
                                     "I'm looking for health insurance"
                                 ]
@@ -30,14 +30,30 @@
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "I need liability only"
+                                    "I need liability only",
+                                    "I would like liability only"
                                 ]
                             },
                             {
                                 "source": 3,
-                                "target": 6,
+                                "target": 5,
                                 "utterances": [
-                                    "I want full coverage"
+                                    "I want full coverage",
+                                    "I need full coverage"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 7,
+                                "utterances": [
+                                    "I need a basic plan"
+                                ]
+                            },
+                            {
+                                "source": 6,
+                                "target": 8,
+                                "utterances": [
+                                    "I want a comprehensive plan"
                                 ]
                             },
                             {
@@ -48,38 +64,24 @@
                                 ]
                             },
                             {
-                                "source": 6,
+                                "source": 5,
                                 "target": 9,
                                 "utterances": [
                                     "Yes, I want that"
                                 ]
                             },
                             {
-                                "source": 5,
-                                "target": 7,
-                                "utterances": [
-                                    "I want a comprehensive plan"
-                                ]
-                            },
-                            {
-                                "source": 5,
-                                "target": 8,
-                                "utterances": [
-                                    "I need a basic plan"
-                                ]
-                            },
-                            {
                                 "source": 7,
                                 "target": 9,
                                 "utterances": [
-                                    "Yes, that sounds good"
+                                    "Yes, that works for me"
                                 ]
                             },
                             {
                                 "source": 8,
                                 "target": 9,
                                 "utterances": [
-                                    "Yes, that works for me"
+                                    "Yes, that sounds good"
                                 ]
                             },
                             {
@@ -101,7 +103,7 @@
                             },
                             {
                                 "id": 2,
-                                "label": "ask_policy_type",
+                                "label": "ask_type",
                                 "is_start": false,
                                 "utterances": [
                                     "What type of insurance policy are you interested in?"
@@ -109,7 +111,7 @@
                             },
                             {
                                 "id": 3,
-                                "label": "ask_car_insurance_options",
+                                "label": "car_options",
                                 "is_start": false,
                                 "utterances": [
                                     "We have full coverage and liability-only car insurance. Which do you prefer?"
@@ -117,7 +119,7 @@
                             },
                             {
                                 "id": 4,
-                                "label": "confirm_liability",
+                                "label": "car_liability_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Our liability-only car insurance covers third-party damages. Would you like to proceed with this?"
@@ -125,46 +127,46 @@
                             },
                             {
                                 "id": 5,
-                                "label": "ask_health_insurance_options",
-                                "is_start": false,
-                                "utterances": [
-                                    "We offer comprehensive and basic health insurance plans. Which one are you interested in?"
-                                ]
-                            },
-                            {
-                                "id": 6,
-                                "label": "confirm_full_coverage",
+                                "label": "car_full_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Our full coverage car insurance offers extensive protection. Would you like to proceed with this?"
                                 ]
                             },
                             {
-                                "id": 7,
-                                "label": "confirm_comprehensive_health",
+                                "id": 6,
+                                "label": "health_options",
                                 "is_start": false,
                                 "utterances": [
-                                    "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?"
+                                    "We offer comprehensive and basic health insurance plans. Which one are you interested in?"
                                 ]
                             },
                             {
-                                "id": 8,
-                                "label": "confirm_basic_health",
+                                "id": 7,
+                                "label": "health_basic_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Our basic health plan covers essential services. Would you like to proceed with this?"
                                 ]
                             },
                             {
+                                "id": 8,
+                                "label": "health_comprehensive_confirmation",
+                                "is_start": false,
+                                "utterances": [
+                                    "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?"
+                                ]
+                            },
+                            {
                                 "id": 9,
-                                "label": "final_processing",
+                                "label": "final_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Great choice! Your policy is being processed. Would you like to explore other options?"
                                 ]
                             }
                         ],
-                        "reason": "The cycle starts when the user selects 'I want to explore other options', leading back to the 'What type of insurance policy are you interested in?' node, allowing the user to initiate a new policy selection."
+                        "reason": ""
                     }
                 ]
             }
