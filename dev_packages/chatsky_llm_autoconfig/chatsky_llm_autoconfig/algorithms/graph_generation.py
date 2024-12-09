@@ -46,16 +46,17 @@ Note that is_start field in the node is an entry point to the whole graph, not t
 4) Never create nodes with user's utterances.
 5) Never create edges with assistance's utterances.
 6) Every node or edge can have just one utterance.
-7) All edges must connect to existing nodes only.
-8) Graph must be cyclic - shall contain cycle(s).
-9) Different dialogues may contain various options that arise in the target graph.
+7) Number of nodes is always equal to the number of unique assistant's utterances in all dialogues in total.
+8) All edges must connect to existing nodes only.
+9) Graph must be cyclic - shall contain cycle(s).
+10) Different dialogues may contain various options that arise in the target graph.
 So your task not to combine those alternatives in one node but to create new node for every option.
-10) The starting node of a cycle typically does not have label "start" where is_start is true.
+11) The starting node of a cycle typically does not have label "start" where is_start is true.
 Instead it must be a continuation of the user's previous phrase, kind of problem elaboration stage.
 Typically it is clarifying question to previous users' phrase.
-11) Don't duplicate nodes or edges with same utterance.
-12) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
-13) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
+12) Don't duplicate nodes or edges with same utterance.
+13) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
+14) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
 Or why you used user's utterance in one of nodes.
 I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
 List of dialogues: """

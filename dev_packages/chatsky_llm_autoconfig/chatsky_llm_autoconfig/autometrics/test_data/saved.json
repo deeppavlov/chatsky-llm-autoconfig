@@ -35,9 +35,23 @@
                             },
                             {
                                 "source": 3,
-                                "target": 5,
+                                "target": 8,
                                 "utterances": [
                                     "I want full coverage"
+                                ]
+                            },
+                            {
+                                "source": 4,
+                                "target": 5,
+                                "utterances": [
+                                    "Yes, that's what I need"
+                                ]
+                            },
+                            {
+                                "source": 8,
+                                "target": 5,
+                                "utterances": [
+                                    "Yes, I want that"
                                 ]
                             },
                             {
@@ -49,48 +63,27 @@
                             },
                             {
                                 "source": 6,
-                                "target": 8,
+                                "target": 9,
                                 "utterances": [
                                     "I want a comprehensive plan"
                                 ]
                             },
                             {
-                                "source": 4,
-                                "target": 9,
-                                "utterances": [
-                                    "Yes, that's what I need"
-                                ]
-                            },
-                            {
-                                "source": 5,
-                                "target": 9,
-                                "utterances": [
-                                    "Yes, I want that"
-                                ]
-                            },
-                            {
                                 "source": 7,
-                                "target": 9,
+                                "target": 5,
                                 "utterances": [
                                     "Yes, that works for me"
                                 ]
                             },
                             {
-                                "source": 8,
-                                "target": 9,
+                                "source": 9,
+                                "target": 5,
                                 "utterances": [
                                     "Yes, that sounds good"
                                 ]
                             },
                             {
-                                "source": 9,
-                                "target": 10,
-                                "utterances": [
-                                    "Would you like to explore other options?"
-                                ]
-                            },
-                            {
-                                "source": 10,
+                                "source": 5,
                                 "target": 2,
                                 "utterances": [
                                     "I want to explore other options"
@@ -108,7 +101,7 @@
                             },
                             {
                                 "id": 2,
-                                "label": "ask_policy_interest",
+                                "label": "ask_policy_type",
                                 "is_start": false,
                                 "utterances": [
                                     "What type of insurance policy are you interested in?"
@@ -116,7 +109,7 @@
                             },
                             {
                                 "id": 3,
-                                "label": "ask_car_insurance",
+                                "label": "ask_car_insurance_options",
                                 "is_start": false,
                                 "utterances": [
                                     "We have full coverage and liability-only car insurance. Which do you prefer?"
@@ -124,7 +117,7 @@
                             },
                             {
                                 "id": 4,
-                                "label": "confirm_liability_car",
+                                "label": "liability_only_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Our liability-only car insurance covers third-party damages. Would you like to proceed with this?"
@@ -132,15 +125,15 @@
                             },
                             {
                                 "id": 5,
-                                "label": "confirm_full_car",
+                                "label": "proceed_policy_processing",
                                 "is_start": false,
                                 "utterances": [
-                                    "Our full coverage car insurance offers extensive protection. Would you like to proceed with this?"
+                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
                                 ]
                             },
                             {
                                 "id": 6,
-                                "label": "ask_health_insurance",
+                                "label": "ask_health_insurance_options",
                                 "is_start": false,
                                 "utterances": [
                                     "We offer comprehensive and basic health insurance plans. Which one are you interested in?"
@@ -148,7 +141,7 @@
                             },
                             {
                                 "id": 7,
-                                "label": "confirm_basic_health",
+                                "label": "basic_health_plan_confirmation",
                                 "is_start": false,
                                 "utterances": [
                                     "Our basic health plan covers essential services. Would you like to proceed with this?"
@@ -156,26 +149,18 @@
                             },
                             {
                                 "id": 8,
-                                "label": "confirm_comprehensive_health",
+                                "label": "full_coverage_car_confirmation",
                                 "is_start": false,
                                 "utterances": [
-                                    "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?"
+                                    "Our full coverage car insurance offers extensive protection. Would you like to proceed with this?"
                                 ]
                             },
                             {
                                 "id": 9,
-                                "label": "process_policy",
+                                "label": "comprehensive_health_plan_confirmation",
                                 "is_start": false,
                                 "utterances": [
-                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
-                                ]
-                            },
-                            {
-                                "id": 10,
-                                "label": "explore_options",
-                                "is_start": false,
-                                "utterances": [
-                                    "I want to explore other options"
+                                    "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?"
                                 ]
                             }
                         ],

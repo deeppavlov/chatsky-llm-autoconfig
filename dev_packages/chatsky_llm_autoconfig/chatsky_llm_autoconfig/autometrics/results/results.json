@@ -3449,5 +3449,54 @@
             "is_same_structure": 0.0,
             "llm_match": 0.0
         }
+    },
+    "2024-12-09 12:56:42.704583": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.5,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-09 13:23:48.547740": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 13:27:19.615113": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 13:49:13.915772": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:04:15.482234": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:06:51.478078": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:09:22.302497": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
     }
 }
