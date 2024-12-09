@@ -57,7 +57,6 @@ Typically it is clarifying question to previous users' phrase.
 12) Don't duplicate nodes or edges with same utterance.
 13) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
 14) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
-Or why you used user's utterance in one of nodes.
 I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
 List of dialogues: """
 

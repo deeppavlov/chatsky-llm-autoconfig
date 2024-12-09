@@ -3498,5 +3498,40 @@
             "is_same_structure": 0.0,
             "llm_match": 0.0
         }
+    },
+    "2024-12-09 14:20:14.658376": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:24:34.231542": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.0,
+            "llm_match": 0.0
+        }
+    },
+    "2024-12-09 14:33:47.396097": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:38:02.264528": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
+    },
+    "2024-12-09 14:40:29.759861": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 1.0,
+            "llm_match": 1.0
+        }
     }
 }
