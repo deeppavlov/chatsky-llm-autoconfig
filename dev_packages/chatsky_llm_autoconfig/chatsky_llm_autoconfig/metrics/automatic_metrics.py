@@ -169,13 +169,17 @@ def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
     if len(set(nodes_max)) < len(nodes1_list):
         return False
 
-    g1_list = graph2list(g1)
-    g2_list = graph2list(g2)
+    g1_list, n1 = graph2list(g1)
+    g2_list, n2 = graph2list(g2)
+    if n1 != n2:
+        return False
     matrix = get_reranking(g1_list, g2_list)
     max = list(np.argmax(matrix, axis=1))
     if len(set(max)) < len(g1_list) or nodes_max != max:
         return False
-    
+    print("NODES: ", np.min(np.max(nodes_matrix, axis=1)))
+    print("ALL: ", np.min(np.max(matrix, axis=1)))
+
     if min(np.min(np.max(nodes_matrix, axis=1)),np.min(np.max(matrix, axis=1))) >= env_settings.SIM_THRESHOLD:
         return True
     # diags = get_diagonals(matrix)
