@@ -15,6 +15,7 @@ matplotlib = "^3.9.2"
 langchain-community = "^0.3.1"
 scipy = "*"
 pydantic = "*"
+torch="2.2.2"
 sentence-transformers = "*"
 datasets = "*"
 

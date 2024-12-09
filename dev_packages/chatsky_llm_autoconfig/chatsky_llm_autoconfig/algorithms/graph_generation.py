@@ -15,7 +15,23 @@ from chatsky_llm_autoconfig.prompts import (
 env_settings = EnvSettings()
 
 #7) The cycle point(s) should make logical sense.
-#8) One node or edge cannot have sveral utterances with different meanings and/or options.
+#8) One node or edge cannot have several utterances with different meanings and/or options.
+#11) Number of nodes and edges cannot exceed number of unique utterances in dialogues.
+#5) Use only utterances in their original form from the dialogues. It is prohibited to modify, cut or create new utterances different from input ones.
+#4) Do not split one utterance between different nodes or edges.
+#4) Never create nodes with user's utterances.
+#5) Never create edges with assistance's utterances.
+# 7) Number of nodes cannot exceed total number of unique assistant's utterances in all dialogues together.
+# 8) Number of edges cannot exceed total number of unique user's utterances in all dialogues together.
+# 12) The starting node of a cycle cannot be the entry point to the whole graph. It means that starting node typically does not have label "start" where is_start is True.
+# Instead it must be a continuation of the user's previous phrase, kind of problem elaboration stage.
+# Typically it is clarifying question to previous users' phrase.
+# So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node.
+#6) Use only utterances in their original form from the dialogues. It is prohibited to modify, cut or create new utterances different from input ones.
+#7) Don't create nodes or edges with utterances not present in any dialogue.
+# 12) Cyclic graph means you don't duplicate nodes, but connect new edge to one of previously created nodes instead.
+# When you go to next user's utterance, first try to answer to that utterance with utterance from one of previously created nodes.
+# If you see it is possible not to create new node with same or similar utterance, but instead create next edge connecting back to that node, then it is place for a cycle here.
 part_1 = """Your input is a list of dialogues from customer chatbot system.
 Your task is to create a cyclic dialogue graph corresponding to these dialogues.
 Next is an example of the graph (set of rules) how chatbot system looks like - it is
@@ -27,21 +43,20 @@ Note that is_start field in the node is an entry point to the whole graph, not t
 1) Nodes must be assistant's utterances, edges must be utterances from the user.
 2) Every assistance's utterance from the dialogues shall be present in one and only one node of a graph.
 3) Every user's utterance from the dialogues shall be present in one and only one edge of a graph.
-4) Do not split one utterance between different nodes or edges.
-5) Use only utterances in their original form from the dialogues. It is prohibited to modify, cut or create new utterances different from input ones.
-6) Never create nodes with user's utterances.
-7) Never create edges with assistance's utterances.
-8) One node or edge cannot have several utterances with different meanings and/or options.
-9) Graph must be cyclic - shall contain cycle(s).
-
-10) The starting node of any cycle cannot be the entry point to the whole graph (where is_start is True).
-It must be a continuation of the user's previous phrase, kind of problem elaboration stage.
-Typically it is clarifying question to previous users' phrase for example.
-So cycle start cannot be greeting (first) node of the whole graph, it shall be another one node.
-11) Number of nodes and edges cannot exceed number of unique utterances in dialogues.
+4) Never create nodes with user's utterances.
+5) Never create edges with assistance's utterances.
+6) Every node or edge can have just one utterance.
+7) All edges must connect to existing nodes only.
+8) Graph must be cyclic - shall contain cycle(s).
+9) Different dialogues may contain various options that arise in the target graph.
+So your task not to combine those alternatives in one node but to create new node for every option.
+10) The starting node of a cycle typically does not have label "start" where is_start is true.
+Instead it must be a continuation of the user's previous phrase, kind of problem elaboration stage.
+Typically it is clarifying question to previous users' phrase.
+11) Don't duplicate nodes or edges with same utterance.
 12) You must always return valid JSON fenced by a markdown code block. Do not return any additional text.
-13) Add reason point to the graph. There should be an explanation if some nodes or edges have several utterances from different options.
-Or if you split one utterance between different nodes or edges.
+13) Add reason point to the graph with an explanation when some nodes or edges have more than one utterance.
+Or why you used user's utterance in one of nodes.
 I will give a list of dialogues, your task is to build a graph for this list according to the rules and examples above.
 List of dialogues: """
 
