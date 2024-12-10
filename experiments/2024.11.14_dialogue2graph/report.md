@@ -62,8 +62,9 @@ And llm_match works 100%, still positives only
 
 Dec 10:
 Case with several dialogues as components of complex graph.
-o1-mini works well with two prepared examples
+o1-mini works well with 3 prepared examples
 New prompt to handle all existing 27 examples along with new complex examples is developed.
+Prompt handles no-cycles as well.
 
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
