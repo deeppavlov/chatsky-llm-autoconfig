@@ -1,0 +1,166 @@
+{
+    "o1-mini": {
+        "list_graph_generation_prompt": [
+            {
+                "books": [
+                    {
+                        "edges": [
+                            {
+                                "source": 1,
+                                "target": 2,
+                                "utterances": [
+                                    "I need to make an order"
+                                ]
+                            },
+                            {
+                                "source": 2,
+                                "target": 3,
+                                "utterances": [
+                                    "One War and Piece in hard cover and one Pride and Prejudice"
+                                ]
+                            },
+                            {
+                                "source": 3,
+                                "target": 4,
+                                "utterances": [
+                                    "With credit card, please"
+                                ]
+                            },
+                            {
+                                "source": 4,
+                                "target": 2,
+                                "utterances": [
+                                    "Start order again"
+                                ]
+                            }
+                        ],
+                        "nodes": [
+                            {
+                                "id": 1,
+                                "label": "start",
+                                "is_start": true,
+                                "utterances": [
+                                    "How can I help?"
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "label": "ask_order",
+                                "is_start": false,
+                                "utterances": [
+                                    "Which books would you like to order?"
+                                ]
+                            },
+                            {
+                                "id": 3,
+                                "label": "ask_payment_method",
+                                "is_start": false,
+                                "utterances": [
+                                    "Please, enter the payment method you would like to use: cash or credit card."
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "label": "ask_to_redo",
+                                "is_start": false,
+                                "utterances": [
+                                    "Something is wrong, can you please use other payment method or start order again"
+                                ]
+                            }
+                        ],
+                        "reason": "A cycle is created from node 4 back to node 2 to allow the user to restart the order process after encountering a payment issue. This ensures the flow can loop back to asking for book selection if the user chooses to start a new order."
+                    }
+                ]
+            },
+            {
+                "books2": [
+                    {
+                        "edges": [
+                            {
+                                "source": 1,
+                                "target": 2,
+                                "utterances": [
+                                    "I need to make an order"
+                                ]
+                            },
+                            {
+                                "source": 2,
+                                "target": 3,
+                                "utterances": [
+                                    "One Romeo and Juliette in hard cover and one Pride and Prejudice"
+                                ]
+                            },
+                            {
+                                "source": 3,
+                                "target": 3,
+                                "utterances": [
+                                    "I will pickup my order"
+                                ]
+                            },
+                            {
+                                "source": 3,
+                                "target": 4,
+                                "utterances": [
+                                    "Cash"
+                                ]
+                            }
+                        ],
+                        "nodes": [
+                            {
+                                "id": 1,
+                                "label": "start",
+                                "is_start": true,
+                                "utterances": [
+                                    "How can I help?"
+                                ]
+                            },
+                            {
+                                "id": 2,
+                                "label": "make_order",
+                                "is_start": false,
+                                "utterances": [
+                                    "Which books would you like to order?"
+                                ]
+                            },
+                            {
+                                "id": 3,
+                                "label": "ask_payment_method",
+                                "is_start": false,
+                                "utterances": [
+                                    "Please, enter the payment method you would like to use: cash or credit card."
+                                ]
+                            },
+                            {
+                                "id": 4,
+                                "label": "success",
+                                "is_start": false,
+                                "utterances": [
+                                    "Success"
+                                ]
+                            }
+                        ],
+                        "reason": "A cycle was created by connecting node 3 back to itself in response to the user's input 'I will pickup my order'. This allows the chatbot to prompt the user again for the payment method, ensuring the dialogue can handle repeated or unexpected user responses."
+                    }
+                ]
+            },
+            {
+                "simple": [
+                    {
+                        "edges": [],
+                        "nodes": [
+                            {
+                                "id": 1,
+                                "label": "start",
+                                "is_start": true,
+                                "utterances": [
+                                    "No, thanks"
+                                ]
+                            }
+                        ],
+                        "reason": ""
+                    }
+                ]
+            }
+        ]
+    }
+}

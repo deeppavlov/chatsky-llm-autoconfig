@@ -3995,5 +3995,12 @@
             "is_same_structure": 0.6666666666666666,
             "llm_match": 0.6666666666666666
         }
+    },
+    "2024-12-10 17:00:57.173083": {
+        "ListGraphGenerator": {
+            "triplet_match": [],
+            "is_same_structure": 0.3333333333333333,
+            "llm_match": 0.0
+        }
     }
 }
