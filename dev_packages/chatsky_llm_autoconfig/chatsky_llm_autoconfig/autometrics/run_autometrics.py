@@ -70,7 +70,7 @@ def run_all_algorithms():
                 test_topic = case["topic"]
                 result = class_instance.invoke(test_topic)
 
-                metrics["are_triplets_valid"].append(are_triplets_valid(result, model, topic=test_topic)["value"])
+                metrics["are_triplets_valid"].append(are_triplets_valid(result, model)["value"])
                 metrics["is_theme_valid"].append(is_theme_valid(result, model, topic=test_topic)["value"])
 
             metrics["is_theme_valid_avg"] = sum(metrics["is_theme_valid"]) / len(metrics["is_theme_valid"])
