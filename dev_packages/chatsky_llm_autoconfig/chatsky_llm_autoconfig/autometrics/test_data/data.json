@@ -1,7 +1,6 @@
 {
     "graph_to_dialogue": [
         {
-            "topic": "BOOK STORE CYCLE",
             "dialogue": [
                 {
                     "text": "How can I help?",
@@ -16,7 +15,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "One War and Piece in hard cover and one Pride and Prejudice",
+                    "text": "I would like to purchase 'Pale Fire' and 'Anna Karenina', please",
                     "participant": "user"
                 },
                 {
@@ -24,7 +23,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "With credit card, please",
+                    "text": "Cash",
                     "participant": "user"
                 },
                 {
@@ -32,7 +31,7 @@
                     "participant": "assistant"
                 },
                 {
-                    "text": "I will enter new payment method",
+                    "text": "Start new order",
                     "participant": "user"
                 }
             ],
@@ -94,7 +93,7 @@
                             "Start new order"
                         ],
                         "source": 4,
-                        "target": 1
+                        "target": 2
                     }
                 ],
                 "nodes": [
@@ -131,10 +130,10 @@
                         ]
                     }
                 ]
-            }
+            },
+            "topic": "books"
         },
         {
-            "topic": "BOOK STORE",
             "dialogue": [
                 {
                     "text": "How can I help?",
@@ -153,7 +152,7 @@
                     "participant": "user"
                 },
                 {
-                    "text": "Please, enter the payment method you would like to use: cash or credit card.",
+                    "text": "Please enter delivery method would you like to use? We currently offer pickup or home delivery.",
                     "participant": "assistant"
                 },
                 {
@@ -284,10 +283,10 @@
                         ]
                     }
                 ]
-            }
+            },
+            "topic": "books2"
         },
         {
-            "topic": "SIMPLE",
             "dialogue": [
                 {
                     "text": "Do you need help?",
@@ -328,7 +327,8 @@
                         ]
                     }
                 ]
-            }
+            },
+            "topic": "simple"
         }
     ],
     "dialogue_to_dialogue": [

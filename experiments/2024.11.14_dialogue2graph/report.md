@@ -56,9 +56,14 @@ Nov 25:
 It was decided to take pair of graphs as true one when minimal cosine similarity between (node+edge) of graphs >= 0.99, otherwise
 gpt-4o with compare_graphs_prompt is used to compare two graphs. The name of algorithm is llm_match.
 
-Nov 27
+Nov 27:
 o1-mini for 27 examples: 96% of right answers
 And llm_match works 100%, still positives only
+
+Dec 10:
+Case with several dialogues as components of complex graph.
+o1-mini works well with two prepared examples
+New prompt to handle all existing 27 examples along with new complex examples is developed.
 
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
