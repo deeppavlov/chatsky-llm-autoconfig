@@ -1,163 +1,258 @@
 {
-    "o1-mini": {
+    "gpt-4o-mini": {
         "list_graph_generation_prompt": [
             {
-                "books": [
+                "insurance policy purchase": [
                     {
                         "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "I need to make an order"
+                                    "I'm interested in buying an insurance policy"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "One War and Piece in hard cover and one Pride and Prejudice"
+                                    "I need car insurance"
                                 ]
                             },
                             {
                                 "source": 3,
                                 "target": 4,
                                 "utterances": [
-                                    "With credit card, please"
+                                    "I need liability only"
                                 ]
                             },
                             {
                                 "source": 4,
-                                "target": 2,
+                                "target": 5,
                                 "utterances": [
-                                    "Start order again"
-                                ]
-                            }
-                        ],
-                        "nodes": [
-                            {
-                                "id": 1,
-                                "label": "start",
-                                "is_start": true,
-                                "utterances": [
-                                    "How can I help?"
+                                    "Yes, that's what I need"
                                 ]
                             },
                             {
-                                "id": 2,
-                                "label": "ask_order",
-                                "is_start": false,
+                                "source": 5,
+                                "target": 6,
                                 "utterances": [
-                                    "Which books would you like to order?"
+                                    "I want to explore other options"
                                 ]
                             },
-                            {
-                                "id": 3,
-                                "label": "ask_payment_method",
-                                "is_start": false,
-                                "utterances": [
-                                    "Please, enter the payment method you would like to use: cash or credit card."
-                                ]
-                            },
-                            {
-                                "id": 4,
-                                "label": "ask_to_redo",
-                                "is_start": false,
-                                "utterances": [
-                                    "Something is wrong, can you please use other payment method or start order again"
-                                ]
-                            }
-                        ],
-                        "reason": "A cycle is created from node 4 back to node 2 to allow the user to restart the order process after encountering a payment issue. This ensures the flow can loop back to asking for book selection if the user chooses to start a new order."
-                    }
-                ]
-            },
-            {
-                "books2": [
-                    {
-                        "edges": [
                             {
                                 "source": 1,
                                 "target": 2,
                                 "utterances": [
-                                    "I need to make an order"
+                                    "I'm interested in buying an insurance policy"
                                 ]
                             },
                             {
                                 "source": 2,
                                 "target": 3,
                                 "utterances": [
-                                    "One Romeo and Juliette in hard cover and one Pride and Prejudice"
+                                    "I need car insurance"
                                 ]
                             },
                             {
                                 "source": 3,
-                                "target": 3,
+                                "target": 7,
                                 "utterances": [
-                                    "I will pickup my order"
+                                    "I want full coverage"
                                 ]
                             },
                             {
-                                "source": 3,
-                                "target": 4,
+                                "source": 7,
+                                "target": 8,
                                 "utterances": [
-                                    "Cash"
+                                    "Yes, I want that"
+                                ]
+                            },
+                            {
+                                "source": 8,
+                                "target": 6,
+                                "utterances": [
+                                    "I want to explore other options"
+                                ]
+                            },
+                            {
+                                "source": 1,
+                                "target": 2,
+                                "utterances": [
+                                    "I'm interested in buying an insurance policy"
+                                ]
+                            },
+                            {
+                                "source": 2,
+                                "target": 9,
+                                "utterances": [
+                                    "I'm looking for health insurance"
+                                ]
+                            },
+                            {
+                                "source": 9,
+                                "target": 10,
+                                "utterances": [
+                                    "I need a basic plan"
+                                ]
+                            },
+                            {
+                                "source": 10,
+                                "target": 11,
+                                "utterances": [
+                                    "Yes, that works for me"
+                                ]
+                            },
+                            {
+                                "source": 11,
+                                "target": 6,
+                                "utterances": [
+                                    "I want to explore other options"
+                                ]
+                            },
+                            {
+                                "source": 1,
+                                "target": 2,
+                                "utterances": [
+                                    "I'm interested in buying an insurance policy"
+                                ]
+                            },
+                            {
+                                "source": 2,
+                                "target": 9,
+                                "utterances": [
+                                    "I'm looking for health insurance"
+                                ]
+                            },
+                            {
+                                "source": 9,
+                                "target": 12,
+                                "utterances": [
+                                    "I want a comprehensive plan"
+                                ]
+                            },
+                            {
+                                "source": 12,
+                                "target": 13,
+                                "utterances": [
+                                    "Yes, that sounds good"
+                                ]
+                            },
+                            {
+                                "source": 13,
+                                "target": 6,
+                                "utterances": [
+                                    "I want to explore other options"
                                 ]
                             }
                         ],
                         "nodes": [
                             {
                                 "id": 1,
-                                "label": "start",
+                                "label": "greeting",
                                 "is_start": true,
                                 "utterances": [
-                                    "How can I help?"
+                                    "Welcome to SecureLife Insurance! How can I assist you today?"
                                 ]
                             },
                             {
                                 "id": 2,
-                                "label": "make_order",
+                                "label": "ask_policy",
                                 "is_start": false,
                                 "utterances": [
-                                    "Which books would you like to order?"
+                                    "What type of insurance policy are you interested in?"
                                 ]
                             },
                             {
                                 "id": 3,
-                                "label": "ask_payment_method",
+                                "label": "ask_car_insurance",
                                 "is_start": false,
                                 "utterances": [
-                                    "Please, enter the payment method you would like to use: cash or credit card."
+                                    "We have full coverage and liability-only car insurance. Which do you prefer?"
                                 ]
                             },
                             {
                                 "id": 4,
-                                "label": "success",
+                                "label": "ask_liability_choice",
                                 "is_start": false,
                                 "utterances": [
-                                    "Success"
+                                    "Our liability-only car insurance covers third-party damages. Would you like to proceed with this?"
                                 ]
-                            }
-                        ],
-                        "reason": "A cycle was created by connecting node 3 back to itself in response to the user's input 'I will pickup my order'. This allows the chatbot to prompt the user again for the payment method, ensuring the dialogue can handle repeated or unexpected user responses."
-                    }
-                ]
-            },
-            {
-                "simple": [
-                    {
-                        "edges": [],
-                        "nodes": [
+                            },
                             {
-                                "id": 1,
-                                "label": "start",
-                                "is_start": true,
+                                "id": 5,
+                                "label": "confirm_policy",
+                                "is_start": false,
                                 "utterances": [
-                                    "No, thanks"
+                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
+                                ]
+                            },
+                            {
+                                "id": 6,
+                                "label": "ask_explore_options",
+                                "is_start": false,
+                                "utterances": [
+                                    "Would you like to explore other options?"
+                                ]
+                            },
+                            {
+                                "id": 7,
+                                "label": "ask_full_coverage",
+                                "is_start": false,
+                                "utterances": [
+                                    "Our full coverage car insurance offers extensive protection. Would you like to proceed with this?"
+                                ]
+                            },
+                            {
+                                "id": 8,
+                                "label": "confirm_full_coverage",
+                                "is_start": false,
+                                "utterances": [
+                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
+                                ]
+                            },
+                            {
+                                "id": 9,
+                                "label": "ask_health_insurance",
+                                "is_start": false,
+                                "utterances": [
+                                    "We offer comprehensive and basic health insurance plans. Which one are you interested in?"
+                                ]
+                            },
+                            {
+                                "id": 10,
+                                "label": "ask_basic_plan",
+                                "is_start": false,
+                                "utterances": [
+                                    "Our basic health plan covers essential services. Would you like to proceed with this?"
+                                ]
+                            },
+                            {
+                                "id": 11,
+                                "label": "confirm_basic_plan",
+                                "is_start": false,
+                                "utterances": [
+                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
+                                ]
+                            },
+                            {
+                                "id": 12,
+                                "label": "ask_comprehensive_plan",
+                                "is_start": false,
+                                "utterances": [
+                                    "Our comprehensive health plan covers a wide range of services. Would you like to proceed with this?"
+                                ]
+                            },
+                            {
+                                "id": 13,
+                                "label": "confirm_comprehensive_plan",
+                                "is_start": false,
+                                "utterances": [
+                                    "Great choice! Your policy is being processed. Would you like to explore other options?"
                                 ]
                             }
                         ],
-                        "reason": ""
+                        "reason": "Cycle starts from 'Great choice! Your policy is being processed. Would you like to explore other options?' which is a common follow-up for completed insurance processes where the user expresses a desire to explore further options."
                     }
                 ]
             }

@@ -36,9 +36,8 @@ print("settings")
 model = ChatOpenAI(model="gpt-4o", api_key=env_settings.OPENAI_API_KEY, base_url=env_settings.OPENAI_BASE_URL, temperature=0)
 print("model loaded")
 
-#test_data = read_json(env_settings.TEST_DATA_PATH)
-dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
-# dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
+# dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)["graph_to_dialogue"]
+dialogue_to_graph = read_json(env_settings.TEST_DATA_PATH)
 print("json read")
 #dialogue_to_graph = [load_dataset(env_settings.TEST_DATASET, token=env_settings.HUGGINGFACE_TOKEN)['train'][4]]
 #graph_to_dialogue = test_data["graph_to_dialogue"]
@@ -135,8 +134,8 @@ def run_all_algorithms():
                             case_list.append(result_graph.graph_dict)
                     
                     else:
-                        # result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
-                        result_graph = class_instance.invoke([Dialogue.from_list(case["false_dialogue"])])
+                        result_graph = class_instance.invoke([Dialogue.from_list(c["messages"]) for c in case["dialogues"]])
+                        # result_graph = class_instance.invoke([Dialogue.from_list(case["false_dialogue"])])
                         cur_list.append(result_graph)
                         case_list.append(result_graph.graph_dict)
 
