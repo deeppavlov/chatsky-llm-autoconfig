@@ -180,10 +180,10 @@ def llm_match(G1: BaseGraph, G2: BaseGraph) -> bool:
     print("NODES: ", np.min(np.max(nodes_matrix, axis=1)))
     print("ALL: ", np.min(np.max(matrix, axis=1)))
 
-    # if min(np.min(np.max(nodes_matrix, axis=1)),np.min(np.max(matrix, axis=1))) >= env_settings.SIM_THRESHOLD:
-    #     return True
-    if np.min(np.max(matrix, axis=1)) >= env_settings.SIM_THRESHOLD:
+    if min(np.min(np.max(nodes_matrix, axis=1)),np.min(np.max(matrix, axis=1))) >= env_settings.SIM_THRESHOLD:
         return True
+    # if np.min(np.max(matrix, axis=1)) >= env_settings.SIM_THRESHOLD:
+    #     return True
     # diags = get_diagonals(matrix)
     # # print("DIAGS: ", diags, "\n")
     # sums = np.sum(diags,axis=1)

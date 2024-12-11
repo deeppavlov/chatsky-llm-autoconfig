@@ -56,9 +56,17 @@ Nov 25:
 It was decided to take pair of graphs as true one when minimal cosine similarity between (node+edge) of graphs >= 0.99, otherwise
 gpt-4o with compare_graphs_prompt is used to compare two graphs. The name of algorithm is llm_match.
 
-Nov 27
+Nov 27:
 o1-mini for 27 examples: 96% of right answers
 And llm_match works 100%, still positives only
+
+Dec 10:
+llm_match as of today:
+1) With cross-encoder compare nodes of two graphs, choose best matches, if number of best matches less than number of nodes, return False
+2) If number of utterances in edges doesn't match return False
+3) Build matrix of two graphs, each graph is presented by concatenation of utterances fron each node and edges from that node. Repeat step 1 for this matrix.
+4) Compare matrices in 1 and 3, if min for all similiarities not less than Threshold=0.99, return True
+5) Compare graphs with LLM gpt4-o
 
 ## Future plans
 All things to be considered by future researchers, plans on next experiments and so on
