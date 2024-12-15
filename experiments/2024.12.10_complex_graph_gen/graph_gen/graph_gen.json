@@ -1,0 +1,145 @@
+[
+  {
+    "graph": {
+      "nodes": [
+        {
+          "id": 1,
+          "label": "welcome",
+          "is_start": true,
+          "utterances": [
+            "Welcome to our Medical Appointment System! How can I assist you today?"
+          ]
+        },
+        {
+          "id": 2,
+          "label": "select_speciality",
+          "is_start": false,
+          "utterances": [
+            "Which specialist would you like to see: Dr. Rogers (General Practitioner), Dr. Williams (Cardiologist), or Dr. Chen (Neurologist)?"
+          ]
+        },
+        {
+          "id": 3,
+          "label": "show_doctors_gp",
+          "is_start": false,
+          "utterances": [
+            "Dr. Rogers is available on Monday and Wednesday (9AM-5PM). Would you like to schedule with Dr. Rogers?"
+          ]
+        },
+        {
+          "id": 4,
+          "label": "show_times_rogers_mon",
+          "is_start": false,
+          "utterances": [
+            "Dr. Rogers has the following slots available on Monday: 9:15 AM, 10:30 AM, or 2:45 PM. Which time would you prefer?"
+          ]
+        },
+        {
+          "id": 5,
+          "label": "confirm_details",
+          "is_start": false,
+          "utterances": [
+            "You're scheduled with Dr. Rogers on Monday at 9:15 AM. Would you like to confirm this appointment?"
+          ]
+        },
+        {
+          "id": 6,
+          "label": "get_patient_info",
+          "is_start": false,
+          "utterances": [
+            "Please provide your full name and phone number for your Monday 9:15 AM appointment with Dr. Rogers."
+          ]
+        },
+        {
+          "id": 7,
+          "label": "appointment_confirmed",
+          "is_start": false,
+          "utterances": [
+            "Your appointment with Dr. Rogers on Monday at 9:15 AM has been confirmed. A reminder will be sent via SMS. Is there anything else you need help with?"
+          ]
+        },
+        {
+          "id": 8,
+          "label": "end",
+          "is_start": false,
+          "utterances": [
+            "Thank you for using our service! We look forward to seeing you on Monday at 9:15 AM with Dr. Rogers."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "source": 1,
+          "target": 2,
+          "utterances": [
+            "I'd like to schedule an appointment"
+          ]
+        },
+        {
+          "source": 2,
+          "target": 3,
+          "utterances": [
+            "I need to see a General Practitioner"
+          ]
+        },
+        {
+          "source": 3,
+          "target": 4,
+          "utterances": [
+            "Yes, I'd like to schedule with Dr. Rogers"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 5,
+          "utterances": [
+            "9:15 AM works for me"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 6,
+          "utterances": [
+            "Yes, I confirm"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 7,
+          "utterances": [
+            "John Parker, +1-555-123-4567"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 8,
+          "utterances": [
+            "No, thank you"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 4,
+          "utterances": [
+            "No, I need a different time"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 3,
+          "utterances": [
+            "No, I'd like to see Dr. Rogers on a different day"
+          ]
+        },
+        {
+          "source": 5,
+          "target": 2,
+          "utterances": [
+            "No, I need a different specialist"
+          ]
+        }
+      ]
+    },
+    "topic": "Medical Appointment Booking"
+  }
+]
