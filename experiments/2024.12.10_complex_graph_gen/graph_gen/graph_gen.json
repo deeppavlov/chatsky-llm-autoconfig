@@ -7,63 +7,79 @@
           "label": "welcome",
           "is_start": true,
           "utterances": [
-            "Welcome to our Medical Appointment System! How can I assist you today?"
+            "Welcome to AutoCare Service Center! How can I help you today?"
           ]
         },
         {
           "id": 2,
-          "label": "select_speciality",
+          "label": "request_car_info",
           "is_start": false,
           "utterances": [
-            "Which specialist would you like to see: Dr. Rogers (General Practitioner), Dr. Williams (Cardiologist), or Dr. Chen (Neurologist)?"
+            "Could you please provide your car's make, model and year?"
           ]
         },
         {
           "id": 3,
-          "label": "show_doctors_gp",
+          "label": "ask_service_type",
           "is_start": false,
           "utterances": [
-            "Dr. Rogers is available on Monday and Wednesday (9AM-5PM). Would you like to schedule with Dr. Rogers?"
+            "What type of service do you need? We offer diagnostics, repairs, and routine maintenance."
           ]
         },
         {
           "id": 4,
-          "label": "show_times_rogers_mon",
+          "label": "check_schedule",
           "is_start": false,
           "utterances": [
-            "Dr. Rogers has the following slots available on Monday: 9:15 AM, 10:30 AM, or 2:45 PM. Which time would you prefer?"
+            "Let me check our available time slots for this service."
           ]
         },
         {
           "id": 5,
-          "label": "confirm_details",
+          "label": "offer_times",
           "is_start": false,
           "utterances": [
-            "You're scheduled with Dr. Rogers on Monday at 9:15 AM. Would you like to confirm this appointment?"
+            "We have slots available tomorrow at 10 AM or Friday at 2 PM. Which would you prefer?"
           ]
         },
         {
           "id": 6,
-          "label": "get_patient_info",
+          "label": "suggest_urgent",
           "is_start": false,
           "utterances": [
-            "Please provide your full name and phone number for your Monday 9:15 AM appointment with Dr. Rogers."
+            "I notice this is a critical repair. We have an urgent slot available today at 4 PM with a 20% rush fee. Would you like this option, or prefer a regular appointment next week?"
           ]
         },
         {
           "id": 7,
-          "label": "appointment_confirmed",
+          "label": "confirm_appointment",
           "is_start": false,
           "utterances": [
-            "Your appointment with Dr. Rogers on Monday at 9:15 AM has been confirmed. A reminder will be sent via SMS. Is there anything else you need help with?"
+            "I've scheduled your appointment. Would you like to add any additional services while your car is here?"
           ]
         },
         {
           "id": 8,
+          "label": "suggest_additional",
+          "is_start": false,
+          "utterances": [
+            "While your car is here, we recommend an oil change and filter replacement. Would you like to add these services?"
+          ]
+        },
+        {
+          "id": 9,
+          "label": "provide_estimate",
+          "is_start": false,
+          "utterances": [
+            "The estimated cost for all services will be $X. Would you like to proceed with the appointment?"
+          ]
+        },
+        {
+          "id": 10,
           "label": "end",
           "is_start": false,
           "utterances": [
-            "Thank you for using our service! We look forward to seeing you on Monday at 9:15 AM with Dr. Rogers."
+            "Your appointment is confirmed. We'll see you then. Have a great day!"
           ]
         }
       ],
@@ -72,74 +88,102 @@
           "source": 1,
           "target": 2,
           "utterances": [
-            "I'd like to schedule an appointment"
+            "I need to schedule a car service"
           ]
         },
         {
           "source": 2,
           "target": 3,
           "utterances": [
-            "I need to see a General Practitioner"
+            "I have a 2020 Toyota Camry"
           ]
         },
         {
           "source": 3,
           "target": 4,
           "utterances": [
-            "Yes, I'd like to schedule with Dr. Rogers"
+            "I need brake repair"
           ]
         },
         {
           "source": 4,
           "target": 5,
           "utterances": [
-            "9:15 AM works for me"
+            "Okay, please check availability"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 6,
+          "utterances": [
+            "Alright, what are my options?"
           ]
         },
         {
           "source": 5,
-          "target": 6,
+          "target": 7,
           "utterances": [
-            "Yes, I confirm"
+            "Friday at 2 PM works for me"
           ]
         },
         {
           "source": 6,
           "target": 7,
           "utterances": [
-            "John Parker, +1-555-123-4567"
+            "Yes, I'll take the urgent slot"
+          ]
+        },
+        {
+          "source": 6,
+          "target": 5,
+          "utterances": [
+            "No, I'll take a regular appointment"
           ]
         },
         {
           "source": 7,
           "target": 8,
           "utterances": [
-            "No, thank you"
+            "What other services would you recommend?"
           ]
         },
         {
-          "source": 5,
-          "target": 4,
+          "source": 7,
+          "target": 9,
           "utterances": [
-            "No, I need a different time"
+            "No additional services needed"
           ]
         },
         {
-          "source": 5,
+          "source": 8,
+          "target": 9,
+          "utterances": [
+            "Yes, add the oil change please"
+          ]
+        },
+        {
+          "source": 8,
+          "target": 9,
+          "utterances": [
+            "No, just the original service"
+          ]
+        },
+        {
+          "source": 9,
           "target": 3,
           "utterances": [
-            "No, I'd like to see Dr. Rogers on a different day"
+            "Actually, I'd like to change the service type"
           ]
         },
         {
-          "source": 5,
-          "target": 2,
+          "source": 9,
+          "target": 10,
           "utterances": [
-            "No, I need a different specialist"
+            "Yes, that works for me"
           ]
         }
       ]
     },
-    "topic": "Medical Appointment Booking"
+    "topic": "auto care"
   }
 ]
