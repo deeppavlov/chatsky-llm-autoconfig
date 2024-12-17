@@ -7,71 +7,87 @@
           "label": "welcome",
           "is_start": true,
           "utterances": [
-            "Welcome to AutoCare Service Center! How can I help you today?"
+            "Welcome to the City Library! How may I assist you today?"
           ]
         },
         {
           "id": 2,
-          "label": "request_car_info",
+          "label": "request_card_number",
           "is_start": false,
           "utterances": [
-            "Could you please provide your car's make, model and year?"
+            "Could you please provide your library card number?"
           ]
         },
         {
           "id": 3,
-          "label": "ask_service_type",
+          "label": "ask_book_details",
           "is_start": false,
           "utterances": [
-            "What type of service do you need? We offer diagnostics, repairs, and routine maintenance."
+            "What book are you looking for?"
           ]
         },
         {
           "id": 4,
-          "label": "check_schedule",
+          "label": "check_availability",
           "is_start": false,
           "utterances": [
-            "Let me check our available time slots for this service."
+            "Let me check if the book is currently available."
+          ]
+        },
+        {
+          "id": 11,
+          "label": "book_available",
+          "is_start": false,
+          "utterances": [
+            "I've checked and the book is available."
+          ]
+        },
+        {
+          "id": 12,
+          "label": "book_unavailable",
+          "is_start": false,
+          "utterances": [
+            "I've checked and the book is currently unavailable."
           ]
         },
         {
           "id": 5,
-          "label": "offer_times",
+          "label": "offer_alternatives",
           "is_start": false,
           "utterances": [
-            "We have slots available tomorrow at 10 AM or Friday at 2 PM. Which would you prefer?"
+            "Would you like to place a hold, or would you prefer to see similar books that are available now?"
           ]
         },
         {
           "id": 6,
-          "label": "suggest_urgent",
+          "label": "place_hold",
           "is_start": false,
           "utterances": [
-            "I notice this is a critical repair. We have an urgent slot available today at 4 PM with a 20% rush fee. Would you like this option, or prefer a regular appointment next week?"
+            "I've placed a hold on the book for you. You'll be notified by email when it becomes available. Would you like to search for any other books?"
           ]
         },
         {
           "id": 7,
-          "label": "confirm_appointment",
+          "label": "show_similar",
           "is_start": false,
           "utterances": [
-            "I've scheduled your appointment. Would you like to add any additional services while your car is here?"
+            "We have similar books available: 'This Side of Paradise' and 'The Beautiful and Damned'. Would you like to check out any of them?"
           ]
         },
         {
           "id": 8,
-          "label": "suggest_additional",
+          "label": "checkout_process",
           "is_start": false,
           "utterances": [
-            "While your car is here, we recommend an oil change and filter replacement. Would you like to add these services?"
+            "Would you like to check it out now?"
           ]
         },
         {
           "id": 9,
-          "label": "provide_estimate",
+          "label": "confirm_checkout",
           "is_start": false,
           "utterances": [
-            "The estimated cost for all services will be $X. Would you like to proceed with the appointment?"
+            "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?"
           ]
         },
         {
@@ -79,7 +95,7 @@
           "label": "end",
           "is_start": false,
           "utterances": [
-            "Your appointment is confirmed. We'll see you then. Have a great day!"
+            "Thank you for using our library services. Have a great day!"
           ]
         }
       ],
@@ -88,102 +104,116 @@
           "source": 1,
           "target": 2,
           "utterances": [
-            "I need to schedule a car service"
+            "I'd like to borrow a book"
           ]
         },
         {
           "source": 2,
           "target": 3,
           "utterances": [
-            "I have a 2020 Toyota Camry"
+            "My card number is L123456"
           ]
         },
         {
           "source": 3,
           "target": 4,
           "utterances": [
-            "I need brake repair"
+            "I'm looking for The Great Gatsby"
           ]
         },
         {
           "source": 4,
+          "target": 11,
+          "utterances": [
+            "Okay, please check"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 12,
+          "utterances": [
+            "Okay, please check"
+          ]
+        },
+        {
+          "source": 11,
+          "target": 8,
+          "utterances": [
+            "Great, I'd like to proceed"
+          ]
+        },
+        {
+          "source": 12,
           "target": 5,
           "utterances": [
-            "Okay, please check availability"
+            "Oh, I see"
           ]
         },
         {
-          "source": 4,
+          "source": 5,
           "target": 6,
           "utterances": [
-            "Alright, what are my options?"
+            "I'd like to place a hold"
           ]
         },
         {
           "source": 5,
           "target": 7,
           "utterances": [
-            "Friday at 2 PM works for me"
+            "I'd like to see similar books"
           ]
         },
         {
           "source": 6,
-          "target": 7,
+          "target": 3,
           "utterances": [
-            "Yes, I'll take the urgent slot"
+            "Yes, I'd like to find another book"
           ]
         },
         {
           "source": 6,
-          "target": 5,
+          "target": 10,
           "utterances": [
-            "No, I'll take a regular appointment"
+            "No, that's all for today"
           ]
         },
         {
           "source": 7,
           "target": 8,
           "utterances": [
-            "What other services would you recommend?"
+            "Yes, I'll take 'This Side of Paradise'"
           ]
         },
         {
           "source": 7,
-          "target": 9,
+          "target": 3,
           "utterances": [
-            "No additional services needed"
+            "No, I'd like to look for something else"
           ]
         },
         {
           "source": 8,
           "target": 9,
           "utterances": [
-            "Yes, add the oil change please"
-          ]
-        },
-        {
-          "source": 8,
-          "target": 9,
-          "utterances": [
-            "No, just the original service"
+            "Yes, I'd like to check it out"
           ]
         },
         {
           "source": 9,
           "target": 3,
           "utterances": [
-            "Actually, I'd like to change the service type"
+            "Yes, I'd like to find another book"
           ]
         },
         {
           "source": 9,
           "target": 10,
           "utterances": [
-            "Yes, that works for me"
+            "No, that's all for today"
           ]
         }
       ]
     },
-    "topic": "auto care"
+    "topic": "library"
   }
 ]

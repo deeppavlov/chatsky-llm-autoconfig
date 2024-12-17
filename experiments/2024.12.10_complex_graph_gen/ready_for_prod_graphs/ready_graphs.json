@@ -15,7 +15,7 @@
           "label": "reload",
           "is_start": false,
           "utterances": [
-            "Try to reload your device?"
+            "Try to reload your device."
           ]
         },
         {
@@ -115,6 +115,13 @@
           "utterances": [
             "Ok, I will try to log out"
           ]
+        },
+        {
+          "source": 6,
+          "target": 2,
+          "utterances": [
+            "The balance is updated but now the website is slow again"
+          ]
         }
       ]
     },
@@ -131,7 +138,89 @@
             "participant": "user"
           },
           {
-            "text": "Try to reload your device?",
+            "text": "Try to reload your device.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Sure, I will try that",
+            "participant": "user"
+          },
+          {
+            "text": "Has this resolved the issue for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that fixed everything",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for contacting us, have a nice day.",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Hello! This is tech support. How can I help you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "The website loading takes too long",
+            "participant": "user"
+          },
+          {
+            "text": "Try to reload your device.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Sure, I will try that",
+            "participant": "user"
+          },
+          {
+            "text": "Has this resolved the issue for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, it did not work ",
+            "participant": "user"
+          },
+          {
+            "text": "Try cleaning browser cache.",
+            "participant": "assistant"
+          },
+          {
+            "text": "All right, I will try cleaning cache",
+            "participant": "user"
+          },
+          {
+            "text": "Has this resolved the issue for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, that fixed everything",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for contacting us, have a nice day.",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Hello! This is tech support. How can I help you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "The website loading takes too long",
+            "participant": "user"
+          },
+          {
+            "text": "Try to reload your device.",
             "participant": "assistant"
           },
           {
@@ -188,7 +277,7 @@
             "participant": "user"
           },
           {
-            "text": "Try to reload your device?",
+            "text": "Try to reload your device.",
             "participant": "assistant"
           },
           {
@@ -216,52 +305,11 @@
             "participant": "assistant"
           },
           {
-            "text": "Ok, I will try to log out",
+            "text": "The balance is updated but now the website is slow again",
             "participant": "user"
           },
           {
-            "text": "Has this resolved the issue for you?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, it did not work ",
-            "participant": "user"
-          },
-          {
-            "text": "Try cleaning browser cache.",
-            "participant": "assistant"
-          },
-          {
-            "text": "All right, I will try cleaning cache",
-            "participant": "user"
-          },
-          {
-            "text": "Has this resolved the issue for you?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that fixed everything",
-            "participant": "user"
-          },
-          {
-            "text": "Thank you for contacting us, have a nice day.",
-            "participant": "assistant"
-          }
-        ],
-        "topic": ""
-      },
-      {
-        "messages": [
-          {
-            "text": "Hello! This is tech support. How can I help you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "The website loading takes too long",
-            "participant": "user"
-          },
-          {
-            "text": "Try to reload your device?",
+            "text": "Try to reload your device.",
             "participant": "assistant"
           },
           {
@@ -294,7 +342,7 @@
             "participant": "user"
           },
           {
-            "text": "Try to reload your device?",
+            "text": "Try to reload your device.",
             "participant": "assistant"
           },
           {
@@ -367,7 +415,7 @@
             "participant": "user"
           },
           {
-            "text": "Try to reload your device?",
+            "text": "Try to reload your device.",
             "participant": "assistant"
           },
           {
@@ -388,6 +436,38 @@
           },
           {
             "text": "All right, I will try cleaning cache",
+            "participant": "user"
+          },
+          {
+            "text": "Has this resolved the issue for you?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Actually, I'm having a different issue now",
+            "participant": "user"
+          },
+          {
+            "text": "What is the other problem that you are experiencing?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I've put some money on my account but the balance is not updated on the website",
+            "participant": "user"
+          },
+          {
+            "text": "Try logging out of the website and then re-logging in.",
+            "participant": "assistant"
+          },
+          {
+            "text": "The balance is updated but now the website is slow again",
+            "participant": "user"
+          },
+          {
+            "text": "Try to reload your device.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Sure, I will try that",
             "participant": "user"
           },
           {
@@ -428,14 +508,23 @@
         },
         {
           "id": 3,
-          "label": "verify order",
+          "label": "check order exists",
           "is_start": false,
           "utterances": [
-            "Is this order #ABC123 for pizza and pasta?"
+            "Let me check this order number...",
+            "Sorry, I couldn't find this order number. Could you please verify and try again?"
           ]
         },
         {
           "id": 4,
+          "label": "verify order",
+          "is_start": false,
+          "utterances": [
+            "I found order #XYZ123 for pizza and pasta. Is this your order?"
+          ]
+        },
+        {
+          "id": 5,
           "label": "order status",
           "is_start": false,
           "utterances": [
@@ -443,7 +532,7 @@
           ]
         },
         {
-          "id": 5,
+          "id": 6,
           "label": "update address",
           "is_start": false,
           "utterances": [
@@ -451,15 +540,15 @@
           ]
         },
         {
-          "id": 6,
+          "id": 7,
           "label": "confirm address",
           "is_start": false,
           "utterances": [
-            "I've updated the delivery address to 456 Oak Street. Your order will arrive in 45 minutes. Is there anything else I can help you with?"
+            "I've updated the delivery address. Is this correct now?"
           ]
         },
         {
-          "id": 7,
+          "id": 8,
           "label": "end",
           "is_start": false,
           "utterances": [
@@ -479,282 +568,183 @@
           "source": 2,
           "target": 3,
           "utterances": [
-            "My order number is ABC123"
+            "My order number is XYZ123"
           ]
         },
         {
           "source": 3,
           "target": 2,
           "utterances": [
-            "No, that's not my order"
+            "Let me check again, my order number is..."
           ]
         },
         {
           "source": 3,
           "target": 4,
           "utterances": [
-            "Yes, that's correct"
+            "Order found"
+          ]
+        },
+        {
+          "source": 4,
+          "target": 2,
+          "utterances": [
+            "No, that's not my order"
           ]
         },
         {
           "source": 4,
           "target": 5,
           "utterances": [
-            "No, the address is wrong"
+            "Yes, that's correct"
           ]
         },
         {
           "source": 5,
           "target": 6,
           "utterances": [
-            "The correct address is 456 Oak Street"
+            "No, the address is wrong"
           ]
         },
         {
-          "source": 4,
-          "target": 7,
+          "source": 5,
+          "target": 8,
           "utterances": [
-            "Yes, that's correct, thank you"
+            "Yes, that's correct"
           ]
         },
         {
           "source": 6,
           "target": 7,
           "utterances": [
-            "No, that's all, thank you"
+            "The correct address is 456 Oak Street"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 6,
+          "utterances": [
+            "No, that's still not correct"
+          ]
+        },
+        {
+          "source": 7,
+          "target": 8,
+          "utterances": [
+            "Yes, that's correct now"
           ]
         }
       ]
     },
-    "topic": "Food Delivery Service",
+    "topic": "food delivery",
     "dialogues": [
-      {
-        "messages": [
-          {
-            "text": "Welcome! Food Delivery Service. How can I help you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I want to check my order status",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is ABC123",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct",
-            "participant": "user"
-          },
-          {
-            "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct, thank you",
-            "participant": "user"
-          },
-          {
-            "text": "Thank you for choosing our service. Have a great meal!",
-            "participant": "assistant"
-          }
-        ],
-        "topic": ""
-      },
-      {
-        "messages": [
-          {
-            "text": "Welcome! Food Delivery Service. How can I help you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I want to check my order status",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is ABC123",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct",
-            "participant": "user"
-          },
-          {
-            "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, the address is wrong",
-            "participant": "user"
-          },
-          {
-            "text": "Please provide the correct delivery address.",
-            "participant": "assistant"
-          },
-          {
-            "text": "The correct address is 456 Oak Street",
-            "participant": "user"
-          },
-          {
-            "text": "I've updated the delivery address to 456 Oak Street. Your order will arrive in 45 minutes. Is there anything else I can help you with?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, that's all, thank you",
-            "participant": "user"
-          },
-          {
-            "text": "Thank you for choosing our service. Have a great meal!",
-            "participant": "assistant"
-          }
-        ],
-        "topic": ""
-      },
-      {
-        "messages": [
-          {
-            "text": "Welcome! Food Delivery Service. How can I help you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I want to check my order status",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is XYZ789",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, that's not my order",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is ABC123",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct",
-            "participant": "user"
-          },
-          {
-            "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct, thank you",
-            "participant": "user"
-          },
-          {
-            "text": "Thank you for choosing our service. Have a great meal!",
-            "participant": "assistant"
-          }
-        ]
-      },
-      {
-        "messages": [
-          {
-            "text": "Welcome! Food Delivery Service. How can I help you today?",
-            "participant": "assistant"
-          },
-          {
-            "text": "I want to check my order status",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is DEF456",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, that's not my order",
-            "participant": "user"
-          },
-          {
-            "text": "Could you provide your order number?",
-            "participant": "assistant"
-          },
-          {
-            "text": "My order number is ABC123",
-            "participant": "user"
-          },
-          {
-            "text": "Is this order #ABC123 for pizza and pasta?",
-            "participant": "assistant"
-          },
-          {
-            "text": "Yes, that's correct",
-            "participant": "user"
-          },
-          {
-            "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, the address is wrong",
-            "participant": "user"
-          },
-          {
-            "text": "Please provide the correct delivery address.",
-            "participant": "assistant"
-          },
-          {
-            "text": "The correct address is 456 Oak Street",
-            "participant": "user"
-          },
-          {
-            "text": "I've updated the delivery address to 456 Oak Street. Your order will arrive in 45 minutes. Is there anything else I can help you with?",
-            "participant": "assistant"
-          },
-          {
-            "text": "No, that's all, thank you",
-            "participant": "user"
-          },
-          {
-            "text": "Thank you for choosing our service. Have a great meal!",
-            "participant": "assistant"
-          }
-        ]
-      }
-    ]
+    {
+      "id": "path_1_simple_success",
+      "description": "Basic happy path with correct order and address",
+      "turns": [
+        {"speaker": "assistant", "text": "Welcome! Food Delivery Service. How can I help you today?"},
+        {"speaker": "user", "text": "I want to check my order status"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is XYZ123"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #XYZ123 for pizza and pasta. Is this your order?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Thank you for choosing our service. Have a great meal!"}
+      ]
+    },
+    {
+      "id": "path_2_order_not_found_cycle",
+      "description": "Tests the cycle between RequestOrder and CheckOrderExists",
+      "turns": [
+        {"speaker": "assistant", "text": "Welcome! Food Delivery Service. How can I help you today?"},
+        {"speaker": "user", "text": "I want to check my order status"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is ABC456"},
+        {"speaker": "assistant", "text": "Sorry, I couldn't find this order number. Could you please verify and try again?"},
+        {"speaker": "user", "text": "Let me check again, my order number is XYZ123"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #XYZ123 for pizza and pasta. Is this your order?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Thank you for choosing our service. Have a great meal!"}
+      ]
+    },
+    {
+      "id": "path_3_wrong_order_cycle",
+      "description": "Tests the cycle between VerifyOrder and RequestOrder",
+      "turns": [
+        {"speaker": "assistant", "text": "Welcome! Food Delivery Service. How can I help you today?"},
+        {"speaker": "user", "text": "I want to check my order status"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is XYZ123"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #XYZ123 for pizza and pasta. Is this your order?"},
+        {"speaker": "user", "text": "No, that's not my order"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is ABC789"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #ABC789 for burger and fries. Is this your order?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Thank you for choosing our service. Have a great meal!"}
+      ]
+    },
+    {
+      "id": "path_4_address_correction_cycle",
+      "description": "Tests the cycle between UpdateAddress and ConfirmAddress",
+      "turns": [
+        {"speaker": "assistant", "text": "Welcome! Food Delivery Service. How can I help you today?"},
+        {"speaker": "user", "text": "I want to check my order status"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is XYZ123"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #XYZ123 for pizza and pasta. Is this your order?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?"},
+        {"speaker": "user", "text": "No, the address is wrong"},
+        {"speaker": "assistant", "text": "Please provide the correct delivery address."},
+        {"speaker": "user", "text": "The correct address is 456 Oak Street"},
+        {"speaker": "assistant", "text": "I've updated the delivery address. Is this correct now?"},
+        {"speaker": "user", "text": "No, that's still not correct"},
+        {"speaker": "assistant", "text": "Please provide the correct delivery address."},
+        {"speaker": "user", "text": "The correct address is 456 Oak Street, Apartment 2B"},
+        {"speaker": "assistant", "text": "I've updated the delivery address. Is this correct now?"},
+        {"speaker": "user", "text": "Yes, that's correct now"},
+        {"speaker": "assistant", "text": "Thank you for choosing our service. Have a great meal!"}
+      ]
+    },
+    {
+      "id": "path_5_all_cycles_combined",
+      "description": "Tests multiple cycles in one conversation",
+      "turns": [
+        {"speaker": "assistant", "text": "Welcome! Food Delivery Service. How can I help you today?"},
+        {"speaker": "user", "text": "I want to check my order status"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is ABC456"},
+        {"speaker": "assistant", "text": "Sorry, I couldn't find this order number. Could you please verify and try again?"},
+        {"speaker": "user", "text": "Let me check again, my order number is XYZ123"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #XYZ123 for pizza and pasta. Is this your order?"},
+        {"speaker": "user", "text": "No, that's not my order"},
+        {"speaker": "assistant", "text": "Could you provide your order number?"},
+        {"speaker": "user", "text": "My order number is ABC789"},
+        {"speaker": "assistant", "text": "Let me check this order number..."},
+        {"speaker": "assistant", "text": "I found order #ABC789 for burger and fries. Is this your order?"},
+        {"speaker": "user", "text": "Yes, that's correct"},
+        {"speaker": "assistant", "text": "Your order is being prepared and will be delivered to 123 Main St. Estimated delivery time is 45 minutes. Is this address correct?"},
+        {"speaker": "user", "text": "No, the address is wrong"},
+        {"speaker": "assistant", "text": "Please provide the correct delivery address."},
+        {"speaker": "user", "text": "The correct address is 456 Oak Street"},
+        {"speaker": "assistant", "text": "I've updated the delivery address. Is this correct now?"},
+        {"speaker": "user", "text": "Yes, that's correct now"},
+        {"speaker": "assistant", "text": "Thank you for choosing our service. Have a great meal!"}
+      ]
+    }
+  ]
   },
   {
     "graph": {
@@ -1110,11 +1100,27 @@
           ]
         },
         {
+          "id": 11,
+          "label": "book_available",
+          "is_start": false,
+          "utterances": [
+            "I've checked and the book is available."
+          ]
+        },
+        {
+          "id": 12,
+          "label": "book_unavailable",
+          "is_start": false,
+          "utterances": [
+            "I've checked and the book is currently unavailable."
+          ]
+        },
+        {
           "id": 5,
           "label": "offer_alternatives",
           "is_start": false,
           "utterances": [
-            "This book is currently checked out. Would you like to place a hold, or would you prefer to see similar books that are available now?"
+            "Would you like to place a hold, or would you prefer to see similar books that are available now?"
           ]
         },
         {
@@ -1130,7 +1136,7 @@
           "label": "show_similar",
           "is_start": false,
           "utterances": [
-            "We have these similar books available. Would you like to check out any of them?"
+            "We have similar books available: 'This Side of Paradise' and 'The Beautiful and Damned'. Would you like to check out any of them?"
           ]
         },
         {
@@ -1138,7 +1144,7 @@
           "label": "checkout_process",
           "is_start": false,
           "utterances": [
-            "Great! The book is available. Would you like to check it out now?"
+            "Would you like to check it out now?"
           ]
         },
         {
@@ -1182,16 +1188,30 @@
         },
         {
           "source": 4,
-          "target": 5,
+          "target": 11,
           "utterances": [
             "Okay, please check"
           ]
         },
         {
           "source": 4,
+          "target": 12,
+          "utterances": [
+            "Okay, please check"
+          ]
+        },
+        {
+          "source": 11,
           "target": 8,
           "utterances": [
-            "Alright"
+            "Great, I'd like to proceed"
+          ]
+        },
+        {
+          "source": 12,
+          "target": 5,
+          "utterances": [
+            "Oh, I see"
           ]
         },
         {
@@ -1226,7 +1246,7 @@
           "source": 7,
           "target": 8,
           "utterances": [
-            "Yes, I'll take this one"
+            "Yes, I'll take 'This Side of Paradise'"
           ]
         },
         {
@@ -1261,372 +1281,428 @@
     },
     "topic": "library",
     "dialogues": [
-    {
-      "messages": [
-        {
-          "text": "Welcome to the City Library! How may I assist you today?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to borrow a book",
-          "participant": "user"
-        },
-        {
-          "text": "Could you please provide your library card number?",
-          "participant": "assistant"
-        },
-        {
-          "text": "My card number is L123456",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for The Great Gatsby",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Alright",
-          "participant": "user"
-        },
-        {
-          "text": "Great! The book is available. Would you like to check it out now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to check it out",
-          "participant": "user"
-        },
-        {
-          "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, that's all for today",
-          "participant": "user"
-        },
-        {
-          "text": "Thank you for using our library services. Have a great day!",
-          "participant": "assistant"
-        }
-      ],
-      "topic": "Simple checkout path"
-    },
-    {
-      "messages": [
-        {
-          "text": "Welcome to the City Library! How may I assist you today?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to borrow a book",
-          "participant": "user"
-        },
-        {
-          "text": "Could you please provide your library card number?",
-          "participant": "assistant"
-        },
-        {
-          "text": "My card number is L123456",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for The Great Gatsby",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Okay, please check",
-          "participant": "user"
-        },
-        {
-          "text": "This book is currently checked out. Would you like to place a hold, or would you prefer to see similar books that are available now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to place a hold",
-          "participant": "user"
-        },
-        {
-          "text": "I've placed a hold on the book for you. You'll be notified by email when it becomes available. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, that's all for today",
-          "participant": "user"
-        },
-        {
-          "text": "Thank you for using our library services. Have a great day!",
-          "participant": "assistant"
-        }
-      ],
-      "topic": "Place hold path"
-    },
-    {
-      "messages": [
-        {
-          "text": "Welcome to the City Library! How may I assist you today?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to borrow a book",
-          "participant": "user"
-        },
-        {
-          "text": "Could you please provide your library card number?",
-          "participant": "assistant"
-        },
-        {
-          "text": "My card number is L123456",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for The Great Gatsby",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Okay, please check",
-          "participant": "user"
-        },
-        {
-          "text": "This book is currently checked out. Would you like to place a hold, or would you prefer to see similar books that are available now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to see similar books",
-          "participant": "user"
-        },
-        {
-          "text": "We have these similar books available. Would you like to check out any of them?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'll take this one",
-          "participant": "user"
-        },
-        {
-          "text": "Great! The book is available. Would you like to check it out now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to check it out",
-          "participant": "user"
-        },
-        {
-          "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, that's all for today",
-          "participant": "user"
-        },
-        {
-          "text": "Thank you for using our library services. Have a great day!",
-          "participant": "assistant"
-        }
-      ],
-      "topic": "Similar book checkout path"
-    },
-    {
-      "messages": [
-        {
-          "text": "Welcome to the City Library! How may I assist you today?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to borrow a book",
-          "participant": "user"
-        },
-        {
-          "text": "Could you please provide your library card number?",
-          "participant": "assistant"
-        },
-        {
-          "text": "My card number is L123456",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for The Great Gatsby",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Okay, please check",
-          "participant": "user"
-        },
-        {
-          "text": "This book is currently checked out. Would you like to place a hold, or would you prefer to see similar books that are available now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to see similar books",
-          "participant": "user"
-        },
-        {
-          "text": "We have these similar books available. Would you like to check out any of them?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, I'd like to look for something else",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for To Kill a Mockingbird",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Alright",
-          "participant": "user"
-        },
-        {
-          "text": "Great! The book is available. Would you like to check it out now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to check it out",
-          "participant": "user"
-        },
-        {
-          "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, that's all for today",
-          "participant": "user"
-        },
-        {
-          "text": "Thank you for using our library services. Have a great day!",
-          "participant": "assistant"
-        }
-      ],
-      "topic": "Reject similar books and find another path"
-    },
-    {
-      "messages": [
-        {
-          "text": "Welcome to the City Library! How may I assist you today?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'd like to borrow a book",
-          "participant": "user"
-        },
-        {
-          "text": "Could you please provide your library card number?",
-          "participant": "assistant"
-        },
-        {
-          "text": "My card number is L123456",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for The Great Gatsby",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Alright",
-          "participant": "user"
-        },
-        {
-          "text": "Great! The book is available. Would you like to check it out now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to check it out",
-          "participant": "user"
-        },
-        {
-          "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to find another book",
-          "participant": "user"
-        },
-        {
-          "text": "What book are you looking for?",
-          "participant": "assistant"
-        },
-        {
-          "text": "I'm looking for 1984",
-          "participant": "user"
-        },
-        {
-          "text": "Let me check if the book is currently available.",
-          "participant": "assistant"
-        },
-        {
-          "text": "Alright",
-          "participant": "user"
-        },
-        {
-          "text": "Great! The book is available. Would you like to check it out now?",
-          "participant": "assistant"
-        },
-        {
-          "text": "Yes, I'd like to check it out",
-          "participant": "user"
-        },
-        {
-          "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
-          "participant": "assistant"
-        },
-        {
-          "text": "No, that's all for today",
-          "participant": "user"
-        },
-        {
-          "text": "Thank you for using our library services. Have a great day!",
-          "participant": "assistant"
-        }
-      ],
-      "topic": "Multiple book checkout path"
-    }
-  ]
+      {
+        "messages": [
+          {
+            "text": "Welcome to the City Library! How may I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to borrow a book",
+            "participant": "user"
+          },
+          {
+            "text": "Could you please provide your library card number?",
+            "participant": "assistant"
+          },
+          {
+            "text": "My card number is L123456",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for The Great Gatsby",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is currently unavailable.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Oh, I see",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to place a hold, or would you prefer to see similar books that are available now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to see similar books",
+            "participant": "user"
+          },
+          {
+            "text": "We have similar books available: 'This Side of Paradise' and 'The Beautiful and Damned'. Would you like to check out any of them?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'll take 'This Side of Paradise'",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to check it out now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to check it out",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for today",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for using our library services. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to the City Library! How may I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to borrow a book",
+            "participant": "user"
+          },
+          {
+            "text": "Could you please provide your library card number?",
+            "participant": "assistant"
+          },
+          {
+            "text": "My card number is L123456",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for The Great Gatsby",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is currently unavailable.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Oh, I see",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to place a hold, or would you prefer to see similar books that are available now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to place a hold",
+            "participant": "user"
+          },
+          {
+            "text": "I've placed a hold on the book for you. You'll be notified by email when it becomes available. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for today",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for using our library services. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to the City Library! How may I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to borrow a book",
+            "participant": "user"
+          },
+          {
+            "text": "Could you please provide your library card number?",
+            "participant": "assistant"
+          },
+          {
+            "text": "My card number is L123456",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for The Great Gatsby",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Great, I'd like to proceed",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to check it out now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to check it out",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for today",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for using our library services. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": ""
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to the City Library! How may I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to borrow a book",
+            "participant": "user"
+          },
+          {
+            "text": "Could you please provide your library card number?",
+            "participant": "assistant"
+          },
+          {
+            "text": "My card number is L123456",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for The Great Gatsby",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is currently unavailable.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Oh, I see",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to place a hold, or would you prefer to see similar books that are available now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to see similar books",
+            "participant": "user"
+          },
+          {
+            "text": "We have similar books available: 'This Side of Paradise' and 'The Beautiful and Damned'. Would you like to check out any of them?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, I'd like to look for something else",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for To Kill a Mockingbird",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Great, I'd like to proceed",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to check it out now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to check it out",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for today",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for using our library services. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": "Reject similar books and find another book"
+      },
+      {
+        "messages": [
+          {
+            "text": "Welcome to the City Library! How may I assist you today?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'd like to borrow a book",
+            "participant": "user"
+          },
+          {
+            "text": "Could you please provide your library card number?",
+            "participant": "assistant"
+          },
+          {
+            "text": "My card number is L123456",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for The Great Gatsby",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Great, I'd like to proceed",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to check it out now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to check it out",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to find another book",
+            "participant": "user"
+          },
+          {
+            "text": "What book are you looking for?",
+            "participant": "assistant"
+          },
+          {
+            "text": "I'm looking for 1984",
+            "participant": "user"
+          },
+          {
+            "text": "Let me check if the book is currently available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Okay, please check",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked and the book is available.",
+            "participant": "assistant"
+          },
+          {
+            "text": "Great, I'd like to proceed",
+            "participant": "user"
+          },
+          {
+            "text": "Would you like to check it out now?",
+            "participant": "assistant"
+          },
+          {
+            "text": "Yes, I'd like to check it out",
+            "participant": "user"
+          },
+          {
+            "text": "I've checked out the book to your account. It's due in 3 weeks. Would you like to search for any other books?",
+            "participant": "assistant"
+          },
+          {
+            "text": "No, that's all for today",
+            "participant": "user"
+          },
+          {
+            "text": "Thank you for using our library services. Have a great day!",
+            "participant": "assistant"
+          }
+        ],
+        "topic": "Multiple book checkout cycle"
+      }
+    ]
   },
   {
     "graph": {
