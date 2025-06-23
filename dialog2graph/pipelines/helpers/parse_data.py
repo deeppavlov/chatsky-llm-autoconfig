@@ -19,7 +19,7 @@ from dialog2graph.utils.logger import Logger
 
 logger = Logger(__name__)
 
-RawDialogsType = dict | list[list] | list[dict] | Dialog | list[Dialog] | PosixPath
+RawDialogsType = dict | list[list] | list[dict] | list[list[dict]] | Dialog | list[Dialog] | PosixPath
 ValidatedDialogType = (
     List[DialogMessage] | List[List[DialogMessage]] | Dialog | List[Dialog]
 )
