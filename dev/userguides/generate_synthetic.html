@@ -50,8 +50,8 @@
     <link rel="canonical" href="/dialog2graph/dev/userguides/generate_synthetic.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Learn dialog2graph CLI interface" href="cli_usage.html" />
-    <link rel="prev" title="Using Dialog2Graph algorithms" href="generate_graphs.html" />
+    <link rel="next" title="Evaluate graphs and dialogs" href="evaluate_userguide.html" />
+    <link rel="prev" title="Learn how to use Dialog2Graph algorithms" href="generate_graphs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -346,10 +346,12 @@
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="basic_usage.html">Learn base dialog2graph classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generate_graphs.html">Using Dialog2Graph algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="generate_graphs.html">Learn how to use Dialog2Graph algorithms</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Generate synthetic graph on certain topic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="evaluate_userguide.html">Evaluate graphs and dialogs</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Learn dialog2graph CLI interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="augment_dialogs.html">Generate augmented dialogs on one given dialog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extend_graphs.html">Extend graphs</a></li>
 </ul>
 </div>
 </nav></div>
@@ -412,16 +414,19 @@
                   
   <section id="generate-synthetic-graph-on-certain-topic">
 <h1>Generate synthetic graph on certain topic<a class="headerlink" href="#generate-synthetic-graph-on-certain-topic" title="Link to this heading">#</a></h1>
-<p>Use <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopedGraphGenerator</span></code></a> to create a validated graph from several
-LLM generated dialogs concerning a given topic.</p>
+<p><a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopedGraphGenerator</span></code></a> is a class to create a validated graph from several
+LLM generated dialogs concerning a given topic. This class represents algorithm to generate dialog graph following several steps:
+graph creation from dialogs, graph validation evaluating theme consistency and cycle validity, dialog generation from graph.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dialog2graph.datasets.complex_dialogs.generation</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoopedGraphGenerator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dialog2graph.pipelines.model_storage</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelStorage</span>
 </pre></div>
 </div>
-<p>1. Create <a class="reference internal" href="../autoapi/dialog2graph/pipelines/model_storage/index.html#dialog2graph.pipelines.model_storage.ModelStorage" title="dialog2graph.pipelines.model_storage.ModelStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelStorage</span></code></a> instance and add choosen LLMs for dialog generation,
-dialog validation, theme validation and cycle end search.</p>
+<p>First, <a class="reference internal" href="../autoapi/dialog2graph/pipelines/model_storage/index.html#dialog2graph.pipelines.model_storage.ModelStorage" title="dialog2graph.pipelines.model_storage.ModelStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelStorage</span></code></a> instance is created. Then, using
+<a class="reference internal" href="../autoapi/dialog2graph/pipelines/model_storage/index.html#dialog2graph.pipelines.model_storage.ModelStorage.add" title="dialog2graph.pipelines.model_storage.ModelStorage.add"><code class="xref py py-class docutils literal notranslate"><span class="pre">add</span></code></a> method, choosen LLMs may be added for dialog generation,
+dialog validation, theme validation and cycle end search, important generation steps. You can choose between available models.
+Preferably, the stronger model is used for generation problem and the simpler models are used for other tasks.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_storage</span> <span class="o">=</span> <span class="n">ModelStorage</span><span class="p">()</span>
 <span class="n">model_storage</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
     <span class="s2">&quot;gen_model&quot;</span><span class="p">,</span> <span class="c1"># model to use for generation</span>
@@ -435,8 +440,11 @@ dialog validation, theme validation and cycle end search.</p>
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>2. Create <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopedGraphGenerator</span></code></a> and
-use <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator.invoke" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">invoke</span></code></a> method to get a dialog graph</p>
+<p>Then, <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator"><code class="xref py py-class docutils literal notranslate"><span class="pre">LoopedGraphGenerator</span></code></a> is created, passing
+previously defined <a class="reference internal" href="../autoapi/dialog2graph/pipelines/model_storage/index.html#dialog2graph.pipelines.model_storage.ModelStorage" title="dialog2graph.pipelines.model_storage.ModelStorage"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelStorage</span></code></a> and specifying model names for
+each task. <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex_dialogs/generation/index.html#dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator.invoke" title="dialog2graph.datasets.complex_dialogs.generation.LoopedGraphGenerator.invoke"><code class="xref py py-class docutils literal notranslate"><span class="pre">invoke</span></code></a> method is used to get a dialog graph
+on <code class="docutils literal notranslate"><span class="pre">restaurant</span> <span class="pre">reservation</span></code> topic. The method returns a dictionary (<code class="docutils literal notranslate"><span class="pre">&quot;graph&quot;:</span> <span class="pre">{{&quot;edges&quot;:</span> <span class="pre">[...],</span> <span class="pre">&quot;nodes&quot;:</span> <span class="pre">[...]},</span> <span class="pre">&quot;dialogues&quot;:</span> <span class="pre">[...]}</span></code>)
+that can be passed to <a class="reference internal" href="../autoapi/dialog2graph/index.html#dialog2graph.Graph" title="dialog2graph.Graph"><code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code></a> (more info you can find <a class="reference internal" href="basic_usage.html"><span class="doc">in this userguide</span></a>).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">LoopedGraphGenerator</span><span class="p">(</span>
     <span class="n">model_storage</span><span class="o">=</span><span class="n">model_storage</span><span class="p">,</span>
     <span class="n">generation_llm</span><span class="o">=</span><span class="s1">&#39;gen_model&#39;</span><span class="p">,</span>
@@ -466,15 +474,15 @@ use <a class="reference internal" href="../autoapi/dialog2graph/datasets/complex
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Using Dialog2Graph algorithms</p>
+        <p class="prev-next-title">Learn how to use Dialog2Graph algorithms</p>
       </div>
     </a>
     <a class="right-next"
-       href="cli_usage.html"
+       href="evaluate_userguide.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Learn dialog2graph CLI interface</p>
+        <p class="prev-next-title">Evaluate graphs and dialogs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

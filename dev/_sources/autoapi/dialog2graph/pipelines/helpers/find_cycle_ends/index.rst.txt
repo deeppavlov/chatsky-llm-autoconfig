@@ -1,0 +1,38 @@
+dialog2graph.pipelines.helpers.find_cycle_ends
+==============================================
+
+.. py:module:: dialog2graph.pipelines.helpers.find_cycle_ends
+
+.. autoapi-nested-parse::
+
+   Find cycle ends
+   ----------------
+
+   The module provides graph auxilary method to find cycle ends.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   dialog2graph.pipelines.helpers.find_cycle_ends.find_cycle_ends
+
+
+Module Contents
+---------------
+
+.. py:function:: find_cycle_ends(G: dialog2graph.pipelines.core.graph.Graph, cycle_ends_model: langchain_core.language_models.chat_models.BaseChatModel) -> dict[str]
+
+   Find nodes in a dialog graph G using conditions in graph_ends_prompt_template with the help of model.
+
+   :param G: The dialog graph
+   :type G: BaseGraph
+   :param cycle_ends_model: The LLM to be used
+   :type cycle_ends_model: BaseChatModel
+
+   :returns: {'value': bool, 'description': str}
+   :rtype: dict
+
+

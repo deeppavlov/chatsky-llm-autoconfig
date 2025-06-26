@@ -365,6 +365,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/d2g_extender/index.html">dialog2graph.pipelines.d2g_extender</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/d2g_light/index.html">dialog2graph.pipelines.d2g_light</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/d2g_llm/index.html">dialog2graph.pipelines.d2g_llm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines/helpers/index.html">dialog2graph.pipelines.helpers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/model_storage/index.html">dialog2graph.pipelines.model_storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/report/index.html">dialog2graph.pipelines.report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines/topic_generation/index.html">dialog2graph.pipelines.topic_generation</a></li>
@@ -483,6 +484,9 @@
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#dialog2graph.metrics.CompareResponse" title="dialog2graph.metrics.CompareResponse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CompareResponse</span></code></a></p></td>
 <td><p>LLM Response of comparison between two graphs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dialog2graph.metrics.PipelineDataType" title="dialog2graph.metrics.PipelineDataType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PipelineDataType</span></code></a></p></td>
+<td><p>!!! abstract &quot;Usage Documentation&quot;</p></td>
 </tr>
 </tbody>
 </table>
@@ -830,6 +834,148 @@ Uses pygraphviz layout if available, falls back to kamada_kawai_layout.</p>
 
 </dd></dl>
 
+<dl class="py class">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">PipelineDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">/</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">**data:</span> <span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/dialog2graph/pipelines/helpers/parse_data.html#PipelineDataType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">pydantic.BaseModel</span></code></p>
+<dl class="simple">
+<dt>!!! abstract “Usage Documentation”</dt><dd><p>[Models](../concepts/models.md)</p>
+</dd>
+</dl>
+<p>A base class for creating Pydantic models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>Any</em>)</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__class_vars__">
+<span class="sig-name descname"><span class="pre">__class_vars__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__class_vars__" title="Link to this definition">#</a></dt>
+<dd><p>The names of the class variables defined on the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__private_attributes__">
+<span class="sig-name descname"><span class="pre">__private_attributes__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__private_attributes__" title="Link to this definition">#</a></dt>
+<dd><p>Metadata about the private attributes of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__signature__">
+<span class="sig-name descname"><span class="pre">__signature__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__signature__" title="Link to this definition">#</a></dt>
+<dd><p>The synthesized <cite>__init__</cite> [<cite>Signature</cite>][inspect.Signature] of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_complete__">
+<span class="sig-name descname"><span class="pre">__pydantic_complete__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_complete__" title="Link to this definition">#</a></dt>
+<dd><p>Whether model building is completed, or if there are still undefined fields.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_core_schema__">
+<span class="sig-name descname"><span class="pre">__pydantic_core_schema__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_core_schema__" title="Link to this definition">#</a></dt>
+<dd><p>The core schema of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_custom_init__">
+<span class="sig-name descname"><span class="pre">__pydantic_custom_init__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_custom_init__" title="Link to this definition">#</a></dt>
+<dd><p>Whether the model has a custom <cite>__init__</cite> function.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_decorators__">
+<span class="sig-name descname"><span class="pre">__pydantic_decorators__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_decorators__" title="Link to this definition">#</a></dt>
+<dd><p>Metadata containing the decorators defined on the model.
+This replaces <cite>Model.__validators__</cite> and <cite>Model.__root_validators__</cite> from Pydantic V1.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_generic_metadata__">
+<span class="sig-name descname"><span class="pre">__pydantic_generic_metadata__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_generic_metadata__" title="Link to this definition">#</a></dt>
+<dd><p>Metadata for generic models; contains data used for a similar purpose to
+__args__, __origin__, __parameters__ in typing-module generics. May eventually be replaced by these.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_parent_namespace__">
+<span class="sig-name descname"><span class="pre">__pydantic_parent_namespace__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_parent_namespace__" title="Link to this definition">#</a></dt>
+<dd><p>Parent namespace of the model, used for automatic rebuilding of models.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_post_init__">
+<span class="sig-name descname"><span class="pre">__pydantic_post_init__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_post_init__" title="Link to this definition">#</a></dt>
+<dd><p>The name of the post-init method for the model, if defined.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_root_model__">
+<span class="sig-name descname"><span class="pre">__pydantic_root_model__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_root_model__" title="Link to this definition">#</a></dt>
+<dd><p>Whether the model is a [<cite>RootModel</cite>][pydantic.root_model.RootModel].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_serializer__">
+<span class="sig-name descname"><span class="pre">__pydantic_serializer__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_serializer__" title="Link to this definition">#</a></dt>
+<dd><p>The <cite>pydantic-core</cite> <cite>SchemaSerializer</cite> used to dump instances of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_validator__">
+<span class="sig-name descname"><span class="pre">__pydantic_validator__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_validator__" title="Link to this definition">#</a></dt>
+<dd><p>The <cite>pydantic-core</cite> <cite>SchemaValidator</cite> used to validate instances of the model.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_fields__">
+<span class="sig-name descname"><span class="pre">__pydantic_fields__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_fields__" title="Link to this definition">#</a></dt>
+<dd><p>A dictionary of field names and their corresponding [<cite>FieldInfo</cite>][pydantic.fields.FieldInfo] objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_computed_fields__">
+<span class="sig-name descname"><span class="pre">__pydantic_computed_fields__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_computed_fields__" title="Link to this definition">#</a></dt>
+<dd><p>A dictionary of computed field names and their corresponding [<cite>ComputedFieldInfo</cite>][pydantic.fields.ComputedFieldInfo] objects.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_extra__">
+<span class="sig-name descname"><span class="pre">__pydantic_extra__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_extra__" title="Link to this definition">#</a></dt>
+<dd><p>A dictionary containing extra values, if [<cite>extra</cite>][pydantic.config.ConfigDict.extra]
+is set to <cite>‘allow’</cite>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_fields_set__">
+<span class="sig-name descname"><span class="pre">__pydantic_fields_set__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_fields_set__" title="Link to this definition">#</a></dt>
+<dd><p>The names of fields explicitly set during instantiation.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.__pydantic_private__">
+<span class="sig-name descname"><span class="pre">__pydantic_private__</span></span><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.__pydantic_private__" title="Link to this definition">#</a></dt>
+<dd><p>Values of private attributes set on the model instance.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.dialogs">
+<span class="sig-name descname"><span class="pre">dialogs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../pipelines/core/dialog/index.html#dialog2graph.pipelines.core.dialog.Dialog" title="dialog2graph.pipelines.core.dialog.Dialog"><span class="pre">dialog2graph.pipelines.core.dialog.Dialog</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.dialogs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.supported_graph">
+<span class="sig-name descname"><span class="pre">supported_graph</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.supported_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dialog2graph.metrics.PipelineDataType.true_graph">
+<span class="sig-name descname"><span class="pre">true_graph</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dialog2graph.metrics.PipelineDataType.true_graph" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="dialog2graph.metrics.PreDGEvalBase">
 <span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">PreDGEvalBase</span></span><a class="headerlink" href="#dialog2graph.metrics.PreDGEvalBase" title="Link to this definition">#</a></dt>
@@ -847,7 +993,7 @@ Uses pygraphviz layout if available, falls back to kamada_kawai_layout.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dialog2graph.metrics.compare_graphs_light">
-<span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">compare_graphs_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dialog2graph.pipelines.helpers.parse_data.PipelineDataType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../_modules/dialog2graph/metrics.html#compare_graphs_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.metrics.compare_graphs_light" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">compare_graphs_light</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/helpers/parse_data/index.html#dialog2graph.pipelines.helpers.parse_data.PipelineDataType" title="dialog2graph.pipelines.helpers.parse_data.PipelineDataType"><span class="pre">dialog2graph.pipelines.helpers.parse_data.PipelineDataType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../_modules/dialog2graph/metrics.html#compare_graphs_light"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.metrics.compare_graphs_light" title="Link to this definition">#</a></dt>
 <dd><p>Compares a generated Graph with the true Graph using two metrics:</p>
 <ol class="arabic simple">
 <li><p><cite>match_dg_triplets</cite>: checks if the generated graph matches the triplets from the dialogs.</p></li>
@@ -857,7 +1003,7 @@ Uses pygraphviz layout if available, falls back to kamada_kawai_layout.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>graph</strong> (<a class="reference internal" href="#dialog2graph.metrics.Graph" title="dialog2graph.metrics.Graph"><em>Graph</em></a>) – The generated graph to compare with the true graph.</p></li>
-<li><p><strong>data</strong> (<em>PipelineDataType</em>) – Contains the true graph and the dialogs.</p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="#dialog2graph.metrics.PipelineDataType" title="dialog2graph.metrics.PipelineDataType"><em>PipelineDataType</em></a>) – Contains the true graph and the dialogs.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -871,14 +1017,14 @@ Uses pygraphviz layout if available, falls back to kamada_kawai_layout.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="dialog2graph.metrics.compare_graphs_full">
-<span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">compare_graphs_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">langchain_community.embeddings.HuggingFaceInferenceAPIEmbeddings</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_huggingface.HuggingFaceEmbeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dialog2graph.pipelines.helpers.parse_data.PipelineDataType</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../pipelines/core/schemas/index.html#dialog2graph.pipelines.core.schemas.CompareResponse" title="dialog2graph.pipelines.core.schemas.CompareResponse"><span class="pre">dialog2graph.pipelines.core.schemas.CompareResponse</span></a></span></span><a class="reference internal" href="../../../_modules/dialog2graph/metrics.html#compare_graphs_full"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.metrics.compare_graphs_full" title="Link to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">dialog2graph.metrics.</span></span><span class="sig-name descname"><span class="pre">compare_graphs_full</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">langchain_community.embeddings.HuggingFaceInferenceAPIEmbeddings</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_huggingface.HuggingFaceEmbeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/core/graph/index.html#dialog2graph.pipelines.core.graph.Graph" title="dialog2graph.pipelines.core.graph.Graph"><span class="pre">dialog2graph.pipelines.core.graph.Graph</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../pipelines/helpers/parse_data/index.html#dialog2graph.pipelines.helpers.parse_data.PipelineDataType" title="dialog2graph.pipelines.helpers.parse_data.PipelineDataType"><span class="pre">dialog2graph.pipelines.helpers.parse_data.PipelineDataType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../pipelines/core/schemas/index.html#dialog2graph.pipelines.core.schemas.CompareResponse" title="dialog2graph.pipelines.core.schemas.CompareResponse"><span class="pre">dialog2graph.pipelines.core.schemas.CompareResponse</span></a></span></span><a class="reference internal" href="../../../_modules/dialog2graph/metrics.html#compare_graphs_full"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.metrics.compare_graphs_full" title="Link to this definition">#</a></dt>
 <dd><p>Compares a generated Graph with the true Graph using the triplet comparison metric.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>model</strong> (<em>HuggingFaceEmbeddings</em>) – The model to use for computing the embeddings.</p></li>
 <li><p><strong>graph</strong> (<a class="reference internal" href="#dialog2graph.metrics.Graph" title="dialog2graph.metrics.Graph"><em>Graph</em></a>) – The generated graph to compare with the true graph.</p></li>
-<li><p><strong>data</strong> (<em>PipelineDataType</em>) – Contains the true graph and the dialogs.</p></li>
+<li><p><strong>data</strong> (<a class="reference internal" href="#dialog2graph.metrics.PipelineDataType" title="dialog2graph.metrics.PipelineDataType"><em>PipelineDataType</em></a>) – Contains the true graph and the dialogs.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -969,6 +1115,30 @@ Uses pygraphviz layout if available, falls back to kamada_kawai_layout.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.CompareResponse.description"><code class="docutils literal notranslate"><span class="pre">CompareResponse.description</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.CompareResponse.value"><code class="docutils literal notranslate"><span class="pre">CompareResponse.value</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">CompareResponse.description</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType"><code class="docutils literal notranslate"><span class="pre">PipelineDataType</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__class_vars__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__class_vars__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__private_attributes__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__private_attributes__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__signature__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__signature__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_complete__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_complete__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_core_schema__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_core_schema__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_custom_init__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_custom_init__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_decorators__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_decorators__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_generic_metadata__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_generic_metadata__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_parent_namespace__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_parent_namespace__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_post_init__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_post_init__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_root_model__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_root_model__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_serializer__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_serializer__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_validator__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_validator__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_fields__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_fields__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_computed_fields__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_computed_fields__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_extra__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_extra__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_fields_set__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_fields_set__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.__pydantic_private__"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.__pydantic_private__</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.dialogs"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.dialogs</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.supported_graph"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.supported_graph</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PipelineDataType.true_graph"><code class="docutils literal notranslate"><span class="pre">PipelineDataType.true_graph</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dialog2graph.metrics.PreDGEvalBase"><code class="docutils literal notranslate"><span class="pre">PreDGEvalBase</span></code></a></li>

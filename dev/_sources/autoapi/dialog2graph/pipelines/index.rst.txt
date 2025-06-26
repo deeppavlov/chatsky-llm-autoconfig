@@ -14,6 +14,7 @@ Submodules
    /autoapi/dialog2graph/pipelines/d2g_extender/index
    /autoapi/dialog2graph/pipelines/d2g_light/index
    /autoapi/dialog2graph/pipelines/d2g_llm/index
+   /autoapi/dialog2graph/pipelines/helpers/index
    /autoapi/dialog2graph/pipelines/model_storage/index
    /autoapi/dialog2graph/pipelines/report/index
    /autoapi/dialog2graph/pipelines/topic_generation/index
