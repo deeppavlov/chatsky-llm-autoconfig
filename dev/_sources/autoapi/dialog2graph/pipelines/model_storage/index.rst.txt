@@ -54,7 +54,7 @@ Module Contents
       :type:  dict
 
 
-   .. py:method:: instantiate(class_name) -> langchain_core.language_models.BaseChatModel | langchain_community.embeddings.HuggingFaceEmbeddings
+   .. py:method:: instantiate(class_name) -> langchain_core.language_models.BaseChatModel | langchain_huggingface.embeddings.HuggingFaceEmbeddings
 
       Instantiates a model based on the provided class name and configuration.
 
@@ -85,9 +85,9 @@ Module Contents
 
    .. attribute:: model_type
 
-      Type of the stored model, either "llm" (language model) or "emb" (embedding model).
+      Type of the stored model, for example ChatOpenAI, HuggingFaceEmbeddings.
 
-      :type: Union[Literal["llm"], Literal["emb"]]
+      :type: Type[BaseChatModel | HuggingFaceEmbeddings]
 
    .. attribute:: model
 
@@ -118,13 +118,13 @@ Module Contents
 
 
    .. py:attribute:: model_type
-      :type:  pydantic._internal._model_construction.ModelMetaclass
+      :type:  Type[langchain_core.language_models.BaseChatModel | langchain_huggingface.embeddings.HuggingFaceEmbeddings]
       :value: None
 
 
 
    .. py:attribute:: model
-      :type:  Union[langchain_community.embeddings.HuggingFaceEmbeddings, langchain_core.language_models.BaseChatModel]
+      :type:  Union[langchain_huggingface.embeddings.HuggingFaceEmbeddings, langchain_core.language_models.BaseChatModel]
       :value: None
 
 
@@ -177,7 +177,7 @@ Module Contents
 
 
 
-   .. py:method:: add(key: str, config: dict, model_type: pydantic._internal._model_construction.ModelMetaclass, overwright: bool = False)
+   .. py:method:: add(key: str, config: dict, model_type: Type[langchain_core.language_models.BaseChatModel | langchain_huggingface.embeddings.HuggingFaceEmbeddings], overwright: bool = False)
 
               Add a new model configuration to the storage.
               The configuration is validated based on the specified model_type.
@@ -190,7 +190,7 @@ Module Contents
               Args:
                   key (str): The unique identifier for the model configuration.
                   config (dict): The configuration dictionary for initializing the model.
-                  model_type (ModelMetaclass): The type name of the model to be added.
+                  model_type (Type[BaseChatModel | HuggingFaceEmbeddings]): The type of the model to be added.
                   overwright (bool): Whether to overwright model existing under same key
       .
               Raises:

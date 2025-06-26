@@ -510,7 +510,7 @@ This class provides methods to load and instantiate models based on their config
 <dd><p>Instantiates a model based on the provided class name and configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>langchain_core.language_models.BaseChatModel | langchain_community.embeddings.HuggingFaceEmbeddings</p>
+<dd class="field-odd"><p>langchain_core.language_models.BaseChatModel | langchain_huggingface.embeddings.HuggingFaceEmbeddings</p>
 </dd>
 </dl>
 </dd></dl>
@@ -522,7 +522,7 @@ This class provides methods to load and instantiate models based on their config
 
 <dl class="py method">
 <dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">instantiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">langchain_core.language_models.BaseChatModel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_community.embeddings.HuggingFaceEmbeddings</span></span></span><a class="reference internal" href="../../../../_modules/dialog2graph/pipelines/model_storage.html#GetModelInstance.instantiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">instantiate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">class_name</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">langchain_core.language_models.BaseChatModel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_huggingface.embeddings.HuggingFaceEmbeddings</span></span></span><a class="reference internal" href="../../../../_modules/dialog2graph/pipelines/model_storage.html#GetModelInstance.instantiate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
 <dd><p>Instantiates a model based on the provided class name and configuration.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -532,7 +532,7 @@ This class provides methods to load and instantiate models based on their config
 <dd class="field-even"><p>The instantiated model object.</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>langchain_core.language_models.BaseChatModel | langchain_community.embeddings.HuggingFaceEmbeddings</p>
+<dd class="field-odd"><p>langchain_core.language_models.BaseChatModel | langchain_huggingface.embeddings.HuggingFaceEmbeddings</p>
 </dd>
 </dl>
 </dd></dl>
@@ -574,10 +574,10 @@ This class provides methods to load and instantiate models based on their config
 <dl class="py attribute">
 <dt class="sig sig-object py" id="dialog2graph.pipelines.model_storage.StoredData.model_type">
 <span class="sig-name descname"><span class="pre">model_type</span></span><a class="headerlink" href="#dialog2graph.pipelines.model_storage.StoredData.model_type" title="Link to this definition">#</a></dt>
-<dd><p>Type of the stored model, either “llm” (language model) or “emb” (embedding model).</p>
+<dd><p>Type of the stored model, for example ChatOpenAI, HuggingFaceEmbeddings.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>Union[Literal[“llm”], Literal[“emb”]]</p>
+<dd class="field-odd"><p>Type[BaseChatModel | HuggingFaceEmbeddings]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -614,12 +614,12 @@ This class provides methods to load and instantiate models based on their config
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id3">
-<span class="sig-name descname"><span class="pre">model_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">pydantic._internal._model_construction.ModelMetaclass</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">model_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">langchain_core.language_models.BaseChatModel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_huggingface.embeddings.HuggingFaceEmbeddings</span><span class="p"><span class="pre">]</span></span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id3" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="id4">
-<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">langchain_community.embeddings.HuggingFaceEmbeddings</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_core.language_models.BaseChatModel</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">model</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">langchain_huggingface.embeddings.HuggingFaceEmbeddings</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_core.language_models.BaseChatModel</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id4" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -686,7 +686,7 @@ and their corresponding instances.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dialog2graph.pipelines.model_storage.ModelStorage.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">pydantic._internal._model_construction.ModelMetaclass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwright</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dialog2graph/pipelines/model_storage.html#ModelStorage.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.pipelines.model_storage.ModelStorage.add" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Type</span><span class="p"><span class="pre">[</span></span><span class="pre">langchain_core.language_models.BaseChatModel</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">langchain_huggingface.embeddings.HuggingFaceEmbeddings</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwright</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/dialog2graph/pipelines/model_storage.html#ModelStorage.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dialog2graph.pipelines.model_storage.ModelStorage.add" title="Link to this definition">#</a></dt>
 <dd><blockquote>
 <div><p>Add a new model configuration to the storage.
 The configuration is validated based on the specified model_type.
@@ -698,7 +698,7 @@ In case of failure to add the model logs the error.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>key (str): The unique identifier for the model configuration.
 config (dict): The configuration dictionary for initializing the model.
-model_type (ModelMetaclass): The type name of the model to be added.
+model_type (Type[BaseChatModel | HuggingFaceEmbeddings]): The type of the model to be added.
 overwright (bool): Whether to overwright model existing under same key</p>
 </dd>
 </dl>
@@ -715,7 +715,7 @@ overwright (bool): Whether to overwright model existing under same key</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>key</strong> (<em>str</em>)</p></li>
 <li><p><strong>config</strong> (<em>dict</em>)</p></li>
-<li><p><strong>model_type</strong> (<em>pydantic._internal._model_construction.ModelMetaclass</em>)</p></li>
+<li><p><strong>model_type</strong> (<em>Type</em><em>[</em><em>langchain_core.language_models.BaseChatModel</em><em> | </em><em>langchain_huggingface.embeddings.HuggingFaceEmbeddings</em><em>]</em>)</p></li>
 <li><p><strong>overwright</strong> (<em>bool</em>)</p></li>
 </ul>
 </dd>

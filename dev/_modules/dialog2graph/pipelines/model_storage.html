@@ -397,14 +397,13 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">dotenv</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic._internal._model_construction</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelMetaclass</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Type</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">model_validator</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.chat_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_openai.chat_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatOpenAI</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">langchain_core.language_models</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseChatModel</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_community.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">langchain_huggingface.embeddings</span><span class="w"> </span><span class="kn">import</span> <span class="n">HuggingFaceEmbeddings</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dialog2graph.utils.logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">Logger</span>
 
@@ -462,7 +461,7 @@
 <span class="sd">    Attributes:</span>
 <span class="sd">        key (str): Key for the stored model.</span>
 <span class="sd">        config (dict): Configuration for the stored model.</span>
-<span class="sd">        model_type (Union[Literal[&quot;llm&quot;], Literal[&quot;emb&quot;]]): Type of the stored model, either &quot;llm&quot; (language model) or &quot;emb&quot; (embedding model).</span>
+<span class="sd">        model_type (Type[BaseChatModel | HuggingFaceEmbeddings]): Type of the stored model, for example ChatOpenAI, HuggingFaceEmbeddings.</span>
 <span class="sd">        model (Union[HuggingFaceEmbeddings, BaseChatModel]): The actual model object, which can either be a HuggingFaceEmbeddings instance or a BaseChatModel instance.</span>
 
 <span class="sd">    Methods:</span>
@@ -476,7 +475,7 @@
 
     <span class="n">key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Key for the stored model&quot;</span><span class="p">)</span>
     <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Configuration for the stored model&quot;</span><span class="p">)</span>
-    <span class="n">model_type</span><span class="p">:</span> <span class="n">ModelMetaclass</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Type of the stored model&quot;</span><span class="p">)</span>
+    <span class="n">model_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseChatModel</span> <span class="o">|</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">]</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Type of the stored model&quot;</span><span class="p">)</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
         <span class="n">HuggingFaceEmbeddings</span><span class="p">,</span>
         <span class="n">BaseChatModel</span><span class="p">,</span>
@@ -554,7 +553,7 @@
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-        <span class="n">model_type</span><span class="p">:</span> <span class="n">ModelMetaclass</span><span class="p">,</span>
+        <span class="n">model_type</span><span class="p">:</span> <span class="n">Type</span><span class="p">[</span><span class="n">BaseChatModel</span> <span class="o">|</span> <span class="n">HuggingFaceEmbeddings</span><span class="p">],</span>
         <span class="n">overwright</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -569,7 +568,7 @@
 <span class="sd">                Args:</span>
 <span class="sd">                    key (str): The unique identifier for the model configuration.</span>
 <span class="sd">                    config (dict): The configuration dictionary for initializing the model.</span>
-<span class="sd">                    model_type (ModelMetaclass): The type name of the model to be added.</span>
+<span class="sd">                    model_type (Type[BaseChatModel | HuggingFaceEmbeddings]): The type of the model to be added.</span>
 <span class="sd">                    overwright (bool): Whether to overwright model existing under same key</span>
 <span class="sd">        .</span>
 <span class="sd">                Raises:</span>
